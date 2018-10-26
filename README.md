@@ -1,3 +1,6 @@
 # teamMuseumKiosk
 
-I'm gonna create my own merge conflict.
+
+Michael Cantwell
+I have solved a merge conflict now.
+
