@@ -16,12 +16,14 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
         Label mikeLabel = new Label("Welcome to our trivia game!");
+        Label phoebeLabel = new Label(":)");
         VBox layout = new VBox(20);
         layout.setAlignment(Pos.BASELINE_CENTER);
         layout.getChildren().addAll(mikeLabel);
+        layout.getChildren().addAll(phoebeLabel);
 
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(layout, 300, 300));
+        primaryStage.setTitle("South Carolina State Museum");
+        primaryStage.setScene(new Scene(layout, 500, 500));
         primaryStage.show();
     }
 
