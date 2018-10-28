@@ -21,7 +21,7 @@ public class Main extends Application {
         layout.getChildren().addAll(mikeLabel);
 
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(layout, 300, 275));
+        primaryStage.setScene(new Scene(layout, 300, 300));
         primaryStage.show();
     }
 
