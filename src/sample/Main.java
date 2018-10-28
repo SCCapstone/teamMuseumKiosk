@@ -15,7 +15,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
-        Label mikeLabel = new Label("Hi this is our trivia game.");
+        Label mikeLabel = new Label("Welcome to our trivia game!");
         VBox layout = new VBox(20);
         layout.setAlignment(Pos.BASELINE_CENTER);
         layout.getChildren().addAll(mikeLabel);
