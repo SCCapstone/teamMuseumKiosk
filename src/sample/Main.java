@@ -15,13 +15,17 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
+        // adds labels
         Label mikeLabel = new Label("Welcome to our trivia game!");
         Label phoebeLabel = new Label(":)");
+
+        //creates vertical box to put in scene
         VBox layout = new VBox(20);
         layout.setAlignment(Pos.BASELINE_CENTER);
         layout.getChildren().addAll(mikeLabel);
         layout.getChildren().addAll(phoebeLabel);
 
+        //set scene
         primaryStage.setTitle("South Carolina State Museum");
         primaryStage.setScene(new Scene(layout, 500, 500));
         primaryStage.show();
