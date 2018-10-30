@@ -49,7 +49,7 @@ public class EndController implements Initializable {
         Button button = (Button) actionEvent.getSource();
         Stage currentStage = (Stage) button.getScene().getWindow();
 
-        URL url = new URL(getClass().getResource("/design/trivia.fxml").toExternalForm());
+        URL url = new URL(getClass().getResource("/design/main.fxml").toExternalForm());
         Parent questionPage = FXMLLoader.load(url);
         Scene scene = new Scene(questionPage, 600, 550);
 
