@@ -23,7 +23,8 @@ public class Main extends Application {
         StartController controller = new StartController();
         loader.setController(controller);
 
-        Scene scene = new Scene(root, 600, 550);
+        Scene scene = new Scene(root);
+        primaryStage.setMaximized(true);
         primaryStage.setTitle("South Carolina State Museum");
         primaryStage.setScene(scene);
         primaryStage.show();
