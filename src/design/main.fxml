@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="center" hgap="10" stylesheets="/design/trivia.css" vgap="10"
+          xmlns="http://javafx.com/javafx/8.0.60"
+          xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="controllers.StartController">
+    <Label alignment="CENTER" text="Welcome to my South Carolina trivia game!" GridPane.rowIndex="1">
+        <font>
+            <Font name="Geneva" size="36.0" />
+        </font></Label>
+    <Label alignment="TOP_LEFT" text="Please enter your name:" textAlignment="CENTER" GridPane.rowIndex="2">
+        <font>
+            <Font name="MyriadPro-Regular" size="13.0" />
+        </font>
+    </Label>
+    <TextField id="name" fx:id="name" onAction="#buttonClick" promptText="Name" GridPane.rowIndex="3" />
+    <Button fx:id="button" onAction="#buttonClick" text="Submit" GridPane.rowIndex="4" />
+
+</GridPane>

@@ -9,4 +9,3 @@ The team will be using the style guide of Google's <a href="google.github.io/sty
 - Michael Cantwell 10/25: I have solved a merge conflict now.
 - Lauren Nix 10/28: Complete merge conflict 
 - Phoebe Ngo 10/28: Complete merge conflict
-
