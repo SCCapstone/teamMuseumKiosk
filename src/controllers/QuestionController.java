@@ -22,9 +22,9 @@ public class QuestionController implements Initializable {
     public User user;
     private ArrayList<Question> questions;
     private Question currentQuestion;
-    private int scoreValue, num, questionNumber, strikes;
+    private int scoreValue, num, questionNumber, strikesNum;
     @FXML
-    private Label prompt, score, questionNum;
+    private Label prompt, score, questionNum, strikes;
     @FXML
     private Button button1, button2, button3, button4;
 
@@ -38,7 +38,7 @@ public class QuestionController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             this.num = 0;
-            this.strikes = 0;
+            this.strikesNum = 0;
             this.scoreValue = 0;
             this.questionNumber = 1;
             this.questions = loadData("/TriviaQuestions.csv");
@@ -49,7 +49,7 @@ public class QuestionController implements Initializable {
     }
 
     private void newQuestion(ActionEvent event) throws IOException {
-        if (num < questions.size() && strikes < 3) {
+        if (num < questions.size() && strikesNum < 3) {
             currentQuestion = retrieveNextQuestion();
             displayQuestion(currentQuestion);
             setButtons(currentQuestion, button1, button2, button3, button4);
@@ -93,10 +93,16 @@ public class QuestionController implements Initializable {
             newQuestion(event);
         } else { //if not correct answer, does not increase score but continues to next question
             //alert user that they got it wrong
-            strikes++;
+            strikesNum++;
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Wrong!");
             alert.showAndWait();
 
+            if (strikesNum == 1) {
+                strikes.setText("Strikes: X");
+            }
+            else if (strikesNum == 2) {
+                strikes.setText("Strikes: XX");
+            }
             score.setText("Score: " + scoreValue);
             newQuestion(event);
         }
