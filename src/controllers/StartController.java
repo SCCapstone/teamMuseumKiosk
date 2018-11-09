@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.User;
 
@@ -17,12 +18,18 @@ import java.util.ResourceBundle;
 
 public class StartController implements Initializable {
     @FXML
-    private TextField name;
+    private TextField name, email;
+    @FXML
+    private Text missingInfoText;
 
     public StartController(){}
 
     public void buttonClick(ActionEvent actionEvent) throws IOException {
-        User newUser = new User(name.getText(), 0);
+        if(name.getText().trim().isEmpty() || email.getText().trim().isEmpty()){
+            missingInfoText.setText("Please enter your initials and email");
+            return;
+        }
+        User newUser = new User(name.getText(), 0, email.getText());
 
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/question.fxml"));

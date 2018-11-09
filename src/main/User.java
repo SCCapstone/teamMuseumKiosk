@@ -1,12 +1,13 @@
 package main;
 
 public class User {
-    String name;
+    String name, email;
     int score;
 
-    public User(String name, int score) {
+    public User(String name, int score, String email) {
         setName(name);
         setScore(score);
+        setEmail(email);
     }
     public String getName() {
         return name;
@@ -21,5 +22,9 @@ public class User {
     public void setScore(int score) {
         this.score = score;
     }
+
+    public String getEmail() { return email; }
+
+    public void setEmail(String email) { this.email = email; }
 }
 
