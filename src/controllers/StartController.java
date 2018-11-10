@@ -12,6 +12,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.User;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,6 +32,14 @@ public class StartController implements Initializable {
             missingInfoText.setText("Please enter your initials and email");
             return;
         }
+
+        if(name.getText().trim().length() > 3) {
+            missingInfoText.setText("Initials cannot be longer than 3 characters");
+            return;
+        }
+
+        collectEmail(email.getText().trim());
+
         User newUser = new User(name.getText(), 0, email.getText());
 
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
@@ -42,6 +53,25 @@ public class StartController implements Initializable {
         Scene scene = new Scene(root, 600, 550);
         stage.setScene(scene);
         stage.show();
+    }
+
+    //Creates a buffered writer to append email to csv file
+    public void collectEmail(String email) {
+        BufferedWriter writer = null;
+
+        try {
+            writer = new BufferedWriter(new FileWriter("EmailList.csv", true));
+            writer.write(email);
+            writer.newLine();
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (writer != null) try {
+                writer.close();
+            } catch (IOException e) {
+            }
+        }
     }
 
     @Override
