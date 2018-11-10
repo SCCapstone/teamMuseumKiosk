@@ -14,12 +14,12 @@
         <font>
             <Font name="Geneva" size="36.0" />
         </font></Label>
-    <Label alignment="TOP_LEFT" text="Please enter your name and email:" textAlignment="CENTER" GridPane.rowIndex="2">
+    <Label alignment="TOP_LEFT" text="Please enter your initials and email:" textAlignment="CENTER" GridPane.rowIndex="2">
         <font>
             <Font name="MyriadPro-Regular" size="13.0" />
         </font>
     </Label>
-    <TextField id="name" fx:id="name" onAction="#buttonClick" promptText="Name" GridPane.rowIndex="3" />
+    <TextField id="name" fx:id="name" onAction="#buttonClick" promptText="Initials" GridPane.rowIndex="3" />
     <Button fx:id="button" onAction="#buttonClick" text="Submit" GridPane.rowIndex="6" />
    <TextField fx:id="email" onAction="#buttonClick" promptText="email" GridPane.rowIndex="4" />
    <Text fx:id="missingInfoText" fill="#c31111" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="8" />

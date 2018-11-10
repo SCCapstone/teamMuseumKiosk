@@ -38,9 +38,10 @@ public class StartController implements Initializable {
             return;
         }
 
+        //TODO: verify email is in an appropriate format. May use regex for this.
         collectEmail(email.getText().trim());
 
-        User newUser = new User(name.getText(), 0, email.getText());
+        User newUser = new User(name.getText().trim(), 0, email.getText().trim());
 
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/question.fxml"));
@@ -56,7 +57,7 @@ public class StartController implements Initializable {
     }
 
     //Creates a buffered writer to append email to csv file
-    public void collectEmail(String email) {
+    private void collectEmail(String email) {
         BufferedWriter writer = null;
 
         try {
