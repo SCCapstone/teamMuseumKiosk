@@ -6,7 +6,7 @@ This project aims to create a trivia game used for the South Carolina State Muse
 The team will be using the style guide of Google's <a href="google.github.io/styleguide/javaguide.html"> Java Style Guide</a>.  
 
 ## Installing Development Environment  
-1. Download git file from https://github.com/SCCapstone/teamMuseumKiosk/archive/master.zip 
+1. Git clone this repo from https://github.com/SCCapstone/teamMuseumKiosk/archive/master.zip 
 1. Install IntelliJ from https://www.jetbrains.com/idea/download/#section=windows 
 1. Extract git file
 1. Open project in Intellij
