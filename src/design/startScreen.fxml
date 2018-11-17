@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="0" stylesheets="/design/trivia.css" vgap="30"
+          xmlns="http://javafx.com/javafx/8.0.121"
+          xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="controllers.StartController">
+
+
+        <Label id="title" alignment="CENTER" textAlignment="CENTER" text="How Well Do You Know SC?"
+            GridPane.rowIndex="1"/>
+
+        <Label id="directions" alignment="CENTER" text="Before you start, we need some information"
+            GridPane.rowIndex="2"/>
+
+    <HBox spacing="50" alignment="CENTER" GridPane.rowIndex="3" >
+
+        <Label id="nameLabel" text="Player Initials:" textAlignment="CENTER" />
+
+        <TextField id="nameField" fx:id="name" onAction="#buttonClick" promptText="Player Initials:" />
+
+    </HBox>
+
+    <HBox spacing="50" alignment="CENTER" GridPane.rowIndex="5" >
+
+        <Label id="emailLabel" text="Email:" textAlignment="CENTER" />
+
+        <TextField id="emailField" fx:id="email" onAction="#buttonClick" promptText="Email:" />
+
+    </HBox>
+
+    <HBox spacing="10" GridPane.rowIndex="7" >
+
+        <Button fx:id="button" alignment="CENTER" onAction="#buttonClick" text="Play" />
+
+        <VBox spacing="5" >
+            <Label text="By selecting 'Play' you are agreeing to receive" />
+            <Label text="Newsletters from the State Museum." />
+        </VBox>
+    </HBox>
+
+    <Button GridPane.rowIndex="9" GridPane.columnIndex="10" text="Admin" alignment="BOTTOM_RIGHT" onAction="#goToAdminPage" />
+
+</GridPane>
