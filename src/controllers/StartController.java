@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import javafx.stage.Stage;
 import main.User;
@@ -25,7 +26,7 @@ public class StartController implements Initializable {
     private TextField name, email;
     
     @FXML
-	private Text missingInfoText;
+    private Text missingInfoText;
 
     public StartController(){}
 
