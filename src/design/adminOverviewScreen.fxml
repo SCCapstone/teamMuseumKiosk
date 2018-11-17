@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          stylesheets="/design/trivia.css"
+          fx:controller="controllers.AdminOverviewController"
+            vgap="10" hgap="10">
+
+    <Label id="dashboard" text="Admin Dashboard" textAlignment="LEFT"
+           alignment="TOP_RIGHT" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+
+    <HBox GridPane.rowIndex="1" GridPane.columnIndex="3">
+        <Label id="exitText" text="Back to Game" textAlignment="RIGHT" alignment="TOP_RIGHT"/>
+
+        <Button id="exitAdminButton" text="X" textAlignment="CENTER" onAction="#exitPage" />
+    </HBox>
+
+
+    <Label id="overviewTitle" text="Overview" textAlignment="CENTER" alignment="CENTER" GridPane.rowIndex="2" />
+
+    <VBox spacing="30" GridPane.rowIndex="3">
+
+        <HBox spacing="30">
+
+            <VBox fx:id="navBar" spacing="0" GridPane.columnIndex="0">
+
+                <Button fx:id="overviewPageButton" text="X" textAlignment="CENTER"
+                        minHeight="40" minWidth="40" maxHeight="40" maxWidth="40"
+                        disable="true" />
+
+                <Button fx:id="updatePageButton" text="X" textAlignment="CENTER"
+                        onAction="#goToUpdatePage"
+                        minHeight="40" minWidth="40" maxHeight="40" maxWidth="40"/>
+
+                <Button fx:id="editPageButton" text="X" textAlignment="CENTER"
+                        onAction="#goToEditPage"
+                        minHeight="40" minWidth="40" maxHeight="40" maxWidth="40"/>
+
+            </VBox>
+
+            <VBox fx:id="emailBox" spacing="10" minWidth="200" minHeight="200" maxHeight="200" maxWidth="200"
+                    alignment="CENTER">
+
+                <Label id="emailNumber" text="120" textAlignment="CENTER" alignment="CENTER"/>
+                <Label id="emailText" text="emails collected since your last export" textAlignment="CENTER"
+                       wrapText="true"  />
+            </VBox>
+
+            <VBox fx:id="gamePlaysBox" spacing="10" minWidth="200" minHeight="200" maxHeight="200" maxWidth="200"
+                    alignment="CENTER">
+
+                <Label id="gamePlaysNumber" text="50" textAlignment="CENTER" alignment="CENTER"/>
+                <Label id="gamePlaysText" text="plays in the last day/week/month" textAlignment="CENTER"
+                       wrapText="true"  />
+            </VBox>
+
+        </HBox>
+
+        <HBox spacing="30">
+
+            <VBox fx:id="questionsBox" spacing="10" minWidth="200" minHeight="200" maxHeight="200" maxWidth="200"
+                    alignment="CENTER">
+
+                <Label id="questionNumber" text="8" textAlignment="CENTER" alignment="CENTER"/>
+                <Label id="questionText" text="average number of questions answered per game" textAlignment="CENTER"
+                       wrapText="true" />
+            </VBox>
+
+            <VBox fx:id="timeBox" spacing="10" minWidth="200" minHeight="200" maxHeight="200" maxWidth="200"
+                    alignment="CENTER">
+
+                <Label id="timeNumber" text="50" textAlignment="CENTER" alignment="CENTER"/>
+                <Label id="timeText" text="average duration played per game" textAlignment="CENTER"
+                       wrapText="true" />
+            </VBox>
+
+        </HBox>
+
+    </VBox>
+
+    <HBox spacing="120" GridPane.rowIndex="9">
+        <VBox fx:id="exitProgramBox" spacing="10" minWidth="150" minHeight="80" maxHeight="150" maxWidth="80">
+
+            <RadioButton fx:id="exitProgramSwitch" onAction="#exitProgram"/>
+
+            <Label id="exitProgramText" text="Exit Program?" textAlignment="CENTER" />
+        </VBox>
+
+        <HBox fx:id="latestActivityBox" spacing="10" minWidth="270" minHeight="70" maxWidth="250" maxHeight="70">
+            <!--<Label fx:id="latestActivityBoxLabel" text="latest admin activity" />-->
+
+            <VBox fx:id="adminActivityList" minHeight="60" minWidth="180" maxHeight="60" maxWidth="180">
+
+                <Label id="activityList" text="Uploaded new trivia questions" wrapText="true" />
+                <Label id="activityList" text="Changed number of strikes to 3" wrapText="true" />
+
+            </VBox>
+
+            <VBox minWidth="80" minHeight="40" maxWidth="80" maxHeight="40" >
+
+                <Label fx:id="adminActivityDateStamp" id="activityDateStamp" text="11-06-2018" />
+
+                <Label fx:id="adminActivityTimeStamp" id="activityTimeStamp" text="2:04pm" />
+
+            </VBox>
+
+        </HBox>
+    </HBox>
+        <ImageView fx:id="imageView" fitHeight="35.0" fitWidth="200" GridPane.rowIndex="22">
+        <image>
+            <Image backgroundLoading="true" url="/images/SCSMlogo.png" />
+        </image>
+    </ImageView>
+
+</GridPane>
