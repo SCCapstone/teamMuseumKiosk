@@ -41,8 +41,17 @@ public class StartController implements Initializable {
 	            return;
 	    }
 
-
-	    //TODO: verify email is in an appropriate format. May use regex for this.
+        //TODO: verify email is in an appropriate format. May use regex for this.
+        if(!(email.getText().contains("@") && (email.getText().contains(".com")
+                || email.getText().contains(".net") || email.getText().contains(".org")
+                || email.getText().contains(".edu") || email.getText().contains(".co.uk")
+                || email.getText().contains(".de") || email.getText().contains(".cn")
+                || email.getText().contains(".kr") || email.getText().contains(".jp")
+                || email.getText().contains(".mx") || email.getText().contains(".ru")))) {
+            missingInfoText.setText("Please enter a valid email address");
+            return;
+        }
+      
 	    collectEmail(email.getText().trim());
 
         User newUser = new User(name.getText().trim(), 0, email.getText().trim());
