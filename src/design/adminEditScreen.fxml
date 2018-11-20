@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          stylesheets="/design/trivia.css"
+          fx:controller="controllers.AdminEditController"
+          vgap="10" hgap="10">
+
+    <Label id="dashboard" text="Admin Dashboard" textAlignment="LEFT"
+           alignment="TOP_RIGHT" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+
+    <HBox GridPane.rowIndex="1" GridPane.columnIndex="3">
+    <Label id="exitText" text="Back to Game" textAlignment="RIGHT" alignment="TOP_RIGHT"/>
+
+    <Button id="exitAdminButton" text="X" textAlignment="CENTER" onAction="#exitPage" />
+    </HBox>
+
+    <Label id="editContentTitle" text="Edit the Game" textAlignment="CENTER" alignment="CENTER" GridPane.rowIndex="2" />
+
+    <VBox fx:id="navBar" spacing="0" GridPane.columnIndex="0" GridPane.rowIndex="3">
+
+        <Button fx:id="overviewPageButton" maxHeight="40" maxWidth="40" minHeight="40" minWidth="40"
+                onAction="#goToOverviewPage"
+                text="X" textAlignment="CENTER" />
+
+        <Button fx:id="updatePageButton" maxHeight="40" maxWidth="40" minHeight="40" minWidth="40"
+                onAction="#goToUpdatePage"
+                text="X" textAlignment="CENTER" />
+
+        <Button fx:id="editPageButton" maxHeight="40" maxWidth="40" minHeight="40" minWidth="40"
+                text="X" textAlignment="CENTER"
+                disable="true"/>
+    </VBox>
+
+    <Label fx:id="numOfStrikesLabel" text="Number of Strikes" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+
+    <fx:define>
+        <ToggleGroup fx:id="numOfStrikesOptions" />
+    </fx:define>
+
+    <HBox fx:id="numOfStrikesBox" spacing="5" minWidth="210" maxWidth="210" minHeight="90" maxHeight="90"
+          GridPane.rowIndex="5" GridPane.columnIndex="2" alignment="CENTER">
+        <RadioButton fx:id="numOfStrikes2Btn" text="2"
+                 toggleGroup="$numOfStrikesOptions"/>
+
+        <RadioButton fx:id="numOfStrikes3Btn" text="3"
+                 toggleGroup="$numOfStrikesOptions"/>
+    </HBox>
+
+    <Label fx:id="numOfQuestionsLabel" text="Max number of Questions: 8" GridPane.rowIndex="6" GridPane.columnIndex="2"/>
+
+    <HBox fx:id="numOfQuestionsBox" spacing="5" minWidth="210" maxWidth="210" minHeight="90" maxHeight="90"
+          GridPane.columnIndex="2" GridPane.rowIndex="7" alignment="CENTER">
+
+        <Label fx:id="minNumOfQuestions" text="5" />
+        <Slider fx:id="numOfQuestionsSlider"/>
+        <Label fx:id="maxNumOfQuestions" text="20" />
+
+    </HBox>
+
+    <Label fx:id="highScoresLabel" text="High Scores Displayed" GridPane.rowIndex="8" GridPane.columnIndex="2" />
+    <fx:define>
+        <ToggleGroup fx:id="highScoresOptions" />
+    </fx:define>
+
+
+    <VBox fx:id="highScoresBox" spacing="5" minWidth="210" maxWidth="210" minHeight="90" maxHeight="90"
+            GridPane.rowIndex="9" GridPane.columnIndex="2" alignment="CENTER">
+
+        <HBox>
+
+        <RadioButton fx:id="dailyHighScoresBtn" text="Daily"
+                     toggleGroup="$highScoresOptions" />
+
+        <RadioButton fx:id="weeklyHighScoresBtn" text="Weekly"
+                     toggleGroup="$highScoresOptions" />
+
+        <RadioButton fx:id="monthlyHighScoresBtn" text="Monthly"
+                     toggleGroup="$highScoresOptions" />
+        </HBox>
+
+        <HBox GridPane.rowIndex="10">
+            <CheckBox fx:id="rotateHighScoresChk"
+                alignment="CENTER" onAction="#rotateHighScores" />
+            <Label fx:id="rotateHighScoresLabel"
+                   text="Rotate through all of them"
+                    wrapText="true"/>
+        </HBox>
+
+    </VBox>
+
+    <ImageView fx:id="imageView" fitHeight="35.0" fitWidth="200" GridPane.rowIndex="13">
+        <image>
+            <Image backgroundLoading="true" url="/images/SCSMlogo.png" />
+        </image>
+    </ImageView>
+
+</GridPane>
