@@ -37,7 +37,7 @@ public class AdminOverviewController {
         AdminUpdateController controller = loader.getController();
         loader.setController(controller);
 
-        Scene scene = new Scene(root, 600, 1000);
+        Scene scene = new Scene(root, 1440,900);
         stage.setScene(scene);
         stage.show();
     }
@@ -50,7 +50,7 @@ public class AdminOverviewController {
         AdminEditController controller = loader.getController();
         loader.setController(controller);
 
-        Scene scene = new Scene(root, 600, 1000);
+        Scene scene = new Scene(root, 1440,900);
         stage.setScene(scene);
         stage.show();
     }
@@ -68,7 +68,7 @@ public class AdminOverviewController {
         StartController controller = loader.getController();
         loader.setController(controller);
 
-        Scene scene = new Scene(root, 600, 1000);
+        Scene scene = new Scene(root, 1440,900);
         stage.setScene(scene);
         stage.show();
     }

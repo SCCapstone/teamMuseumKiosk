@@ -95,7 +95,7 @@ public class AdminEditController {
         AdminOverviewController controller = loader.getController();
         loader.setController(controller);
 
-        Scene scene = new Scene(root, 600, 1000);
+        Scene scene = new Scene(root, 1440,900);
         stage.setScene(scene);
         stage.show();
     }
@@ -108,7 +108,7 @@ public class AdminEditController {
         AdminUpdateController controller = loader.getController();
         loader.setController(controller);
 
-        Scene scene = new Scene(root, 600, 1000);
+        Scene scene = new Scene(root, 1440,900);
         stage.setScene(scene);
         stage.show();
     }
@@ -126,7 +126,7 @@ public class AdminEditController {
         StartController controller = loader.getController();
         loader.setController(controller);
 
-        Scene scene = new Scene(root, 600, 1000);
+        Scene scene = new Scene(root,1440,900);
         stage.setScene(scene);
         stage.show();
     }

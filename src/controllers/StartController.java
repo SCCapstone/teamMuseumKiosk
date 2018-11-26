@@ -64,7 +64,7 @@ public class StartController implements Initializable {
 	    controller.setUser(newUser);
 	    loader.setController(controller);
 
-        Scene scene = new Scene(root, 600, 550);
+        Scene scene = new Scene(root, 1440,900);
 	    stage.setScene(scene);
 	    stage.show();
     }
@@ -77,7 +77,7 @@ public class StartController implements Initializable {
         AdminOverviewController controller = loader.getController();
         loader.setController(controller);
 
-        Scene scene = new Scene(root, 600, 1000);
+        Scene scene = new Scene(root, 1440,900);
         stage.setScene(scene);
         stage.show();
     }

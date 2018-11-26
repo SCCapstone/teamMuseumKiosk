@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import main.User;
 
@@ -49,10 +50,14 @@ public class EndController implements Initializable {
         Button button = (Button) actionEvent.getSource();
         Stage currentStage = (Stage) button.getScene().getWindow();
 
-        URL url = new URL(getClass().getResource("/design/main.fxml").toExternalForm());
-        Parent questionPage = FXMLLoader.load(url);
-        Scene scene = new Scene(questionPage, 600, 550);
+        URL url = new URL(getClass().getResource("/design/startScreen.fxml").toExternalForm());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
 
+        StartController controller = loader.getController();
+        loader.setController(controller);
+
+        Scene scene = new Scene(root, 1440,900);
         currentStage.setScene(scene);
         currentStage.show();
     }
