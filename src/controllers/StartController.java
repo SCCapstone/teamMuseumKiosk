@@ -71,10 +71,17 @@ public class StartController implements Initializable {
 
     public void goToAdminPage(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/adminOverviewScreen.fxml"));
+	    
+//         FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/adminOverviewScreen.fxml"));	    
+	// Goes to the update page for demo purposes
+        // TODO: change this back after demo!
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/adminUpdateScreen.fxml"));
         Parent root = loader.load();
 
-        AdminOverviewController controller = loader.getController();
+//         AdminOverviewController controller = loader.getController();
+	// Using Update controller for demo purposes
+        // TODO: change this back after demo!
+        AdminUpdateController controller = loader.getController();
         loader.setController(controller);
 
         Scene scene = new Scene(root, 1440,900);
