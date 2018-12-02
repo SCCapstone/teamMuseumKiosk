@@ -20,33 +20,37 @@
 
         <Button id="exitAdminButton" text="X" textAlignment="CENTER" onAction="#exitPage" />
     </HBox>
-
-
+          
     <Label id="updateContentTitle" alignment="CENTER" text="Update Content" textAlignment="CENTER" GridPane.rowIndex="2" />
 
-    <VBox fx:id="navBar" spacing="0" GridPane.columnIndex="0" GridPane.rowIndex="3">
+    <!-- Not showing navigation bar for demo purposes
+    TODO: change this back after demo! -->
+    <!--<VBox fx:id="navBar" spacing="0" GridPane.columnIndex="0" GridPane.rowIndex="3">-->
 
-        <Button fx:id="overviewPageButton" maxHeight="40" maxWidth="40" minHeight="40" minWidth="40"
-                onAction="#goToOverviewPage"
-                text="X" textAlignment="CENTER" />
+        <!--<Button fx:id="overviewPageButton" maxHeight="40" maxWidth="40" minHeight="40" minWidth="40"-->
+                <!--onAction="#goToOverviewPage"-->
+                <!--text="X" textAlignment="CENTER" />-->
 
-        <Button fx:id="updatePageButton" maxHeight="40" maxWidth="40" minHeight="40" minWidth="40"
-                text="X" textAlignment="CENTER"
-                disable="true"/>
+        <!--<Button fx:id="updatePageButton" maxHeight="40" maxWidth="40" minHeight="40" minWidth="40"-->
+                <!--text="X" textAlignment="CENTER"-->
+                <!--disable="true"/>-->
 
-        <Button fx:id="editPageButton" maxHeight="40" maxWidth="40" minHeight="40" minWidth="40"
-                onAction="#goToEditPage"
-                text="X" textAlignment="CENTER" />
+        <!--<Button fx:id="editPageButton" maxHeight="40" maxWidth="40" minHeight="40" minWidth="40"-->
+                <!--onAction="#goToEditPage"-->
+                <!--text="X" textAlignment="CENTER" />-->
 
-    </VBox>
+    <!--</VBox>-->
+
+    <!-- Only displaying Upload Questions/Advertisements options for demo purposes
+    TODO: change this back after demo! -->
 
     <VBox fx:id="updateContentOptions" spacing="60" GridPane.columnIndex="1" GridPane.rowIndex="3">
 
-        <VBox fx:id="exportEmailsBox" spacing="10" minHeight="150" maxHeight="150" minWidth="150" maxWidth="150"
-                    alignment="CENTER">
-        <Label id="exportEmailsLabel" text="Export Emails" textAlignment="CENTER" />
-        <Button fx:id="exportEmails" prefWidth="58.0" text="Export" textAlignment="CENTER" onAction="#exportEmails"/>
-        </VBox>
+        <!--<VBox fx:id="exportEmailsBox" spacing="10" minHeight="150" maxHeight="150" minWidth="150" maxWidth="150"-->
+                    <!--alignment="CENTER">-->
+        <!--<Label id="exportEmailsLabel" text="Export Emails" textAlignment="CENTER" />-->
+        <!--<Button fx:id="exportEmails" prefWidth="58.0" text="Export" textAlignment="CENTER" onAction="#exportEmails"/>-->
+        <!--</VBox>-->
 
         <VBox fx:id="uploadQuestionsBox" spacing="10" minHeight="150" maxHeight="150" minWidth="150" maxWidth="150"
                     alignment="CENTER">
@@ -60,12 +64,15 @@
         <Button fx:id="uploadAdvertisements" text="Upload" textAlignment="CENTER" onAction="#uploadAdvertisements"/>
         </VBox>
 
-        <VBox fx:id="selectAdvertisementsBox" spacing="10" minHeight="150" maxHeight="150" minWidth="150" maxWidth="150"
-                    alignment="CENTER">
-        <Label id="selectAdvertisementsLabel" text="Select Advertisements" textAlignment="CENTER" />
-        <Button fx:id="selectAdvertisements" text="Select" textAlignment="CENTER" onAction="#selectAdvertisements"/>
-        </VBox>
+        <!--Since emails are stored in a file, adding instructions to export instead of a button-->
+        <Label fx:id="exportEmailInfo" textAlignment="CENTER"
+               text="Emails are stored in EmailList.csv file." />
 
+        <!--<VBox fx:id="selectAdvertisementsBox" spacing="10" minHeight="150" maxHeight="150" minWidth="150" maxWidth="150"-->
+                    <!--alignment="CENTER">-->
+        <!--<Label id="selectAdvertisementsLabel" text="Select Advertisements" textAlignment="CENTER" />-->
+        <!--<Button fx:id="selectAdvertisements" text="Select" textAlignment="CENTER" onAction="#selectAdvertisements"/>-->
+        <!--</VBox>-->
     </VBox>
 
     <ImageView fx:id="imageView" fitHeight="35.0" fitWidth="200" GridPane.rowIndex="9">
