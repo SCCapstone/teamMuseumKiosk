@@ -3,7 +3,11 @@
 This project aims to create a trivia game used for the South Carolina State Museum. The museum intends for the trivia game to implore guests about their knowledge of South Carolina.  
 
 ## Style Guide  
-The team will be using the style guide of Google's <a href="google.github.io/styleguide/javaguide.html"> Java Style Guide</a>.  
+The team will be using the style guide of Google's <a href="google.github.io/styleguide/javaguide.html"> Java Style Guide</a>. 
+
+## Run Application
+* Download .jar file
+* Run on computer
 
 ## Installing Development Environment  
 1. Git clone this repo from https://github.com/SCCapstone/teamMuseumKiosk/archive/master.zip 
