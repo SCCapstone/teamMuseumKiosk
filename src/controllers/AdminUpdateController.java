@@ -8,8 +8,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 
-public class AdminUpdateController {
+public class AdminUpdateController extends AdminController {
 
 
     public void initialize() {}
@@ -54,47 +55,4 @@ public class AdminUpdateController {
 
     }
 
-    public void goToOverviewPage(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/adminOverviewScreen.fxml"));
-        Parent root = loader.load();
-
-        AdminOverviewController controller = loader.getController();
-        loader.setController(controller);
-
-        Scene scene = new Scene(root, 1440,900);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void goToEditPage(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/adminEditScreen.fxml"));
-        Parent root = loader.load();
-
-        AdminEditController controller = loader.getController();
-        loader.setController(controller);
-
-        Scene scene = new Scene(root, 1440,900);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    /**
-     * Return to start screen
-     * @param actionEvent
-     * @throws IOException
-     */
-    public void exitPage(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/startScreen.fxml"));
-        Parent root = loader.load();
-
-        StartController controller = loader.getController();
-        loader.setController(controller);
-
-        Scene scene = new Scene(root, 1440,900);
-        stage.setScene(scene);
-        stage.show();
-    }
 }

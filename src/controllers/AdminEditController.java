@@ -14,7 +14,7 @@ import javafx.beans.value.ChangeListener;
 
 import java.io.IOException;
 
-public class AdminEditController {
+public class AdminEditController extends AdminController {
 
 
     @FXML
@@ -85,50 +85,6 @@ public class AdminEditController {
             monthlyHighScoresBtn.setDisable(true);
 
         }
-    }
-
-    public void goToOverviewPage(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/adminOverviewScreen.fxml"));
-        Parent root = loader.load();
-
-        AdminOverviewController controller = loader.getController();
-        loader.setController(controller);
-
-        Scene scene = new Scene(root, 1440,900);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void goToUpdatePage(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/adminUpdateScreen.fxml"));
-        Parent root = loader.load();
-
-        AdminUpdateController controller = loader.getController();
-        loader.setController(controller);
-
-        Scene scene = new Scene(root, 1440,900);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    /**
-     * Return to start screen
-     * @param actionEvent
-     * @throws IOException
-     */
-    public void exitPage(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/startScreen.fxml"));
-        Parent root = loader.load();
-
-        StartController controller = loader.getController();
-        loader.setController(controller);
-
-        Scene scene = new Scene(root,1440,900);
-        stage.setScene(scene);
-        stage.show();
     }
 
 }

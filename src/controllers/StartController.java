@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 import main.User;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 
 import java.io.IOException;
@@ -57,7 +56,8 @@ public class StartController implements Initializable {
         User newUser = new User(name.getText().trim(), 0, email.getText().trim());
 
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/question.fxml"));
+        URL url = new URL(getClass().getResource("/design/question.fxml").toExternalForm());
+        FXMLLoader loader = new FXMLLoader(url);
 	    Parent root = loader.load();
 
         QuestionController controller = loader.getController();
@@ -75,7 +75,8 @@ public class StartController implements Initializable {
 //         FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/adminOverviewScreen.fxml"));	    
 	// Goes to the update page for demo purposes
         // TODO: change this back after demo!
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/adminUpdateScreen.fxml"));
+        URL url = new URL(getClass().getResource("/design/adminUpdateScreen.fxml").toExternalForm());
+        FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
 
 //         AdminOverviewController controller = loader.getController();
