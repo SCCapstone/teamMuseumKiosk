@@ -8,8 +8,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+
 import javafx.stage.Stage;
 import main.User;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,25 +22,92 @@ import java.util.ResourceBundle;
 
 public class StartController implements Initializable {
     @FXML
-    private TextField name;
+    private TextField name, email;
+    
+    @FXML
+    private Text missingInfoText;
 
     public StartController(){}
 
     public void buttonClick(ActionEvent actionEvent) throws IOException {
-        User newUser = new User(name.getText(), 0);
+        if(name.getText().trim().isEmpty() || email.getText().trim().isEmpty()){
+	            missingInfoText.setText("Please enter your initials and email");
+	            return;
+	    }
+
+        if(name.getText().trim().length() > 3) {
+	            missingInfoText.setText("Initials cannot be longer than 3 characters");
+	            return;
+	    }
+
+        //TODO: verify email is in an appropriate format. May use regex for this.
+        if(!(email.getText().contains("@") && (email.getText().contains(".com")
+                || email.getText().contains(".net") || email.getText().contains(".org")
+                || email.getText().contains(".edu") || email.getText().contains(".co.uk")
+                || email.getText().contains(".de") || email.getText().contains(".cn")
+                || email.getText().contains(".kr") || email.getText().contains(".jp")
+                || email.getText().contains(".mx") || email.getText().contains(".ru")))) {
+            missingInfoText.setText("Please enter a valid email address");
+            return;
+        }
+      
+	    collectEmail(email.getText().trim());
+
+        User newUser = new User(name.getText().trim(), 0, email.getText().trim());
 
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/question.fxml"));
-        Parent root = loader.load();
+        URL url = new URL(getClass().getResource("/design/question.fxml").toExternalForm());
+        FXMLLoader loader = new FXMLLoader(url);
+	    Parent root = loader.load();
 
         QuestionController controller = loader.getController();
-        controller.setUser(newUser);
+	    controller.setUser(newUser);
+	    loader.setController(controller);
+
+        Scene scene = new Scene(root, 1440,900);
+	    stage.setScene(scene);
+	    stage.show();
+    }
+
+    public void goToAdminPage(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+	    
+//         FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/adminOverviewScreen.fxml"));	    
+	// Goes to the update page for demo purposes
+        // TODO: change this back after demo!
+        URL url = new URL(getClass().getResource("/design/adminUpdateScreen.fxml").toExternalForm());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+
+//         AdminOverviewController controller = loader.getController();
+	// Using Update controller for demo purposes
+        // TODO: change this back after demo!
+        AdminUpdateController controller = loader.getController();
         loader.setController(controller);
 
-        Scene scene = new Scene(root, 600, 550);
+        Scene scene = new Scene(root, 1440,900);
         stage.setScene(scene);
         stage.show();
     }
+    
+    //Creates a buffered writer to append email to csv file
+	private void collectEmail(String email) {
+	    BufferedWriter writer = null;
+
+        try {
+	        writer = new BufferedWriter(new FileWriter("EmailList.csv", true));
+	        writer.write(email);
+	        writer.newLine();
+	        writer.flush();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } finally {
+	        if (writer != null) try {
+	           writer.close();
+	    } catch (IOException e) {
+	  }
+	}
+}
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {}

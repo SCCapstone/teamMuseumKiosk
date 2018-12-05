@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import main.Question;
 import main.User;
@@ -81,22 +83,27 @@ public class QuestionController implements Initializable {
         Button button = (Button) event.getSource();
         String text = button.getText();
 
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        if(text.equals("Quit")) {
+            quizEnd(event);
+        }
         //if text of button matches correct answer of question, increases user's score and goes to next question
-        if (text.equals(currentQuestion.getCorrect())) {
+        else if (text.equals(currentQuestion.getCorrect())) {
             //alert user that they got it correct
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Correct!");
-            alert.showAndWait();
+            showPopupWindow(stage, "Correct!");
 
             scoreValue++;
             score.setText("Score: " + scoreValue);
+
             //go to next question
             newQuestion(event);
+
         } else { //if not correct answer, does not increase score but continues to next question
             //alert user that they got it wrong
-            strikesNum++;
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Wrong!");
-            alert.showAndWait();
+            showPopupWindow(stage, "Incorrect!");
 
+            strikesNum++;
             if (strikesNum == 1) {
                 strikes.setText("Strikes: X");
             }
@@ -104,6 +111,8 @@ public class QuestionController implements Initializable {
                 strikes.setText("Strikes: XX");
             }
             score.setText("Score: " + scoreValue);
+
+            //go to next question
             newQuestion(event);
         }
     }
@@ -147,9 +156,38 @@ public class QuestionController implements Initializable {
         controller.setText();
         loader.setController(controller);
 
-        Scene scene = new Scene(root, 600, 550);
+        Scene scene = new Scene(root, 1440,900);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void showPopupWindow(Stage stage, String text) {
+        try {
+            URL url = new URL(getClass().getResource("/design/popup.fxml").toExternalForm());
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
+
+            // initializing the controller
+            PopupController popupController = loader.getController();
+            loader.setController(popupController);
+
+            Scene scene = new Scene(root);
+            Stage popupStage = new Stage();
+
+            // Giving the popup controller access to the popup stage (to allow the controller to close the stage)
+            popupController.setStage(popupStage);
+            //Set text to say correct or incorrect
+            popupController.setText(text);
+
+            if(stage!=null) {
+                popupStage.initOwner(stage);
+            }
+            popupStage.initModality(Modality.WINDOW_MODAL);
+            popupStage.setScene(scene);
+            popupStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
