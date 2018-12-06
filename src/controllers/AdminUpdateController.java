@@ -5,10 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class AdminUpdateController extends AdminController {
 
@@ -32,7 +36,14 @@ public class AdminUpdateController extends AdminController {
      * @throws IOException
      */
     public void uploadQuestions(ActionEvent actionEvent) throws IOException {
-
+        FileChooser choose = new FileChooser();
+        File select = choose.showOpenDialog(null);
+        if (select != null) {
+            Files.deleteIfExists(Paths.get(System.getProperty("user.dir") + "/src/" + select.getName()));
+            Files.copy(select.toPath(), Paths.get(System.getProperty("user.dir")+"/src/"+select.getName()));
+            //TODO need to refresh the program to reload questions
+            
+        }
     }
 
     /**
@@ -42,7 +53,13 @@ public class AdminUpdateController extends AdminController {
      * @throws IOException
      */
     public void uploadAdvertisements(ActionEvent actionEvent) throws IOException {
-
+        FileChooser choose = new FileChooser();
+        File select = choose.showOpenDialog(null);
+        if (select != null) {
+            Files.deleteIfExists(Paths.get(System.getProperty("user.dir") + "/src/" + select.getName()));
+            Files.copy(select.toPath(), Paths.get(System.getProperty("user.dir")+"/src/"+select.getName()));
+            //TODO need to refresh the program to reload advertisments
+        }
     }
 
     /**
