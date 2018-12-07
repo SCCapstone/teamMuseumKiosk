@@ -7,7 +7,9 @@ The team will be using the style guide of Google's <a href="google.github.io/sty
 
 ## Run Application
 * Download .jar file
-* Run on computer
+* Open terminal
+* run the command:
+``` java -jar teamMuseumKiosk.jar```
 
 ## Installing Development Environment  
 1. Git clone this repo from https://github.com/SCCapstone/teamMuseumKiosk/archive/master.zip 
