@@ -8,7 +8,7 @@ The team will be using the style guide of Google's <a href="google.github.io/sty
 ## Run Application
 * Download .jar file
 * Open terminal
-* run the command:
+* Run the command:
 ``` java -jar teamMuseumKiosk.jar```
 
 ## Installing Development Environment  
