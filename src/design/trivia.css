@@ -2,7 +2,7 @@
     -fx-background-color: #fcfcfc;
 }
 .label {
-    -fx-font-family: Geneva;
+    -fx-font-family: "Helvetica Neue";
 }
 #title {
     -fx-text-alignment: center;
@@ -22,9 +22,9 @@
     -fx-font-size: 13;
 }
 
-#emailBox, #gamePlaysBox, #questionsBox, #timeBox,
+#emailBox, #gamePlaysBox, #questionsBox, #timeBox, #HBox,
 #numOfQuestionsBox, #numOfStrikesBox, #highScoresBox {
-    -fx-border-color: Black;
+    -fx-border-color: Transparent;
     -fx-border-width: 2px;
     -fx-padding: 10;
 }
@@ -34,7 +34,7 @@
 }
 #overviewPageButton, #updatePageButton, #editPageButton,
 #exitProgramBox, #latestActivityBox{
-    -fx-border-color: Black;
+    -fx-border-color: Transparent;
     -fx-border-width: 1px;
 }
 #activityList{
@@ -47,7 +47,7 @@
 /* Admin Update Screen CSS */
 #exportEmailsBox, #uploadQuestionsBox,
 #uploadAdvertisementsBox, #selectAdvertisementsBox {
-    -fx-border-color: Black;
+    -fx-border-color: Transparent;
     -fx-border-width: 1px;
 }
 

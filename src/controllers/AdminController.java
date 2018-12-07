@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.net.URL;
 
 public abstract class AdminController {
+    public void goToOverviewPage(ActionEvent actionEvent) throws IOException {
+        //TODO
+    }
     public void goToUpdatePage(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         URL url = new URL(getClass().getResource("/design/adminUpdateScreen.fxml").toExternalForm());
