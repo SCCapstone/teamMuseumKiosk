@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -29,6 +31,10 @@ public class QuestionController implements Initializable {
     private Label prompt, score, questionNum, strikes;
     @FXML
     private Button button1, button2, button3, button4;
+    @FXML
+    private ImageView quizImage;
+    @FXML
+    private GridPane quizButtons;
 
     public QuestionController() {}
 
@@ -54,6 +60,7 @@ public class QuestionController implements Initializable {
         if (num < questions.size() && strikesNum < 3) {
             currentQuestion = retrieveNextQuestion();
             displayQuestion(currentQuestion);
+            setPicture(currentQuestion);
             setButtons(currentQuestion, button1, button2, button3, button4);
             questionNum.setText("Question " + String.valueOf(questionNumber++));
         } else {
@@ -69,13 +76,26 @@ public class QuestionController implements Initializable {
         }
     }
 
+    private void setPicture(Question currentQuestion) {
+        if(currentQuestion.getPrompt().contains("USC")) {
+            quizButtons.getRowConstraints().get(0).setPrefHeight(255);
+            quizImage.setManaged(true);
+            quizImage.setVisible(true);
+        } else {
+            quizButtons.getRowConstraints().get(0).setPrefHeight(0);
+            quizImage.setVisible(false);
+            quizImage.setManaged(false);
+        }
+
+
+    }
+
     public void setButtons(Question question, Button button1, Button button2, Button button3, Button button4) {
         ArrayList<Button> buttons = new ArrayList<>(Arrays.asList(button1, button2, button3, button4));
         Collections.shuffle(question.getQuestionAnswers()); //scramble up that order
         for(Button b : buttons) {
             b.setText(question.getQuestionAnswers().get(buttons.indexOf(b)));
         }
-
     }
 
     public void buttonClick(ActionEvent event) throws IOException {
