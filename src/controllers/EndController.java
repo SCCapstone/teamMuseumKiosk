@@ -32,10 +32,10 @@ public class EndController implements Initializable {
         try {
             if (!user.getName().equals("")) {
                 end.setText("Thank you for playing, " + user.getName() + "!");
-                score.setText(user.getName() + "'s Final Score: " + user.getScore() + "/5");
+                score.setText(user.getName() + "'s Final Score: " + user.getScore());
             } else {
                 end.setText("Thank you for playing!");
-                score.setText("Final Score: " + user.getScore() + "/5");
+                score.setText("Final Score: " + user.getScore());
             }
         } catch (Exception e) {
             e.printStackTrace();
