@@ -6,7 +6,8 @@ This project aims to create a trivia game used for the South Carolina State Muse
 The team will be using the style guide of Google's <a href="google.github.io/styleguide/javaguide.html"> Java Style Guide</a>. 
 
 ## Run Application
-* Download .jar file
+* Download .jar file and TriviaQuestions.csv
+* Make sure the jar and trivia files are in the same directory
 * Open terminal
 * Run the command:
 ``` java -jar teamMuseumKiosk.jar```
