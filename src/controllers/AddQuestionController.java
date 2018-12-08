@@ -65,6 +65,7 @@ public class AddQuestionController {
             csvString.append(",");
         }
         csvString.append(correct.getText());
+        csvString.append("\n");
         return csvString.toString();
     }
 }

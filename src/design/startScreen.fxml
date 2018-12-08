@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="0" prefHeight="541.0" prefWidth="546.0" stylesheets="/design/trivia.css" vgap="30" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StartController">
+<GridPane alignment="center" hgap="0" stylesheets="/design/trivia.css" vgap="30" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StartController">
 
 
-        <Label id="title" fx:id="label" alignment="CENTER" stylesheets="@trivia.css" text="How Well Do You Know SC?" textAlignment="CENTER" GridPane.rowIndex="2" />
+        <Label id="title" fx:id="label" alignment="CENTER" stylesheets="/design/trivia.css" text="How Well Do You Know SC?" textAlignment="CENTER" GridPane.rowIndex="1" />
 
-        <Label id="directions" alignment="CENTER" text="Before you start, we need some information" GridPane.rowIndex="3" />
+        <Label id="directions" alignment="CENTER" text="Before you start, we need some information" GridPane.rowIndex="2" />
 
-    <HBox alignment="CENTER" spacing="50" GridPane.rowIndex="4">
+    <HBox alignment="CENTER" spacing="50" GridPane.rowIndex="3">
 
         <Label id="nameLabel" text="Player Initials:" textAlignment="CENTER" />
 
@@ -27,7 +27,7 @@
 
     </HBox>
 
-    <HBox alignment="CENTER" spacing="50" GridPane.rowIndex="6">
+    <HBox alignment="CENTER" spacing="50" GridPane.rowIndex="5">
 
         <Label id="emailLabel" text="Email:" textAlignment="CENTER" />
 
@@ -35,7 +35,7 @@
 
     </HBox>
 
-    <HBox spacing="10" GridPane.rowIndex="8">
+    <HBox spacing="10" GridPane.rowIndex="7">
 
         <Button fx:id="button" alignment="CENTER" onAction="#buttonClick" text="Play" />
 
@@ -45,7 +45,7 @@
         </VBox>
     </HBox>
 
-    <Button alignment="BOTTOM_RIGHT" onAction="#goToAdminPage" text="Admin" GridPane.columnIndex="10" GridPane.rowIndex="12" />
+    <Button alignment="BOTTOM_RIGHT" onAction="#goToAdminPage" text="Admin" GridPane.columnIndex="10" GridPane.rowIndex="9" />
    <ImageView fx:id="imageView" fitHeight="106.0" fitWidth="495.0" pickOnBounds="true" GridPane.rowIndex="10" />
    <columnConstraints>
       <ColumnConstraints />
@@ -57,8 +57,6 @@
       <ColumnConstraints />
       <ColumnConstraints />
       <ColumnConstraints />
-      <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
-      <ColumnConstraints maxWidth="51.0" minWidth="51.0" prefWidth="51.0" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints maxHeight="0.0" minHeight="10.0" prefHeight="30.0" />
@@ -66,13 +64,10 @@
       <RowConstraints maxHeight="17.0" minHeight="17.0" prefHeight="17.0" />
       <RowConstraints />
       <RowConstraints />
-      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
-      <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" />
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints />
    </rowConstraints>
 
