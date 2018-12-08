@@ -49,7 +49,7 @@ public class QuestionController implements Initializable {
             this.strikesNum = 0;
             this.scoreValue = 0;
             this.questionNumber = 1;
-            this.questions = loadData("/TriviaQuestions.csv");
+            this.questions = loadData("TriviaQuestions.csv");
             newQuestion(null);
         } catch (Exception e) {
             e.printStackTrace();
@@ -142,8 +142,8 @@ public class QuestionController implements Initializable {
 
         try {
             //load file
-            InputStream stream = QuestionController.class.getResourceAsStream(fileName);
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream));
+            //InputStream stream = QuestionController.class.getResourceAsStream(fileName);
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
             String line;
             List<String> data;
             //get each question from file line
