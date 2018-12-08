@@ -47,7 +47,7 @@ public abstract class AdminController {
      * @param actionEvent
      * @throws IOException
      */
-    public void exitPage(ActionEvent actionEvent) throws IOException {
+    /*public void exitPage(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         URL url = new URL(getClass().getResource("/design/startScreen.fxml").toExternalForm());
         FXMLLoader loader = new FXMLLoader(url);
@@ -59,5 +59,6 @@ public abstract class AdminController {
         Scene scene = new Scene(root, 1440,900);
         stage.setScene(scene);
         stage.show();
-    }
+
+    }*/
 }

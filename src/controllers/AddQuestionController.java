@@ -49,17 +49,7 @@ public class AddQuestionController {
             }
         }
 
-        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        URL url = new URL(getClass().getResource("/design/adminUpdateScreen.fxml").toExternalForm());
-        FXMLLoader loader = new FXMLLoader(url);
-        Parent root = loader.load();
-
-        AdminUpdateController controller = loader.getController();
-        loader.setController(controller);
-
-        Scene scene = new Scene(root, 1440,900);
-        stage.setScene(scene);
-        stage.show();
+        question.getScene().getWindow().hide();
     }
 
     public String buildCSVString() {

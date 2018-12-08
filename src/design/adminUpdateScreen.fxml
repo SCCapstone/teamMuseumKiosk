@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.image.Image?>
 <HBox fx:id="updateGridPane" alignment="CENTER" prefHeight="900.0" prefWidth="1440.0" stylesheets="/design/trivia.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminUpdateController">
 <GridPane alignment="CENTER" prefHeight="900.0" prefWidth="1440.0" stylesheets="@trivia.css" HBox.hgrow="ALWAYS">
 
@@ -73,9 +74,9 @@
     </VBox>
 
     <ImageView fx:id="imageView" fitHeight="85.0" fitWidth="349.0" GridPane.rowIndex="3">
-       <!-- <image>
+        <image>
             <Image backgroundLoading="true" url="/images/SCSMlogo.png" />
-        </image> -->
+        </image>
     </ImageView>
    <columnConstraints>
       <ColumnConstraints percentWidth="30" />
