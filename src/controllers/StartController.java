@@ -8,26 +8,33 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.User;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class StartController implements Initializable {
+public class StartController{
     @FXML
     private TextField name, email;
     
     @FXML
     private Text missingInfoText;
 
-    public StartController(){}
+    @FXML
+    private ImageView imageView;
+
+    private URL image = null;
 
     public void buttonClick(ActionEvent actionEvent) throws IOException {
         if(name.getText().trim().isEmpty() || email.getText().trim().isEmpty()){
@@ -70,7 +77,10 @@ public class StartController implements Initializable {
     }
 
     public void goToAdminPage(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        //Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setOpacity(1);
 	    
 //         FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/adminOverviewScreen.fxml"));	    
 	// Goes to the update page for demo purposes
@@ -87,7 +97,12 @@ public class StartController implements Initializable {
 
         Scene scene = new Scene(root, 1440,900);
         stage.setScene(scene);
-        stage.show();
+        stage.showAndWait();
+
+        if(controller.image != null){
+            image = controller.image;
+            imageView.setImage(new Image(controller.image.toExternalForm()));
+        }
     }
     
     //Creates a buffered writer to append email to csv file
@@ -109,6 +124,10 @@ public class StartController implements Initializable {
 	}
 }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {}
+    @FXML
+    public void initialize() {
+        if(image != null){
+            imageView.setImage(new Image(image.toExternalForm()));
+        }
+    }
 }

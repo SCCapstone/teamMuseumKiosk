@@ -1,14 +1,20 @@
 package controllers;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -18,7 +24,9 @@ import java.net.URL;
 
 public class AdminUpdateController extends AdminController {
 
-
+    @FXML
+    private ImageView imageView;
+    public URL image = null;
     public void initialize() {}
 
     /**
@@ -50,7 +58,9 @@ public class AdminUpdateController extends AdminController {
     }*/
 
     public void uploadQuestions(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setOpacity(1);
         URL url = new URL(getClass().getResource("/design/addQuestionScreen.fxml").toExternalForm());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
@@ -73,11 +83,23 @@ public class AdminUpdateController extends AdminController {
         FileChooser choose = new FileChooser();
         File select = choose.showOpenDialog(null);
         if (select != null) {
-            Files.deleteIfExists(Paths.get(System.getProperty("user.dir") + "/src/" + select.getName()));
-            Files.copy(select.toPath(), Paths.get(System.getProperty("user.dir")+"/src/"+select.getName()));
+            //Files.deleteIfExists(Paths.get(System.getProperty("user.dir") + "/src/" + select.getName()));
+           // Files.copy(select.toPath(), Paths.get(System.getProperty("user.dir")+"/"+select.getName()));
             //TODO need to refresh the program to reload advertisments
+            try {
+                image = select.toURI().toURL();
+                System.out.println(image.toString());
+            } catch (MalformedURLException e) {
+
+            }
         }
 
+
+
+    }
+
+    public void exitPage() {
+        imageView.getScene().getWindow().hide();
     }
 
     /**
