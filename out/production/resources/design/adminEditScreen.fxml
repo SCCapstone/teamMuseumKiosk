@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="900.0" prefWidth="1440.0" stylesheets="/design/trivia.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminEditController">
+    <center>
+    <GridPane alignment="CENTER" prefHeight="1440.0" stylesheets="@trivia.css" BorderPane.alignment="CENTER">
+
+        <Label id="dashboard" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="202.0" text="Admin Dashboard" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+
+        <HBox prefWidth="157.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+        <Label id="exitText" alignment="TOP_RIGHT" text="Back to Game  " textAlignment="RIGHT" />
+
+        <Button id="exitAdminButton" onAction="#exitPage" prefHeight="25.0" prefWidth="24.0" text="X" textAlignment="CENTER" />
+        </HBox>
+
+        <Label id="editContentTitle" alignment="CENTER" text="Edit the Game" textAlignment="CENTER" GridPane.rowIndex="2" />
+
+        <VBox fx:id="navBar" spacing="0" GridPane.columnIndex="0" GridPane.rowIndex="3">
+
+            <Button fx:id="overviewPageButton" maxHeight="40" maxWidth="40" minHeight="40" minWidth="40" onAction="#goToOverviewPage" text="X" textAlignment="CENTER" />
+
+            <Button fx:id="updatePageButton" maxHeight="40" maxWidth="40" minHeight="40" minWidth="40" onAction="#goToUpdatePage" text="X" textAlignment="CENTER" />
+
+            <Button fx:id="editPageButton" disable="true" maxHeight="40" maxWidth="40" minHeight="40" minWidth="40" text="X" textAlignment="CENTER" />
+        </VBox>
+
+        <Label fx:id="numOfStrikesLabel" text="Number of Strikes" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+
+        <HBox fx:id="numOfStrikesBox" alignment="CENTER" maxHeight="90" maxWidth="210" minHeight="90" minWidth="210" spacing="5" stylesheets="@trivia.css" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <RadioButton fx:id="numOfStrikes2Btn" text="2">
+               <toggleGroup>
+                  <ToggleGroup fx:id="numOfStrikesOptions" />
+               </toggleGroup></RadioButton>
+
+            <RadioButton fx:id="numOfStrikes3Btn" text="3" toggleGroup="$numOfStrikesOptions" />
+        </HBox>
+
+        <Label fx:id="numOfQuestionsLabel" text="Max number of Questions: 8" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+
+        <HBox fx:id="numOfQuestionsBox" alignment="CENTER" maxHeight="90" maxWidth="210" minHeight="90" minWidth="210" spacing="5" GridPane.columnIndex="2" GridPane.rowIndex="7">
+
+            <Label fx:id="minNumOfQuestions" text="5" />
+            <Slider fx:id="numOfQuestionsSlider" />
+            <Label fx:id="maxNumOfQuestions" text="20" />
+
+        </HBox>
+
+        <Label fx:id="highScoresLabel" text="High Scores Displayed" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+
+
+        <VBox fx:id="highScoresBox" alignment="CENTER" maxHeight="90" maxWidth="210" minHeight="90" minWidth="210" spacing="5" GridPane.columnIndex="2" GridPane.rowIndex="9">
+
+            <HBox>
+
+            <RadioButton fx:id="dailyHighScoresBtn" text="Daily">
+                  <toggleGroup>
+                     <ToggleGroup fx:id="highScoresOptions" />
+                  </toggleGroup></RadioButton>
+
+            <RadioButton fx:id="weeklyHighScoresBtn" text="Weekly" toggleGroup="$highScoresOptions" />
+
+            <RadioButton fx:id="monthlyHighScoresBtn" text="Monthly" toggleGroup="$highScoresOptions" />
+            </HBox>
+
+            <HBox GridPane.rowIndex="10">
+                <CheckBox fx:id="rotateHighScoresChk" alignment="CENTER" onAction="#rotateHighScores" />
+                <Label fx:id="rotateHighScoresLabel" text="Rotate through all of them" wrapText="true" />
+            </HBox>
+
+        </VBox>
+
+        <ImageView fx:id="imageView" fitHeight="35.0" fitWidth="200" preserveRatio="true" GridPane.rowIndex="13">
+            <image>
+                <Image backgroundLoading="true" url="/images/SCSMlogo.png" />
+            </image>
+        </ImageView>
+
+        <fx:define>
+            <ToggleGroup fx:id="numOfStrikesOptions" />
+        </fx:define>
+        <fx:define>
+            <ToggleGroup fx:id="highScoresOptions" />
+        </fx:define>
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints maxWidth="205.0" minWidth="189.0" prefWidth="189.0" />
+            <ColumnConstraints maxWidth="119.0" minWidth="103.0" prefWidth="119.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+            <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+
+    </GridPane></center>
+   <right>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <left>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" BorderPane.alignment="CENTER" />
+   </left>
+   <top>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" BorderPane.alignment="CENTER" />
+   </top>
+</BorderPane>

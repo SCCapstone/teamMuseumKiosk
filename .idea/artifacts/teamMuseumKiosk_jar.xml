@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="teamMuseumKiosk:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/teamMuseumKiosk_jar</output-path>
-    <root id="archive" name="teamMuseumKiosk.jar">
-      <element id="module-output" name="teamMuseumKiosk" />
-    </root>
-  </artifact>
-</component>
