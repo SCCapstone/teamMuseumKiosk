@@ -1,4 +1,4 @@
-package main;
+package teamMuseumKiosk;
 
 import java.util.List;
 

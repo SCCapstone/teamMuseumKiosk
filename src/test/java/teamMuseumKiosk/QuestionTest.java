@@ -1,6 +1,5 @@
-package tests;
+package teamMuseumKiosk;
 
-import main.Question;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionTest {
-    String prompt;
-    List<String> answers;
-    Question question;
+    private String prompt;
+    private List<String> answers;
+    private Question question;
 
     @Before
     public void initialize() {
@@ -25,35 +24,35 @@ public class QuestionTest {
     }
 
     @Test
-    public void getPrompt() {
+    public void getPromptTest() {
         Assert.assertEquals("This is a test question", question.getPrompt());
     }
 
     @Test
-    public void setPrompt() {
+    public void setPromptTest() {
         question.setPrompt("I changed the prompt");
         Assert.assertEquals("I changed the prompt", question.getPrompt());
     }
 
     @Test
-    public void getCorrect() {
+    public void getCorrectTest() {
         Assert.assertEquals("answer 4", question.getCorrect());
     }
 
     @Test
-    public void setCorrect() {
+    public void setCorrectTest() {
         String expected = "correct";
         question.setCorrect("correct");
         Assert.assertEquals(expected, question.getCorrect());
     }
 
     @Test
-    public void getQuestionAnswers() {
+    public void getQuestionAnswersTest() {
         Assert.assertEquals(answers, question.getQuestionAnswers());
     }
 
     @Test
-    public void setQuestionAnswers() {
+    public void setQuestionAnswersTest() {
         List<String> expected = new ArrayList<>();
         expected.add("1");
         expected.add("2");

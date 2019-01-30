@@ -1,4 +1,4 @@
-package main;
+package teamMuseumKiosk;
 
 public class User {
     String name, email;
