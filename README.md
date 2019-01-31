@@ -12,10 +12,20 @@ The team will be using the style guide of Google's <a href="google.github.io/sty
 * Run the command:
 ``` java -jar teamMuseumKiosk.jar```
 
-## Installing Development Environment  
+## Installing Development Environment (with gradle installed)
 1. Install IntelliJ IDE <a href="https://www.jetbrains.com/idea/download"> here</a>. 
 1. Install gradle using a package manager such as <i>Homebrew</i>
     1. ```homebrew install gradle```
+1. Git clone this repo:
+``` git clone https://github.com/SCCapstone/teamMuseumKiosk.git``` to directory of your choice
+<b>or</b> use IntelliJ to clone using "Checkout from Version Control," selecting ```git``` and paste 
+```https://github.com/SCCapstone/teamMuseumKiosk.git``` into the URL, and select directory of your choice.
+1. Open project in IntelliJ and open "Terminal" tab
+1. Write ```gradle build```. Wait until the building process ends and then save & close your project.
+1. Reopen your project and click Auto-import, and wait while Gradle is running.
+
+## Installing Development Environment (without gradle installed)
+1. Install IntelliJ IDE <a href="https://www.jetbrains.com/idea/download"> here</a>. 
 1. Git clone this repo:
 ``` git clone https://github.com/SCCapstone/teamMuseumKiosk.git``` to directory of your choice
 <b>or</b> use IntelliJ to clone using "Checkout from Version Control," selecting ```git``` and paste 
@@ -25,5 +35,7 @@ The team will be using the style guide of Google's <a href="google.github.io/sty
 1. Reopen your project and click Auto-import, and wait while Gradle is running.
 
 
-
-You can now develop and run the code!  
+## Test Application
+1. Open Terminal in project directory
+1. Write ```./gradlew test```, or if gradle is installed on your computer, ```gradle test```
+1. View test results in ```build/test-results```
