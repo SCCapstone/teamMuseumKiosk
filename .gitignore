@@ -4,6 +4,7 @@
 out
 EmailList.csv
 teamMuseumKiosk.iml
+build
 
 # Ignore Gradle build output directory
 build
