@@ -30,4 +30,7 @@ public class AdminOverviewController extends AdminController {
          */
 
     }
+
+    public void exitPage(ActionEvent actionEvent) {
+    }
 }

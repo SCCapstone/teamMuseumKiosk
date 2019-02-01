@@ -12,22 +12,30 @@ The team will be using the style guide of Google's <a href="google.github.io/sty
 * Run the command:
 ``` java -jar teamMuseumKiosk.jar```
 
-## Installing Development Environment  
-1. Git clone this repo from https://github.com/SCCapstone/teamMuseumKiosk/archive/master.zip 
-1. Install IntelliJ from https://www.jetbrains.com/idea/download/#section=windows 
-1. Extract git file
-1. Open project in Intellij
-1. Specify the SDK as 1.8
-1. Right click "src" folder and Mark Directory as Sources Root
-1. Create the configuration from the Application template 
-   1. Enter "main.Main" as the Main class
-1. Then select a Project compiler output location under File > Project Structure
-   1. It is easy to create a folder in the directory named "out" for this
-   1. Also set the Project language level to "8 - Lambdas, type annotations etc."  
+## Installing Development Environment (with gradle installed)
+1. Install IntelliJ IDE <a href="https://www.jetbrains.com/idea/download"> here</a>. 
+1. Install gradle using a package manager such as <i>Homebrew</i>
+    1. ```homebrew install gradle```
+1. Git clone this repo:
+``` git clone https://github.com/SCCapstone/teamMuseumKiosk.git``` to directory of your choice
+<b>or</b> use IntelliJ to clone using "Checkout from Version Control," selecting ```git``` and paste 
+```https://github.com/SCCapstone/teamMuseumKiosk.git``` into the URL, and select directory of your choice.
+1. Open project in IntelliJ and open "Terminal" tab
+1. Write ```gradle build```. Wait until the building process ends and then save & close your project.
+1. Reopen your project and click Auto-import, and wait while Gradle is running.
 
-You can now develop and run the code!  
+## Installing Development Environment (without gradle installed)
+1. Install IntelliJ IDE <a href="https://www.jetbrains.com/idea/download"> here</a>. 
+1. Git clone this repo:
+``` git clone https://github.com/SCCapstone/teamMuseumKiosk.git``` to directory of your choice
+<b>or</b> use IntelliJ to clone using "Checkout from Version Control," selecting ```git``` and paste 
+```https://github.com/SCCapstone/teamMuseumKiosk.git``` into the URL, and select directory of your choice.
+1. Open project in IntelliJ and open "Terminal" tab
+1. Write ```./gradlew build```. Wait until the building process ends and then save & close your project.
+1. Reopen your project and click Auto-import, and wait while Gradle is running.
 
-### Team Member Logs  
-- Michael Cantwell 10/25: I have solved a merge conflict now.
-- Lauren Nix 10/28: Complete merge conflict 
-- Phoebe Ngo 10/28: Complete merge conflict
+
+## Test Application
+1. Open Terminal in project directory
+1. Write ```./gradlew test```, or if gradle is installed on your computer, ```gradle test```
+1. View test results in ```build/test-results```

@@ -1,4 +1,4 @@
-package main;
+package teamMuseumKiosk;
 
 import controllers.StartController;
 import javafx.application.Application;

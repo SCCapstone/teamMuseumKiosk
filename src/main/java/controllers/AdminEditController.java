@@ -87,4 +87,6 @@ public class AdminEditController extends AdminController {
         }
     }
 
+    public void exitPage(ActionEvent actionEvent) {
+    }
 }
