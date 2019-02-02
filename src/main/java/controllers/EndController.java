@@ -11,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import teamMuseumKiosk.User;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,12 +35,30 @@ public class EndController implements Initializable {
             if (!user.getName().equals("")) {
                 end.setText("Thank you for playing, " + user.getName() + "!");
                 score.setText(user.getName() + "'s Final Score: " + user.getScore());
+                writeScore();
             } else {
                 end.setText("Thank you for playing!");
                 score.setText("Final Score: " + user.getScore());
+                writeScore();
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private void writeScore() {
+        BufferedWriter writer = null;
+        try {
+            writer = new BufferedWriter(new FileWriter("EmailList.csv", true));
+            String userLine = user.getEmail() + "," + user.getName() + "," + user.getScore() + System.lineSeparator();
+            writer.write(userLine);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (writer != null) try {
+                writer.close();
+            } catch (IOException e) {
+            }
         }
     }
 
