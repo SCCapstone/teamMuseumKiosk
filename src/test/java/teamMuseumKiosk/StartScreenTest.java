@@ -39,14 +39,4 @@ public class StartScreenTest extends ApplicationTest {
         write("test@email.com");
         clickOn("#button");
     }
-
-    @Test
-    public void openAndCloseAdminPage() {
-        clickOn("#adminButton");
-        try {
-            Thread.sleep(1000);
-        } catch (Exception e) {}
-
-        clickOn("#exitAdminButton");
-    }
 }
