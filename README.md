@@ -38,4 +38,4 @@ The team will be using the style guide of Google's <a href="google.github.io/sty
 ## Test Application
 1. Open Terminal in project directory
 1. Write ```./gradlew test```, or if gradle is installed on your computer, ```gradle test```
-1. View test results in ```build/test-results```
+1. View test results in ```build/test-results/test```
