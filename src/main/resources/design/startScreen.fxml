@@ -45,7 +45,7 @@
         </VBox>
     </HBox>
 
-    <Button alignment="BOTTOM_RIGHT" onAction="#goToAdminPage" text="Admin" GridPane.columnIndex="10" GridPane.rowIndex="9" />
+    <Button fx:id = "adminButton" alignment="BOTTOM_RIGHT" onAction="#goToAdminPage" text="Admin" GridPane.columnIndex="10" GridPane.rowIndex="9" />
    <ImageView fx:id="imageView" fitHeight="106.0" fitWidth="495.0" pickOnBounds="true" GridPane.rowIndex="10" />
    <columnConstraints>
       <ColumnConstraints />
