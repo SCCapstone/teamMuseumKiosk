@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 public class EndController implements Initializable {
     public User user;
     @FXML
-    Label end, score;
+    Label end, score,high1,high2,high3,high4,high5,high6,high7,high8,high9,high10;
     @FXML
     Button button;
 
@@ -41,6 +41,8 @@ public class EndController implements Initializable {
                 score.setText("Final Score: " + user.getScore());
                 writeScore();
             }
+            //TODO: this is where scoreboard will be set
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -50,7 +52,7 @@ public class EndController implements Initializable {
         BufferedWriter writer = null;
         try {
             writer = new BufferedWriter(new FileWriter("EmailList.csv", true));
-            String userLine = user.getEmail() + "," + user.getName() + "," + user.getScore() + System.lineSeparator();
+            String userLine = user.getEmail() + "," + user.getName() + "," + user.getScore() + "," + java.time.LocalDate.now() + System.lineSeparator();
             writer.write(userLine);
         } catch (IOException e) {
             e.printStackTrace();
