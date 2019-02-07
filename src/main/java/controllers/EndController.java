@@ -9,12 +9,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import teamMuseumKiosk.HighScore;
 import teamMuseumKiosk.User;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class EndController implements Initializable {
@@ -42,7 +44,8 @@ public class EndController implements Initializable {
                 writeScore();
             }
             //TODO: this is where scoreboard will be set
-
+            HighScore highscore = new HighScore();
+            System.out.println(highscore.getHighScores());
         } catch (Exception e) {
             e.printStackTrace();
         }
