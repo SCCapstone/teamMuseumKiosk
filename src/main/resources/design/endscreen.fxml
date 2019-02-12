@@ -2,25 +2,26 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="900.0" prefWidth="1440.0" stylesheets="/design/trivia.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EndController">
-    <center>
-    <GridPane hgap="10" vgap="10" alignment="CENTER" BorderPane.alignment="CENTER">
-        <Label fx:id="end" alignment="CENTER" contentDisplay="CENTER" GridPane.rowIndex="0">
+<GridPane alignment="center" hgap="0" stylesheets="/design/trivia.css" vgap="30" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EndController">
+        <Label fx:id="end" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="0">
             <font>
                 <Font name="Geneva" size="36.0" />
             </font></Label>
-        <Label fx:id="score" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER" GridPane.rowIndex="1">
+        <Label fx:id="score" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="1">
             <font>
                 <Font name="Geneva" size="36.0" />
             </font>
         </Label>
-        <Button fx:id="button" alignment="CENTER" onAction="#buttonClick" text="Play Again?" textAlignment="CENTER" GridPane.rowIndex="2" />
+        <HBox alignment="CENTER" prefHeight="104.0" prefWidth="1440.0" GridPane.rowIndex="2">
+            <Button fx:id="button" alignment="CENTER" onAction="#buttonClick" prefHeight="92.0" prefWidth="418.0" text="Play Again?" textAlignment="CENTER" />
+        </HBox>
+
          <columnConstraints>
             <ColumnConstraints />
          </columnConstraints>
@@ -30,5 +31,4 @@
             <RowConstraints />
          </rowConstraints>
 
-    </GridPane></center>
-</BorderPane>
+</GridPane>

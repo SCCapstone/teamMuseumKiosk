@@ -1,0 +1,20 @@
+.root {
+    -fx-background-color: #fcfcfc;
+    -fx-background-image: url("/images/white-waves.png") repeat 0 0;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+.label {
+    -fx-font-family: "Helvetica Neue";
+}
+#title {
+    -fx-text-alignment: center;
+    -fx-font-size: 40;
+}
+
+/* Question Screen CSS */
+#prompt {
+    -fx-text-alignment: center;
+    -fx-font-size: 40;
+}

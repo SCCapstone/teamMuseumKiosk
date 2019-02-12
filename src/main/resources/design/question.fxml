@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="900.0" prefWidth="1440.0" stylesheets="/design/trivia.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.QuestionController">
+<BorderPane prefHeight="900.0" prefWidth="1440.0" stylesheets="/design/question.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.QuestionController">
     <top>
         <Label fx:id="prompt" alignment="CENTER" maxHeight="104.0" maxWidth="1335.0" prefHeight="104.0" prefWidth="1335.0" textAlignment="CENTER" textFill="#1d1d1d" wrapText="true" BorderPane.alignment="CENTER">
             <BorderPane.margin>

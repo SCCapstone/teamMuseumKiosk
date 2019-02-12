@@ -1,12 +1,10 @@
 .root {
+    -fx-padding: 100;
     -fx-background-color: #fcfcfc;
-    -fx-background-image: url("/images/startScreenBG.gif") repeat 0 0;
+  -fx-background-image: url("/images/startScreenBG.gif") repeat 0 0;
     width: 100%;
     margin: 0;
     text-align: center;
-    height: 300px;
-    padding-top: 120px;
-    box-sizing: border-box;
 }
 
 .label {
