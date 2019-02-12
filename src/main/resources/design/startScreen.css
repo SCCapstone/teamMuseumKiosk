@@ -1,15 +1,42 @@
 .root {
     -fx-background-color: #fcfcfc;
+    -fx-background-image: url("/images/startScreenBG.gif") repeat 0 0;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    height: 300px;
+    padding-top: 120px;
+    box-sizing: border-box;
 }
+
 .label {
     -fx-font-family: "Helvetica Neue";
+    -fx-font-size: 18;
+    -fx-text-fill: #fcfcfc;
 }
+
+.button {
+    -fx-background-color: #124e8a;
+    -fx-text-fill: #fcfcfc;
+}
+
 #title {
     -fx-text-alignment: center;
-    -fx-font-size: 40;
+    -fx-font-size: 68;
 }
 
 /* Start Screen CSS */
 #directions {
     -fx-font-size: 24;
+}
+
+#adminButton {
+    -fx-graphic: url("/images/SCSM_logo_white_sm.png");
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
+    -fx-text-fill:transparent;
+}
+
+#playButton {
+    -fx-font-size: 70;
 }

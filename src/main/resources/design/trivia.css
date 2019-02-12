@@ -9,11 +9,6 @@
     -fx-font-size: 40;
 }
 
-/* Start Screen CSS */
-#directions {
-    -fx-font-size: 24;
-}
-
 /* Question Screen CSS */
 #prompt {
     -fx-text-alignment: center;
