@@ -30,19 +30,14 @@ dependencies {
     testCompile(group: "org.testfx", name: "testfx-core", version: "4.0.13-alpha")
     testCompile(group: "org.testfx", name: "testfx-junit", version: "4.0.13-alpha")
 }
-reporting.baseDir = "test-results"
-testResultsDirName = "$buildDir/test-results"
 
 test {
-    useJUnit()
-
-    reports.html.enabled = false
-
+    reports.html.enabled = true
 }
 
 task testReport(type: TestReport) {
     destinationDir = file("$buildDir/test-results/tests")
-    reportOn subprojects*.test
+    reportOn test
 }
 // Define the main class for the application
 mainClassName = 'teamMuseumKiosk.Main'
