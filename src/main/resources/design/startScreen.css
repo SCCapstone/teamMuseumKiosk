@@ -1,0 +1,15 @@
+.root {
+    -fx-background-color: #fcfcfc;
+}
+.label {
+    -fx-font-family: "Helvetica Neue";
+}
+#title {
+    -fx-text-alignment: center;
+    -fx-font-size: 40;
+}
+
+/* Start Screen CSS */
+#directions {
+    -fx-font-size: 24;
+}

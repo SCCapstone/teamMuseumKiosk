@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -8,60 +9,67 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="center" hgap="0" stylesheets="/design/trivia.css" vgap="30" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StartController">
+<GridPane alignment="center" hgap="0" stylesheets="/design/startScreen.css" vgap="30" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StartController">
 
 
-        <Label id="title" fx:id="label" alignment="CENTER" stylesheets="/design/trivia.css" text="How Well Do You Know SC?" textAlignment="CENTER" GridPane.rowIndex="1" />
+        <Label id="title" fx:id="label" alignment="CENTER" prefHeight="17.0" prefWidth="1440.0" stylesheets="/design/trivia.css" text="How Well Do You Know South Carolina?" textAlignment="CENTER" GridPane.rowIndex="1" />
 
-        <Label id="directions" alignment="CENTER" text="Before you start, we need some information" GridPane.rowIndex="2" />
+        <Label id="directions" alignment="CENTER" prefHeight="17.0" prefWidth="1440.0" text="Before you start, we need some information" GridPane.rowIndex="2" />
 
     <HBox alignment="CENTER" spacing="50" GridPane.rowIndex="3">
 
         <Label id="nameLabel" text="Player Initials:" textAlignment="CENTER" />
 
-        <TextField id="nameField" fx:id="name" onAction="#buttonClick" promptText="Player Initials:" />
-        <Text fx:id="missingInfoText" fill="#c31111" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="8" />
+        <TextField id="nameField" fx:id="name" alignment="CENTER" onAction="#buttonClick" prefHeight="50.0" prefWidth="69.0" promptText="ABC" />
 
     </HBox>
 
-    <HBox alignment="CENTER" spacing="50" GridPane.rowIndex="5">
+    <HBox alignment="CENTER" spacing="50" GridPane.rowIndex="4">
 
         <Label id="emailLabel" text="Email:" textAlignment="CENTER" />
 
-        <TextField id="emailField" fx:id="email" onAction="#buttonClick" promptText="Email:" />
+        <TextField id="emailField" fx:id="email" alignment="CENTER" onAction="#buttonClick" prefHeight="42.0" prefWidth="167.0" promptText="john.smith@gmail.com" />
 
     </HBox>
 
-    <HBox spacing="10" GridPane.rowIndex="7">
+    <HBox alignment="TOP_CENTER" spacing="10" GridPane.rowIndex="5">
 
-        <Button fx:id="button" alignment="CENTER" onAction="#buttonClick" text="Play" />
+        <Button fx:id="playButton" alignment="CENTER" onAction="#buttonClick" prefHeight="53.0" prefWidth="165.0" text="Play" />
 
-        <VBox spacing="5">
-            <Label text="By selecting 'Play' you are agreeing to receive" />
-            <Label text="Newsletters from the State Museum." />
-        </VBox>
     </HBox>
 
-    <Button fx:id = "adminButton" alignment="BOTTOM_RIGHT" onAction="#goToAdminPage" text="Admin" GridPane.columnIndex="10" GridPane.rowIndex="9" />
-   <ImageView fx:id="imageView" fitHeight="106.0" fitWidth="495.0" pickOnBounds="true" GridPane.rowIndex="10" />
+    <HBox alignment="TOP_CENTER" GridPane.rowIndex="6">
+        <Label text="By selecting 'Play' you are agreeing to receive newsletters from the State Museum." />
+    </HBox>
+
+    <HBox alignment="CENTER" GridPane.rowIndex="7">
+        <Text fx:id="missingInfoText" fill="#c31111" strokeType="OUTSIDE" strokeWidth="0.0" />
+    </HBox>
+
+
+
+    <!--Advertisement-->
+    <ImageView fx:id="imageView" fitHeight="106.0" fitWidth="1440.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="10" />
+
+    <!--Admin Button-->
+    <HBox alignment="BOTTOM_RIGHT" GridPane.rowIndex="11">
+        <Button fx:id="adminButton" alignment="BOTTOM_RIGHT" contentDisplay="CENTER" onAction="#goToAdminPage" text="Admin" textAlignment="CENTER" />
+      <padding>
+         <Insets right="10.0" />
+      </padding>
+    </HBox>
+
+
    <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
       <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints maxHeight="0.0" minHeight="10.0" prefHeight="30.0" />
       <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
       <RowConstraints maxHeight="17.0" minHeight="17.0" prefHeight="17.0" />
+      <RowConstraints />
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
