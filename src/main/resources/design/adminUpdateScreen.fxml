@@ -19,8 +19,7 @@
       </GridPane.margin>
     </HBox>
     <HBox alignment="CENTER_RIGHT" prefWidth="1440.0" GridPane.rowIndex="0">
-
-        <Button id="exitAdminButton" alignment="BOTTOM_CENTER" onAction="#exitPage" prefHeight="29.0" prefWidth="274.0" text="Back to Game" textAlignment="CENTER" />
+        <Button id="exitAdminButton" alignment="CENTER" onAction="#exitPage" prefHeight="29.0" prefWidth="274.0" text="Back to Game" textAlignment="CENTER" />
       <GridPane.margin>
          <Insets top="20.0" />
       </GridPane.margin>

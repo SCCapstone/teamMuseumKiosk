@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -58,7 +59,7 @@ public class StartController {
       
 	    collectEmail(email.getText().trim());
 
-        User newUser = new User(name.getText().trim(), 0, email.getText().trim());
+        User newUser = new User(name.getText().toUpperCase().trim(), 0, email.getText().trim());
 
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         URL url = new URL(getClass().getResource("/design/question.fxml").toExternalForm());
@@ -124,6 +125,13 @@ public class StartController {
 
     @FXML
     public void initialize() {
+        // Make name input be uppercase
+        name.setTextFormatter(new TextFormatter<>((change) -> {
+            change.setText(change.getText().toUpperCase());
+            return change;
+        }));
+
+        // Sets advertisement
         if(image != null){
             imageView.setImage(new Image(image.toExternalForm()));
         }

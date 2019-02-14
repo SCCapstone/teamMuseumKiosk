@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="0" stylesheets="/design/trivia.css" vgap="30" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EndController">
+<GridPane alignment="center" hgap="0" stylesheets="/design/startScreen.css" vgap="30" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EndController">
         <Label fx:id="end" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="0">
             <font>
                 <Font name="Geneva" size="36.0" />
@@ -19,7 +19,7 @@
             </font>
         </Label>
         <HBox alignment="CENTER" prefHeight="104.0" prefWidth="1440.0" GridPane.rowIndex="2">
-            <Button fx:id="button" alignment="CENTER" onAction="#buttonClick" prefHeight="92.0" prefWidth="418.0" text="Play Again?" textAlignment="CENTER" />
+            <Button fx:id="button" alignment="CENTER" onAction="#buttonClick" prefHeight="92.0" prefWidth="569.0" text="Play Again?" textAlignment="CENTER" />
         </HBox>
 
          <columnConstraints>

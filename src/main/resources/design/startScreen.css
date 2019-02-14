@@ -35,6 +35,24 @@
     -fx-text-fill:transparent;
 }
 
-#playButton {
+#nameField {
+    -fx-border-color: #fcfcfc;
+    -fx-text-fill: #fcfcfc;
+    -fx-border-width: 0 0 1 0; /* top, right, bottom, left*/
+    -fx-background-color: transparent;
+}
+
+#emailField {
+    -fx-border-color: #fcfcfc;
+    -fx-text-fill: #fcfcfc;
+    -fx-border-width: 0 0 1 0; /* top, right, bottom, left*/
+    -fx-background-color: transparent;
+}
+
+#playButton, #button {
     -fx-font-size: 70;
+}
+
+#end, #score {
+    -fx-font-size: 36.0;
 }

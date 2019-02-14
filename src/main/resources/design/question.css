@@ -1,11 +1,16 @@
 .root {
-    -fx-background-color: #fcfcfc;
-    -fx-background-image: url("/images/white-waves.png") repeat 0 0;
+    -fx-background-color: linear-gradient(to top, #003365, #22477c, #3a5c94,
+    #5072ac, #6789c5, #689bd7, #68ade8, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
     width: 100%;
     margin: 0;
     text-align: center;
 }
+.button {
+    -fx-background-color: #5ffbf1;
+    -fx-text-fill: #003365;
+}
 .label {
+    -fx-text-fill: #5ffbf1;
     -fx-font-family: "Helvetica Neue";
 }
 #title {
@@ -17,4 +22,5 @@
 #prompt {
     -fx-text-alignment: center;
     -fx-font-size: 40;
+    -fx-text-fill: #003365;
 }
