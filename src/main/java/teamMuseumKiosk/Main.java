@@ -1,6 +1,6 @@
 package teamMuseumKiosk;
 
-import controllers.StartController;
+import controllers.SplashController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,11 +16,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        URL url = new URL(getClass().getResource("/design/startScreen.fxml").toExternalForm());
+        URL url = new URL(getClass().getResource("/design/splashScreen.fxml").toExternalForm());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
 
-        StartController controller = new StartController();
+        SplashController controller = new SplashController();
         loader.setController(controller);
 
         Scene scene = new Scene(root,1440,900);

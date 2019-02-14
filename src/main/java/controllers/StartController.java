@@ -15,6 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import teamMuseumKiosk.User;
 
+import javax.swing.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
