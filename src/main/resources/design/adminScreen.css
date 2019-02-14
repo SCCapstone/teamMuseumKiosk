@@ -1,0 +1,35 @@
+.root {
+    -fx-padding: 70;
+    -fx-background-color: #fcfcfc;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+.label {
+    -fx-font-family: "Helvetica Neue";
+    -fx-font-size: 26;
+    -fx-text-fill: #124e8a;
+}
+
+.button {
+    -fx-background-color: #124e8a;
+    -fx-text-fill: #fcfcfc;
+    -fx-font-size: 20;
+}
+
+#title, #adminDashboard {
+    -fx-text-alignment: center;
+    -fx-font-size: 40;
+}
+
+#uploadBox {
+    -fx-background-color: #5292C6;
+    -fx-padding: 40;
+    width: 50%;
+    -fx-background-radius: 10;
+}
+
+#uploadQuestionsLabel, #uploadAdvertisementsLabel, #exportEmail {
+    -fx-text-fill: #fcfcfc;
+}
