@@ -37,6 +37,6 @@ public class StartScreenTest extends ApplicationTest {
         write("abc");
         clickOn("#emailField");
         write("test@email.com");
-        clickOn("#button");
+        clickOn("#playButton");
     }
 }
