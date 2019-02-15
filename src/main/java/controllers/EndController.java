@@ -9,16 +9,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import teamMuseumKiosk.HighScore;
 import teamMuseumKiosk.User;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class EndController implements Initializable {
     public User user;
     @FXML
-    Label end, score;
+    Label end, score,high1,high2,high3,high4,high5,high6,high7,high8,high9,high10;
     @FXML
     Button button;
 
@@ -33,12 +37,33 @@ public class EndController implements Initializable {
             if (!user.getName().equals("")) {
                 end.setText("Thank you for playing, " + user.getName() + "!");
                 score.setText(user.getName() + "'s Final Score: " + user.getScore());
+                writeScore();
             } else {
                 end.setText("Thank you for playing!");
                 score.setText("Final Score: " + user.getScore());
+                writeScore();
             }
+            //TODO: this is where scoreboard will be set
+            HighScore highscore = new HighScore("month");
+            //System.out.println(highscore.getHighScores());
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private void writeScore() {
+        BufferedWriter writer = null;
+        try {
+            writer = new BufferedWriter(new FileWriter("EmailList.csv", true));
+            String userLine = user.getEmail() + "," + user.getName() + "," + user.getScore() + "," + java.time.LocalDate.now() + System.lineSeparator();
+            writer.write(userLine);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (writer != null) try {
+                writer.close();
+            } catch (IOException e) {
+            }
         }
     }
 
