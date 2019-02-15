@@ -27,8 +27,8 @@
         <Label id="directions" alignment="CENTER" text="Before you start, we need some information" textAlignment="CENTER" />
     </HBox>
 
-
-    <TilePane alignment="CENTER" prefColumns="1" prefRows="1" GridPane.rowIndex="2">
+    <!--Input-->
+    <TilePane fx:id="initialsTile" alignment="CENTER" prefColumns="1" prefRows="1" GridPane.rowIndex="2">
         <children>
             <!--Player Initials-->
             <Label id="nameLabel" text="Player Initials:" textAlignment="CENTER" TilePane.alignment="CENTER_RIGHT">
@@ -42,7 +42,7 @@
             </TextField>
         </children>
     </TilePane>
-    <TilePane alignment="CENTER" prefColumns="1" prefRows="1" GridPane.rowIndex="3">
+    <TilePane fx:id="emailTile" alignment="CENTER" prefColumns="1" prefRows="1" GridPane.rowIndex="3">
         <!--Email-->
         <Label id="emailLabel" text="Email:" textAlignment="CENTER" TilePane.alignment="CENTER_RIGHT">
             <padding>
@@ -53,6 +53,7 @@
                 <Font size="23.0" />
             </font></TextField>
     </TilePane>
+
 
     <!--Play Button-->
     <HBox alignment="TOP_CENTER" spacing="10" GridPane.rowIndex="4">

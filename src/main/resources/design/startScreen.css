@@ -1,7 +1,6 @@
 .root {
     -fx-padding: 100;
-    -fx-background-color: #fcfcfc;
-  -fx-background-image: url("/images/startScreenBG.gif") repeat 0 0;
+    -fx-background-color: linear-gradient(to bottom, #003365, #002c57, #00254a, #001f3d, #011830);
     width: 100%;
     margin: 0;
     text-align: center;
@@ -14,7 +13,7 @@
 }
 
 .button {
-    -fx-background-color: #124e8a;
+    -fx-background-color: #003365;
     -fx-text-fill: #fcfcfc;
 }
 
