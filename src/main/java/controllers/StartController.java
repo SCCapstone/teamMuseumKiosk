@@ -57,7 +57,8 @@ public class StartController {
             return;
         }
       
-	    collectEmail(email.getText().trim());
+	    //collectEmail(email.getText().trim());
+        //TODO: no longer use collectEmail function, need to remove
 
         User newUser = new User(name.getText().toUpperCase().trim(), 0, email.getText().trim());
 
