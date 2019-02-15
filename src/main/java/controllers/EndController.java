@@ -44,8 +44,8 @@ public class EndController implements Initializable {
                 writeScore();
             }
             //TODO: this is where scoreboard will be set
-            HighScore highscore = new HighScore();
-            System.out.println(highscore.getHighScores());
+            HighScore highscore = new HighScore("month");
+            //System.out.println(highscore.getHighScores());
         } catch (Exception e) {
             e.printStackTrace();
         }
