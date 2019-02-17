@@ -22,6 +22,61 @@
             <Button fx:id="button" alignment="CENTER" onAction="#buttonClick" prefHeight="92.0" prefWidth="569.0" text="Play Again?" textAlignment="CENTER" />
         </HBox>
 
+        <Label fx:id="highscore" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="3">
+            <font>
+                <Font name="Geneva" size="36.0" />
+            </font>
+        </Label>
+        <Label fx:id="high1" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="4">
+            <font>
+                <Font name="Geneva" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="high2" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="5">
+            <font>
+                <Font name="Geneva" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="high3" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="6">
+            <font>
+                <Font name="Geneva" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="high4" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="7">
+            <font>
+                <Font name="Geneva" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="high5" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="8">
+            <font>
+                <Font name="Geneva" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="high6" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="9">
+            <font>
+                <Font name="Geneva" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="high7" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="10">
+            <font>
+                <Font name="Geneva" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="high8" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="11">
+            <font>
+                <Font name="Geneva" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="high9" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="12">
+            <font>
+                <Font name="Geneva" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="high10" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="13">
+            <font>
+                <Font name="Geneva" size="12.0" />
+            </font>
+        </Label>
          <columnConstraints>
             <ColumnConstraints />
          </columnConstraints>
