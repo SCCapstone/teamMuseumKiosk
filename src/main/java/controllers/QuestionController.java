@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
@@ -30,9 +31,9 @@ public class QuestionController implements Initializable {
     @FXML
     private Button button1, button2, button3, button4;
     @FXML
-    private ImageView quizImage;
-    @FXML
     private GridPane quizButtons;
+    @FXML
+    private ImageView img;
 
     public QuestionController() {}
 
@@ -51,6 +52,7 @@ public class QuestionController implements Initializable {
             this.questionNumber = 1;
 
             newQuestion(null);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -79,14 +81,15 @@ public class QuestionController implements Initializable {
     }
 
     private void setPicture(Question currentQuestion) {
-        if(currentQuestion.getPrompt().contains("USC")) {
+        if(currentQuestion.getImg()!= null) {
+            img.setImage(currentQuestion.getImg());
             quizButtons.getRowConstraints().get(0).setPrefHeight(255);
-            quizImage.setManaged(true);
-            quizImage.setVisible(true);
-        } else {
+            img.setManaged(true);
+            img.setVisible(true);
+        }else {
             quizButtons.getRowConstraints().get(0).setPrefHeight(0);
-            quizImage.setVisible(false);
-            quizImage.setManaged(false);
+            img.setVisible(false);
+            img.setManaged(false);
         }
 
 
@@ -151,9 +154,15 @@ public class QuestionController implements Initializable {
             //get each question from file line
             while ((line = bufferedReader.readLine()) != null) {
                 data = Arrays.asList(line.split(","));
-                Question question = new Question(data.get(0), data.subList(1,5), data.get(5));
-                questions.add(question);
-            }
+                if (data.size() == 6 ) {
+                    Question question = new Question(data.get(0), data.subList(1, 5), data.get(5));
+                    questions.add(question);
+                }
+                else if (data.size() == 7){
+                    Question question = new Question(data.get(0), data.subList(1, 5), data.get(5),data.get(6));
+                    questions.add(question);
+                }
+                }
 
         } catch (Exception e) {
             e.printStackTrace();

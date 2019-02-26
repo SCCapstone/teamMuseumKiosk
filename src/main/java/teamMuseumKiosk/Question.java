@@ -1,5 +1,11 @@
 package teamMuseumKiosk;
 
+import javafx.scene.image.Image;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.List;
 
 public class Question {
@@ -7,6 +13,7 @@ public class Question {
     private String correct;
     private List<String> questionAnswers;
     private int Difficulty;
+    private Image Img;
 
 
     public Question(String prompt, List<String> questionAnswers,String difficulty) {
@@ -15,6 +22,25 @@ public class Question {
         String temp = questionAnswers.get(3);
         setCorrect(temp);
         setDifficulty(Integer.parseInt(difficulty));
+        Img = null;
+    }
+    public Question(String prompt, List<String> questionAnswers,String difficulty, String img) {
+        setPrompt(prompt);
+        setQuestionAnswers(questionAnswers);
+        String temp = questionAnswers.get(3);
+        setCorrect(temp);
+        setDifficulty(Integer.parseInt(difficulty));
+        setImg(img);
+    }
+
+    public  Image getImg(){return Img;}
+
+    public void  setImg(String img) {
+        try {
+            Img = new Image(new FileInputStream(img));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public  int getDifficulty() {return Difficulty;}
