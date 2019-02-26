@@ -43,11 +43,13 @@ public class QuestionController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            this.num = 0;
+
+            this.questions = loadData("TriviaQuestions.csv");
+            this.num = questions.size();
             this.strikesNum = 0;
             this.scoreValue = 0;
             this.questionNumber = 1;
-            this.questions = loadData("TriviaQuestions.csv");
+
             newQuestion(null);
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,7 +57,7 @@ public class QuestionController implements Initializable {
     }
 
     private void newQuestion(ActionEvent event) throws IOException {
-        if (num < questions.size() && strikesNum < 3) {
+        if (num > 0 && strikesNum < 3) {
             currentQuestion = retrieveNextQuestion();
             displayQuestion(currentQuestion);
             setPicture(currentQuestion);
@@ -65,7 +67,9 @@ public class QuestionController implements Initializable {
             user.setScore(scoreValue);
             quizEnd(event);
         }
-        num++;
+
+        questions.remove(currentQuestion);
+        num--;
     }
 
     public void displayQuestion(Question question) {
@@ -147,7 +151,7 @@ public class QuestionController implements Initializable {
             //get each question from file line
             while ((line = bufferedReader.readLine()) != null) {
                 data = Arrays.asList(line.split(","));
-                Question question = new Question(data.get(0), data.subList(1,5));
+                Question question = new Question(data.get(0), data.subList(1,5), data.get(5));
                 questions.add(question);
             }
 
@@ -157,9 +161,16 @@ public class QuestionController implements Initializable {
 
         return questions;
     }
-
+    //TODO
     private Question retrieveNextQuestion() {
-        return questions.get(num);
+        //sets the question based on the difficulty
+        for (int i = scoreValue; i < 11; i++) {
+            for (int j = 0; j < questions.size(); j++){
+                if (questions.get(j).getDifficulty() <= i)
+                    return questions.get(j);
+            }
+        }
+        return questions.get(0);
     }
 
     private void quizEnd(ActionEvent event) throws IOException {

@@ -6,14 +6,20 @@ public class Question {
     private String prompt;
     private String correct;
     private List<String> questionAnswers;
+    private int Difficulty;
 
 
-    public Question(String prompt, List<String> questionAnswers) {
+    public Question(String prompt, List<String> questionAnswers,String difficulty) {
         setPrompt(prompt);
         setQuestionAnswers(questionAnswers);
         String temp = questionAnswers.get(3);
         setCorrect(temp);
+        setDifficulty(Integer.parseInt(difficulty));
     }
+
+    public  int getDifficulty() {return Difficulty;}
+
+    public void setDifficulty(int difficulty) { Difficulty = difficulty; }
 
     public String getPrompt() { return prompt; }
 
