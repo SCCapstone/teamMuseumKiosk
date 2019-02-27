@@ -16,6 +16,9 @@
     -fx-background-color: #003365;
     -fx-text-fill: #fcfcfc;
 }
+.button:pressed {
+    -fx-background-color: #002d5a;
+}
 
 #title {
     -fx-text-alignment: center;
