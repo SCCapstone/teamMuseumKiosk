@@ -44,7 +44,6 @@ public class AdminUpdateController extends AdminController {
             Files.deleteIfExists(Paths.get(System.getProperty("user.dir") + "/src/" + select.getName()));
             Files.copy(select.toPath(), Paths.get(System.getProperty("user.dir")+"/src/"+select.getName()));
             //TODO need to refresh the program to reload questions
-
         }
 
     }*/
@@ -85,8 +84,6 @@ public class AdminUpdateController extends AdminController {
 
             }
         }
-
-
 
     }
 
