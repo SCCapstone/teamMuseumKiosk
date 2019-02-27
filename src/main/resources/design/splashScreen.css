@@ -1,0 +1,25 @@
+.root {
+    -fx-padding: 10;
+    -fx-background-color: linear-gradient(to bottom, #003365, #002c57, #00254a, #001f3d, #011830);
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+.label {
+    -fx-font-family: "Helvetica Neue";
+    -fx-font-size: 18;
+    -fx-text-fill: #fcfcfc;
+}
+
+#titleButton {
+    -fx-text-alignment: center;
+    -fx-font-size: 68;
+    -fx-background-color: transparent;
+    -fx-text-fill: #fcfcfc;
+    -fx-font-family: "Helvetica Neue";
+}
+
+#splashPlayButton {
+    -fx-background-color: transparent;
+}
