@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane alignment="center" hgap="40" prefWidth="1440.0" stylesheets="/design/adminScreen.css" vgap="40" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminUpdateController">
+<GridPane alignment="center" hgap="40" vgap="40" stylesheets="/design/adminScreen.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminUpdateController">
     <HBox prefHeight="70.0" prefWidth="1440.0" GridPane.rowIndex="0">
         <Label id="adminDashboard" alignment="CENTER" prefHeight="69.0" prefWidth="1440.0" text="Admin Dashboard" textAlignment="CENTER" />
       <GridPane.margin>

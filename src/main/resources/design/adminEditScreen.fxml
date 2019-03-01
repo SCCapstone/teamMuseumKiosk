@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.Insets?>
 
-<GridPane alignment="center" hgap="40" prefWidth="1440.0" stylesheets="/design/adminScreen.css" vgap="40" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminEditController">
+<GridPane alignment="center" hgap="40" stylesheets="/design/adminScreen.css" vgap="40" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminEditController">
 
     <HBox prefHeight="70.0" prefWidth="1440.0" GridPane.rowIndex="0">
         <Label id="adminDashboard" alignment="CENTER" prefHeight="69.0" prefWidth="1440.0" text="Edit the Game" textAlignment="CENTER" />

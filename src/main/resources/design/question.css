@@ -1,17 +1,23 @@
 .root {
-    -fx-background-color: linear-gradient(to top, #003365, #22477c, #3a5c94,
-    #5072ac, #6789c5, #689bd7, #68ade8, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    -fx-background-color: linear-gradient(to bottom, #003365, #002c57, #00254a, #001f3d, #011830);
     width: 100%;
     margin: 0;
     text-align: center;
 }
 .button {
-    -fx-background-color: #5ffbf1;
+    -fx-background-color: #fcfcfc;
     -fx-text-fill: #003365;
+    -fx-font-size: 20;
+}
+.button:hover{
+    -fx-background-color: #003365;
+    -fx-text-fill: #fcfcfc;
+
 }
 .label {
-    -fx-text-fill: #5ffbf1;
+    -fx-text-fill: #fcfcfc;
     -fx-font-family: "Helvetica Neue";
+    -fx-font-size: 20;
 }
 #title {
     -fx-text-alignment: center;
@@ -22,5 +28,5 @@
 #prompt {
     -fx-text-alignment: center;
     -fx-font-size: 40;
-    -fx-text-fill: #003365;
+    -fx-text-fill: #fcfcfc;
 }

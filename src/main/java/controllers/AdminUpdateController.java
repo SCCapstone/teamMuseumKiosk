@@ -59,7 +59,7 @@ public class AdminUpdateController extends AdminController {
         AddQuestionController controller = loader.getController();
         loader.setController(controller);
 
-        Scene scene = new Scene(root, 603,485);
+        Scene scene = new Scene(root, 600,485);
         stage.setScene(scene);
         stage.show();
     }

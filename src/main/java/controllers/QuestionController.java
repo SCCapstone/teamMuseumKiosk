@@ -63,7 +63,7 @@ public class QuestionController implements Initializable {
             displayQuestion(currentQuestion);
             setPicture(currentQuestion);
             setButtons(currentQuestion, button1, button2, button3, button4);
-            questionNum.setText("Question " + String.valueOf(questionNumber++));
+            questionNum.setText("Question " + (questionNumber++));
         } else {
             user.setScore(scoreValue);
             quizEnd(event);
@@ -89,8 +89,6 @@ public class QuestionController implements Initializable {
             quizImage.setVisible(false);
             quizImage.setManaged(false);
         }
-
-
     }
 
     public void setButtons(Question question, Button button1, Button button2, Button button3, Button button4) {
@@ -126,6 +124,7 @@ public class QuestionController implements Initializable {
 
         } else { //if not correct answer, does not increase score but continues to next question
             //alert user that they got it wrong
+            //TODO: make correct button font color green, and currently selected button as red
             showPopupWindow(stage, "Incorrect!");
 
             strikesNum++;
