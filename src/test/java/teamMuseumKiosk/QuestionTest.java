@@ -20,7 +20,7 @@ public class QuestionTest {
         answers.add("answer 2");
         answers.add("answer 3");
         answers.add("answer 4");
-        question = new Question(prompt, answers);
+        question = new Question(prompt, answers, "2");
     }
 
     @Test

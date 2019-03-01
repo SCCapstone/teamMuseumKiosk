@@ -15,6 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import teamMuseumKiosk.Question;
 import teamMuseumKiosk.User;
+import javafx.scene.media.AudioClip;
 
 import java.io.*;
 import java.net.URL;
@@ -113,6 +114,8 @@ public class QuestionController implements Initializable {
         //if text of button matches correct answer of question, increases user's score and goes to next question
         else if (text.equals(currentQuestion.getCorrect())) {
             //alert user that they got it correct
+            AudioClip correctSound = new AudioClip("file:src/main/resources/audio/ding.wav");
+            correctSound.play();
             showPopupWindow(stage, "Correct!");
 
             scoreValue++;
