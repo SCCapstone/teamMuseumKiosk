@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" stylesheets="/design/question.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.QuestionController" GridPane.vgrow="ALWAYS">
+<GridPane alignment="CENTER" stylesheets="/design/question.css" GridPane.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.QuestionController">
     <!--Prompt-->
     <Label fx:id="prompt" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="1440.0" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="0">
       <GridPane.margin>
@@ -62,7 +62,7 @@
     </GridPane>
 
     <!--bottom menu-->
-    <GridPane fx:id="bottomMenu" alignment="BOTTOM_CENTER" layoutY="1440.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" GridPane.vgrow="SOMETIMES">
+    <GridPane fx:id="bottomMenu" alignment="BOTTOM_CENTER" layoutY="1440.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -89,7 +89,7 @@
         </Label>
         <Button fx:id="quit" alignment="CENTER" mnemonicParsing="false" onAction="#buttonClick" prefHeight="27.0" prefWidth="80.0" text="Quit" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
       <GridPane.margin>
-         <Insets bottom="20.0" />
+         <Insets bottom="150.0" />
       </GridPane.margin>
     </GridPane>
 <columnConstraints>
