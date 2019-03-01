@@ -37,7 +37,7 @@
                     <Font name="Geneva" size="36.0" />
                 </font>
             </Label>
-            <Label fx:id="high1" alignment="CENTER" contentDisplay="LEFT" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
+            <Label fx:id="high1" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
                 <font>
                     <Font name="Geneva" size="12.0" />
                 </font>
