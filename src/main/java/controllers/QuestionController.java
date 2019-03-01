@@ -112,7 +112,8 @@ public class QuestionController implements Initializable {
         //if text of button matches correct answer of question, increases user's score and goes to next question
         else if (text.equals(currentQuestion.getCorrect())) {
             //alert user that they got it correct
-            AudioClip correctSound = new AudioClip("file:src/main/resources/audio/ding.wav");
+            String url = getClass().getResource("/audio/ding.wav").toExternalForm();
+            AudioClip correctSound = new AudioClip(url);
             correctSound.play();
             showPopupWindow(stage, "Correct!");
 
