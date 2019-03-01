@@ -1,6 +1,7 @@
 .root {
     -fx-padding: 70;
-    -fx-background-color: #fcfcfc;
+    /* matching gradient with start screen */
+    -fx-background-color: linear-gradient(to bottom, #003365, #002c57, #00254a, #001f3d, #011830);
     width: 100%;
     margin: 0;
     text-align: center;
@@ -9,7 +10,7 @@
 .label {
     -fx-font-family: "Helvetica Neue";
     -fx-font-size: 26;
-    -fx-text-fill: #124e8a;
+    -fx-text-fill: #fcfcfc;
 }
 
 .button {
@@ -18,18 +19,33 @@
     -fx-font-size: 20;
 }
 
+.button:pressed {
+    -fx-background-color: #0e3e6e;
+}
+
+#navBar {
+    -fx-font-size: 14;
+}
+
+#radioBtn, #sliderLabel {
+    -fx-text-fill: #fcfcfc;
+    -fx-font-size: 18;
+}
+
 #title, #adminDashboard {
     -fx-text-alignment: center;
     -fx-font-size: 40;
 }
 
-#uploadBox {
-    -fx-background-color: #5292C6;
+#uploadBox, #editBox {
+    /* using rgb to add opacity */
+    -fx-background-color: rgba(82,146,198, .2);
     -fx-padding: 40;
     width: 50%;
     -fx-background-radius: 10;
 }
 
-#uploadQuestionsLabel, #uploadAdvertisementsLabel, #exportEmail {
+#uploadQuestionsLabel, #uploadAdvertisementsLabel, #exportEmail,
+#numOfStrikesLabel, #numOfQuestionsLabel, #highScoresLabel{
     -fx-text-fill: #fcfcfc;
 }

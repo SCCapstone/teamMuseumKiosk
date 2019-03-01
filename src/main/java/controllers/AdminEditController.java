@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import javafx.beans.value.ChangeListener;
@@ -16,6 +17,8 @@ import java.io.IOException;
 
 public class AdminEditController extends AdminController {
 
+    @FXML
+    private ImageView imageView;
 
     @FXML
     private Slider numOfQuestionsSlider;
@@ -83,10 +86,10 @@ public class AdminEditController extends AdminController {
 
             monthlyHighScoresBtn.setSelected(false);
             monthlyHighScoresBtn.setDisable(true);
-
         }
     }
 
-    public void exitPage(ActionEvent actionEvent) {
+    public void exitPage() {
+        imageView.getScene().getWindow().hide();
     }
 }

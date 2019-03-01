@@ -5,110 +5,99 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="900.0" prefWidth="1440.0" stylesheets="/design/question.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.QuestionController">
-    <top>
-        <Label fx:id="prompt" alignment="CENTER" maxHeight="104.0" maxWidth="1335.0" prefHeight="104.0" prefWidth="1335.0" textAlignment="CENTER" textFill="#1d1d1d" wrapText="true" BorderPane.alignment="CENTER">
-            <BorderPane.margin>
-                <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
-            </BorderPane.margin>
+<GridPane alignment="CENTER" stylesheets="/design/question.css" GridPane.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.QuestionController">
+    <!--Prompt-->
+    <Label fx:id="prompt" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="1440.0" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="0">
+      <GridPane.margin>
+         <Insets top="20.0" />
+      </GridPane.margin>
+    </Label>
+
+    <!--Choice buttons settings-->
+    <GridPane fx:id="quizButtons" alignment="CENTER" minHeight="0.0" vgap="10" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" />
+            <RowConstraints minHeight="10.0" />
+            <RowConstraints minHeight="10.0" />
+            <RowConstraints minHeight="10.0" />
+            <RowConstraints minHeight="10.0" />
+        </rowConstraints>
+
+        <!--image-->
+        <ImageView fx:id="quizImage" fitHeight="200.0" fitWidth="426.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="0">
+            <image>
+                <Image backgroundLoading="true" url="/images/UofSCLogo.png" />
+            </image>
+        </ImageView>
+
+        <!--Choice buttons-->
+        <Button fx:id="button1" alignment="CENTER" onAction="#buttonClick" prefWidth="600.0" textAlignment="CENTER" wrapText="true" GridPane.hgrow="NEVER" GridPane.rowIndex="1">
             <font>
-                <Font name="Geneva" size="14.0" />
+                <Font size="16.0" />
+            </font>
+        </Button>
+        <Button fx:id="button2" alignment="CENTER" onAction="#buttonClick" prefWidth="600.0" textAlignment="CENTER" wrapText="true" GridPane.hgrow="NEVER" GridPane.rowIndex="2">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+        <Button fx:id="button3" alignment="CENTER" onAction="#buttonClick" prefWidth="600.0" textAlignment="CENTER" wrapText="true" GridPane.hgrow="NEVER" GridPane.rowIndex="3">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+        <Button fx:id="button4" alignment="CENTER" onAction="#buttonClick" prefWidth="600.0" textAlignment="CENTER" wrapText="true" GridPane.hgrow="NEVER" GridPane.rowIndex="4">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+     <columnConstraints>
+        <ColumnConstraints />
+     </columnConstraints>
+    </GridPane>
+
+    <!--bottom menu-->
+    <GridPane fx:id="bottomMenu" alignment="BOTTOM_CENTER" layoutY="1440.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="30.0" prefHeight="30.0" />
+        </rowConstraints>
+        <Label fx:id="questionNum" alignment="CENTER" text="Question 1" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <font>
+                <Font size="14.0" />
             </font>
         </Label>
-    </top>
-    <center>
-        <GridPane fx:id="quizButtons" alignment="CENTER" BorderPane.alignment="CENTER">
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="255.0" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" />
-            </rowConstraints>
-            <ImageView fx:id="quizImage" fitHeight="204.0" fitWidth="426.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
-                <image>
-                    <Image backgroundLoading="true" url="/images/UofSCLogo.png" />
-                </image>
-            <GridPane.margin>
-               <Insets bottom="50.0" />
-            </GridPane.margin>
-            </ImageView>
-            <Button fx:id="button1" alignment="CENTER" onAction="#buttonClick" prefHeight="100.0" prefWidth="600.0" textAlignment="CENTER" wrapText="true" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
-                <font>
-                    <Font size="16.0" />
-                </font>
-            <GridPane.margin>
-               <Insets bottom="40.0" />
-            </GridPane.margin>
-            </Button>
-            <Button fx:id="button2" alignment="CENTER" onAction="#buttonClick" prefHeight="100.0" prefWidth="600.0" textAlignment="CENTER" wrapText="true" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
-                <font>
-                    <Font size="16.0" />
-                </font>
-            <GridPane.margin>
-               <Insets bottom="30.0" />
-            </GridPane.margin>
-            </Button>
-            <Button fx:id="button3" alignment="CENTER" onAction="#buttonClick" prefHeight="100.0" prefWidth="600.0" textAlignment="CENTER" wrapText="true" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.vgrow="NEVER">
-                <font>
-                    <Font size="16.0" />
-                </font>
-            <GridPane.margin>
-               <Insets bottom="20.0" />
-            </GridPane.margin>
-            </Button>
-            <Button fx:id="button4" alignment="CENTER" onAction="#buttonClick" prefHeight="100.0" prefWidth="600.0" textAlignment="CENTER" wrapText="true" GridPane.hgrow="NEVER" GridPane.rowIndex="4" GridPane.vgrow="NEVER">
-                <font>
-                    <Font size="16.0" />
-                </font>
-            <GridPane.margin>
-               <Insets bottom="10.0" />
-            </GridPane.margin>
-            </Button>
-            <columnConstraints>
-                <ColumnConstraints />
-            </columnConstraints>
-            <BorderPane.margin>
-                <Insets left="10.0" right="10.0" />
-            </BorderPane.margin>
-        </GridPane>
-    </center>
-    <bottom>
-        <GridPane fx:id="bottomMenu" alignment="CENTER" minHeight="43.0" prefHeight="43.0" BorderPane.alignment="CENTER">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <Label fx:id="questionNum" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Question 1" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1">
-                <font>
-                    <Font size="14.0" />
-                </font>
-            </Label>
-            <Label fx:id="score" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Score: 0" textAlignment="CENTER" wrapText="true">
-                <font>
-                    <Font size="14.0" />
-                </font>
-            </Label>
-            <Label fx:id="strikes" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Strikes: " textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2">
-                <font>
-                    <Font size="14.0" />
-                </font>
-            </Label>
-         <Button fx:id="quit" alignment="CENTER" mnemonicParsing="false" onAction="#buttonClick" text="Quit" textAlignment="CENTER" GridPane.columnIndex="3" />
-         <BorderPane.margin>
-            <Insets bottom="10.0" />
-         </BorderPane.margin>
-        </GridPane>
-    </bottom>
-</BorderPane>
+        <Label fx:id="score" alignment="CENTER" text="Score: 0" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="strikes" alignment="CENTER" text="Strikes: " textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Button fx:id="quit" alignment="CENTER" mnemonicParsing="false" onAction="#buttonClick" prefHeight="27.0" prefWidth="80.0" text="Quit" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
+      <GridPane.margin>
+         <Insets bottom="150.0" />
+      </GridPane.margin>
+    </GridPane>
+<columnConstraints>
+  <ColumnConstraints />
+</columnConstraints>
+<rowConstraints>
+  <RowConstraints />
+  <RowConstraints />
+  <RowConstraints />
+</rowConstraints>
+</GridPane>

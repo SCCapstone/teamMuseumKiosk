@@ -89,7 +89,6 @@ public class StartController {
 
 //         AdminOverviewController controller = loader.getController();
 	// Using Update controller for demo purposes
-        // TODO: change this back after demo!
         AdminUpdateController controller = loader.getController();
         loader.setController(controller);
 

@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class AddQuestionController {
 
     @FXML
-    private TextArea question, wrong1, wrong2, wrong3, correct;
+    private TextArea question, wrong1, wrong2, wrong3, correct, difficulty;
 
     @FXML
     private Button submitButton;
@@ -55,17 +55,18 @@ public class AddQuestionController {
     public String buildCSVString() {
         StringBuilder csvString = new StringBuilder();
         ArrayList<String> strings = new ArrayList<String>();
+        csvString.append("\n");
         strings.add(question.getText());
         strings.add(wrong1.getText());
         strings.add(wrong2.getText());
         strings.add(wrong3.getText());
+        strings.add(correct.getText());
 
         for(String i : strings) {
             csvString.append(i);
             csvString.append(",");
         }
-        csvString.append(correct.getText());
-        csvString.append("\n");
+        csvString.append(difficulty.getText());
         return csvString.toString();
     }
 }

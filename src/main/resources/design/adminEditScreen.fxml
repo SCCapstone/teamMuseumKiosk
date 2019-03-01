@@ -1,135 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
 
-<BorderPane prefHeight="900.0" prefWidth="1440.0" stylesheets="/design/trivia.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminEditController">
-    <center>
-    <GridPane alignment="CENTER" prefHeight="1440.0" stylesheets="@trivia.css" BorderPane.alignment="CENTER">
+<GridPane alignment="center" hgap="40" stylesheets="/design/adminScreen.css" vgap="40" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminEditController">
 
-        <Label id="dashboard" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="202.0" text="Admin Dashboard" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <HBox prefHeight="70.0" prefWidth="1440.0" GridPane.rowIndex="0">
+        <Label id="adminDashboard" alignment="CENTER" prefHeight="69.0" prefWidth="1440.0" text="Edit the Game" textAlignment="CENTER" />
+        <GridPane.margin>
+            <Insets top="20.0" />
+        </GridPane.margin>
+    </HBox>
 
-        <HBox prefWidth="157.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
-        <Label id="exitText" alignment="TOP_RIGHT" text="Back to Game  " textAlignment="RIGHT" />
+    <HBox alignment="CENTER_RIGHT" prefWidth="1440.0" GridPane.rowIndex="0">
+        <Button id="exitAdminButton" alignment="CENTER" onAction="#exitPage" prefHeight="29.0" prefWidth="274.0" text="Back to Game" textAlignment="CENTER" />
+        <GridPane.margin>
+            <Insets top="20.0" />
+        </GridPane.margin>
+    </HBox>
 
-        <Button id="exitAdminButton" onAction="#exitPage" prefHeight="25.0" prefWidth="24.0" text="X" textAlignment="CENTER" />
-        </HBox>
+    <!-- Page's content -->
+    <HBox GridPane.rowIndex="1" spacing="20">
 
-        <Label id="editContentTitle" alignment="CENTER" text="Edit the Game" textAlignment="CENTER" GridPane.rowIndex="2" />
-
-        <VBox fx:id="navBar" spacing="0" GridPane.columnIndex="0" GridPane.rowIndex="3">
-
-            <Button fx:id="overviewPageButton" maxHeight="40" maxWidth="40" minHeight="40" minWidth="40" onAction="#goToOverviewPage" text="X" textAlignment="CENTER" />
-
-            <Button fx:id="updatePageButton" maxHeight="40" maxWidth="40" minHeight="40" minWidth="40" onAction="#goToUpdatePage" text="X" textAlignment="CENTER" />
-
-            <Button fx:id="editPageButton" disable="true" maxHeight="40" maxWidth="40" minHeight="40" minWidth="40" text="X" textAlignment="CENTER" />
+        <!-- Navigation bar -->
+        <VBox GridPane.columnIndex="0" spacing="5">
+            <Button id="navBar" contentDisplay="RIGHT" onAction="#goToUpdatePage" text="Update" minWidth="100.0">
+                <graphic>
+                    <ImageView fitHeight="25.0" preserveRatio="true">
+                        <Image url="/images/white_update.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button id="navBar" contentDisplay="RIGHT" onAction="#goToEditPage" text="Edit" minWidth="100.0" disable="true">
+                <graphic>
+                    <ImageView fitHeight="25.0" preserveRatio="true">
+                        <Image url="/images/white_edit.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
         </VBox>
 
-        <Label fx:id="numOfStrikesLabel" text="Number of Strikes" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+        <VBox id="editBox" alignment="CENTER_RIGHT" prefWidth="1440.0" spacing="100.0" GridPane.rowIndex="1">
 
-        <HBox fx:id="numOfStrikesBox" alignment="CENTER" maxHeight="90" maxWidth="210" minHeight="90" minWidth="210" spacing="5" stylesheets="@trivia.css" GridPane.columnIndex="2" GridPane.rowIndex="5">
-            <RadioButton fx:id="numOfStrikes2Btn" text="2">
-               <toggleGroup>
-                  <ToggleGroup fx:id="numOfStrikesOptions" />
-               </toggleGroup></RadioButton>
+            <HBox alignment="CENTER" spacing="50">
+                <Label id="numOfStrikesLabel" text="Number of Strikes" textAlignment="CENTER" wrapText="true"/>
+                <RadioButton id="radioBtn" fx:id="numOfStrikes2Btn" text="2" toggleGroup="$numOfStrikesOptions">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="numOfStrikesOptions" />
+                    </toggleGroup></RadioButton>
 
-            <RadioButton fx:id="numOfStrikes3Btn" text="3" toggleGroup="$numOfStrikesOptions" />
-        </HBox>
-
-        <Label fx:id="numOfQuestionsLabel" text="Max number of Questions: 8" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-
-        <HBox fx:id="numOfQuestionsBox" alignment="CENTER" maxHeight="90" maxWidth="210" minHeight="90" minWidth="210" spacing="5" GridPane.columnIndex="2" GridPane.rowIndex="7">
-
-            <Label fx:id="minNumOfQuestions" text="5" />
-            <Slider fx:id="numOfQuestionsSlider" />
-            <Label fx:id="maxNumOfQuestions" text="20" />
-
-        </HBox>
-
-        <Label fx:id="highScoresLabel" text="High Scores Displayed" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-
-
-        <VBox fx:id="highScoresBox" alignment="CENTER" maxHeight="90" maxWidth="210" minHeight="90" minWidth="210" spacing="5" GridPane.columnIndex="2" GridPane.rowIndex="9">
-
-            <HBox>
-
-            <RadioButton fx:id="dailyHighScoresBtn" text="Daily">
-                  <toggleGroup>
-                     <ToggleGroup fx:id="highScoresOptions" />
-                  </toggleGroup></RadioButton>
-
-            <RadioButton fx:id="weeklyHighScoresBtn" text="Weekly" toggleGroup="$highScoresOptions" />
-
-            <RadioButton fx:id="monthlyHighScoresBtn" text="Monthly" toggleGroup="$highScoresOptions" />
+                <RadioButton id="radioBtn" fx:id="numOfStrikes3Btn" text="3" toggleGroup="$numOfStrikesOptions" />
             </HBox>
 
-            <HBox GridPane.rowIndex="10">
-                <CheckBox fx:id="rotateHighScoresChk" alignment="CENTER" onAction="#rotateHighScores" />
-                <Label fx:id="rotateHighScoresLabel" text="Rotate through all of them" wrapText="true" />
+            <HBox alignment="CENTER" spacing="50">
+                <Label id="numOfQuestionsLabel" text="Max number of Questions: " textAlignment="CENTER" wrapText="true"/>
+
+                <Label id="sliderLabel" fx:id="minNumOfQuestions" text="5" />
+                <Slider fx:id="numOfQuestionsSlider" />
+                <Label id="sliderLabel" fx:id="maxNumOfQuestions" text="20" />
+
+            </HBox>
+
+            <HBox alignment="CENTER" spacing="50">
+                <Label id="highScoresLabel" text="High Scores Displayed" textAlignment="CENTER" wrapText="true" />
+
+                <RadioButton id="radioBtn" fx:id="dailyHighScoresBtn" text="Daily">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="highScoresOptions" />
+                    </toggleGroup></RadioButton>
+
+                <RadioButton id="radioBtn" fx:id="weeklyHighScoresBtn" text="Weekly" toggleGroup="$highScoresOptions" />
+
+                <RadioButton id="radioBtn" fx:id="monthlyHighScoresBtn" text="Monthly" toggleGroup="$highScoresOptions" />
+
+                <RadioButton id="radioBtn" fx:id="rotateHighScoresLabel" text="Rotate through all of them" toggleGroup="$highScoresOptions" wrapText="true"/>
+
             </HBox>
 
         </VBox>
 
-        <ImageView fx:id="imageView" fitHeight="35.0" fitWidth="200" preserveRatio="true" GridPane.rowIndex="13">
+    </HBox>
+
+    <HBox alignment="CENTER" GridPane.rowIndex="2">
+        <ImageView fx:id="imageView" fitHeight="85.0" fitWidth="349.0">
             <image>
-                <Image backgroundLoading="true" url="/images/SCSMlogo.png" />
+                <Image backgroundLoading="true" url="/images/SCSMlogo_white.png" />
             </image>
         </ImageView>
+    </HBox>
 
-        <fx:define>
-            <ToggleGroup fx:id="numOfStrikesOptions" />
-        </fx:define>
-        <fx:define>
-            <ToggleGroup fx:id="highScoresOptions" />
-        </fx:define>
-         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints maxWidth="205.0" minWidth="189.0" prefWidth="189.0" />
-            <ColumnConstraints maxWidth="119.0" minWidth="103.0" prefWidth="119.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
-            <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-         </rowConstraints>
-
-    </GridPane></center>
-   <right>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" BorderPane.alignment="CENTER" />
-   </right>
-   <bottom>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" BorderPane.alignment="CENTER" />
-   </bottom>
-   <left>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" BorderPane.alignment="CENTER" />
-   </left>
-   <top>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" BorderPane.alignment="CENTER" />
-   </top>
-</BorderPane>
+</GridPane>

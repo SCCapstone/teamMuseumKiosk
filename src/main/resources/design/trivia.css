@@ -1,12 +1,23 @@
 .root {
     -fx-background-color: #fcfcfc;
-    -fx-background-image: url("/images/white-waves.png") repeat 0 0;
+    -fx-background-color: linear-gradient(to bottom, #003365, #002c57, #00254a, #001f3d, #011830);
     width: 100%;
     margin: 0;
     text-align: center;
 }
 .label {
     -fx-font-family: "Helvetica Neue";
+    -fx-text-fill: #fcfcfc;
+    -fx-wrap-text: true;
+}
+.text {
+    -fx-font-family: "Helvetica Neue";
+    -fx-text-fill: #fcfcfc;
+}
+.button {
+    -fx-text-alignment: center;
+    -fx-background-color: #124e8a;
+    -fx-text-fill: #fcfcfc;
 }
 #title {
     -fx-text-alignment: center;
@@ -18,6 +29,12 @@
     -fx-text-alignment: center;
     -fx-font-size: 40;
     -fx-background-color: #124e8a;
+    -fx-text-fill: #fcfcfc;
+}
+
+/* Popup CSS */
+#result {
+    -fx-font-size: 40;
     -fx-text-fill: #fcfcfc;
 }
 

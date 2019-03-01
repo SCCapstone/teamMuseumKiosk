@@ -15,6 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import teamMuseumKiosk.Question;
 import teamMuseumKiosk.User;
+import javafx.scene.media.AudioClip;
 
 import java.io.*;
 import java.net.URL;
@@ -43,11 +44,13 @@ public class QuestionController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            this.num = 0;
+
+            this.questions = loadData("TriviaQuestions.csv");
+            this.num = questions.size();
             this.strikesNum = 0;
             this.scoreValue = 0;
             this.questionNumber = 1;
-            this.questions = loadData("TriviaQuestions.csv");
+
             newQuestion(null);
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,17 +58,19 @@ public class QuestionController implements Initializable {
     }
 
     private void newQuestion(ActionEvent event) throws IOException {
-        if (num < questions.size() && strikesNum < 3) {
+        if (num > 0 && strikesNum < 3) {
             currentQuestion = retrieveNextQuestion();
             displayQuestion(currentQuestion);
             setPicture(currentQuestion);
             setButtons(currentQuestion, button1, button2, button3, button4);
-            questionNum.setText("Question " + String.valueOf(questionNumber++));
+            questionNum.setText("Question " + (questionNumber++));
         } else {
             user.setScore(scoreValue);
             quizEnd(event);
         }
-        num++;
+
+        questions.remove(currentQuestion);
+        num--;
     }
 
     public void displayQuestion(Question question) {
@@ -84,8 +89,6 @@ public class QuestionController implements Initializable {
             quizImage.setVisible(false);
             quizImage.setManaged(false);
         }
-
-
     }
 
     public void setButtons(Question question, Button button1, Button button2, Button button3, Button button4) {
@@ -109,6 +112,8 @@ public class QuestionController implements Initializable {
         //if text of button matches correct answer of question, increases user's score and goes to next question
         else if (text.equals(currentQuestion.getCorrect())) {
             //alert user that they got it correct
+            AudioClip correctSound = new AudioClip("file:src/main/resources/audio/ding.wav");
+            correctSound.play();
             showPopupWindow(stage, "Correct!");
 
             scoreValue++;
@@ -119,6 +124,7 @@ public class QuestionController implements Initializable {
 
         } else { //if not correct answer, does not increase score but continues to next question
             //alert user that they got it wrong
+            //TODO: make correct button font color green, and currently selected button as red
             showPopupWindow(stage, "Incorrect!");
 
             strikesNum++;
@@ -147,7 +153,7 @@ public class QuestionController implements Initializable {
             //get each question from file line
             while ((line = bufferedReader.readLine()) != null) {
                 data = Arrays.asList(line.split(","));
-                Question question = new Question(data.get(0), data.subList(1,5));
+                Question question = new Question(data.get(0), data.subList(1,5), data.get(5));
                 questions.add(question);
             }
 
@@ -157,9 +163,16 @@ public class QuestionController implements Initializable {
 
         return questions;
     }
-
+    //TODO
     private Question retrieveNextQuestion() {
-        return questions.get(num);
+        //sets the question based on the difficulty
+        for (int i = scoreValue; i < 11; i++) {
+            for (int j = 0; j < questions.size(); j++){
+                if (questions.get(j).getDifficulty() <= i)
+                    return questions.get(j);
+            }
+        }
+        return questions.get(0);
     }
 
     private void quizEnd(ActionEvent event) throws IOException {
