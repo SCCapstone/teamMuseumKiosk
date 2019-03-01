@@ -10,28 +10,22 @@
 <?import javafx.scene.text.Font?>
 
 <GridPane alignment="center" stylesheets="/design/startScreen.css" vgap="40" hgap="40" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EndController">
-        <Label fx:id="end" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="0" GridPane.columnIndex="1">
+        <Label fx:id="end" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="0">
 
-            <font>
-                <Font name="Geneva" size="36.0" />
-            </font></Label>
-        <Label fx:id="score" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="1" GridPane.columnIndex="1">
             <font>
                 <Font name="Geneva" size="36.0" />
             </font>
         </Label>
-        <HBox alignment="CENTER" prefHeight="104.0" prefWidth="1440.0" GridPane.rowIndex="2" GridPane.columnIndex="1">
+        <Label fx:id="score" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="1">
+            <font>
+                <Font name="Geneva" size="36.0" />
+            </font>
+        </Label>
+        <HBox alignment="CENTER" prefHeight="104.0" prefWidth="1440.0" GridPane.rowIndex="2">
             <Button fx:id="button" alignment="CENTER" onAction="#buttonClick" prefHeight="92.0" prefWidth="569.0" text="Play Again?" textAlignment="CENTER" />
         </HBox>
 
-        <Label alignment="CENTER" prefHeight="10.0" prefWidth="1440.0" GridPane.rowIndex="2" GridPane.columnIndex="0">
-
-        </Label>
-        <Label alignment="CENTER" prefHeight="1000.0" prefWidth="1440.0" GridPane.rowIndex="3" GridPane.columnIndex="1">
-
-        </Label>
-
-        <VBox alignment="CENTER" prefHeight="10.0" prefWidth="1440.0" GridPane.rowIndex="2" GridPane.columnIndex="2">
+        <VBox alignment="CENTER" prefHeight="10.0" prefWidth="1440.0" GridPane.rowIndex="3">
             <Label fx:id="highscore" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="1440.0" textAlignment="CENTER">
                 <font>
                     <Font name="Geneva" size="36.0" />
@@ -39,52 +33,52 @@
             </Label>
             <Label fx:id="high1" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
                 <font>
-                    <Font name="Geneva" size="12.0" />
+                    <Font name="Geneva" size="10.0" />
                 </font>
             </Label>
             <Label fx:id="high2" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
                 <font>
-                    <Font name="Geneva" size="12.0" />
+                    <Font name="Geneva" size="10.0" />
                 </font>
             </Label>
             <Label fx:id="high3" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
                 <font>
-                    <Font name="Geneva" size="12.0" />
+                    <Font name="Geneva" size="10.0" />
                 </font>
             </Label>
             <Label fx:id="high4" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
                 <font>
-                    <Font name="Geneva" size="12.0" />
+                    <Font name="Geneva" size="10.0" />
                 </font>
             </Label>
             <Label fx:id="high5" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
                 <font>
-                    <Font name="Geneva" size="12.0" />
+                    <Font name="Geneva" size="10.0" />
                 </font>
             </Label>
             <Label fx:id="high6" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
                 <font>
-                    <Font name="Geneva" size="12.0" />
+                    <Font name="Geneva" size="10.0" />
                 </font>
             </Label>
             <Label fx:id="high7" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
                 <font>
-                    <Font name="Geneva" size="12.0" />
+                    <Font name="Geneva" size="10.0" />
                 </font>
             </Label>
             <Label fx:id="high8" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
                 <font>
-                    <Font name="Geneva" size="12.0" />
+                    <Font name="Geneva" size="10.0" />
                 </font>
             </Label>
             <Label fx:id="high9" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
                 <font>
-                    <Font name="Geneva" size="12.0" />
+                    <Font name="Geneva" size="10.0" />
                 </font>
             </Label>
             <Label fx:id="high10" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
                 <font>
-                    <Font name="Geneva" size="12.0" />
+                    <Font name="Geneva" size="10.0" />
                 </font>
             </Label>
         </VBox>
