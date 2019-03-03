@@ -11,6 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import teamMuseumKiosk.Question;
@@ -34,6 +37,8 @@ public class QuestionController implements Initializable {
     private ImageView quizImage;
     @FXML
     private GridPane quizButtons;
+    @FXML
+    private MediaView quizVideo;
 
     public QuestionController() {}
 
@@ -88,6 +93,14 @@ public class QuestionController implements Initializable {
             quizButtons.getRowConstraints().get(0).setPrefHeight(0);
             quizImage.setVisible(false);
             quizImage.setManaged(false);
+        }
+
+        if(currentQuestion.getPrompt().contains("islands")) {
+            String url = getClass().getResource("/video/testvideo.mp4").toExternalForm();
+            Media video = new Media(url);
+            MediaPlayer player = new MediaPlayer(video);
+            quizVideo.setMediaPlayer(player);
+            player.play();
         }
     }
 
