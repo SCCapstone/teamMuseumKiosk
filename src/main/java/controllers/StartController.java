@@ -17,11 +17,10 @@ import javafx.stage.Stage;
 import teamMuseumKiosk.User;
 
 import javax.swing.*;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.*;
 
-import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class StartController {
     @FXML
@@ -36,6 +35,15 @@ public class StartController {
     private URL image = null;
 
     public void buttonClick(ActionEvent actionEvent) throws IOException {
+        try
+        {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("TriviaQuestions.csv"));
+        } catch (IOException e)
+        {
+            missingInfoText.setText("'TriviaQuestions.csv' file is not in the directory. Please add it before continuing.");
+            return;
+        }
+
         if(name.getText().trim().isEmpty() || email.getText().trim().isEmpty()){
 	            missingInfoText.setText("Please enter your initials and email");
 	            return;
