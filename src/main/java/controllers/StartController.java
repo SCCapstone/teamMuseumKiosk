@@ -80,26 +80,22 @@ public class StartController {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setOpacity(1);
 	    
-//         FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/adminOverviewScreen.fxml"));	    
-	// Goes to the update page for demo purposes
-        // TODO: change this back after demo!
-        URL url = new URL(getClass().getResource("/design/adminUpdateScreen.fxml").toExternalForm());
+        URL url = new URL(getClass().getResource("/design/adminLoginScreen.fxml").toExternalForm());
+
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
 
-//         AdminOverviewController controller = loader.getController();
-	// Using Update controller for demo purposes
-        AdminUpdateController controller = loader.getController();
+        AdminLoginController controller = loader.getController();
         loader.setController(controller);
 
         Scene scene = new Scene(root, 1440,900);
         stage.setScene(scene);
         stage.showAndWait();
 
-        if(controller.image != null){
-            image = controller.image;
-            imageView.setImage(new Image(controller.image.toExternalForm()));
-        }
+//        if(controller.image != null){
+//            image = controller.image;
+//            imageView.setImage(new Image(controller.image.toExternalForm()));
+//        }
     }
 
     @FXML
