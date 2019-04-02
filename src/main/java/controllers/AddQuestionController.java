@@ -1,6 +1,8 @@
 package controllers;
 
+import com.sun.javafx.scene.control.skin.TextAreaSkin;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -8,7 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -16,9 +19,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 
 /**
@@ -31,6 +31,14 @@ public class AddQuestionController {
 
     @FXML
     private Button submitButton;
+
+    public void setTabKey() {
+        question.addEventFilter(KeyEvent.KEY_PRESSED, new TabKeyEventHandler());
+        wrong1.addEventFilter(KeyEvent.KEY_PRESSED, new TabKeyEventHandler());
+        wrong2.addEventFilter(KeyEvent.KEY_PRESSED, new TabKeyEventHandler());
+        wrong3.addEventFilter(KeyEvent.KEY_PRESSED, new TabKeyEventHandler());
+        correct.addEventFilter(KeyEvent.KEY_PRESSED, new TabKeyEventHandler());
+    }
 
     public void addQuestion(ActionEvent actionEvent) throws IOException {
         String csvString = buildCSVString();
@@ -95,5 +103,30 @@ public class AddQuestionController {
         csvString.append(difficulty.getText());
         return csvString.toString();
 
+    }
+
+    private class TabKeyEventHandler implements EventHandler<KeyEvent> {
+        @Override
+        public void handle(KeyEvent event) {
+            if (event.getCode().equals(KeyCode.TAB)) {
+                Node node = (Node) event.getSource();
+                if (node instanceof TextArea) {
+                    TextAreaSkin skin = (TextAreaSkin) ((TextArea)node).getSkin();
+                    if (!event.isControlDown()) {
+                        // Tab or shift-tab => navigational action
+                        if (event.isShiftDown()) {
+                            skin.getBehavior().traversePrevious();
+                        } else {
+                            skin.getBehavior().traverseNext();
+                        }
+                    } else {
+                        // Ctrl-Tab => insert a tab character in the text area
+                        TextArea textArea = (TextArea) node;
+                        textArea.replaceSelection("\t");
+                    }
+                    event.consume();
+                }
+            }
+        }
     }
 }

@@ -57,6 +57,7 @@ public class AdminUpdateController extends AdminController {
         Parent root = loader.load();
 
         AddQuestionController controller = loader.getController();
+        controller.setTabKey();
         loader.setController(controller);
 
         Scene scene = new Scene(root, 600,485);
