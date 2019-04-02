@@ -2,6 +2,7 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -14,6 +15,8 @@ public class PopupController implements Initializable {
 
     @FXML
     Label result;
+    @FXML
+    Button button;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {}
@@ -22,6 +25,9 @@ public class PopupController implements Initializable {
         closeStage();
     }
 
+    public void setButtonText(String text) { button.setText(text); }
+
+    public Button getButton() { return this.button; }
 
     public void setText(String text) {
         result.setText(text);

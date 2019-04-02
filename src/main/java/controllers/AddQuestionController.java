@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.BufferedWriter;
@@ -35,21 +36,46 @@ public class AddQuestionController {
         String csvString = buildCSVString();
         BufferedWriter writer = null;
 
-        try {
-            writer  = new BufferedWriter(new FileWriter("TriviaQuestions.csv", true));
-            writer.write(csvString);
-            writer.newLine();
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (writer != null) try {
-                writer.close();
-            } catch (IOException e) {
-            }
-        }
+        if (question.getText().equals("")
+                || wrong1.getText().equals("")
+                || wrong2.getText().equals("")
+                || wrong3.getText().equals("")
+                || correct.getText().equals("")
+                || difficulty.getText().equals("")) {
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setOpacity(0.75);
+            URL url = new URL(getClass().getResource("/design/popup.fxml").toExternalForm());
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
 
-        question.getScene().getWindow().hide();
+            PopupController controller = loader.getController();
+            loader.setController(controller);
+            controller.setText("You must fill out form to add a question.");
+            controller.setButtonText("OK");
+            controller.setStage(stage);
+
+            Scene scene = new Scene(root, 600, 485);
+            stage.setScene(scene);
+            stage.showAndWait();
+
+        } else {
+            try {
+                writer = new BufferedWriter(new FileWriter("TriviaQuestions.csv", true));
+                writer.write(csvString);
+                writer.newLine();
+                writer.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (writer != null) try {
+                    writer.close();
+                } catch (IOException e) {
+                }
+            }
+
+            question.getScene().getWindow().hide();
+        }
     }
 
     public String buildCSVString() {
@@ -62,11 +88,12 @@ public class AddQuestionController {
         strings.add(wrong3.getText());
         strings.add(correct.getText());
 
-        for(String i : strings) {
+        for (String i : strings) {
             csvString.append(i);
             csvString.append(",");
         }
         csvString.append(difficulty.getText());
         return csvString.toString();
+
     }
 }
