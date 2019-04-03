@@ -30,13 +30,7 @@ public class Question {
 
     public  Image getImg(){return Img;}
 
-    public void  setImg(String img) {
-        try {
-            Img = new Image(new FileInputStream(img));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+    public void  setImg(String img) { Img = new Image(img); }
 
     public  int getDifficulty() {return Difficulty;}
 

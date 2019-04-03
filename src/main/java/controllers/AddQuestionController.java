@@ -117,7 +117,7 @@ public class AddQuestionController {
                 csvString.append(i);
                 csvString.append(",");
             }
-            csvString.append(question.getText()+".jpg");
+            csvString.append("/images/"+question.getText()+".jpg");
 
         }
         csvString.append("\n");
