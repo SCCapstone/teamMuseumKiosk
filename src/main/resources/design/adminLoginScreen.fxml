@@ -13,13 +13,17 @@
 
 <GridPane alignment="center" hgap="40" stylesheets="/design/adminScreen.css" vgap="10.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminLoginController">
 
-<!--Title-->
-<HBox alignment="CENTER" prefHeight="68.0" prefWidth="1440.0" GridPane.rowIndex="0">
+<HBox alignment="TOP_RIGHT" GridPane.rowIndex="0">
+    <Button id="exitAdminButton" alignment="CENTER" onAction="#goBack" prefHeight="29.0" prefWidth="274.0" text="Back to Game" textAlignment="CENTER" />
+</HBox>
+
+    <!--Title-->
+<HBox alignment="CENTER" prefHeight="68.0" prefWidth="1440.0" GridPane.rowIndex="1">
     <Label id="title" fx:id="label" alignment="CENTER" text="Admin Login" textAlignment="CENTER" />
 </HBox>
 
 <!--Username-->
-<TilePane alignment="CENTER" prefColumns="1" prefRows="1" GridPane.rowIndex="2">
+<TilePane alignment="CENTER" prefColumns="1" prefRows="1" GridPane.rowIndex="3">
     <!--Email-->
     <Label id="usernameLabel" text="Username:" textAlignment="CENTER" TilePane.alignment="CENTER_RIGHT">
         <padding>
@@ -32,7 +36,7 @@
 </TilePane>
 
 <!--Password-->
-<TilePane alignment="CENTER" prefColumns="1" prefRows="1" GridPane.rowIndex="3">
+<TilePane alignment="CENTER" prefColumns="1" prefRows="1" GridPane.rowIndex="4">
     <Label id="passwordLabel" text="Password:" textAlignment="CENTER" TilePane.alignment="CENTER_RIGHT">
         <padding>
             <Insets right="10.0" />
@@ -44,7 +48,7 @@
 </TilePane>
 
 <!--Enter Button-->
-<HBox alignment="TOP_CENTER" spacing="10" GridPane.rowIndex="4">
+<HBox alignment="TOP_CENTER" spacing="10" GridPane.rowIndex="5">
     <Button fx:id="submitButton" alignment="CENTER" onAction="#buttonClick" text="Login" />
 </HBox>
 
