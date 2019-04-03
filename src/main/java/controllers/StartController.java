@@ -56,6 +56,9 @@ public class StartController {
 
         //TODO: verify email is in an appropriate format. May use regex for this.
         String userEmail = email.getText().toLowerCase();
+
+
+
         if(!(userEmail.contains("@") && (userEmail.contains(".com")
                 || userEmail.contains(".net") || userEmail.contains(".org")
                 || userEmail.contains(".edu") || userEmail.contains(".co.uk")
@@ -83,10 +86,10 @@ public class StartController {
     }
 
     public void goToAdminPage(ActionEvent actionEvent) throws IOException {
-        //Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setOpacity(1);
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        //Stage stage = new Stage();
+        //stage.initModality(Modality.APPLICATION_MODAL);
+        //stage.setOpacity(1);
 	    
         URL url = new URL(getClass().getResource("/design/adminLoginScreen.fxml").toExternalForm());
 
@@ -98,7 +101,7 @@ public class StartController {
 
         Scene scene = new Scene(root, 1440,900);
         stage.setScene(scene);
-        stage.showAndWait();
+        stage.show();
 
 //        if(controller.image != null){
 //            image = controller.image;
