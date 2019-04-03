@@ -30,9 +30,7 @@
 
         <!--image-->
         <ImageView fx:id="img" fitHeight="200.0" fitWidth="426.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="0">
-            <image>
-                <Image backgroundLoading="true" url="/images/UofSCLogo.png" />
-            </image>
+
         </ImageView>
 
         <!--Choice buttons-->

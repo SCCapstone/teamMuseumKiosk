@@ -96,7 +96,7 @@ public class AddQuestionController {
     public String buildCSVString() {
         StringBuilder csvString = new StringBuilder();
         ArrayList<String> strings = new ArrayList<String>();
-        csvString.append("\n");
+        //csvString.append("\n");
         strings.add(question.getText());
         strings.add(wrong1.getText());
         strings.add(wrong2.getText());
@@ -117,10 +117,10 @@ public class AddQuestionController {
                 csvString.append(i);
                 csvString.append(",");
             }
-            csvString.append("/images/"+question.getText()+".jpg");
+            csvString.append("/images/"+filePath.getName());
 
         }
-        csvString.append("\n");
+        //csvString.append("\n");
         return csvString.toString();
 
     }
@@ -139,8 +139,10 @@ public class AddQuestionController {
         filePath = fileChooser.showOpenDialog(stage);
 
         try {
-            Path path = FileSystems.getDefault().getPath(question.getText()+".jpg");
-            Files.copy(filePath.toPath(),path);
+            //TODO put in the images folder
+            File path = new File("src/main/resources/images/"+filePath.getName());
+            //Path path = FileSystems.getDefault().getPath(question.getText()+".jpg");
+            Files.copy(filePath.toPath(),path.toPath());
         }catch (Exception e){
             e.printStackTrace();
         }

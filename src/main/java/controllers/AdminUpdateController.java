@@ -13,6 +13,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class AdminUpdateController extends AdminController {
 
@@ -79,8 +82,10 @@ public class AdminUpdateController extends AdminController {
            // Files.copy(select.toPath(), Paths.get(System.getProperty("user.dir")+"/"+select.getName()));
             //TODO need to refresh the program to reload advertisments
             try {
-                image = select.toURI().toURL();
-                System.out.println(image.toString());
+                //image = select.toURI().toURL();
+                //System.out.println(image.toString());
+                File path = new File("src/main/resources/images/Advertisments/"+select.getName());
+                Files.copy(select.toPath(),path.toPath());
             } catch (MalformedURLException e) {
 
             }
