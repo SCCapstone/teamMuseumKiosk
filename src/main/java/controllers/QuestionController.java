@@ -19,7 +19,11 @@ import javafx.scene.media.AudioClip;
 
 import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class QuestionController implements Initializable {
     public User user;
@@ -146,13 +150,13 @@ public class QuestionController implements Initializable {
         ArrayList<Question> questions = new ArrayList<>();
 
         try {
-            //load file
-            //InputStream stream = QuestionController.class.getResourceAsStream(fileName);
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
-            String line;
+            //Opens TriviaQuestions.csv and filters out any empty lines
+            Stream<String> stream = Files.lines(Paths.get(fileName));
+            List<String> lines = stream.filter(line -> !line.equals(""))
+                    .collect(Collectors.toList());
+
             List<String> data;
-            //get each question from file line
-            while ((line = bufferedReader.readLine()) != null) {
+            for(String line : lines) {
                 data = Arrays.asList(line.split(","));
                 Question question = new Question(data.get(0), data.subList(1,5), data.get(5));
                 questions.add(question);
