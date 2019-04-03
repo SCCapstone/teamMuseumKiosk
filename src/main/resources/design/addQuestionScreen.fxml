@@ -10,6 +10,10 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.cell.ComboBoxListCell?>
+<?import javafx.collections.FXCollections?>
 <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="600.0" stylesheets="/design/trivia.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddQuestionController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="800.0" minWidth="10.0" prefWidth="571.0" />
@@ -84,7 +88,7 @@
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
          <children>
             <Label prefHeight="17.0" prefWidth="305.0" text=" Difficulty:                 " />
-            <TextArea fx:id="difficulty" prefHeight="77.0" prefWidth="399.0" wrapText="true" />
+            <ComboBox fx:id="difficultyChoices" prefHeight="77.0" prefWidth="399.0" value="1" onAction="#chooseDifficulty"/>
          </children>
       </HBox>
    </children>
