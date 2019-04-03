@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import teamMuseumKiosk.LoadScene;
 import teamMuseumKiosk.Question;
 import teamMuseumKiosk.User;
 import javafx.scene.media.AudioClip;
@@ -25,8 +26,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class QuestionController implements Initializable {
+public class QuestionController implements Initializable, LoadScene {
     public User user;
+    private Stage stage;
     private ArrayList<Question> questions;
     private Question currentQuestion;
     private int scoreValue, num, questionNumber, strikesNum;
@@ -44,6 +46,7 @@ public class QuestionController implements Initializable {
     public void setUser(User user) {
         this.user = user;
     }
+    public void setStage(Stage stage) {this.stage = stage; }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -55,6 +58,10 @@ public class QuestionController implements Initializable {
             this.scoreValue = 0;
             this.questionNumber = 1;
 
+            //Automatically goes back to splash screen after 6 minutes
+            timerToSplashScene(stage,6);
+
+            //Loads first question
             newQuestion(null);
         } catch (Exception e) {
             e.printStackTrace();
@@ -147,7 +154,7 @@ public class QuestionController implements Initializable {
         }
     }
 
-    private ArrayList<Question> loadData(String fileName) {
+    private ArrayList<Question> loadData(String fileName) throws IOException{
         ArrayList<Question> questions = new ArrayList<>();
 
         try {
@@ -169,7 +176,10 @@ public class QuestionController implements Initializable {
             }
 
         } catch (Exception e) {
+            Stage stage = new Stage();
+            showPopupWindow(stage, e.toString());
             e.printStackTrace();
+            loadStartScene(stage);
         }
 
         return questions;
@@ -196,6 +206,7 @@ public class QuestionController implements Initializable {
         EndController controller = loader.getController();
         controller.setUser(user);
         controller.setText();
+        controller.setStage(stage);
         loader.setController(controller);
 
         Scene scene = new Scene(root, 1440,900);
@@ -213,7 +224,7 @@ public class QuestionController implements Initializable {
             PopupController popupController = loader.getController();
             loader.setController(popupController);
 
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, 200, 250);
             Stage popupStage = new Stage();
 
             // Giving the popup controller access to the popup stage (to allow the controller to close the stage)

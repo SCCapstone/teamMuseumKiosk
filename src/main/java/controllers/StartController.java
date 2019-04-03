@@ -1,5 +1,6 @@
 package controllers;
 
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,8 @@ import javafx.scene.text.Text;
 
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import teamMuseumKiosk.LoadScene;
 import teamMuseumKiosk.User;
 
 import javax.swing.*;
@@ -22,7 +25,7 @@ import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class StartController {
+public class StartController implements LoadScene {
     @FXML
     private TextField name, email;
     
@@ -33,6 +36,9 @@ public class StartController {
     private ImageView imageView;
 
     private URL image = null;
+    private Stage stage;
+
+    public void setStage(Stage stage) { this.stage = stage; }
 
     public void buttonClick(ActionEvent actionEvent) throws IOException {
         try
@@ -78,6 +84,7 @@ public class StartController {
 
         QuestionController controller = loader.getController();
 	    controller.setUser(newUser);
+	    controller.setStage(stage);
 	    loader.setController(controller);
 
         Scene scene = new Scene(root, 1440,900);
@@ -121,5 +128,10 @@ public class StartController {
         if(image != null){
             imageView.setImage(new Image(image.toExternalForm()));
         }
+
+        //Automatically goes back to splash screen after 2 minutes
+        timerToSplashScene(stage,2);
     }
+
+
 }
