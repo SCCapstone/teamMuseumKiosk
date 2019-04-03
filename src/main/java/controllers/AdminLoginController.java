@@ -53,4 +53,20 @@ public class AdminLoginController {
         stage.show();
     }
 
+    public void goBack(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+
+        URL url = new URL(getClass().getResource("/design/startScreen.fxml").toExternalForm());
+
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+
+        StartController controller = loader.getController();
+        loader.setController(controller);
+
+        Scene scene = new Scene(root, 1440,900);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
