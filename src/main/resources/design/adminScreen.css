@@ -49,3 +49,18 @@
 #numOfStrikesLabel, #numOfQuestionsLabel, #highScoresLabel{
     -fx-text-fill: #fcfcfc;
 }
+
+/* Admin Login page */
+#usernameField {
+    -fx-border-color: #fcfcfc;
+    -fx-text-fill: #fcfcfc;
+    -fx-border-width: 0 0 1 0; /* top, right, bottom, left*/
+    -fx-background-color: transparent;
+}
+
+#passwordField {
+    -fx-border-color: #fcfcfc;
+    -fx-text-fill: #fcfcfc;
+    -fx-border-width: 0 0 1 0; /* top, right, bottom, left*/
+    -fx-background-color: transparent;
+}

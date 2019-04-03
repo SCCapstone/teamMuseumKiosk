@@ -11,6 +11,7 @@ The team will be using the style guide of Google's <a href="google.github.io/sty
 * Open terminal
 * Run the command:
 ``` java -jar teamMuseumKiosk.jar```
+* To log into the Admin page - username: museumAdmin password: museumKiosk19
 
 ## Installing Development Environment (with gradle installed)
 1. Install IntelliJ IDE <a href="https://www.jetbrains.com/idea/download"> here</a>. 

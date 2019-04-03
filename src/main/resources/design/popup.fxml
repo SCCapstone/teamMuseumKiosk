@@ -17,8 +17,8 @@
    </top>
    <center>
        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-           <Label fx:id="result" />
-           <Button mnemonicParsing="false" onAction="#onButtonClick" text="Next">
+           <Label alignment="CENTER" textAlignment="CENTER" fx:id="result" />
+           <Button fx:id="button" mnemonicParsing="false" onAction="#onButtonClick" text="Next">
             <VBox.margin>
                <Insets top="20.0" />
             </VBox.margin>

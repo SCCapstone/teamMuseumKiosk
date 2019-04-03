@@ -1,5 +1,6 @@
 package controllers;
 
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,16 +15,17 @@ import javafx.scene.text.Text;
 
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import teamMuseumKiosk.LoadScene;
 import teamMuseumKiosk.User;
 
 import javax.swing.*;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.*;
 
-import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
-public class StartController {
+public class StartController implements LoadScene {
     @FXML
     private TextField name, email;
     
@@ -34,8 +36,20 @@ public class StartController {
     private ImageView imageView;
 
     private URL image = null;
+    private Stage stage;
+
+    public void setStage(Stage stage) { this.stage = stage; }
 
     public void buttonClick(ActionEvent actionEvent) throws IOException {
+        try
+        {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("TriviaQuestions.csv"));
+        } catch (IOException e)
+        {
+            missingInfoText.setText("'TriviaQuestions.csv' file is not in the directory. Please add it before continuing.");
+            return;
+        }
+
         if(name.getText().trim().isEmpty() || email.getText().trim().isEmpty()){
 	            missingInfoText.setText("Please enter your initials and email");
 	            return;
@@ -48,6 +62,9 @@ public class StartController {
 
         //TODO: verify email is in an appropriate format. May use regex for this.
         String userEmail = email.getText().toLowerCase();
+
+
+
         if(!(userEmail.contains("@") && (userEmail.contains(".com")
                 || userEmail.contains(".net") || userEmail.contains(".org")
                 || userEmail.contains(".edu") || userEmail.contains(".co.uk")
@@ -67,6 +84,7 @@ public class StartController {
 
         QuestionController controller = loader.getController();
 	    controller.setUser(newUser);
+	    controller.setStage(stage);
 	    loader.setController(controller);
 
         Scene scene = new Scene(root, 1440,900);
@@ -75,31 +93,27 @@ public class StartController {
     }
 
     public void goToAdminPage(ActionEvent actionEvent) throws IOException {
-        //Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setOpacity(1);
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        //Stage stage = new Stage();
+        //stage.initModality(Modality.APPLICATION_MODAL);
+        //stage.setOpacity(1);
 	    
-//         FXMLLoader loader = new FXMLLoader(getClass().getResource("/design/adminOverviewScreen.fxml"));	    
-	// Goes to the update page for demo purposes
-        // TODO: change this back after demo!
-        URL url = new URL(getClass().getResource("/design/adminUpdateScreen.fxml").toExternalForm());
+        URL url = new URL(getClass().getResource("/design/adminLoginScreen.fxml").toExternalForm());
+
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
 
-//         AdminOverviewController controller = loader.getController();
-	// Using Update controller for demo purposes
-        AdminUpdateController controller = loader.getController();
+        AdminLoginController controller = loader.getController();
         loader.setController(controller);
 
         Scene scene = new Scene(root, 1440,900);
         stage.setScene(scene);
-        stage.showAndWait();
+        stage.show();
 
-        if(controller.image != null){
-            image = controller.image;
-            imageView.setImage(new Image(controller.image.toExternalForm()));
-        }
+//        if(controller.image != null){
+//            image = controller.image;
+//            imageView.setImage(new Image(controller.image.toExternalForm()));
+//        }
     }
 
     @FXML
@@ -114,5 +128,10 @@ public class StartController {
         if(image != null){
             imageView.setImage(new Image(image.toExternalForm()));
         }
+
+        //Automatically goes back to splash screen after 2 minutes
+        timerToSplashScene(stage,2);
     }
+
+
 }
