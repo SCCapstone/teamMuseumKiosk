@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
+<?import javafx.scene.layout.VBox?>
 <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="600.0" stylesheets="/design/trivia.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddQuestionController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="800.0" minWidth="10.0" prefWidth="571.0" />
@@ -76,10 +77,10 @@
             <Insets bottom="10.0" />
          </GridPane.margin>
       </HBox>
-      <Button fx:id="submitButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addQuestion" prefHeight="27.0" prefWidth="85.0" text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="5">
-         <GridPane.margin>
-            <Insets left="20.0" />
-         </GridPane.margin></Button>
+       <VBox spacing="10" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="5">
+           <Button fx:id="submitButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addQuestion" prefHeight="27.0" prefWidth="85.0" text="Submit" />
+           <Button id="cancelButton" text="Cancel" textAlignment="CENTER" onAction="#exitPage" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="85.0" />
+       </VBox>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
          <children>
             <Label prefHeight="17.0" prefWidth="305.0" text=" Difficulty:                 " />

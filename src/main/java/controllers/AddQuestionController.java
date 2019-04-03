@@ -31,6 +31,7 @@ public class AddQuestionController {
 
     @FXML
     private Button submitButton;
+    private Button cancelButton;
 
     public void setTabKey() {
         question.addEventFilter(KeyEvent.KEY_PRESSED, new TabKeyEventHandler());
@@ -129,4 +130,9 @@ public class AddQuestionController {
             }
         }
     }
+
+    public void exitPage(ActionEvent actionEvent) {
+        question.getScene().getWindow().hide();
+    }
+
 }
