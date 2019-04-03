@@ -45,7 +45,7 @@
 
 <!--Enter Button-->
 <HBox alignment="TOP_CENTER" spacing="10" GridPane.rowIndex="4">
-    <Button fx:id="submitButton" alignment="CENTER" onAction="#buttonClick" text="Play" />
+    <Button fx:id="submitButton" alignment="CENTER" onAction="#buttonClick" text="Login" />
 </HBox>
 
 <!--Missing info text-->

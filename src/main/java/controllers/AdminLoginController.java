@@ -25,6 +25,7 @@ public class AdminLoginController {
     @FXML
     private Text missingInfoText;
 
+
     public void buttonClick(ActionEvent actionEvent) throws IOException {
         if (username.getText().trim().isEmpty() || password.getText().trim().isEmpty()){
             missingInfoText.setText("Please enter the username and password");
