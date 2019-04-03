@@ -47,19 +47,17 @@ public class StartController {
 	    }
 
         //TODO: verify email is in an appropriate format. May use regex for this.
-        if(!(email.getText().contains("@") && (email.getText().contains(".com")
-                || email.getText().contains(".net") || email.getText().contains(".org")
-                || email.getText().contains(".edu") || email.getText().contains(".co.uk")
-                || email.getText().contains(".de") || email.getText().contains(".cn")
-                || email.getText().contains(".kr") || email.getText().contains(".jp")
-                || email.getText().contains(".mx") || email.getText().contains(".ru")))) {
+        String userEmail = email.getText().toLowerCase();
+        if(!(userEmail.contains("@") && (userEmail.contains(".com")
+                || userEmail.contains(".net") || userEmail.contains(".org")
+                || userEmail.contains(".edu") || userEmail.contains(".co.uk")
+                || userEmail.contains(".de") || userEmail.contains(".cn")
+                || userEmail.contains(".kr") || userEmail.contains(".jp")
+                || userEmail.contains(".mx") || userEmail.contains(".ru")))) {
             missingInfoText.setText("Please enter a valid email address");
             return;
         }
       
-	    //collectEmail(email.getText().trim());
-        //TODO: no longer use collectEmail function, need to remove
-
         User newUser = new User(name.getText().toUpperCase().trim(), 0, email.getText().trim());
 
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
@@ -91,7 +89,6 @@ public class StartController {
 
 //         AdminOverviewController controller = loader.getController();
 	// Using Update controller for demo purposes
-        // TODO: change this back after demo!
         AdminUpdateController controller = loader.getController();
         loader.setController(controller);
 
@@ -104,25 +101,6 @@ public class StartController {
             imageView.setImage(new Image(controller.image.toExternalForm()));
         }
     }
-    
-    //Creates a buffered writer to append email to csv file
-	private void collectEmail(String email) {
-	    BufferedWriter writer = null;
-
-        try {
-	        writer = new BufferedWriter(new FileWriter("EmailList.csv", true));
-	        writer.write(email);
-	        writer.newLine();
-	        writer.flush();
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    } finally {
-	        if (writer != null) try {
-	           writer.close();
-	    } catch (IOException e) {
-	  }
-	}
-}
 
     @FXML
     public void initialize() {

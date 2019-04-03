@@ -20,6 +20,14 @@ repositories {
     jcenter()
 }
 
+jar {
+    manifest {
+        attributes("Implementation-Title": "teamMuseumKiosk",
+                "Implementation-Version": "0.9",
+                "Main-Class": 'teamMuseumKiosk.Main')
+    }
+}
+
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     implementation 'com.google.guava:guava:26.0-jre'

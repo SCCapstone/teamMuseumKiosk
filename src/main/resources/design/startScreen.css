@@ -16,6 +16,13 @@
     -fx-background-color: #003365;
     -fx-text-fill: #fcfcfc;
 }
+.button:hover {
+    -fx-background-color: #fcfcfc;
+    -fx-text-fill: #003365;
+}
+.button:pressed {
+    -fx-background-color: #002d5a;
+}
 
 #title {
     -fx-text-alignment: center;

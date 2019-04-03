@@ -16,6 +16,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import teamMuseumKiosk.Question;
 import teamMuseumKiosk.User;
+import javafx.scene.media.AudioClip;
 
 import java.io.*;
 import java.net.URL;
@@ -64,7 +65,7 @@ public class QuestionController implements Initializable {
             displayQuestion(currentQuestion);
             setPicture(currentQuestion);
             setButtons(currentQuestion, button1, button2, button3, button4);
-            questionNum.setText("Question " + String.valueOf(questionNumber++));
+            questionNum.setText("Question " + (questionNumber++));
         } else {
             user.setScore(scoreValue);
             quizEnd(event);
@@ -91,8 +92,6 @@ public class QuestionController implements Initializable {
             img.setVisible(false);
             img.setManaged(false);
         }
-
-
     }
 
     public void setButtons(Question question, Button button1, Button button2, Button button3, Button button4) {
@@ -116,6 +115,9 @@ public class QuestionController implements Initializable {
         //if text of button matches correct answer of question, increases user's score and goes to next question
         else if (text.equals(currentQuestion.getCorrect())) {
             //alert user that they got it correct
+            String url = getClass().getResource("/audio/ding.wav").toExternalForm();
+            AudioClip correctSound = new AudioClip(url);
+            correctSound.play();
             showPopupWindow(stage, "Correct!");
 
             scoreValue++;
@@ -126,6 +128,7 @@ public class QuestionController implements Initializable {
 
         } else { //if not correct answer, does not increase score but continues to next question
             //alert user that they got it wrong
+            //TODO: make correct button font color green, and currently selected button as red
             showPopupWindow(stage, "Incorrect!");
 
             strikesNum++;

@@ -4,11 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 
-<GridPane xmlns="http://javafx.com/javafx"
-          xmlns:fx="http://javafx.com/fxml"
-          stylesheets="/design/trivia.css"
-          fx:controller="controllers.AdminOverviewController"
-            vgap="10" hgap="10">
+<GridPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" stylesheets="/design/trivia.css" fx:controller="controllers.AdminOverviewController" vgap="40" hgap="40">
 
     <Label id="dashboard" text="Admin Dashboard" textAlignment="LEFT"
            alignment="TOP_RIGHT" GridPane.rowIndex="1" GridPane.columnIndex="0"/>

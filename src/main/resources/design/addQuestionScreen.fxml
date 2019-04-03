@@ -2,14 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Text?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="603.0" stylesheets="/design/trivia.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddQuestionController">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="600.0" stylesheets="/design/trivia.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddQuestionController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="800.0" minWidth="10.0" prefWidth="571.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="432.0" minWidth="0.0" prefWidth="229.0" />
@@ -23,13 +23,10 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <HBox prefHeight="114.0" prefWidth="472.0">
+      <HBox prefHeight="68.0" prefWidth="200.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Question:     " textAlignment="CENTER" wrappingWidth="73.8935546875">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin></Text>
-            <TextArea fx:id="question" prefHeight="50.0" prefWidth="355.0" wrapText="true">
+            <Label prefHeight="17.0" prefWidth="151.0" text=" Question:     " textAlignment="CENTER" />
+            <TextArea fx:id="question" prefHeight="68.0" prefWidth="292.0" wrapText="true">
                <HBox.margin>
                   <Insets left="50.0" />
                </HBox.margin>
@@ -41,7 +38,7 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Incorrect answer 1: " />
+            <Label prefHeight="17.0" prefWidth="277.0" text=" Incorrect Answer Choice 1: " />
             <TextArea fx:id="wrong1" prefHeight="50.0" prefWidth="372.0" wrapText="true" />
          </children>
          <GridPane.margin>
@@ -50,7 +47,7 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Incorrect answer 2: " />
+            <Label prefHeight="17.0" prefWidth="303.0" text=" Incorrect Answer Choice 2: " />
             <TextArea fx:id="wrong2" prefHeight="50.0" prefWidth="397.0" wrapText="true" />
          </children>
          <GridPane.margin>
@@ -59,7 +56,7 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Incorrect answer 3: " />
+            <Label prefHeight="17.0" prefWidth="326.0" text=" Incorrect Answer Choice 3: " />
             <TextArea fx:id="wrong3" prefHeight="50.0" prefWidth="418.0" wrapText="true" />
          </children>
          <GridPane.margin>
@@ -68,7 +65,7 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Correct answer: " />
+            <Label prefHeight="17.0" prefWidth="261.0" text=" Correct Answer Choice: " />
             <TextArea fx:id="correct" prefHeight="50.0" prefWidth="375.0" wrapText="true">
                <HBox.margin>
                   <Insets left="18.0" />
@@ -85,7 +82,7 @@
          </GridPane.margin></Button>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulty:                 " />
+            <Label prefHeight="17.0" prefWidth="305.0" text=" Difficulty:                 " />
             <TextArea fx:id="difficulty" prefHeight="77.0" prefWidth="399.0" wrapText="true" />
          </children>
       </HBox>

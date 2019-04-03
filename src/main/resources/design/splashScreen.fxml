@@ -3,10 +3,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane alignment="center" hgap="0" stylesheets="/design/startScreen.css" vgap="30" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SplashController">
-    <Label id="title" fx:id="label" alignment="CENTER" prefHeight="17.0" prefWidth="1440.0" text="How Well Do You Know South Carolina?" textAlignment="CENTER" GridPane.rowIndex="0" />
+<GridPane alignment="center" hgap="0" stylesheets="/design/splashScreen.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SplashController">
+
+    <Button id="splashPlayButton" alignment="CENTER" onAction="#buttonClick" prefHeight="900.0" prefWidth="1440.0" />
+
+    <!-- Made title a button so entire screen is clickable. If someone knows a better way, feel free to change this.-->
+    <Button id="titleButton" alignment="CENTER" onAction="#buttonClick" prefHeight="17.0" prefWidth="1440.0" text="How Well Do You Know South Carolina?" textAlignment="CENTER" GridPane.rowIndex="0" />
     <HBox alignment="TOP_CENTER" spacing="10" GridPane.rowIndex="1">
-        <Button fx:id="playButton" alignment="CENTER" onAction="#buttonClick" prefHeight="120.0" prefWidth="314.0" text="Play" />
+
+    </HBox>
+    <HBox alignment="BOTTOM_CENTER" spacing="10" GridPane.rowIndex="2">
+        <Label id="instructions" alignment="CENTER" text="Touch Screen to Start" textAlignment="CENTER" />
     </HBox>
 </GridPane>
 
