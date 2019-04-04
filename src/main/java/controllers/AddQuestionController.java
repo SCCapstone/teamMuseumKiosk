@@ -132,11 +132,11 @@ public class AddQuestionController implements Initializable {
                 csvString.append(i);
                 csvString.append(",");
             }
-            csvString.append(difficulty.getText());
+            csvString.append(difficulty);
 
         }
         else {
-            strings.add(difficulty.getText());
+            strings.add(difficulty);
             for (String i : strings) {
                 csvString.append(i);
                 csvString.append(",");
