@@ -26,6 +26,7 @@
     <Label id="title" fx:id="label" alignment="CENTER" text="Admin Login" textAlignment="CENTER" />
 </HBox>
 
+    <!-- Username/password vbox -->
     <VBox alignment="CENTER" prefWidth="1440.0" GridPane.rowIndex="3">
 
         <!--Username-->
