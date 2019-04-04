@@ -41,7 +41,6 @@ public class AddQuestionController implements Initializable {
     private TextArea question, wrong1, wrong2, wrong3, correct;
     @FXML
     private ComboBox difficultyChoices;
-        //difficultyChoices.getItems().addAll("1","2","3","4");
 
     @FXML
     private Button submitButton;
@@ -61,6 +60,7 @@ public class AddQuestionController implements Initializable {
         ObservableList obList = FXCollections.observableList(list);
         difficultyChoices.getItems().clear();
         difficultyChoices.setItems(obList);
+        difficulty = "1";
     }
 
 
@@ -104,6 +104,9 @@ public class AddQuestionController implements Initializable {
                 writer.write(csvString);
                 writer.newLine();
                 writer.flush();
+
+                Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+                showPopupWindow(stage, "Question Added");
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
@@ -145,7 +148,7 @@ public class AddQuestionController implements Initializable {
 
         }
 
-        csvString.append(difficulty);
+        //csvString.append(difficulty);
 
         return csvString.toString();
 
@@ -213,6 +216,33 @@ public class AddQuestionController implements Initializable {
         question.getScene().getWindow().hide();
     }
 
+    private void showPopupWindow(Stage stage, String text) {
+        try {
+            URL url = new URL(getClass().getResource("/design/popup.fxml").toExternalForm());
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
 
+            // initializing the controller
+            PopupController popupController = loader.getController();
+            loader.setController(popupController);
+
+            Scene scene = new Scene(root, 200, 250);
+            Stage popupStage = new Stage();
+
+            // Giving the popup controller access to the popup stage (to allow the controller to close the stage)
+            popupController.setStage(popupStage);
+            //Set text to correct
+            popupController.setText(text);
+
+            if(stage!=null) {
+                popupStage.initOwner(stage);
+            }
+            popupStage.initModality(Modality.WINDOW_MODAL);
+            popupStage.setScene(scene);
+            popupStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
