@@ -31,6 +31,7 @@ public class EndController implements Initializable, LoadScene {
         this.user = user;
     }
     public void setStage(Stage stage) { this.stage = stage; }
+    public void setTimer() { timerToSplashScene(this.stage,2);}
 
     public void setText() {
         try {
@@ -80,10 +81,7 @@ public class EndController implements Initializable, LoadScene {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        //Automatically goes back to splash screen after 2 minutes
-        timerToSplashScene(stage,2);
-    }
+    public void initialize(URL location, ResourceBundle resources) {}
 
     public void buttonClick(ActionEvent actionEvent) throws IOException {
         Button button = (Button) actionEvent.getSource();

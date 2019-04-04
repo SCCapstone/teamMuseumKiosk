@@ -1,35 +1,30 @@
 package controllers;
 
-import com.sun.jmx.snmp.tasks.Task;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import teamMuseumKiosk.LoadScene;
-import javafx.scene.image.ImageView ;
 import javafx.scene.image.Image ;
-import javafx.scene.image.*;
-import javax.imageio.ImageIO;
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
+import java.util.ResourceBundle;
 
 
-public class SplashController extends Thread implements LoadScene {
+public class SplashController extends Thread implements LoadScene, Initializable {
     @FXML
     private ImageView image = new ImageView();
     private ArrayList<Image> ads = new ArrayList<>();
     private Thread t;
 
-    public void  initialize(){
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
         try {
-            loadAdvertisment();
+            loadAdvertisement();
             slideShow();
         }catch (Exception e){
             e.printStackTrace();
@@ -42,8 +37,8 @@ public class SplashController extends Thread implements LoadScene {
         loadStartScene(stage);
     }
 
-    private void loadAdvertisment() throws IOException{
-       File path = new File("src/main/resources/images/Advertisments/");
+    private void loadAdvertisement() throws IOException{
+       File path = new File("src/main/resources/images/Advertisements/");
        //creates an the total path for the file
        String absPath = path.getAbsolutePath();
         //creates file array for the ads directory and array list for the ads
@@ -52,7 +47,7 @@ public class SplashController extends Thread implements LoadScene {
         if (imgs != null) {
             for (File file : imgs) {
                 if (file.isFile()) {
-                    //changeing the file to an image
+                    //changing the file to an image
                     Image temp = new Image(file.toURI().toURL().toString());
                     ads.add(temp);
                 }
@@ -84,13 +79,12 @@ public class SplashController extends Thread implements LoadScene {
                 //the amount of time the pictrues stay
                 Thread.sleep(1000);
             }catch (InterruptedException e){
-                System.out.println("inturpted");
+                System.out.println("Interrupted");
             }
             i++;
             if (i >= ads.size()) i = 0;
 
         }
     }
-
 }
 

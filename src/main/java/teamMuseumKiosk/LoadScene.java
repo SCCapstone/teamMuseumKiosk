@@ -21,7 +21,7 @@ public interface LoadScene {
         Parent root = loader.load();
 
         StartController controller = loader.getController();
-        controller.setStage(stage);
+        controller.setTimer(stage);
         loader.setController(controller);
 
         Scene scene = new Scene(root, 1440,900);
