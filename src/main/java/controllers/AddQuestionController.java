@@ -1,14 +1,18 @@
 package controllers;
 
 import com.sun.javafx.scene.control.skin.TextAreaSkin;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -25,19 +29,40 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * Created by Jacob Cox on 12/7/2018.
  */
-public class AddQuestionController {
+public class AddQuestionController implements Initializable {
 
     @FXML
-    private TextArea question, wrong1, wrong2, wrong3, correct, difficulty;
+    private TextArea question, wrong1, wrong2, wrong3, correct;
+    @FXML
+    private ComboBox difficultyChoices;
+        //difficultyChoices.getItems().addAll("1","2","3","4");
 
     @FXML
     private Button submitButton;
     private FileChooser fileChooser;
     private File filePath;
+
+    private Button cancelButton;
+    private String difficulty;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        List<String> list = new ArrayList<String>();
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        list.add("4");
+        ObservableList obList = FXCollections.observableList(list);
+        difficultyChoices.getItems().clear();
+        difficultyChoices.setItems(obList);
+    }
+
 
     public void setTabKey() {
         question.addEventFilter(KeyEvent.KEY_PRESSED, new TabKeyEventHandler());
@@ -55,8 +80,7 @@ public class AddQuestionController {
                 || wrong1.getText().equals("")
                 || wrong2.getText().equals("")
                 || wrong3.getText().equals("")
-                || correct.getText().equals("")
-                || difficulty.getText().equals("")) {
+                || correct.getText().equals("")) {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setOpacity(0.75);
@@ -120,7 +144,9 @@ public class AddQuestionController {
             csvString.append("/images/"+filePath.getName());
 
         }
-        //csvString.append("\n");
+
+        csvString.append(difficulty);
+
         return csvString.toString();
 
     }
@@ -176,4 +202,17 @@ public class AddQuestionController {
             }
         }
     }
+
+    public void chooseDifficulty(ActionEvent actionEvent)
+    {
+        difficulty = "1";
+        difficulty = difficultyChoices.getValue().toString();
+    }
+
+    public void exitPage(ActionEvent actionEvent) {
+        question.getScene().getWindow().hide();
+    }
+
+
 }
+
