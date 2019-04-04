@@ -2,14 +2,12 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import teamMuseumKiosk.HighScore;
+import teamMuseumKiosk.LoadScene;
 import teamMuseumKiosk.User;
 
 import java.io.BufferedWriter;
@@ -19,8 +17,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class EndController implements Initializable {
+public class EndController implements Initializable, LoadScene {
     public User user;
+    private Stage stage;
     @FXML
     Label end, score, highscore, high1, high2, high3, high4, high5, high6, high7, high8, high9, high10;
     @FXML
@@ -31,6 +30,8 @@ public class EndController implements Initializable {
     public void setUser(User user) {
         this.user = user;
     }
+    public void setStage(Stage stage) { this.stage = stage; }
+    public void setTimer() { timerToSplashScene(this.stage,2);}
 
     public void setText() {
         try {
@@ -85,16 +86,8 @@ public class EndController implements Initializable {
     public void buttonClick(ActionEvent actionEvent) throws IOException {
         Button button = (Button) actionEvent.getSource();
         Stage currentStage = (Stage) button.getScene().getWindow();
-
-        URL url = new URL(getClass().getResource("/design/startScreen.fxml").toExternalForm());
-        FXMLLoader loader = new FXMLLoader(url);
-        Parent root = loader.load();
-
-        StartController controller = loader.getController();
-        loader.setController(controller);
-
-        Scene scene = new Scene(root, 1440,900);
-        currentStage.setScene(scene);
-        currentStage.show();
+        loadStartScene(currentStage);
     }
+
+
 }

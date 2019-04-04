@@ -16,13 +16,18 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -40,6 +45,9 @@ public class AddQuestionController implements Initializable {
 
     @FXML
     private Button submitButton;
+    private FileChooser fileChooser;
+    private File filePath;
+
     private Button cancelButton;
     private String difficulty;
 
@@ -54,6 +62,7 @@ public class AddQuestionController implements Initializable {
         difficultyChoices.getItems().clear();
         difficultyChoices.setItems(obList);
     }
+
 
     public void setTabKey() {
         question.addEventFilter(KeyEvent.KEY_PRESSED, new TabKeyEventHandler());
@@ -111,21 +120,63 @@ public class AddQuestionController implements Initializable {
     public String buildCSVString() {
         StringBuilder csvString = new StringBuilder();
         ArrayList<String> strings = new ArrayList<String>();
-        csvString.append("\n");
+        //csvString.append("\n");
         strings.add(question.getText());
         strings.add(wrong1.getText());
         strings.add(wrong2.getText());
         strings.add(wrong3.getText());
         strings.add(correct.getText());
 
-        for (String i : strings) {
-            csvString.append(i);
-            csvString.append(",");
+        if (filePath ==null) {
+            for (String i : strings) {
+                csvString.append(i);
+                csvString.append(",");
+            }
+            csvString.append(difficulty.getText());
+
         }
+        else {
+            strings.add(difficulty.getText());
+            for (String i : strings) {
+                csvString.append(i);
+                csvString.append(",");
+            }
+            csvString.append("/images/"+filePath.getName());
+
+        }
+
         csvString.append(difficulty);
+
         return csvString.toString();
 
     }
+    public void addImage(ActionEvent event){
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+        fileChooser = new FileChooser();
+        fileChooser.setTitle("Open image");
+
+        String dir =System.getProperty("user.home");
+        File userdir = new File(dir);
+        if(!userdir.canRead())
+            userdir = new File("C:/");
+
+        fileChooser.setInitialDirectory(userdir);
+        filePath = fileChooser.showOpenDialog(stage);
+
+        try {
+            //TODO put in the images folder
+            File path = new File("src/main/resources/images/"+filePath.getName());
+            //Path path = FileSystems.getDefault().getPath(question.getText()+".jpg");
+            Files.copy(filePath.toPath(),path.toPath());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
+    }
+
 
     private class TabKeyEventHandler implements EventHandler<KeyEvent> {
         @Override
@@ -164,3 +215,4 @@ public class AddQuestionController implements Initializable {
 
 
 }
+

@@ -25,6 +25,7 @@ public class AdminLoginController {
     @FXML
     private Text missingInfoText;
 
+
     public void buttonClick(ActionEvent actionEvent) throws IOException {
         if (username.getText().trim().isEmpty() || password.getText().trim().isEmpty()){
             missingInfoText.setText("Please enter the username and password");
@@ -45,6 +46,22 @@ public class AdminLoginController {
         Parent root = loader.load();
 
         AdminUpdateController controller = loader.getController();
+        loader.setController(controller);
+
+        Scene scene = new Scene(root, 1440,900);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void goBack(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+
+        URL url = new URL(getClass().getResource("/design/startScreen.fxml").toExternalForm());
+
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+
+        StartController controller = loader.getController();
         loader.setController(controller);
 
         Scene scene = new Scene(root, 1440,900);
