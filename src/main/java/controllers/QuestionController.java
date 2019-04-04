@@ -47,6 +47,7 @@ public class QuestionController implements Initializable, LoadScene {
         this.user = user;
     }
     public void setStage(Stage stage) {this.stage = stage; }
+    public void setTimer() { timerToSplashScene(this.stage,6);}
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -57,9 +58,6 @@ public class QuestionController implements Initializable, LoadScene {
             this.strikesNum = 0;
             this.scoreValue = 0;
             this.questionNumber = 1;
-
-            //Automatically goes back to splash screen after 6 minutes
-            timerToSplashScene(stage,6);
 
             //Loads first question
             newQuestion(null);
@@ -207,6 +205,7 @@ public class QuestionController implements Initializable, LoadScene {
         controller.setUser(user);
         controller.setText();
         controller.setStage(stage);
+        controller.setTimer();
         loader.setController(controller);
 
         Scene scene = new Scene(root, 1440,900);

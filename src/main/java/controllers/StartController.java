@@ -4,6 +4,7 @@ import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 import javafx.stage.Modality;
@@ -24,8 +26,9 @@ import java.io.*;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class StartController implements LoadScene {
+public class StartController implements LoadScene, Initializable {
     @FXML
     private TextField name, email;
     
@@ -38,7 +41,11 @@ public class StartController implements LoadScene {
     private URL image = null;
     private Stage stage;
 
-    public void setStage(Stage stage) { this.stage = stage; }
+    public void setTimer(Stage stage){
+        this.stage = stage;
+        //Automatically goes back to splash screen after 2 minutes
+        timerToSplashScene(stage,2);
+    }
 
     public void buttonClick(ActionEvent actionEvent) throws IOException {
         try
@@ -74,30 +81,25 @@ public class StartController implements LoadScene {
             missingInfoText.setText("Please enter a valid email address");
             return;
         }
-      
+
         User newUser = new User(name.getText().toUpperCase().trim(), 0, email.getText().trim());
 
-        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         URL url = new URL(getClass().getResource("/design/question.fxml").toExternalForm());
         FXMLLoader loader = new FXMLLoader(url);
 	    Parent root = loader.load();
 
         QuestionController controller = loader.getController();
 	    controller.setUser(newUser);
-	    controller.setStage(stage);
+	    controller.setStage(this.stage);
+	    controller.setTimer();
 	    loader.setController(controller);
 
         Scene scene = new Scene(root, 1440,900);
-	    stage.setScene(scene);
-	    stage.show();
+	    this.stage.setScene(scene);
+	    this.stage.show();
     }
 
     public void goToAdminPage(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        //Stage stage = new Stage();
-        //stage.initModality(Modality.APPLICATION_MODAL);
-        //stage.setOpacity(1);
-	    
         URL url = new URL(getClass().getResource("/design/adminLoginScreen.fxml").toExternalForm());
 
         FXMLLoader loader = new FXMLLoader(url);
@@ -107,8 +109,8 @@ public class StartController implements LoadScene {
         loader.setController(controller);
 
         Scene scene = new Scene(root, 1440,900);
-        stage.setScene(scene);
-        stage.show();
+        this.stage.setScene(scene);
+        this.stage.show();
 
 //        if(controller.image != null){
 //            image = controller.image;
@@ -116,21 +118,18 @@ public class StartController implements LoadScene {
 //        }
     }
 
-    @FXML
-    public void initialize() {
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         // Make name input be uppercase
-        name.setTextFormatter(new TextFormatter<>((change) -> {
+        this.name.setTextFormatter(new TextFormatter<>((change) -> {
             change.setText(change.getText().toUpperCase());
             return change;
         }));
 
         // Sets advertisement
-        if(image != null){
-            imageView.setImage(new Image(image.toExternalForm()));
+        if(this.image != null){
+            this.imageView.setImage(new Image(image.toExternalForm()));
         }
-
-        //Automatically goes back to splash screen after 2 minutes
-        timerToSplashScene(stage,2);
     }
 
 
