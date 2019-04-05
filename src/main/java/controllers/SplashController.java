@@ -76,8 +76,8 @@ public class SplashController extends Thread implements LoadScene, Initializable
             //image.setManaged(true);
             //image.setVisible(true);
             try {
-                //the amount of time the pictrues stay
-                Thread.sleep(1000);
+                //the amount of time the pictures stay
+                Thread.sleep(3000);
             }catch (InterruptedException e){
                 System.out.println("Interrupted");
             }

@@ -54,6 +54,7 @@ public abstract class AdminController {
         Parent root = loader.load();
 
         StartController controller = loader.getController();
+        controller.setTimer(stage);
         loader.setController(controller);
 
         Scene scene = new Scene(root, 1440,900);
