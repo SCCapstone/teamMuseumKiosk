@@ -46,8 +46,8 @@ public class EndController implements Initializable, LoadScene {
             }
             //set high scores
             highscore.setText("High Scores:");
-            HighScore highscore = new HighScore("month");
-            ArrayList<String> scores = highscore.getHighScores();
+            HighScore highscore = new HighScore();
+            ArrayList<String> scores = highscore.getHighScores().get(2);//2=month 1=week 0=day
             high1.setText(scores.get(0));
             high2.setText(scores.get(1));
             high3.setText(scores.get(2));
