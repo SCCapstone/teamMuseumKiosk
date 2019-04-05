@@ -10,12 +10,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class HighScore {
-    private ArrayList<String> topTen;
-    private int lowestHigh;
+    private ArrayList<String> topTenMonth;
+    private ArrayList<String> topTenWeek;
+    private ArrayList<String> topTenDay;
+    private int lowestHighMonth;
+    private int lowestHighWeek;
+    private int lowestHighDay;
 
-    public HighScore(String time) { //Accepted 'time' values: "month" "week" "day"
-        topTen = new ArrayList<>();
-        lowestHigh = 0;
+    public HighScore() {
+        topTenMonth = new ArrayList<>();
+        topTenWeek = new ArrayList<>();
+        topTenDay = new ArrayList<>();
+        lowestHighMonth = 0;
+        lowestHighWeek = 0;
+        lowestHighDay = 0;
 
         BufferedReader reader  = null;
 
@@ -34,40 +42,63 @@ public class HighScore {
                 String currentDateString = curDate.toString();
                 String[] currentDate = currentDateString.split("-");
                 if (Integer.parseInt(currentDate[0]) == Integer.parseInt((date[0]))) { //same year
-                    if (time == "month") {
-                        if (entryDay+30 < curDay) {
-                            continue;
+                    if (entryDay+30 > curDay) {
+                        if (topTenMonth.size() < 10 || Integer.parseInt(entry[2]) >= lowestHighMonth) {
+                            topTenMonth.add(entry[2] + " " + entry[1].toUpperCase());
+                            Collections.sort(topTenMonth);
+                            Collections.reverse(topTenMonth);
+                            if (topTenMonth.size() > 10) {
+                                lowestHighMonth = Integer.parseInt(topTenMonth.get(9).split(" ")[0]);
+                                topTenMonth.remove(10);
+                            }
                         }
-                    } else if (time == "week") {
-                        if (entryDay+7 < curDay) {
-                            continue;
+                    }
+                    if (entryDay+7 > curDay) {
+                        if (topTenWeek.size() < 10 || Integer.parseInt(entry[2]) >= lowestHighWeek) {
+                            topTenWeek.add(entry[2] + " " + entry[1].toUpperCase());
+                            Collections.sort(topTenWeek);
+                            Collections.reverse(topTenWeek);
+                            if (topTenWeek.size() > 10) {
+                                lowestHighWeek = Integer.parseInt(topTenWeek.get(9).split(" ")[0]);
+                                topTenWeek.remove(10);
+                            }
                         }
-                    } else if (time == "day") {
-                        if (entryDay < curDay) {
-                            continue;
+                    }
+                    if (entryDay+1 > curDay) {
+                        if (topTenDay.size() < 10 || Integer.parseInt(entry[2]) >= lowestHighDay) {
+                            topTenDay.add(entry[2] + " " + entry[1].toUpperCase());
+                            Collections.sort(topTenDay);
+                            Collections.reverse(topTenDay);
+                            if (topTenDay.size() > 10) {
+                                lowestHighDay = Integer.parseInt(topTenDay.get(9).split(" ")[0]);
+                                topTenDay.remove(10);
+                            }
                         }
                     }
                 } else if (Integer.parseInt(currentDate[0]) == Integer.parseInt((1+date[0]))) { //this is for the overlap between first week/month of year
-                    if (time == "month") {
-                        if (entryDay+30 < curDay+365) {
-                            continue;
+                    if (entryDay+30 > curDay+365) {
+                        if (topTenMonth.size() < 10 || Integer.parseInt(entry[2]) >= lowestHighMonth) {
+                            topTenMonth.add(entry[2] + " " + entry[1].toUpperCase());
+                            Collections.sort(topTenMonth);
+                            Collections.reverse(topTenMonth);
+                            if (topTenMonth.size() > 10) {
+                                lowestHighMonth = Integer.parseInt(topTenMonth.get(9).split(" ")[0]);
+                                topTenMonth.remove(10);
+                            }
                         }
-                    } else if (time == "week") {
-                        if (entryDay+7 < curDay+365) {
-                            continue;
+                    }
+                    if (entryDay+7 > curDay+365) {
+                        if (topTenWeek.size() < 10 || Integer.parseInt(entry[2]) >= lowestHighWeek) {
+                            topTenWeek.add(entry[2] + " " + entry[1].toUpperCase());
+                            Collections.sort(topTenWeek);
+                            Collections.reverse(topTenWeek);
+                            if (topTenWeek.size() > 10) {
+                                lowestHighWeek = Integer.parseInt(topTenWeek.get(9).split(" ")[0]);
+                                topTenWeek.remove(10);
+                            }
                         }
                     }
                 }
-                if (topTen.size() < 10 || Integer.parseInt(entry[2]) >= lowestHigh) {
-                    topTen.add(entry[2] + " " + entry[1].toUpperCase());
-                    Collections.sort(topTen);
-                    Collections.reverse(topTen);
-                    if (topTen.size() > 10) {
-                        lowestHigh = Integer.parseInt(topTen.get(9).split(" ")[0]);
-                        topTen.remove(10);
-                    }
-                }
-
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -80,7 +111,11 @@ public class HighScore {
         }
     }
 
-    public ArrayList<String> getHighScores() {
+    public ArrayList<ArrayList<String>> getHighScores() {
+        ArrayList<ArrayList<String>> topTen = new ArrayList<>();
+        topTen.add(topTenDay);
+        topTen.add(topTenWeek);
+        topTen.add(topTenMonth);
         return topTen;
     }
 
