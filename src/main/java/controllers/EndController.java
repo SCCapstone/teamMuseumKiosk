@@ -2,7 +2,10 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -23,7 +26,7 @@ public class EndController implements Initializable, LoadScene {
     @FXML
     Label end, score, highscore, high1, high2, high3, high4, high5, high6, high7, high8, high9, high10;
     @FXML
-    Button button;
+    Button yes,no;
 
     public EndController() {}
 
@@ -37,7 +40,8 @@ public class EndController implements Initializable, LoadScene {
         try {
             if (!user.getName().equals("")) {
                 end.setText("Thank you for playing, " + user.getName() + "!");
-                score.setText(user.getName() + "'s Final Score: " + user.getScore());
+                score.setText(user.getName() + "'s Final Score: " + user.getScore() + "\nPlay again?");
+                //write score to email list
                 writeScore();
             } else {
                 end.setText("Thank you for playing!");
@@ -86,7 +90,24 @@ public class EndController implements Initializable, LoadScene {
     public void buttonClick(ActionEvent actionEvent) throws IOException {
         Button button = (Button) actionEvent.getSource();
         Stage currentStage = (Stage) button.getScene().getWindow();
-        loadStartScene(currentStage);
+        if (button.getText().equals("No"))
+            loadStartScene(currentStage);
+        else {
+            URL url = new URL(getClass().getResource("/design/question.fxml").toExternalForm());
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
+
+            QuestionController controller = loader.getController();
+            controller.setUser(user);
+            controller.setStage(this.stage);
+            controller.setTimer();
+            loader.setController(controller);
+
+            Scene scene = new Scene(root, 1440,900);
+            this.stage.setScene(scene);
+            this.stage.show();
+        }
+
     }
 
 

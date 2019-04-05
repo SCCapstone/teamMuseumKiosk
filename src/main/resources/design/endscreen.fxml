@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" stylesheets="/design/startScreen.css" vgap="40" hgap="40" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EndController">
+<GridPane alignment="center" hgap="40" stylesheets="/design/startScreen.css" vgap="40.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EndController">
         <Label fx:id="end" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="0">
 
             <font>
                 <Font name="Geneva" size="36.0" />
             </font>
         </Label>
-        <Label fx:id="score" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="1">
+        <Label fx:id="score" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="1">
             <font>
                 <Font name="Geneva" size="36.0" />
             </font>
         </Label>
-        <HBox alignment="CENTER" prefHeight="104.0" prefWidth="1440.0" GridPane.rowIndex="2">
-            <Button fx:id="button" alignment="CENTER" onAction="#buttonClick" prefHeight="92.0" prefWidth="569.0" text="Play Again?" textAlignment="CENTER" />
+        <HBox alignment="CENTER" prefHeight="104.0" prefWidth="1440.0" spacing="20.0" GridPane.rowIndex="2">
+            <Button fx:id="yes" alignment="CENTER" onAction="#buttonClick" prefHeight="92.0" prefWidth="300.0" text="Yes" textAlignment="CENTER" />
+            <Button fx:id="no" alignment="CENTER" onAction="#buttonClick" prefHeight="92.0" prefWidth="300.0" text="No" textAlignment="CENTER" />
         </HBox>
 
         <VBox alignment="CENTER" prefHeight="10.0" prefWidth="1440.0" GridPane.rowIndex="3">
@@ -90,6 +92,7 @@
             <RowConstraints />
             <RowConstraints />
             <RowConstraints />
+      <RowConstraints />
          </rowConstraints>
 
 </GridPane>

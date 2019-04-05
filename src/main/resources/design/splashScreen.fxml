@@ -12,7 +12,7 @@
    <ImageView fx:id="image" fitHeight="893.0" fitWidth="1440.0" pickOnBounds="true" preserveRatio="true" />
 
     <!-- Made title a button so entire screen is clickable. If someone knows a better way, feel free to change this.-->
-    <Button id="titleButton" alignment="CENTER" onAction="#buttonClick" prefHeight="17.0" prefWidth="1440.0" text="How Well Do You Know South Carolina?" textAlignment="CENTER" GridPane.rowIndex="0" />
+    <Button id="titleButton" alignment="CENTER" onAction="#buttonClick" prefHeight="17.0" prefWidth="1440.0" textAlignment="CENTER" GridPane.rowIndex="0" />
     <HBox alignment="TOP_CENTER" spacing="10" GridPane.rowIndex="1">
 
     </HBox>

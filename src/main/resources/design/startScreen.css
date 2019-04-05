@@ -29,6 +29,21 @@
     -fx-font-size: 68;
 }
 
+/* End Screen CSS */
+#yes, #no {
+    -fx-font-size: 36.0;
+    -fx-font-family: "Geneva";
+    -fx-background-color: #fcfcfc;
+    -fx-text-fill: #003365;
+}
+#yes:hover, #no:hover {
+    -fx-background-color: #003365;
+    -fx-text-fill: #fcfcfc;
+}
+#yes:pressed, #no:pressed {
+    -fx-background-color: #002d5a;
+}
+
 /* Start Screen CSS */
 #directions {
     -fx-font-size: 24;
