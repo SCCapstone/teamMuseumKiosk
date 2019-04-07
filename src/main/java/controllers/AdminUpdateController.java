@@ -13,9 +13,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
-import java.nio.file.Path;
+import javafx.scene.Node;
 
 public class AdminUpdateController extends AdminController {
 
@@ -24,16 +23,9 @@ public class AdminUpdateController extends AdminController {
     public URL image = null;
     public void initialize() {}
 
-    /**
-     * TODO: implement functionality
-     *
-     * @param actionEvent
-     * @throws IOException
-     */
     public void exportEmails(ActionEvent actionEvent) throws IOException {
 
     }
-
     /**
      * TODO: implement functionality
      *
@@ -68,6 +60,20 @@ public class AdminUpdateController extends AdminController {
         stage.show();
     }
 
+    public void displayQuestions(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        URL url = new URL(getClass().getResource("/design/viewQuestionsScreen.fxml").toExternalForm());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+
+        ViewQuestionsController controller = loader.getController();
+        loader.setController(controller);
+
+        Scene scene = new Scene(root, 1440,900);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     /**
      * TODO: implement functionality
      *
@@ -87,10 +93,8 @@ public class AdminUpdateController extends AdminController {
                 File path = new File("src/main/resources/images/Advertisements/"+select.getName());
                 Files.copy(select.toPath(),path.toPath());
             } catch (MalformedURLException e) {
-
             }
         }
-
     }
 
     public void exitPage() {

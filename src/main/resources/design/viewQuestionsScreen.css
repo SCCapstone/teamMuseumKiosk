@@ -1,0 +1,86 @@
+.root {
+    -fx-padding: 70;
+    /* matching gradient with start screen */
+    -fx-background-color: linear-gradient(to bottom, #003365, #002c57, #00254a, #001f3d, #011830);
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+.label {
+    -fx-font-family: "Helvetica Neue";
+    -fx-font-size: 26;
+    -fx-text-fill: #fcfcfc;
+}
+
+.button {
+    -fx-background-color: #124e8a;
+    -fx-text-fill: #fcfcfc;
+    -fx-font-size: 20;
+}
+
+.button:pressed {
+    -fx-background-color: #0e3e6e;
+}
+
+/* table view styling*/
+
+.table-view {
+    -fx-border-radius: 50px;
+}
+
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color:  #0e3e6e;
+}
+.table-view .column-header .label{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    -fx-font-size: 18;
+}
+
+
+.table-view .cell{
+    -fx-cell-size: 50;
+    -fx-alignment: center-left;
+    -fx-background-color: #124e8a;
+    -fx-border-color: #0e3e6e;
+    -fx-text-fill: #fcfcfc;
+    -fx-alignment: CENTER_LEFT;
+    -fx-text-wrap: true;
+
+}
+
+.table-row-cell:hover{
+    -fx-background-color: #0e3e6e;
+    /*-fx-text-background-color:  #6622CC;*/
+}
+
+/* scroll bar starts here */
+
+/* The increment and decrement button CSS class of scrollbar */
+.table-view .increment-button ,.table-view .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 2em;
+
+}
+
+/* The main scrollbar **track** CSS class  */
+.table-view .scroll-bar:horizontal .track,
+.table-view .scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color:derive( #fcfcfc,80%);
+
+    -fx-background-radius: 2em;
+    -fx-border-radius:2em;
+}
+
+/* The main scrollbar **thumb** CSS class which we drag every time (movable) */
+.table-view .scroll-bar:horizontal .thumb,
+.table-view .scroll-bar:vertical .thumb {
+    -fx-background-color:derive( #fcfcfc,90%);
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+
+}
