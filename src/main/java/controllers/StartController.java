@@ -27,6 +27,7 @@ import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class StartController implements LoadScene, Initializable {
     @FXML
@@ -70,9 +71,17 @@ public class StartController implements LoadScene, Initializable {
         //TODO: verify email is in an appropriate format. May use regex for this.
         String userEmail = email.getText().toLowerCase();
 
+        Pattern emailRegex = Pattern.compile("^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$");
 
+        if(!emailRegex.matcher(userEmail).matches()) {
+            missingInfoText.setText("Please enter a valid email address");
+            return;
+        }
 
-        if(!(userEmail.contains("@") && (userEmail.contains(".com")
+        /*if(!(userEmail.contains("@") && (userEmail.contains(".com")
                 || userEmail.contains(".net") || userEmail.contains(".org")
                 || userEmail.contains(".edu") || userEmail.contains(".co.uk")
                 || userEmail.contains(".de") || userEmail.contains(".cn")
@@ -80,7 +89,7 @@ public class StartController implements LoadScene, Initializable {
                 || userEmail.contains(".mx") || userEmail.contains(".ru")))) {
             missingInfoText.setText("Please enter a valid email address");
             return;
-        }
+        }*/
 
         User newUser = new User(name.getText().toUpperCase().trim(), 0, email.getText().trim());
 
