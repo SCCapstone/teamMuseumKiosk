@@ -1,6 +1,7 @@
 package controllers;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,7 +10,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -125,18 +128,19 @@ public class QuestionController implements Initializable, LoadScene {
             String url = getClass().getResource("/audio/ding.wav").toExternalForm();
             AudioClip correctSound = new AudioClip(url);
             correctSound.play();
-            showPopupWindow(stage, "Correct!");
+            img.setImage(new Image("/images/check.png"));
+            quizButtons.getRowConstraints().get(0).setPrefHeight(255);
+            img.setManaged(true);
+            img.setVisible(true);
+            //showPopupWindow(stage, "Correct!");
 
             scoreValue++;
             score.setText("Score: " + scoreValue);
 
-            //go to next question
-            newQuestion(event);
-
         } else { //if not correct answer, does not increase score but continues to next question
             //alert user that they got it wrong
             //TODO: make correct button font color green, and currently selected button as red
-            showPopupWindow(stage, "Incorrect!");
+           // showPopupWindow(stage, "Incorrect!");
 
             strikesNum++;
             if (strikesNum == 1) {
@@ -147,9 +151,18 @@ public class QuestionController implements Initializable, LoadScene {
             }
             score.setText("Score: " + scoreValue);
 
-            //go to next question
-            newQuestion(event);
         }
+
+        stage.getScene().addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                try {
+                    stage.getScene().removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
+                    newQuestion(event);
+                }
+                catch(IOException error) {}
+            }
+        });
     }
 
     private ArrayList<Question> loadData(String fileName) throws IOException{
