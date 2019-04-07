@@ -1,6 +1,8 @@
 package teamMuseumKiosk;
 
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -11,6 +13,7 @@ public class Question {
     private List<String> questionAnswers;
     private int Difficulty;
     private Image Img;
+    private Media video;
 
     public Question(String prompt, List<String> questionAnswers,String difficulty) {
         setPrompt(prompt);
@@ -19,18 +22,30 @@ public class Question {
         setCorrect(temp);
         setDifficulty(Integer.parseInt(difficulty));
     }
-    public Question(String prompt, List<String> questionAnswers,String difficulty, String img) {
+    public Question(String prompt, List<String> questionAnswers,String difficulty, String file) {
         setPrompt(prompt);
         setQuestionAnswers(questionAnswers);
         String temp = questionAnswers.get(3);
         setCorrect(temp);
         setDifficulty(Integer.parseInt(difficulty));
-        setImg(img);
+        if(file.contains("mp4") || file.contains("wav")) {
+            setVideo(file);
+        }
+        else {
+            setImg(file);
+        }
     }
 
     public  Image getImg(){return Img;}
 
     public void  setImg(String img) { Img = new Image(img); }
+
+    public Media getVideo() {return video;}
+
+    public void setVideo(String file) {
+        String url = getClass().getResource(file).toExternalForm();
+        video = new Media(url);
+    }
 
     public  int getDifficulty() {return Difficulty;}
 

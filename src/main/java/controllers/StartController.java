@@ -13,6 +13,7 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.MediaView;
 import javafx.scene.text.Text;
 
 import javafx.stage.Modality;

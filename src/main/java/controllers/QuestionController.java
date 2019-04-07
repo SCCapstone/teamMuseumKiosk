@@ -14,6 +14,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import teamMuseumKiosk.LoadScene;
@@ -43,6 +46,8 @@ public class QuestionController implements Initializable, LoadScene {
     private ImageView img;
     @FXML
     private GridPane quizButtons;
+    @FXML
+    private MediaView mediaView;
 
     public QuestionController() {}
 
@@ -102,6 +107,12 @@ public class QuestionController implements Initializable, LoadScene {
             img.setVisible(false);
             img.setManaged(false);
         }
+
+        if(currentQuestion.getVideo() != null) {
+            MediaPlayer player = new MediaPlayer(currentQuestion.getVideo());
+            mediaView.setMediaPlayer(player);
+            player.play();
+        }
     }
 
     public void setButtons(Question question, Button button1, Button button2, Button button3, Button button4) {
@@ -113,6 +124,10 @@ public class QuestionController implements Initializable, LoadScene {
     }
 
     public void buttonClick(ActionEvent event) throws IOException {
+        if(mediaView.getMediaPlayer() != null) {
+            mediaView.getMediaPlayer().dispose();
+        }
+
         //get text of button
         Button button = (Button) event.getSource();
         String text = button.getText();
@@ -141,6 +156,10 @@ public class QuestionController implements Initializable, LoadScene {
             //alert user that they got it wrong
             //TODO: make correct button font color green, and currently selected button as red
            // showPopupWindow(stage, "Incorrect!");
+            img.setImage(new Image("/images/red_x.png"));
+            quizButtons.getRowConstraints().get(0).setPrefHeight(255);
+            img.setManaged(true);
+            img.setVisible(true);
 
             strikesNum++;
             if (strikesNum == 1) {
