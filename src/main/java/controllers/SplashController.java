@@ -1,5 +1,6 @@
 package controllers;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,8 +9,10 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import teamMuseumKiosk.LoadScene;
 import javafx.scene.image.Image ;
-import java.io.File;
-import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -38,13 +41,21 @@ public class SplashController extends Thread implements LoadScene, Initializable
     }
 
     private void loadAdvertisement() throws IOException{
-       File path = new File("src/main/resources/images/Advertisements/");
-       //creates an the total path for the file
-       String absPath = path.getAbsolutePath();
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream input = classLoader.getResourceAsStream("images/Advertisements/NationalParksAdventure.jpg");
+        BufferedImage bufImage = ImageIO.read(input);
+        int x = bufImage.getMinX(),y = bufImage.getMinY(),width=bufImage.getWidth(),height = bufImage.getHeight();
+        BufferedImage tempBuf = bufImage.getSubimage(x,y,width,height);
+        Image image = SwingFXUtils.toFXImage(tempBuf,null);
+        ads.add(image);
+
+        /*File path = new File("src/main/resources/images/Advertisements/");
+        //creates an the total path for the file
+        String absPath = path.getAbsolutePath();
         //creates file array for the ads directory and array list for the ads
         File[] imgs = new File(absPath).listFiles();
         //goes through each file puts it in the list
-        if (imgs != null) {
+        if (imgs!= null) {
             for (File file : imgs) {
                 if (file.isFile()) {
                     //changing the file to an image
@@ -52,7 +63,7 @@ public class SplashController extends Thread implements LoadScene, Initializable
                     ads.add(temp);
                 }
             }
-        }
+        }*/
 
     }
 
