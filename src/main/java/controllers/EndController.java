@@ -63,7 +63,48 @@ public class EndController implements Initializable, LoadScene {
                     {
                         highscoreText.setText("This Month's High Scores:");
                         ArrayList<String> scores = highscore.getHighScores().get(2);
-                        high1.setText(scores.get(0));
+                        if (scores.size() >= 1)
+                        {
+                            high1.setText(scores.get(0));
+                            if (scores.size() >= 2)
+                            {
+                                high2.setText(scores.get(1));
+                                if (scores.size() >= 3)
+                                {
+                                    high3.setText(scores.get(2));
+                                    if (scores.size() >= 4)
+                                    {
+                                        high4.setText(scores.get(3));
+                                        if (scores.size() >= 5)
+                                        {
+                                            high5.setText(scores.get(4));
+                                            if (scores.size() >= 6)
+                                            {
+                                                high6.setText(scores.get(5));
+                                                if (scores.size() >= 7)
+                                                {
+                                                    high7.setText(scores.get(6));
+                                                    if (scores.size() >= 8)
+                                                    {
+                                                        high8.setText(scores.get(7));
+                                                        if (scores.size() >= 9)
+                                                        {
+                                                            high9.setText(scores.get(8));
+                                                            if (scores.size() >= 10)
+                                                            {
+                                                                high10.setText(scores.get(9));
+
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        /*high1.setText(scores.get(0));
                         high2.setText(scores.get(1));
                         high3.setText(scores.get(2));
                         high4.setText(scores.get(3));
@@ -72,13 +113,54 @@ public class EndController implements Initializable, LoadScene {
                         high7.setText(scores.get(6));
                         high8.setText(scores.get(7));
                         high9.setText(scores.get(8));
-                        high10.setText(scores.get(9));
+                        high10.setText(scores.get(9));*/
                     }
                     else if (i%1500 > 500 && i%1500 < 1000)
                     {
                         highscoreText.setText("This Week's High Scores:");
                         ArrayList<String> scores = highscore.getHighScores().get(1);
-                        high1.setText(scores.get(0));
+                        if (scores.size() >= 1)
+                        {
+                            high1.setText(scores.get(0));
+                            if (scores.size() >= 2)
+                            {
+                                high2.setText(scores.get(1));
+                                if (scores.size() >= 3)
+                                {
+                                    high3.setText(scores.get(2));
+                                    if (scores.size() >= 4)
+                                    {
+                                        high4.setText(scores.get(3));
+                                        if (scores.size() >= 5)
+                                        {
+                                            high5.setText(scores.get(4));
+                                            if (scores.size() >= 6)
+                                            {
+                                                high6.setText(scores.get(5));
+                                                if (scores.size() >= 7)
+                                                {
+                                                    high7.setText(scores.get(6));
+                                                    if (scores.size() >= 8)
+                                                    {
+                                                        high8.setText(scores.get(7));
+                                                        if (scores.size() >= 9)
+                                                        {
+                                                            high9.setText(scores.get(8));
+                                                            if (scores.size() >= 10)
+                                                            {
+                                                                high10.setText(scores.get(9));
+
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        /*high1.setText(scores.get(0));
                         high2.setText(scores.get(1));
                         high3.setText(scores.get(2));
                         high4.setText(scores.get(3));
@@ -87,13 +169,54 @@ public class EndController implements Initializable, LoadScene {
                         high7.setText(scores.get(6));
                         high8.setText(scores.get(7));
                         high9.setText(scores.get(8));
-                        high10.setText(scores.get(9));
+                        high10.setText(scores.get(9));*/
                     }
                     else if (i%1500 > 1000 && i%1500 < 1499)
                     {
                         highscoreText.setText("Today's High Scores:");
                         ArrayList<String> scores = highscore.getHighScores().get(0);
-                        high1.setText(scores.get(0));
+                        if (scores.size() >= 1)
+                        {
+                            high1.setText(scores.get(0));
+                            if (scores.size() >= 2)
+                            {
+                                high2.setText(scores.get(1));
+                                if (scores.size() >= 3)
+                                {
+                                    high3.setText(scores.get(2));
+                                    if (scores.size() >= 4)
+                                    {
+                                        high4.setText(scores.get(3));
+                                        if (scores.size() >= 5)
+                                        {
+                                            high5.setText(scores.get(4));
+                                            if (scores.size() >= 6)
+                                            {
+                                                high6.setText(scores.get(5));
+                                                if (scores.size() >= 7)
+                                                {
+                                                    high7.setText(scores.get(6));
+                                                    if (scores.size() >= 8)
+                                                    {
+                                                        high8.setText(scores.get(7));
+                                                        if (scores.size() >= 9)
+                                                        {
+                                                            high9.setText(scores.get(8));
+                                                            if (scores.size() >= 10)
+                                                            {
+                                                                high10.setText(scores.get(9));
+
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        /*high1.setText(scores.get(0));
                         high2.setText(scores.get(1));
                         high3.setText(scores.get(2));
                         high4.setText(scores.get(3));
@@ -102,7 +225,7 @@ public class EndController implements Initializable, LoadScene {
                         high7.setText(scores.get(6));
                         high8.setText(scores.get(7));
                         high9.setText(scores.get(8));
-                        high10.setText(scores.get(9));
+                        high10.setText(scores.get(9));*/
                     }
                     i++;
                 }

@@ -29,7 +29,7 @@ public class Question {
         setCorrect(temp);
         setDifficulty(Integer.parseInt(difficulty));
         if(file.contains("mp4") || file.contains("wav")) {
-            setVideo(file);
+            //setVideo(file);
         }
         else {
             setImg(file);

@@ -156,7 +156,7 @@ public class QuestionController implements Initializable, LoadScene {
             //alert user that they got it wrong
             //TODO: make correct button font color green, and currently selected button as red
            // showPopupWindow(stage, "Incorrect!");
-            img.setImage(new Image("/images/red_x.png"));
+            img.setImage(new Image("/images/Red_X.png"));
             quizButtons.getRowConstraints().get(0).setPrefHeight(255);
             img.setManaged(true);
             img.setVisible(true);
