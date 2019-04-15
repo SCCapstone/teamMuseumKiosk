@@ -65,7 +65,7 @@
 
     <!--Missing info text-->
     <HBox alignment="CENTER">
-        <Text fx:id="missingInfoText" fill="#c31111" strokeType="OUTSIDE" strokeWidth="0.0" />
+        <Text fx:id="missingInfoText" id="missingInfoText" fill="#c31111" strokeType="OUTSIDE" strokeWidth="0.0" />
     </HBox>
 
 </VBox>

@@ -64,3 +64,7 @@
     -fx-border-width: 0 0 1 0; /* top, right, bottom, left*/
     -fx-background-color: transparent;
 }
+
+#missingInfoText {
+    -fx-font-size: 25.0;
+}

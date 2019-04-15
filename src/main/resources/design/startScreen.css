@@ -77,3 +77,7 @@
 #end, #score {
     -fx-font-size: 36.0;
 }
+
+#missingInfoText {
+    -fx-font-size: 25.0;
+}
