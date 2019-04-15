@@ -1,6 +1,8 @@
 package controllers;
 
 import javafx.animation.PauseTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -135,6 +137,19 @@ public class StartController implements LoadScene, Initializable {
             change.setText(change.getText().toUpperCase());
             return change;
         }));
+
+        // Restricting name initials to length 3
+        this.name.textProperty().addListener(new ChangeListener<String>() {
+
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (newValue == null)
+                    return;
+                if (newValue.length() > 3) {
+                    name.setText(newValue.substring(0, 3));
+                }
+            }
+        });
 
         // Sets advertisement
         if(this.image != null){
