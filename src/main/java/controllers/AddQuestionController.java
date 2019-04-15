@@ -226,7 +226,7 @@ public class AddQuestionController implements Initializable {
             PopupController popupController = loader.getController();
             loader.setController(popupController);
 
-            Scene scene = new Scene(root, 200, 250);
+            Scene scene = new Scene(root, 300, 250);
             Stage popupStage = new Stage();
 
             // Giving the popup controller access to the popup stage (to allow the controller to close the stage)

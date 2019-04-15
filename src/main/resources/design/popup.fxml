@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" stylesheets="/design/trivia.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PopupController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="300.0" stylesheets="/design/trivia.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PopupController">
    <bottom>
    </bottom>
    <right>
@@ -16,7 +16,7 @@
    <top>
    </top>
    <center>
-       <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+       <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="300.0" BorderPane.alignment="CENTER">
            <Label alignment="CENTER" textAlignment="CENTER" fx:id="result" />
            <Button fx:id="button" mnemonicParsing="false" onAction="#onButtonClick" text="Next">
             <VBox.margin>
