@@ -89,7 +89,7 @@
         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
             <children>
                 <Label prefHeight="17.0" prefWidth="305.0" text=" Difficulty:                 " />
-                <ComboBox fx:id="difficultyChoices" prefHeight="77.0" prefWidth="399.0"/>
+                <ComboBox fx:id="difficultyChoices" prefHeight="30.0" prefWidth="399.0"/>
             </children>
         </HBox>
         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Add Image" onAction="#addImage" GridPane.columnIndex="1" GridPane.rowIndex="4">

@@ -144,7 +144,7 @@ public class ViewQuestionsController extends AdminController implements Initiali
         controller.setOrigCorrect(correctAnswerTemp);
         controller.setOrigDifficulty(difficultyTemp);
 
-        Scene scene = new Scene(root, 600,485);
+        Scene scene = new Scene(root, 600,600);
         stage.setScene(scene);
         stage.show();
 

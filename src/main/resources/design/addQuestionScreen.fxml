@@ -14,7 +14,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.cell.ComboBoxListCell?>
 <?import javafx.collections.FXCollections?>
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="600.0" stylesheets="/design/trivia.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddQuestionController">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" stylesheets="/design/trivia.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddQuestionController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="800.0" minWidth="10.0" prefWidth="571.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="432.0" minWidth="0.0" prefWidth="229.0" />
@@ -43,14 +43,14 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
          <children>
-            <Label prefHeight="17.0" prefWidth="277.0" text=" Incorrect Answer Choice 1: " />
+            <Label maxHeight="17.0" prefWidth="277.0" text=" Incorrect Answer Choice 1: " />
             <TextArea fx:id="wrong1" prefHeight="50.0" prefWidth="372.0" wrapText="true" />
          </children>
          <GridPane.margin>
             <Insets bottom="10.0" />
          </GridPane.margin>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+      <HBox maxHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
             <Label prefHeight="17.0" prefWidth="303.0" text=" Incorrect Answer Choice 2: " />
             <TextArea fx:id="wrong2" prefHeight="50.0" prefWidth="397.0" wrapText="true" />
@@ -59,7 +59,7 @@
             <Insets bottom="10.0" />
          </GridPane.margin>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+      <HBox maxHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
          <children>
             <Label prefHeight="17.0" prefWidth="326.0" text=" Incorrect Answer Choice 3: " />
             <TextArea fx:id="wrong3" prefHeight="50.0" prefWidth="418.0" wrapText="true" />
@@ -68,7 +68,7 @@
             <Insets bottom="10.0" />
          </GridPane.margin>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+      <HBox maxHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
          <children>
             <Label prefHeight="17.0" prefWidth="261.0" text=" Correct Answer Choice: " />
             <TextArea fx:id="correct" prefHeight="50.0" prefWidth="375.0" wrapText="true">
@@ -85,10 +85,10 @@
            <Button fx:id="submitButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addQuestion" prefHeight="27.0" prefWidth="85.0" text="Submit" />
            <Button id="cancelButton" text="Cancel" textAlignment="CENTER" onAction="#exitPage" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="85.0" />
        </VBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
+      <HBox maxHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
          <children>
             <Label prefHeight="17.0" prefWidth="305.0" text=" Difficulty:                 " />
-            <ComboBox fx:id="difficultyChoices" prefHeight="77.0" prefWidth="399.0" value="1" onAction="#chooseDifficulty"/>
+            <ComboBox fx:id="difficultyChoices" prefHeight="30.0" prefWidth="399.0" value="1" onAction="#chooseDifficulty"/>
          </children>
       </HBox>
       <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addImage" text="Add Image" GridPane.columnIndex="1" GridPane.rowIndex="4">

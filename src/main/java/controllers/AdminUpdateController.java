@@ -55,7 +55,7 @@ public class AdminUpdateController extends AdminController {
         controller.setTabKey();
         loader.setController(controller);
 
-        Scene scene = new Scene(root, 600,485);
+        Scene scene = new Scene(root, 600,600);
         stage.setScene(scene);
         stage.show();
     }
