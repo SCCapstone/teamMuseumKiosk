@@ -20,7 +20,7 @@
 <GridPane alignment="CENTER" stylesheets="/design/question.css" GridPane.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.QuestionController">
    <children>
        <!--Prompt-->
-       <Label fx:id="prompt" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="1440.0" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="0">
+       <Label fx:id="prompt" alignment="CENTER" contentDisplay="CENTER" prefHeight="90.0" prefWidth="1440.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="0">
          <GridPane.margin>
             <Insets top="20.0" />
          </GridPane.margin>
@@ -91,18 +91,30 @@
                   <font>
                       <Font size="14.0" />
                   </font>
+               <padding>
+                  <Insets top="150.0" />
+               </padding>
               </Label>
               <Label fx:id="score" alignment="CENTER" text="Score: 0" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER">
                   <font>
                       <Font size="14.0" />
                   </font>
+               <GridPane.margin>
+                  <Insets top="150.0" />
+               </GridPane.margin>
               </Label>
               <Label fx:id="strikes" alignment="CENTER" text="Strikes: " textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                   <font>
                       <Font size="14.0" />
                   </font>
+               <GridPane.margin>
+                  <Insets top="150.0" />
+               </GridPane.margin>
               </Label>
-              <Button fx:id="quit" alignment="CENTER" mnemonicParsing="false" onAction="#buttonClick" prefHeight="27.0" prefWidth="80.0" text="Quit" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
+              <Button fx:id="quit" alignment="CENTER" mnemonicParsing="false" onAction="#buttonClick" prefHeight="27.0" prefWidth="80.0" text="Quit" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+               <GridPane.margin>
+                  <Insets top="150.0" />
+               </GridPane.margin></Button>
       </children>
          <GridPane.margin>
             <Insets bottom="150.0" />
@@ -114,7 +126,7 @@
 </columnConstraints>
 <rowConstraints>
   <RowConstraints />
-  <RowConstraints />
-  <RowConstraints />
+  <RowConstraints maxHeight="497.0" minHeight="417.0" prefHeight="429.0" />
+  <RowConstraints maxHeight="131.0" minHeight="51.0" prefHeight="119.0" />
 </rowConstraints>
 </GridPane>

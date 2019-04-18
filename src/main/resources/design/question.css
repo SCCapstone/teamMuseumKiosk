@@ -17,7 +17,7 @@
 .label {
     -fx-text-fill: #fcfcfc;
     -fx-font-family: "Helvetica Neue";
-    -fx-font-size: 20;
+    -fx-font-size: 15;
 }
 #title {
     -fx-text-alignment: center;

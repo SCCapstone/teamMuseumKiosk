@@ -37,7 +37,7 @@ public class QuestionController implements Initializable, LoadScene {
     private Stage stage;
     private ArrayList<Question> questions;
     private Question currentQuestion;
-    private int scoreValue, num, questionNumber, strikesNum;
+    private int scoreValue, num, questionNumber, strikesNum, maxStrikes;
     @FXML
     private Label prompt, score, questionNum, strikes;
     @FXML
@@ -67,15 +67,25 @@ public class QuestionController implements Initializable, LoadScene {
             this.scoreValue = 0;
             this.questionNumber = 1;
 
+            //Checks for max strikes
+            List<String> settingsList = Files.lines(Paths.get("settings.txt")).collect(Collectors.toList());
+            for(String line: settingsList){
+                if(line.equals("strikeNum: 2"))
+                    maxStrikes = 2;
+                else if(line.equals("strikeNum: 3"))
+                    maxStrikes = 3;
+            }
+
             //Loads first question
             newQuestion(null);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     private void newQuestion(ActionEvent event) throws IOException {
-        if (num > 0 && strikesNum < 3) {
+        if (num > 0 && strikesNum < maxStrikes) {
             currentQuestion = retrieveNextQuestion();
             displayQuestion(currentQuestion);
             setPicture(currentQuestion);

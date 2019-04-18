@@ -13,7 +13,12 @@ import javafx.stage.Stage;
 
 import javafx.beans.value.ChangeListener;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AdminEditController extends AdminController {
 
@@ -36,6 +41,8 @@ public class AdminEditController extends AdminController {
     @FXML
     private CheckBox rotateHighScoresChk;
 
+    String settings = "settings.txt";
+
     public void initialize() {
 
         /**
@@ -55,12 +62,15 @@ public class AdminEditController extends AdminController {
             }
         });
 
-        /**
-         * Setting up the number of strikes options to show last choice by admin
-         * TODO: Save current num of strikes choice, probably to file.
-         * Setting num of strikes to 3 by default for now.
-         */
-        numOfStrikes3Btn.setSelected(true);
+        try {
+            List<String> settingsList = Files.lines(Paths.get(settings)).collect(Collectors.toList());
+            for(String line: settingsList){
+                if(line.equals("strikeNum: 2"))
+                    numOfStrikes2Btn.setSelected(true);
+                else
+                    numOfStrikes3Btn.setSelected(true);
+            }
+        } catch (IOException e) {}
 
         /**
          * Setting up the high scores displayed options to show last choice by admin
@@ -73,6 +83,32 @@ public class AdminEditController extends AdminController {
     /**
      * If 'rotate through all of them' checkbox is selected, disable the radiobuttons.
      */
+
+    public void strikeNumButtonClick(ActionEvent actionEvent) throws IOException {
+        try {
+            List<String> settingsList = Files.lines(Paths.get(settings)).collect(Collectors.toList());
+            String strikeNum = null;
+            for(String line : settingsList) {
+                if(line.contains("strikeNum"))
+                    strikeNum = line;
+            }
+
+            if(numOfStrikes3Btn.isSelected() == true){
+                strikeNum = "strikeNum: 3";
+            }
+            else if(numOfStrikes2Btn.isSelected() == true){
+                strikeNum = "strikeNum: 2";
+            }
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(settings, false));
+            writer.write(strikeNum);
+            writer.close();
+
+        } catch (IOException e){
+            System.out.println("Cannot locate settings file");
+        }
+    }
+
     @FXML
     public void rotateHighScores(ActionEvent actionEvent) throws IOException {
 
