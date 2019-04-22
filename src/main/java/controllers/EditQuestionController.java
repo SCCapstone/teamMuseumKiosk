@@ -112,7 +112,6 @@ public class EditQuestionController implements Initializable {
         list.add("1");
         list.add("2");
         list.add("3");
-        list.add("4");
         ObservableList obList = FXCollections.observableList(list);
         difficultyChoices.getItems().clear();
         difficultyChoices.setItems(obList);

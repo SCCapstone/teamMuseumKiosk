@@ -29,6 +29,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -56,7 +57,6 @@ public class AddQuestionController implements Initializable {
         list.add("1");
         list.add("2");
         list.add("3");
-        list.add("4");
         ObservableList obList = FXCollections.observableList(list);
         difficultyChoices.getItems().clear();
         difficultyChoices.setItems(obList);
@@ -124,7 +124,19 @@ public class AddQuestionController implements Initializable {
         StringBuilder csvString = new StringBuilder();
         ArrayList<String> strings = new ArrayList<String>();
         //csvString.append("\n");
-        strings.add(question.getText());
+        String questionText = question.getText();
+        if (questionText.contains(","))
+        {
+            List<String> data = Arrays.asList(questionText.split(","));
+            String formatted = null;
+            for (String x : data)
+            {
+                formatted = formatted + x + "`";
+            }
+            formatted = formatted.substring(4,formatted.length() - 1);
+            questionText = formatted;
+        }
+        strings.add(questionText);
         strings.add(wrong1.getText());
         strings.add(wrong2.getText());
         strings.add(wrong3.getText());

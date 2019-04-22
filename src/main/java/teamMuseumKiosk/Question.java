@@ -5,6 +5,8 @@ import javafx.scene.media.Media;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Question {
@@ -54,6 +56,18 @@ public class Question {
     public String getPrompt() { return prompt; }
 
     public void setPrompt(String prompt) {
+        if (prompt.contains("`"))
+        {
+            String temp = prompt;
+            List<String> data = Arrays.asList(temp.split("`"));
+            String formatted = null;
+            for (String x : data)
+            {
+                formatted = formatted + x + ",";
+            }
+            formatted = formatted.substring(4,formatted.length() - 1);
+            prompt = formatted;
+        }
         this.prompt = prompt;
     }
 
@@ -62,6 +76,18 @@ public class Question {
     }
 
     public void setCorrect(String correct) {
+        if (correct.contains("`"))
+        {
+            String temp = correct;
+            List<String> data = Arrays.asList(temp.split("`"));
+            String formatted = null;
+            for (String x : data)
+            {
+                formatted = formatted + x + ",";
+            }
+            formatted = formatted.substring(4,formatted.length() - 1);
+            correct = formatted;
+        }
         this.correct = correct;
     }
 
@@ -70,7 +96,24 @@ public class Question {
     }
 
     public void setQuestionAnswers(List<String> questionAnswers) {
-        this.questionAnswers = questionAnswers;
+        List<String> formattedAnswers = new ArrayList<>();
+        for (String ans : questionAnswers)
+        {
+            if (ans.contains("`"))
+            {
+                String temp = ans;
+                List<String> data = Arrays.asList(temp.split("`"));
+                String formatted = null;
+                for (String x : data)
+                {
+                    formatted = formatted + x + ",";
+                }
+                formatted = formatted.substring(4,formatted.length() - 1);
+                ans = formatted;
+            }
+            formattedAnswers.add(ans);
+        }
+        this.questionAnswers = formattedAnswers;
     }
 }
 

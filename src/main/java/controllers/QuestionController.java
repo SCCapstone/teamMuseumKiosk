@@ -37,7 +37,8 @@ public class QuestionController implements Initializable, LoadScene {
     private Stage stage;
     private ArrayList<Question> questions;
     private Question currentQuestion;
-    private int scoreValue, num, questionNumber, strikesNum;
+    private boolean correct = false;
+    private int scoreValue, num, questionNumber, strikesNum, maxStrikes;
     @FXML
     private Label prompt, score, questionNum, strikes;
     @FXML
@@ -67,15 +68,25 @@ public class QuestionController implements Initializable, LoadScene {
             this.scoreValue = 0;
             this.questionNumber = 1;
 
+            //Checks for max strikes
+            List<String> settingsList = Files.lines(Paths.get("settings.txt")).collect(Collectors.toList());
+            for(String line: settingsList){
+                if(line.equals("strikeNum: 2"))
+                    maxStrikes = 2;
+                else if(line.equals("strikeNum: 3"))
+                    maxStrikes = 3;
+            }
+
             //Loads first question
             newQuestion(null);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     private void newQuestion(ActionEvent event) throws IOException {
-        if (num > 0 && strikesNum < 3) {
+        if (num > 0 && strikesNum < maxStrikes) {
             currentQuestion = retrieveNextQuestion();
             displayQuestion(currentQuestion);
             setPicture(currentQuestion);
@@ -92,6 +103,8 @@ public class QuestionController implements Initializable, LoadScene {
 
     public void displayQuestion(Question question) {
         if (questions != null) {
+            //TODO remove this println
+            System.out.println(currentQuestion.getDifficulty());
             prompt.setText(question.getPrompt());
         }
     }
@@ -140,6 +153,7 @@ public class QuestionController implements Initializable, LoadScene {
         //if text of button matches correct answer of question, increases user's score and goes to next question
         else if (text.equals(currentQuestion.getCorrect())) {
             //alert user that they got it correct
+            correct = true;
             String url = getClass().getResource("/audio/ding.wav").toExternalForm();
             AudioClip correctSound = new AudioClip(url);
             correctSound.play();
@@ -217,13 +231,131 @@ public class QuestionController implements Initializable, LoadScene {
     //TODO
     private Question retrieveNextQuestion() {
         //sets the question based on the difficulty
-        for (int i = scoreValue; i < 11; i++) {
+        //grabs random question of the difficulty selected
+        Random random = new Random();
+        int diff = 0;
+        if (currentQuestion != null)
+        {
+            diff = currentQuestion.getDifficulty();
+        }
+        ArrayList<Question> possibleQuestions = new ArrayList<>();
+        if (diff == 0)
+        {
+            for (int i=0;i<questions.size();i++)
+            {
+                //get questions with one difficulty
+                if (questions.get(i).getDifficulty() == 1)
+                {
+                    possibleQuestions.add(questions.get(i));
+                }
+            }
+            int newQ = random.nextInt(possibleQuestions.size());
+            return possibleQuestions.get(newQ);
+        }
+        if (correct)
+        {
+            //add a chance to get same difficulty again
+            int num = random.nextInt(3);
+            if (num == 0)
+            {
+                for (int i=0;i<questions.size();i++)
+                {
+                    //get questions with one greater difficulty
+                    if (questions.get(i).getDifficulty() == diff+1)
+                    {
+                        possibleQuestions.add(questions.get(i));
+                    }
+                }
+                if (possibleQuestions.size() == 0)
+                {
+                    for (int i=0;i<questions.size();i++)
+                    {
+                        //get questions with same difficulty
+                        if (questions.get(i).getDifficulty() == diff)
+                        {
+                            possibleQuestions.add(questions.get(i));
+                        }
+                    }
+                    /*for (int i = scoreValue; i < 11; i++) {
+                        for (int j = 0; j < questions.size(); j++){
+                            if (questions.get(j).getDifficulty() <= i)
+                                return questions.get(j);
+                        }
+                    }*/
+                }
+                int newQ = random.nextInt(possibleQuestions.size());
+                return possibleQuestions.get(newQ);
+            }
+            else
+            {
+                //same difficulty
+                for (int i=0;i<questions.size();i++)
+                {
+                    //get questions with one greater difficulty
+                    if (questions.get(i).getDifficulty() == diff)
+                    {
+                        possibleQuestions.add(questions.get(i));
+                    }
+                }
+                if (possibleQuestions.size() == 0)
+                {
+                    for (int i=0;i<questions.size();i++)
+                    {
+                        //get questions with one greater difficulty
+                        if (questions.get(i).getDifficulty() == diff-1)
+                        {
+                            possibleQuestions.add(questions.get(i));
+                        }
+                    }
+                    /*for (int i = scoreValue; i < 11; i++) {
+                        for (int j = 0; j < questions.size(); j++){
+                            if (questions.get(j).getDifficulty() <= i)
+                                return questions.get(j);
+                        }
+                    }*/
+                }
+                int newQ = random.nextInt(possibleQuestions.size());
+                return possibleQuestions.get(newQ);
+            }
+
+        }
+        else
+        {
+            if (diff > 1)
+            {
+                for (int i=0;i<questions.size();i++)
+                {
+                    //get questions with one less difficulty
+                    if (questions.get(i).getDifficulty() == diff-1)
+                    {
+                        possibleQuestions.add(questions.get(i));
+                    }
+                }
+                int newQ = random.nextInt(possibleQuestions.size());
+                return possibleQuestions.get(newQ);
+            }
+            else
+            {
+                for (int i=0;i<questions.size();i++)
+                {
+                    //get questions with one difficulty
+                    if (questions.get(i).getDifficulty() == 1)
+                    {
+                        possibleQuestions.add(questions.get(i));
+                    }
+                }
+                int newQ = random.nextInt(possibleQuestions.size());
+                return possibleQuestions.get(newQ);
+            }
+
+        }
+        /*for (int i = scoreValue; i < 11; i++) {
             for (int j = 0; j < questions.size(); j++){
                 if (questions.get(j).getDifficulty() <= i)
                     return questions.get(j);
             }
-        }
-        return questions.get(0);
+        }*/
+        //return questions.get(0);
     }
 
     private void quizEnd(ActionEvent event) throws IOException {
