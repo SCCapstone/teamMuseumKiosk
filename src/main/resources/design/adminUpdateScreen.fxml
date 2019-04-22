@@ -57,10 +57,10 @@
             </Button>
 
             <Label id="uploadQuestionsLabel" text="Edit or Delete A Question" textAlignment="CENTER" wrapText="true" />
-            <Button contentDisplay="RIGHT" minHeight="64.0" minWidth="294.0" onAction="#displayQuestions" text="Add">
+            <Button contentDisplay="RIGHT" minHeight="64.0" minWidth="294.0" onAction="#displayQuestions" text="Edit/Delete">
                 <graphic>
                     <ImageView fitHeight="30.0" preserveRatio="true">
-                        <Image url="/images/white_plus.png" />
+                        <Image url="/images/white_edit.png" />
                     </ImageView>
                 </graphic>
             </Button>
