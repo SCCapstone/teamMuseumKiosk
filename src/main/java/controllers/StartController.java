@@ -19,6 +19,7 @@ import javafx.scene.media.MediaView;
 import javafx.scene.text.Text;
 
 import javafx.stage.Modality;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import teamMuseumKiosk.LoadScene;
@@ -44,7 +45,6 @@ public class StartController implements LoadScene, Initializable {
 
     private URL image = null;
     private Stage stage;
-
     public void setTimer(Stage stage){
         this.stage = stage;
         //Automatically goes back to splash screen after 2 minutes
@@ -155,7 +155,32 @@ public class StartController implements LoadScene, Initializable {
         if(this.image != null){
             this.imageView.setImage(new Image(image.toExternalForm()));
         }
+        showKeyboard(this.stage);
     }
 
+    public void showKeyboard(Stage stage) {
+        try {
+            URL url = new URL(getClass().getResource("/design/keyboard.fxml").toExternalForm());
+            FXMLLoader loader = new FXMLLoader(url);
+            Parent root = loader.load();
 
+            KeyboardController keyboard = loader.getController();
+            loader.setController(keyboard);
+
+            Stage keyboardStage = new Stage();
+            Scene scene = new Scene(root,650,300);
+            keyboard.setStage(keyboardStage);
+
+            if(stage!=null)keyboardStage.initOwner(stage);
+
+            keyboardStage.initModality(Modality.APPLICATION_MODAL);
+            keyboardStage.setScene(scene);
+            keyboardStage.show();
+            //javafx.stage.Popup popup = new Popup();
+            //popup.show(keyboardStage);
+        }
+        catch (IOException e){e.printStackTrace();}
+
+    }
 }
+

@@ -1,43 +1,49 @@
 package controllers;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
-public class KeyboardController {
-    private String[] keyboardArray = new String[]{"0","1","2","3","4","5","6","7","8","9","-","=","back","q","w","e","r","t","y","u",
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-            "i","o","p","[","]","back slash","a","s","d","f","g","h","j","k","l",";","'","enter","z","x","c","v","b","n","m",
+public class KeyboardController implements Initializable {
+   /* @FXML
+    private Button b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, b20, b21, b22, b23, b24,
+    b25, b26, b27, b28, b29, b30, b31, b32, b33, b34, b35, b36, b37, b38, b39, b40, b41, b42, b43, b44, b45, b46, b47, b48;*/
 
-            ",",".","/","shift"};
-    //"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
-    //"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",};
+    private Stage stage;
+    public String letter;
 
-    public void setButtons(){
-
-
-
+    @Override
+    public void initialize(URL url, ResourceBundle rb){
 
 
     }
+    public String getLetter(){return letter;}
+
     public void buttonClick(ActionEvent event){
-        String temp = null;
         Button button = (Button) event.getSource();
-        String butText = button.getName();
-        String[] parse = butText.split("");
-        for (int i = 0; i <parse.length;i++){
-            if(parse[i] != "b") {
-                temp += parse[i];
-            }
-        }
-        int buttonResult = Integer.parseInt(temp);
-        String result = keyboardArray[buttonResult];
-        if (result == "back" || result == "enter" || result =="backslash" || result == "shift"){
-            if (result == "back") System.out.println(result);
-            if (result == "enter") System.out.println(result);
-            if (result =="backslash") System.out.println(result);
-            if (result == "shift") System.out.println(result);
-
-        }
-        else System.out.println(result);
+        letter = button.getText();
+        System.out.println(letter);
     }
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    /**
+     * Closes the stage of this view
+     */
+    private void closeStage() {
+        try {
+            if (stage != null)
+                stage.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
