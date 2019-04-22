@@ -21,6 +21,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import teamMuseumKiosk.LoadScene;
 import teamMuseumKiosk.User;
@@ -33,7 +34,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
-public class StartController implements LoadScene, Initializable {
+public class StartController extends Thread implements LoadScene, Initializable {
     @FXML
     private TextField name, email;
     
@@ -45,6 +46,11 @@ public class StartController implements LoadScene, Initializable {
 
     private URL image = null;
     private Stage stage;
+    private Thread t;
+    private String lettersTyped;
+    private TextField textField;
+    private Stage keyboardStage = new Stage();
+    private KeyboardController keyboard;
     public void setTimer(Stage stage){
         this.stage = stage;
         //Automatically goes back to splash screen after 2 minutes
@@ -93,7 +99,6 @@ public class StartController implements LoadScene, Initializable {
             missingInfoText.setText("Please enter a valid email address");
             return;
         }*/
-
         User newUser = new User(name.getText().toUpperCase().trim(), 0, email.getText().trim());
 
         URL url = new URL(getClass().getResource("/design/question.fxml").toExternalForm());
@@ -130,6 +135,19 @@ public class StartController implements LoadScene, Initializable {
 //        }
     }
 
+    public void nameClick(){
+        this.textField = name;
+        if(keyboardStage.isShowing()){keyboardStage.close();}
+        showKeyboard();
+        getTypedLetters();
+    }
+    public void emailClick(){
+        this.textField = email;
+        if(keyboardStage.isShowing()){keyboardStage.close();}
+        showKeyboard();
+        getTypedLetters();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Make name input be uppercase
@@ -151,36 +169,62 @@ public class StartController implements LoadScene, Initializable {
             }
         });
 
-        // Sets advertisement
-        if(this.image != null){
-            this.imageView.setImage(new Image(image.toExternalForm()));
-        }
-        showKeyboard(this.stage);
-    }
-
-    public void showKeyboard(Stage stage) {
         try {
             URL url = new URL(getClass().getResource("/design/keyboard.fxml").toExternalForm());
             FXMLLoader loader = new FXMLLoader(url);
             Parent root = loader.load();
 
-            KeyboardController keyboard = loader.getController();
+            keyboard = loader.getController();
             loader.setController(keyboard);
-
-            Stage keyboardStage = new Stage();
             Scene scene = new Scene(root,650,300);
             keyboard.setStage(keyboardStage);
 
             if(stage!=null)keyboardStage.initOwner(stage);
 
-            keyboardStage.initModality(Modality.APPLICATION_MODAL);
+            keyboardStage.initModality(Modality.NONE);
+            keyboardStage.setResizable(false);
             keyboardStage.setScene(scene);
-            keyboardStage.show();
-            //javafx.stage.Popup popup = new Popup();
-            //popup.show(keyboardStage);
+        }catch (IOException e){}
+        this.name.setOnMouseClicked(event -> nameClick());
+        this.email.setOnMouseClicked(event -> emailClick());
+        // Sets advertisement
+/*
+        if(this.image != null){
+            this.imageView.setImage(new Image(image.toExternalForm()));
         }
-        catch (IOException e){e.printStackTrace();}
+*/
 
     }
+
+    public void showKeyboard() {
+            keyboardStage.show();
+            keyboard.start();
+
+    }
+
+    private void getTypedLetters(){
+        //creates a new thread so the program isnt halted when waiting
+        t = new Thread(this,"t2");
+        t.setDaemon(true);
+        t.start();
+
+    }
+    public void run() {
+
+        Thread thread = Thread.currentThread();
+        while (t == thread) {
+
+            try {
+                Thread.sleep(20);
+            } catch (InterruptedException e) {}
+
+            if (keyboard.getType() == true) {
+                lettersTyped = keyboard.getTyped();
+                textField.setText(lettersTyped);
+
+            }
+        }
+    }
+
 }
 

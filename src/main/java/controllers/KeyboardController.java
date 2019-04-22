@@ -7,27 +7,35 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class KeyboardController implements Initializable {
-   /* @FXML
-    private Button b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, b20, b21, b22, b23, b24,
-    b25, b26, b27, b28, b29, b30, b31, b32, b33, b34, b35, b36, b37, b38, b39, b40, b41, b42, b43, b44, b45, b46, b47, b48;*/
+public class KeyboardController extends Thread {
 
     private Stage stage;
-    public String letter;
+    private Thread t;
+    public String letter, Typed,result;
+    public boolean click, type = false;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb){
-
+    public void start(){
+        getText();
+        if (result == "enter"){stopThread();}
 
     }
-    public String getLetter(){return letter;}
+    public String getLetter(){
+        click = false;
+        return letter;
+    }
+    public String getTyped(){type = false;return Typed;}
+
+    public boolean getType(){return type;}
+
+    public boolean getClick(){return click;}
 
     public void buttonClick(ActionEvent event){
         Button button = (Button) event.getSource();
         letter = button.getText();
-        System.out.println(letter);
+        click = true;
     }
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -42,6 +50,38 @@ public class KeyboardController implements Initializable {
                 stage.close();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    private void getText(){
+        //creates a new thread so the program isnt halted when waiting
+        t = new Thread(this,"t1");
+        t.setDaemon(true);
+        t.start();
+
+    }
+    public void stopThread(){
+        t = null;
+    }
+    @Override
+    public void run() {
+        Thread thread = Thread.currentThread();
+        ArrayList<String> nameArray = new ArrayList<>();
+        //checks the keyboard
+        while (t == thread){
+            if (this.getClick()){
+                //System.out.println(letter);
+                result = this.getLetter();
+                nameArray.add(result);
+                Typed = String.join("",nameArray);
+                type = true;
+                //System.out.println(Typed);
+            }
+
+            try {
+                Thread.sleep(10);
+            }catch (InterruptedException e){
+                System.out.println(e);
+            }
         }
     }
 

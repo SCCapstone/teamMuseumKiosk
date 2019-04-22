@@ -34,7 +34,7 @@
                 <padding>
                     <Insets right="10.0" />
                 </padding></Label>
-            <TextField id="nameField" fx:id="name" alignment="CENTER" onAction="#buttonClick" prefHeight="62.0" prefWidth="117.0" promptText="ABC" TilePane.alignment="CENTER_RIGHT">
+            <TextField id="nameField" fx:id="name" alignment="CENTER" onAction="#nameClick" onMouseClicked="#nameClick" prefHeight="62.0" prefWidth="117.0" promptText="ABC" TilePane.alignment="CENTER_RIGHT">
                 <font>
                     <Font size="33.0" />
                 </font>
@@ -47,7 +47,7 @@
             <padding>
                 <Insets right="10.0" />
             </padding></Label>
-        <TextField id="emailField" fx:id="email" alignment="CENTER" onAction="#buttonClick" promptText="john.smith@gmail.com" TilePane.alignment="CENTER_RIGHT">
+        <TextField id="emailField" fx:id="email" alignment="CENTER" onMouseClicked="#emailClick" promptText="john.smith@gmail.com" TilePane.alignment="CENTER_RIGHT">
             <font>
                 <Font size="23.0" />
             </font></TextField>
@@ -66,7 +66,7 @@
 
     <!--Missing info text-->
     <HBox alignment="CENTER" GridPane.rowIndex="6">
-        <Text fx:id="missingInfoText" id="missingInfoText" fill="#c31111" strokeType="OUTSIDE" strokeWidth="0.0" />
+        <Text id="missingInfoText" fx:id="missingInfoText" fill="#c31111" strokeType="OUTSIDE" strokeWidth="0.0" />
     </HBox>
 
     <!--Advertisement-->
