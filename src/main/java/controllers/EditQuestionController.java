@@ -24,6 +24,7 @@ import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -236,33 +237,23 @@ public class EditQuestionController implements Initializable {
 
         try {
             File original = new File("TriviaQuestions.csv");
-            // temp file for edits
-            File newFile = new File("NewTriviaQuestions.csv");
 
             reader = new BufferedReader(new FileReader(original));
-            writer = new BufferedWriter(new FileWriter(newFile));
+            String content = "";
+            String oldQuestionString = origQuestion + "," + origAnswer1 + "," + origAnswer2 + "," + origAnswer3 + "," + origCorrect + "," + origDifficulty;
 
-            String line;
-
-            // search for question line
-            while ((line = reader.readLine()) != null) {
-
-                if (line.contains(origQuestion)) {
-                    // skipping writing to new file
-
-                } else {
-                    // rewriting to csv file
-                    writer.write(line);
-                    writer.newLine();
-                    writer.flush();
-                }
+            String line = reader.readLine();
+            while (line != null && !line.equals(oldQuestionString))
+            {
+                content = content + line +System.lineSeparator();
+                line = reader.readLine();
             }
-
             reader.close();
-            writer.close();
 
-            // deleting original questions file and renaming new one
-            newFile.renameTo(original);
+            writer = new BufferedWriter(new FileWriter(original));
+            writer.write(content);
+
+            writer.close();
 
             // notifying user.
             Stage stage = new Stage();
@@ -308,8 +299,68 @@ public class EditQuestionController implements Initializable {
         }
 
         // creating new Question object
-        Question newQuestion = new Question(question.getText(), wrong1.getText(), wrong2.getText(), wrong3.getText(), correct.getText(), difficulty);
-
+        String questionText = question.getText();
+        if (questionText.contains(","))
+        {
+            List<String> data = Arrays.asList(questionText.split(","));
+            String formatted = null;
+            for (String x : data)
+            {
+                formatted = formatted + x + "`";
+            }
+            formatted = formatted.substring(4,formatted.length() - 1);
+            questionText = formatted;
+        }
+        String wrong1Text = wrong1.getText();
+        if (wrong1Text.contains(","))
+        {
+            List<String> data = Arrays.asList(wrong1Text.split(","));
+            String formatted = null;
+            for (String x : data)
+            {
+                formatted = formatted + x + "`";
+            }
+            formatted = formatted.substring(4,formatted.length() - 1);
+            wrong1Text = formatted;
+        }
+        String wrong2Text = wrong2.getText();
+        if (wrong2Text.contains(","))
+        {
+            List<String> data = Arrays.asList(wrong2Text.split(","));
+            String formatted = null;
+            for (String x : data)
+            {
+                formatted = formatted + x + "`";
+            }
+            formatted = formatted.substring(4,formatted.length() - 1);
+            wrong2Text = formatted;
+        }
+        String wrong3Text = wrong3.getText();
+        if (wrong3Text.contains(","))
+        {
+            List<String> data = Arrays.asList(wrong3Text.split(","));
+            String formatted = null;
+            for (String x : data)
+            {
+                formatted = formatted + x + "`";
+            }
+            formatted = formatted.substring(4,formatted.length() - 1);
+            wrong3Text = formatted;
+        }
+        String correctText = correct.getText();
+        if (correctText.contains(","))
+        {
+            List<String> data = Arrays.asList(correctText.split(","));
+            String formatted = null;
+            for (String x : data)
+            {
+                formatted = formatted + x + "`";
+            }
+            formatted = formatted.substring(4,formatted.length() - 1);
+            correctText = formatted;
+        }
+        Question newQuestion = new Question(questionText, wrong1Text, wrong2Text, wrong3Text, correctText, difficulty);
+        String newNewQuestionString = questionText + "," + wrong1Text + "," + wrong2Text + "," + wrong3Text + "," + correctText + "," + difficulty;
         // replace question/answers in datalist with updated version
         dataList.set(questionRow, newQuestion);
 
@@ -317,36 +368,25 @@ public class EditQuestionController implements Initializable {
         try {
             File original = new File("TriviaQuestions.csv");
             // temp file for edits
-            File newFile = new File("NewTriviaQuestions.csv");
 
             reader = new BufferedReader(new FileReader(original));
-            writer = new BufferedWriter(new FileWriter(newFile));
 
-            String line;
+            String oldContent = "";
 
-            // search for question line
-            while ((line = reader.readLine()) != null) {
-
-                if (line.contains(origQuestion)) {
-
-                    // writing new line to csv file
-                    writer.write(newQuestionString);
-                    writer.newLine();
-                    writer.flush();
-
-                } else {
-                    // rewriting to csv file
-                    writer.write(line);
-                    writer.newLine();
-                    writer.flush();
-                }
+            String line = reader.readLine();
+            while (line != null)
+            {
+                oldContent = oldContent + line +System.lineSeparator();
+                line = reader.readLine();
             }
-
+            String oldQuestionString = origQuestion + "," + origAnswer1 + "," + origAnswer2 + "," + origAnswer3 + "," + origCorrect + "," + origDifficulty;
+            String newContent = oldContent.replaceAll(oldQuestionString,newNewQuestionString);
             reader.close();
-            writer.close();
 
-            // deleting original questions file and renaming new one
-            newFile.renameTo(original);
+            writer = new BufferedWriter(new FileWriter(original));
+            writer.write(newContent);
+
+            writer.close();
 
         } catch (Exception e) {}
     }
