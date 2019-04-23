@@ -69,12 +69,19 @@
                   <Insets bottom="230.0" />
                </GridPane.margin>
             </MediaView>
+
+          <Button fx:id="nextQuestion" onAction="#goToNextQuestion" GridPane.rowIndex="11" GridPane.halignment="CENTER" alignment="CENTER" visible="false" prefWidth="200.0"
+                  wrapText="true" text="Next Question">
+              <font>
+                  <Font size="8.0" />
+              </font>
+          </Button>
       </children>
         <columnConstraints>
            <ColumnConstraints />
         </columnConstraints>
        </GridPane>
-   
+
        <!--bottom menu-->
        <GridPane fx:id="bottomMenu" alignment="BOTTOM_CENTER" layoutY="1440.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
            <columnConstraints>

@@ -50,6 +50,9 @@ public class QuestionController implements Initializable, LoadScene {
     @FXML
     private MediaView mediaView;
 
+    @FXML
+    private Button nextQuestion;
+
     public QuestionController() {}
 
     public void setUser(User user) {
@@ -90,6 +93,16 @@ public class QuestionController implements Initializable, LoadScene {
             currentQuestion = retrieveNextQuestion();
             displayQuestion(currentQuestion);
             setPicture(currentQuestion);
+
+            // enable answer buttons
+            button1.setDisable(false);
+            button2.setDisable(false);
+            button3.setDisable(false);
+            button4.setDisable(false);
+
+            // set Next Question button to invisible
+            nextQuestion.setVisible(false);
+
             setButtons(currentQuestion, button1, button2, button3, button4);
             questionNum.setText("Question " + (questionNumber++));
         } else {
@@ -150,7 +163,7 @@ public class QuestionController implements Initializable, LoadScene {
         if(text.equals("Quit")) {
             quizEnd(event);
         }
-        //if text of button matches correct answer of question, increases user's score and goes to next question
+        //if text of button matches correct answer of question, increases user's score and displays check mark
         else if (text.equals(currentQuestion.getCorrect())) {
             //alert user that they got it correct
             correct = true;
@@ -166,7 +179,7 @@ public class QuestionController implements Initializable, LoadScene {
             scoreValue++;
             score.setText("Score: " + scoreValue);
 
-        } else { //if not correct answer, does not increase score but continues to next question
+        } else { //if not correct answer, does not increase score, displays red X
             //alert user that they got it wrong
             //TODO: make correct button font color green, and currently selected button as red
            // showPopupWindow(stage, "Incorrect!");
@@ -186,16 +199,29 @@ public class QuestionController implements Initializable, LoadScene {
 
         }
 
-        stage.getScene().addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent e) {
-                try {
-                    stage.getScene().removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
-                    newQuestion(event);
-                }
-                catch(IOException error) {}
-            }
-        });
+        // disables answer buttons so user cannot change answer before going to the next question
+        button1.setDisable(true);
+        button2.setDisable(true);
+        button3.setDisable(true);
+        button4.setDisable(true);
+
+        // display Next Question button
+        nextQuestion.setVisible(true);
+
+//        stage.getScene().addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent e) {
+//                try {
+//                    stage.getScene().removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
+//                    newQuestion(event);
+//                }
+//                catch(IOException error) {}
+//            }
+//        });
+    }
+
+    public void goToNextQuestion(ActionEvent event) throws IOException {
+        newQuestion(event);
     }
 
     private ArrayList<Question> loadData(String fileName) throws IOException{
