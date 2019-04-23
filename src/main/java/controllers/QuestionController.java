@@ -50,6 +50,9 @@ public class QuestionController implements Initializable, LoadScene {
     @FXML
     private MediaView mediaView;
 
+    @FXML
+    private Button nextQuestion;
+
     public QuestionController() {}
 
     public void setUser(User user) {
@@ -96,6 +99,9 @@ public class QuestionController implements Initializable, LoadScene {
             button2.setDisable(false);
             button3.setDisable(false);
             button4.setDisable(false);
+
+            // set Next Question button to invisible
+            nextQuestion.setVisible(false);
 
             setButtons(currentQuestion, button1, button2, button3, button4);
             questionNum.setText("Question " + (questionNumber++));
@@ -199,16 +205,23 @@ public class QuestionController implements Initializable, LoadScene {
         button3.setDisable(true);
         button4.setDisable(true);
 
-        stage.getScene().addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent e) {
-                try {
-                    stage.getScene().removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
-                    newQuestion(event);
-                }
-                catch(IOException error) {}
-            }
-        });
+        // display Next Question button
+        nextQuestion.setVisible(true);
+
+//        stage.getScene().addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent e) {
+//                try {
+//                    stage.getScene().removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
+//                    newQuestion(event);
+//                }
+//                catch(IOException error) {}
+//            }
+//        });
+    }
+
+    public void goToNextQuestion(ActionEvent event) throws IOException {
+        newQuestion(event);
     }
 
     private ArrayList<Question> loadData(String fileName) throws IOException{
