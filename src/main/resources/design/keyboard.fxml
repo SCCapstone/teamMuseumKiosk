@@ -15,7 +15,7 @@
       <Button fx:id="b7" layoutX="316.75" layoutY="161.0" mnemonicParsing="false" onAction="#buttonClick" text="7" />
       <Button fx:id="b8" layoutX="359.75" layoutY="161.0" mnemonicParsing="false" onAction="#buttonClick" text="8" />
       <Button fx:id="b9" layoutX="402.75" layoutY="161.0" mnemonicParsing="false" onAction="#buttonClick" text="9" />
-      <Button fx:id="b12" layoutX="531.75" layoutY="161.0" mnemonicParsing="false" onAction="#buttonClick" text="back" />
+      <Button fx:id="b12" layoutX="531.75" layoutY="161.0" mnemonicParsing="false" onAction="#buttonClick" text="Back" />
       <Button fx:id="b13" layoutX="30.25" layoutY="200.0" mnemonicParsing="false" onAction="#buttonClick" text="Q" />
       <Button fx:id="b14" layoutX="78.75" layoutY="200.0" mnemonicParsing="false" onAction="#buttonClick" text="W" />
       <Button fx:id="b15" layoutX="121.75" layoutY="200.0" mnemonicParsing="false" onAction="#buttonClick" text="E" />
@@ -53,6 +53,6 @@
       <Button fx:id="b23" layoutX="465.75" layoutY="200.0" mnemonicParsing="false" onAction="#buttonClick" text="[" />
       <Button fx:id="b24" layoutX="508.75" layoutY="200.0" mnemonicParsing="false" onAction="#buttonClick" text="]" />
       <Button fx:id="b25" layoutX="551.75" layoutY="200.0" mnemonicParsing="false" onAction="#buttonClick" text="\\" />
-      <Button fx:id="b37" layoutX="518.75" layoutY="243.0" mnemonicParsing="false" onAction="#buttonClick" text="enter" />
+      <Button fx:id="b37" layoutX="518.75" layoutY="243.0" mnemonicParsing="false" onAction="#buttonClick" text="Enter" />
    </children>
 </AnchorPane>

@@ -1,6 +1,7 @@
 package controllers;
 
 import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -17,7 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.MediaView;
 import javafx.scene.text.Text;
-
+import javafx.geometry.Rectangle2D;
 import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -25,7 +26,7 @@ import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import teamMuseumKiosk.LoadScene;
 import teamMuseumKiosk.User;
-
+import javafx.stage.Screen;
 import javax.swing.*;
 import java.io.*;
 
@@ -47,10 +48,12 @@ public class StartController extends Thread implements LoadScene, Initializable 
     private URL image = null;
     private Stage stage;
     private Thread t;
-    private String lettersTyped;
+    //private String lettersTyped;
     private TextField textField;
     private Stage keyboardStage = new Stage();
     private KeyboardController keyboard;
+    private String temp;
+    private final Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
     public void setTimer(Stage stage){
         this.stage = stage;
         //Automatically goes back to splash screen after 2 minutes
@@ -176,7 +179,7 @@ public class StartController extends Thread implements LoadScene, Initializable 
 
             keyboard = loader.getController();
             loader.setController(keyboard);
-            Scene scene = new Scene(root,650,300);
+            Scene scene = new Scene(root,600,400);
             keyboard.setStage(keyboardStage);
 
             if(stage!=null)keyboardStage.initOwner(stage);
@@ -184,15 +187,15 @@ public class StartController extends Thread implements LoadScene, Initializable 
             keyboardStage.initModality(Modality.NONE);
             keyboardStage.setResizable(false);
             keyboardStage.setScene(scene);
+            //fulsize screen for every screen
+            keyboardStage.setX(((primaryScreenBounds.getWidth()-primaryScreenBounds.getMaxX())/2));
+            keyboardStage.setY((primaryScreenBounds.getHeight()-primaryScreenBounds.getMaxY())/2);
+
+            /*keyboardStage.setX((primaryScreenBounds.getWidth()-primaryScreenBounds.getMaxX())/2);
+            keyboardStage.setY((primaryScreenBounds.getHeight()-primaryScreenBounds.getMaxY())/2);*/
         }catch (IOException e){}
         this.name.setOnMouseClicked(event -> nameClick());
         this.email.setOnMouseClicked(event -> emailClick());
-        // Sets advertisement
-/*
-        if(this.image != null){
-            this.imageView.setImage(new Image(image.toExternalForm()));
-        }
-*/
 
     }
 
@@ -201,6 +204,15 @@ public class StartController extends Thread implements LoadScene, Initializable 
             keyboard.start();
 
     }
+    public void closeKeyboard(){
+        //making sure when the keyboard closes the letters dont go away
+        if (!keyboard.getNameArray().isEmpty()){
+            textField.setText(String.join("",keyboard.getNameArray()));
+        }
+        //closing the keyboard
+        if(keyboardStage.isShowing()){keyboardStage.close();}
+        keyboard.clearNameArray();
+    }
 
     private void getTypedLetters(){
         //creates a new thread so the program isnt halted when waiting
@@ -208,23 +220,51 @@ public class StartController extends Thread implements LoadScene, Initializable 
         t.setDaemon(true);
         t.start();
 
+    }public void stopThread(){
+        t = null;
     }
-    public void run() {
 
+    @Override
+    public void run() {
+        temp = "";
         Thread thread = Thread.currentThread();
         while (t == thread) {
-
+            //must have so we can acctually get info
             try {
                 Thread.sleep(20);
             } catch (InterruptedException e) {}
-
+            //checking to see if there are any new keys pressed to add
             if (keyboard.getType() == true) {
-                lettersTyped = keyboard.getTyped();
-                textField.setText(lettersTyped);
+                temp = keyboard.getTyped();
+                //checking to see if enter has been pressed
+                if(temp.contains("Enter")){
+                    //this is magic. thread cant close the keyboard so the main process has to close it
+                    Platform.runLater(this::closeKeyboard);
+                    //setting the enter to nothing
+                    keyboard.setTyped("");
+                    temp ="";
+                    //deleting the enter that came through from keyboard controller
+                    keyboard.deleteLastNameArray(keyboard.getNameArray().size()-1);
+                    //stopping both threads
+                    keyboard.stopThread();
+                    stopThread();
+
+                }
+                try {
+                    Thread.sleep(20);
+                } catch (InterruptedException e) {}
+                //lettersTyped = temp;
+                //adding to the text fieldddddddddddd
+                if(!keyboard.getNameArray().isEmpty()){
+                    textField.setText(String.join("",keyboard.getNameArray()));
+                }
 
             }
         }
+
+
     }
+
 
 }
 
