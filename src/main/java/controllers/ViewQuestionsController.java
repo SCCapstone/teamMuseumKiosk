@@ -134,6 +134,7 @@ public class ViewQuestionsController extends AdminController implements Initiali
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
         EditQuestionController controller = loader.getController();
+        controller.setTabKey();
         loader.setController(controller);
 
         // passing to edit question controller

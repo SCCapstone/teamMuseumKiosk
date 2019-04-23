@@ -137,10 +137,58 @@ public class AddQuestionController implements Initializable {
             questionText = formatted;
         }
         strings.add(questionText);
-        strings.add(wrong1.getText());
-        strings.add(wrong2.getText());
-        strings.add(wrong3.getText());
-        strings.add(correct.getText());
+        String wrong1Text = wrong1.getText();
+        if (wrong1Text.contains(","))
+        {
+            List<String> data = Arrays.asList(wrong1Text.split(","));
+            String formatted = null;
+            for (String x : data)
+            {
+                formatted = formatted + x + "`";
+            }
+            formatted = formatted.substring(4,formatted.length() - 1);
+            wrong1Text = formatted;
+        }
+        strings.add(wrong1Text);
+        String wrong2Text = wrong2.getText();
+        if (wrong2Text.contains(","))
+        {
+            List<String> data = Arrays.asList(wrong2Text.split(","));
+            String formatted = null;
+            for (String x : data)
+            {
+                formatted = formatted + x + "`";
+            }
+            formatted = formatted.substring(4,formatted.length() - 1);
+            wrong2Text = formatted;
+        }
+        strings.add(wrong2Text);
+        String wrong3Text = wrong3.getText();
+        if (wrong3Text.contains(","))
+        {
+            List<String> data = Arrays.asList(wrong3Text.split(","));
+            String formatted = null;
+            for (String x : data)
+            {
+                formatted = formatted + x + "`";
+            }
+            formatted = formatted.substring(4,formatted.length() - 1);
+            wrong3Text = formatted;
+        }
+        strings.add(wrong3Text);
+        String correctText = correct.getText();
+        if (correctText.contains(","))
+        {
+            List<String> data = Arrays.asList(correctText.split(","));
+            String formatted = null;
+            for (String x : data)
+            {
+                formatted = formatted + x + "`";
+            }
+            formatted = formatted.substring(4,formatted.length() - 1);
+            correctText = formatted;
+        }
+        strings.add(correctText);
 
         if (filePath ==null) {
             for (String i : strings) {
