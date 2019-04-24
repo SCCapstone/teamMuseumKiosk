@@ -17,6 +17,42 @@ Clicking the screen will lead guests to the title screen, where they are introdu
 ## Why Use Our App?
 Our app was created with the needs of the South Carolina State museum in mind. The app is not created with networking capabilities to better suit the museum's uses. It also allows for images and videos to be used within the questions.
 
+## About the Team
+<table>
+    <tbody>
+      <tr>
+        <th>Name</th>
+        <th>E-mail</th>
+        <th>Contact</th>
+      </tr>
+      <tr>
+        <td>Phoebe Ngo</td>
+        <td>pngo@email.sc.edu</td>
+        <td><a href="https://www.linkedin.com/in/phoebe-ngo-1230ba106/">LinkedIn</a></td>
+      </tr>
+       <tr>
+        <td>Michael Cantwell</td>
+        <td>mac9@email.sc.edu</td>
+        <td><a href="https://www.linkedin.com/in/michaelcantwell4/">LinkedIn</a></td>
+      </tr>
+       <tr>
+        <td>Lauren Nix</td>
+        <td>lnix@email.sc.edu</td>
+        <td><a href="https://www.linkedin.com/in/lauren-nix-314074135/">LinkedIn</a></td>
+      </tr>
+      <tr>
+        <td>Jacob Cox</td>
+        <td>jbc4@email.sc.edu</td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>Nicholas Gause</td>
+        <td>ngause@email.sc.edu</td>
+        <td>N/A</td>
+      </tr>
+    </tbody>
+</table>
+
 # _For Developers_
 ## Style Guide  
 The team will be using the style guide of Google's <a href="google.github.io/styleguide/javaguide.html"> Java Style Guide</a>. 
