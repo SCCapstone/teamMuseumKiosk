@@ -1,2 +1,3 @@
 strikeNum: 3
 maxQuestions: 10
+highScores: rotate

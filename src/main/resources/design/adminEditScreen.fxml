@@ -97,17 +97,17 @@
             <children>
                             <Label id="highScoresLabel" text="High Scores Displayed" textAlignment="CENTER" wrapText="true" />
             
-                            <RadioButton id="radioBtn" fx:id="dailyHighScoresBtn" text="Daily">
+                            <RadioButton id="radioBtn" fx:id="dailyHighScoresBtn" onAction="#rotateHighScores" text="Daily">
                                 <toggleGroup>
                                     <ToggleGroup fx:id="highScoresOptions" />
                                 </toggleGroup>
                         </RadioButton>
             
-                            <RadioButton id="radioBtn" fx:id="weeklyHighScoresBtn" text="Weekly" toggleGroup="$highScoresOptions" />
+                            <RadioButton id="radioBtn" fx:id="weeklyHighScoresBtn" onAction="#rotateHighScores" text="Weekly" toggleGroup="$highScoresOptions" />
             
-                            <RadioButton id="radioBtn" fx:id="monthlyHighScoresBtn" text="Monthly" toggleGroup="$highScoresOptions" />
+                            <RadioButton id="radioBtn" fx:id="monthlyHighScoresBtn" onAction="#rotateHighScores" text="Monthly" toggleGroup="$highScoresOptions" />
             
-                            <RadioButton id="radioBtn" fx:id="rotateHighScoresLabel" text="Rotate through all of them" toggleGroup="$highScoresOptions" wrapText="true" />
+                            <RadioButton id="radioBtn" fx:id="rotateHighScoresBtn" onAction="#rotateHighScores" text="Rotate through all of them" toggleGroup="$highScoresOptions" wrapText="true" />
             </children>
          
                      </HBox>

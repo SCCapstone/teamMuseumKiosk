@@ -36,7 +36,7 @@ public class AdminEditController extends AdminController {
 
     @FXML
     private RadioButton numOfStrikes2Btn, numOfStrikes3Btn,
-            dailyHighScoresBtn, weeklyHighScoresBtn, monthlyHighScoresBtn;
+            dailyHighScoresBtn, weeklyHighScoresBtn, monthlyHighScoresBtn, rotateHighScoresBtn;
 
     @FXML
     private CheckBox rotateHighScoresChk;
@@ -81,9 +81,13 @@ public class AdminEditController extends AdminController {
                        {
                            newSettings = newSettings + "\n" + "maxQuestions: " + newValue.intValue();
                        }
-                       else
+                       else if (line.contains("strikeNum"))
                        {
                            newSettings = newSettings + line;
+                       }
+                       else
+                       {
+                           newSettings = newSettings + "\n" + line;
                        }
                     }
                     BufferedWriter writer = new BufferedWriter(new FileWriter(settings, false));
@@ -113,7 +117,37 @@ public class AdminEditController extends AdminController {
          * TODO: Save current display option, probably to file.
          * Setting high score display option to Daily for now.
          */
-        dailyHighScoresBtn.setSelected(true);
+        //rotateHighScoresBtn.setSelected(true);
+        try {
+            List<String> settingsList = Files.lines(Paths.get(settings)).collect(Collectors.toList());
+            for (String line : settingsList)
+            {
+
+                if (line.contains("highScores")) //setting up high score buttons
+                {
+                    if (line.contains("daily"))
+                    {
+                        dailyHighScoresBtn.setSelected(true);
+                    }
+                    else if (line.contains("weekly"))
+                    {
+                        weeklyHighScoresBtn.setSelected(true);
+                    }
+                    else if (line.contains("monthly"))
+                    {
+                        monthlyHighScoresBtn.setSelected(true);
+                    }
+                    else //rotate
+                    {
+                        rotateHighScoresBtn.setSelected(true);
+                    }
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            System.out.println("Cannot locate settings file");
+        }
     }
 
     /**
@@ -159,16 +193,46 @@ public class AdminEditController extends AdminController {
     @FXML
     public void rotateHighScores(ActionEvent actionEvent) throws IOException {
 
-        if (rotateHighScoresChk.isSelected()) {
-
-            dailyHighScoresBtn.setDisable(true);
-            dailyHighScoresBtn.setSelected(false);
-
-            weeklyHighScoresBtn.setDisable(true);
-            weeklyHighScoresBtn.setSelected(false);
-
-            monthlyHighScoresBtn.setSelected(false);
-            monthlyHighScoresBtn.setDisable(true);
+        try
+        {
+            List<String> settingsList = Files.lines(Paths.get(settings)).collect(Collectors.toList());
+            String newSettings = "";
+            for (String line : settingsList)
+            {
+                if (line.contains("highScores"))
+                {
+                    if (dailyHighScoresBtn.isSelected())
+                    {
+                        newSettings = newSettings + "\n" + "highScores: daily";
+                    }
+                    else if (weeklyHighScoresBtn.isSelected())
+                    {
+                        newSettings = newSettings + "\n" + "highScores: weekly";
+                    }
+                    else if (monthlyHighScoresBtn.isSelected())
+                    {
+                        newSettings = newSettings + "\n" + "highScores: monthly";
+                    }
+                    else //rotating
+                    {
+                        newSettings = newSettings + "\n" + "highScores: rotate";
+                    }
+                }
+                else if (line.contains("strikeNum")) {
+                    newSettings = newSettings + line;
+                }
+                else
+                {
+                    newSettings = newSettings + "\n" + line;
+                }
+            }
+            BufferedWriter writer = new BufferedWriter(new FileWriter(settings, false));
+            writer.write(newSettings);
+            writer.close();
+        }
+        catch (IOException e)
+        {
+            System.out.println("Cannot find settings file");
         }
     }
 
