@@ -4,13 +4,19 @@ This project aims to create a trivia game used for the South Carolina State Muse
 
 # _For End Users_
 ## Tutorial Video
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=NpEaa2P7qZI
+" target="_blank"><img src="http://img.youtube.com/vi/NpEaa2P7qZI/0.jpg" 
+alt="teamMuseumKiosk Tutorial Video" width="240" height="180" border="10" /></a>
 ## How to Use App
 * Our app has two main components: The trivia section, and the admin section.
 * The application loads up on an advertisement screen, which will cycle through the current ads for the museum.
-Clicking the screen will lead guests to the title screen, where they are introduced to the trivia game and can enter their initials and email. This is also where the admin screen can be accessed. If the guest presses continue after entering their information, they will be welcomed to the quiz screen. Guests will go through the game, with the game increasing in difficulty as the quiz goes on. The guest has three strikes: once those three strikes have been reached, or the guest has completed the quiz the guest is greeted with the end screen. Here, the guest can look at past scores, look at their current score, and has the option to play again.
+Clicking the screen will lead guests to the title screen, where they are introduced to the trivia game and can enter their initials and email. This is also where the admin screen can be accessed. 
+* If the guest presses continue after entering their information, they will be welcomed to the quiz screen. Guests will go through the game, with the game increasing in difficulty as the quiz goes on. The guest has three strikes: once those three strikes have been reached, or the guest has completed the quiz the guest is greeted with the end screen. Here, the guest can look at past scores, look at their current score, and has the option to play again.
 * In the admin section, the admin user is first greeted with a login screen. Once logged in, the admin can choose to add a question, edit or delete a question, or upload an advertisement. If the user clicks on the edit tab, they can choose to edit the amount of strikes in the game, the maximum number of questions used, and which high scores to display. Clicking on the 'Back to Game' button sends the user back to the title screen once again.
+
 ## Why Use Our App?
 Our app was created with the needs of the South Carolina State museum in mind. The app is not created with networking capabilities to better suit the museum's uses. It also allows for images and videos to be used within the questions.
+
 # _For Developers_
 ## Style Guide  
 The team will be using the style guide of Google's <a href="google.github.io/styleguide/javaguide.html"> Java Style Guide</a>. 
