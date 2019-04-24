@@ -376,20 +376,7 @@ public class QuestionController implements Initializable, LoadScene {
     private void quizEnd(ActionEvent event) throws IOException {
         //go to end screen
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        URL url = new URL(getClass().getResource("/design/endscreen.fxml").toExternalForm());
-        FXMLLoader loader = new FXMLLoader(url);
-        Parent root = loader.load();
-
-        EndController controller = loader.getController();
-        controller.setUser(user);
-        controller.setText();
-        controller.setStage(stage);
-        controller.setTimer();
-        loader.setController(controller);
-
-        Scene scene = new Scene(root, 1440,900);
-        stage.setScene(scene);
-        stage.show();
+        loadStartScene(stage);
     }
 
     private void showPopupWindow(Stage stage, String text) {
