@@ -46,19 +46,55 @@ public class AdminEditController extends AdminController {
     public void initialize() {
 
         /**
-         * Setting up the Slider for questions: set default number to 8 for now.
+         * Setting up the Slider for questions: set default number to 10 for now.
          */
         numOfQuestionsSlider.setMaxWidth(150);
         numOfQuestionsSlider.setMinWidth(150);
         numOfQuestionsSlider.setMin(5);
-        numOfQuestionsSlider.setMax(10);
-        numOfQuestionsSlider.setValue(8);
+        numOfQuestionsSlider.setMax(15);
+        numOfQuestionsSlider.setValue(10);
         numOfQuestionsSlider.setBlockIncrement(1.0);
+        try {
+            List<String> settingsList = Files.lines(Paths.get(settings)).collect(Collectors.toList());
+            for (String line : settingsList)
+            {
+                if (line.contains("maxQuestions"))
+                {
+                    String[] temp = line.split(" ");
+                    numOfQuestionsSlider.setValue(Double.parseDouble(temp[1]));
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            System.out.println("Cannot locate settings file");
+        }
 
         numOfQuestionsSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                numOfQuestionsLabel.setText("Max number of Questions: " + Integer.toString(newValue.intValue()));
+                try {
+                    List<String> settingsList = Files.lines(Paths.get(settings)).collect(Collectors.toList());
+                    String newSettings = "";
+                    for(String line : settingsList) {
+                       if(line.contains("maxQuestions"))
+                       {
+                           newSettings = newSettings + "\n" + "maxQuestions: " + newValue.intValue();
+                       }
+                       else
+                       {
+                           newSettings = newSettings + line;
+                       }
+                    }
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(settings, false));
+                    writer.write(newSettings);
+                    writer.close();
+                }
+                catch (IOException e)
+                {
+                    System.out.println("Cannot locate settings file");
+                }
+                //numOfQuestionsLabel.setText("Max number of Questions: " + Integer.toString(newValue.intValue()));
             }
         });
 
@@ -100,8 +136,19 @@ public class AdminEditController extends AdminController {
                 strikeNum = "strikeNum: 2";
             }
 
+            String newSettings = "";
+            for(String line : settingsList) {
+                if(line.contains("strikeNum"))
+                {
+                    newSettings = newSettings + strikeNum;
+                }
+                else
+                {
+                    newSettings = newSettings + "\n" + line;
+                }
+            }
             BufferedWriter writer = new BufferedWriter(new FileWriter(settings, false));
-            writer.write(strikeNum);
+            writer.write(newSettings);
             writer.close();
 
         } catch (IOException e){

@@ -38,7 +38,7 @@ public class QuestionController implements Initializable, LoadScene {
     private ArrayList<Question> questions;
     private Question currentQuestion;
     private boolean correct = false;
-    private int scoreValue, num, questionNumber, strikesNum, maxStrikes;
+    private int scoreValue, num, questionNumber, strikesNum, maxStrikes,maxQuestions;
     @FXML
     private Label prompt, score, questionNum, strikes;
     @FXML
@@ -71,13 +71,18 @@ public class QuestionController implements Initializable, LoadScene {
             this.scoreValue = 0;
             this.questionNumber = 1;
 
-            //Checks for max strikes
+            //Checks for max strikes and questions
             List<String> settingsList = Files.lines(Paths.get("settings.txt")).collect(Collectors.toList());
             for(String line: settingsList){
                 if(line.equals("strikeNum: 2"))
                     maxStrikes = 2;
                 else if(line.equals("strikeNum: 3"))
                     maxStrikes = 3;
+                else if(line.contains("maxQuestions"))
+                {
+                    String[] words = line.split(" ");
+                    maxQuestions = Integer.parseInt(words[1]);
+                }
             }
 
             //Loads first question
@@ -89,7 +94,7 @@ public class QuestionController implements Initializable, LoadScene {
     }
 
     private void newQuestion(ActionEvent event) throws IOException {
-        if (num > 0 && strikesNum < maxStrikes) {
+        if (num > 0 && strikesNum < maxStrikes && questionNumber <= maxQuestions) {
             currentQuestion = retrieveNextQuestion();
             displayQuestion(currentQuestion);
             setPicture(currentQuestion);
@@ -208,16 +213,16 @@ public class QuestionController implements Initializable, LoadScene {
         // display Next Question button
         nextQuestion.setVisible(true);
 
-//        stage.getScene().addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent e) {
-//                try {
-//                    stage.getScene().removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
-//                    newQuestion(event);
-//                }
-//                catch(IOException error) {}
-//            }
-//        });
+        stage.getScene().addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                try {
+                    stage.getScene().removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
+                    newQuestion(event);
+                }
+                catch(IOException error) {}
+            }
+        });
     }
 
     public void goToNextQuestion(ActionEvent event) throws IOException {
@@ -302,12 +307,7 @@ public class QuestionController implements Initializable, LoadScene {
                             possibleQuestions.add(questions.get(i));
                         }
                     }
-                    /*for (int i = scoreValue; i < 11; i++) {
-                        for (int j = 0; j < questions.size(); j++){
-                            if (questions.get(j).getDifficulty() <= i)
-                                return questions.get(j);
-                        }
-                    }*/
+
                 }
                 int newQ = random.nextInt(possibleQuestions.size());
                 return possibleQuestions.get(newQ);
@@ -333,12 +333,7 @@ public class QuestionController implements Initializable, LoadScene {
                             possibleQuestions.add(questions.get(i));
                         }
                     }
-                    /*for (int i = scoreValue; i < 11; i++) {
-                        for (int j = 0; j < questions.size(); j++){
-                            if (questions.get(j).getDifficulty() <= i)
-                                return questions.get(j);
-                        }
-                    }*/
+
                 }
                 int newQ = random.nextInt(possibleQuestions.size());
                 return possibleQuestions.get(newQ);
@@ -375,13 +370,7 @@ public class QuestionController implements Initializable, LoadScene {
             }
 
         }
-        /*for (int i = scoreValue; i < 11; i++) {
-            for (int j = 0; j < questions.size(); j++){
-                if (questions.get(j).getDifficulty() <= i)
-                    return questions.get(j);
-            }
-        }*/
-        //return questions.get(0);
+
     }
 
     private void quizEnd(ActionEvent event) throws IOException {

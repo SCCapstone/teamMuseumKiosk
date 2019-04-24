@@ -70,8 +70,8 @@
                </GridPane.margin>
             </MediaView>
 
-          <Button fx:id="nextQuestion" onAction="#goToNextQuestion" GridPane.rowIndex="11" GridPane.halignment="CENTER" alignment="CENTER" visible="false" prefWidth="200.0"
-                  wrapText="true" text="Next Question">
+          <Button fx:id="nextQuestion" GridPane.rowIndex="11" GridPane.halignment="CENTER" alignment="CENTER" visible="false" prefWidth="400.0"
+                  wrapText="true" text="Click Anywhere To Go To Next Question">
               <font>
                   <Font size="8.0" />
               </font>
