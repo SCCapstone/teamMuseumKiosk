@@ -17,6 +17,14 @@ Clicking the screen will lead guests to the title screen, where they are introdu
 ## Why Use Our App?
 Our app was created with the needs of the South Carolina State museum in mind. The app is not created with networking capabilities to better suit the museum's uses. It also allows for images and videos to be used within the questions.
 
+## Screenshots
+![Title Screen](https://user-images.githubusercontent.com/22942073/56668371-6dc3bb80-667d-11e9-9490-a751811b9432.png "Title Screen")
+![Quiz Screen](https://user-images.githubusercontent.com/22942073/56668381-70261580-667d-11e9-8e59-ffb28cf5147c.png "Quiz Screen")
+![End Screen](https://user-images.githubusercontent.com/22942073/56668651-e4f94f80-667d-11e9-8f18-ce297103e17d.png "End Screen")
+![Admin Dashboard](https://user-images.githubusercontent.com/22942073/56668368-6bf9f800-667d-11e9-87ea-96e53e5054c9.png "Admin Dashboard")
+![Admin Edit Screen](https://user-images.githubusercontent.com/22942073/56668655-e6c31300-667d-11e9-8a36-c8b577283f11.png "Admin Edit Screen")
+
+
 ## About the Team
 <table>
     <tbody>
