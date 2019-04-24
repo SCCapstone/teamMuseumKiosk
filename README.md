@@ -1,11 +1,11 @@
-#teamMuseumKiosk  
+# teamMuseumKiosk  
 ## Introduction  
 This project aims to create a trivia game used for the South Carolina State Museum. The museum intends for the trivia game to implore guests about their knowledge of South Carolina.  
 
-#_For Users_
-##Tutorial Video
-##How to Use App
-##Why Use Our App?
+# _For Users_
+## Tutorial Video
+## How to Use App
+## Why Use Our App?
 ## Run Application
 * Download .jar file and TriviaQuestions.csv
 * Make sure the jar and trivia files are in the same directory
