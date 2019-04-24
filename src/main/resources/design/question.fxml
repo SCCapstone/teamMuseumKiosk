@@ -35,6 +35,12 @@
                <RowConstraints minHeight="10.0" />
                <RowConstraints minHeight="10.0" />
                <RowConstraints minHeight="10.0" />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
            </rowConstraints>
       <children>
       
@@ -70,8 +76,7 @@
                </GridPane.margin>
             </MediaView>
 
-          <Button fx:id="nextQuestion" GridPane.rowIndex="11" GridPane.halignment="CENTER" alignment="CENTER" visible="false" prefWidth="400.0"
-                  wrapText="true" text="Click Anywhere To Go To Next Question">
+          <Button fx:id="nextQuestion" alignment="CENTER" prefWidth="400.0" text="Click Anywhere To Go To Next Question" visible="false" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="11">
               <font>
                   <Font size="8.0" />
               </font>
@@ -94,13 +99,13 @@
                <RowConstraints minHeight="30.0" prefHeight="30.0" />
            </rowConstraints>
       <children>
-              <Label fx:id="questionNum" alignment="CENTER" text="Question 1" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+              <Label fx:id="questionNum" alignment="CENTER" prefHeight="113.0" prefWidth="68.0" text="Question 1" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                   <font>
                       <Font size="14.0" />
                   </font>
-               <padding>
+               <GridPane.margin>
                   <Insets top="150.0" />
-               </padding>
+               </GridPane.margin>
               </Label>
               <Label fx:id="score" alignment="CENTER" text="Score: 0" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER">
                   <font>
