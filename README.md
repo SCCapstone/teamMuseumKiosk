@@ -1,10 +1,11 @@
-# teamMuseumKiosk  
+#teamMuseumKiosk  
 ## Introduction  
 This project aims to create a trivia game used for the South Carolina State Museum. The museum intends for the trivia game to implore guests about their knowledge of South Carolina.  
 
-## Style Guide  
-The team will be using the style guide of Google's <a href="google.github.io/styleguide/javaguide.html"> Java Style Guide</a>. 
-
+#_For Users_
+##Tutorial Video
+##How to Use App
+##Why Use Our App?
 ## Run Application
 * Download .jar file and TriviaQuestions.csv
 * Make sure the jar and trivia files are in the same directory
@@ -12,6 +13,10 @@ The team will be using the style guide of Google's <a href="google.github.io/sty
 * Run the command:
 ``` java -jar teamMuseumKiosk.jar```
 * To log into the Admin page - username: museumAdmin password: museumKiosk19
+
+#_For Developers_
+## Style Guide  
+The team will be using the style guide of Google's <a href="google.github.io/styleguide/javaguide.html"> Java Style Guide</a>. 
 
 ## Installing Development Environment (with gradle installed)
 1. Install IntelliJ IDE <a href="https://www.jetbrains.com/idea/download"> here</a>. 
