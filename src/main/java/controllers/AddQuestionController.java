@@ -46,7 +46,7 @@ public class AddQuestionController implements Initializable {
     @FXML
     private Button submitButton;
     private FileChooser fileChooser;
-    private File filePath;
+    private File filePath = null;
 
     private Button cancelButton;
     private String difficulty;
@@ -204,7 +204,7 @@ public class AddQuestionController implements Initializable {
                 csvString.append(i);
                 csvString.append(",");
             }
-            csvString.append("/images/"+filePath.getName());
+            csvString.append("./videos/"+filePath.getName());
 
         }
 
@@ -229,9 +229,9 @@ public class AddQuestionController implements Initializable {
 
         try {
             //TODO put in the images folder
-            File path = new File("src/main/resources/images/"+filePath.getName());
+            //File path = new File("src/main/resources/images/"+filePath.getName());
             //Path path = FileSystems.getDefault().getPath(question.getText()+".jpg");
-            Files.copy(filePath.toPath(),path.toPath());
+            //Files.copy(filePath.toPath(),path.toPath());
         }catch (Exception e){
             e.printStackTrace();
         }
