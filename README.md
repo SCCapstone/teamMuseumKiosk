@@ -14,7 +14,7 @@ This project aims to create a trivia game used for the South Carolina State Muse
 ``` java -jar teamMuseumKiosk.jar```
 * To log into the Admin page - username: museumAdmin password: museumKiosk19
 
-#_For Developers_
+# _For Developers_
 ## Style Guide  
 The team will be using the style guide of Google's <a href="google.github.io/styleguide/javaguide.html"> Java Style Guide</a>. 
 
