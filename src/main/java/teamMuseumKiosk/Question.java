@@ -3,8 +3,10 @@ package teamMuseumKiosk;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,13 +36,24 @@ public class Question {
             //setVideo(file);
         }
         else {
-            setImg(file);
+            try {
+                setImg(file);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     public  Image getImg(){return Img;}
 
-    public void  setImg(String img) { Img = new Image(img); }
+    public void  setImg(String img) throws MalformedURLException {
+        File file = new File(img);
+        if (file.isFile())
+        {
+            Image temp = new Image(file.toURI().toURL().toString());
+            Img = temp;
+        }
+    }
 
     public Media getVideo() {return video;}
 

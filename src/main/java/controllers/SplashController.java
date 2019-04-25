@@ -41,15 +41,15 @@ public class SplashController extends Thread implements LoadScene, Initializable
     }
 
     private void loadAdvertisement() throws IOException{
-        ClassLoader classLoader = getClass().getClassLoader();
+        /*ClassLoader classLoader = getClass().getClassLoader();
         InputStream input = classLoader.getResourceAsStream("images/Advertisements/NationalParksAdventure.jpg");
         BufferedImage bufImage = ImageIO.read(input);
         int x = bufImage.getMinX(),y = bufImage.getMinY(),width=bufImage.getWidth(),height = bufImage.getHeight();
         BufferedImage tempBuf = bufImage.getSubimage(x,y,width,height);
         Image image = SwingFXUtils.toFXImage(tempBuf,null);
-        ads.add(image);
+        ads.add(image);*/
 
-        /*File path = new File("src/main/resources/images/Advertisements/");
+        File path = new File("./Advertisements/");
         //creates an the total path for the file
         String absPath = path.getAbsolutePath();
         //creates file array for the ads directory and array list for the ads
@@ -63,7 +63,7 @@ public class SplashController extends Thread implements LoadScene, Initializable
                     ads.add(temp);
                 }
             }
-        }*/
+        }
 
     }
 

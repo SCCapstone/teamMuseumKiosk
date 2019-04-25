@@ -86,7 +86,7 @@ public class EditQuestionController implements Initializable {
     // getting original datalist questions to check what user edited/deleted
     public class Question {
         // each question has prompt, 4 answers (last answer is correct one), and difficulty
-        private SimpleStringProperty prompt, answer1, answer2, answer3, correctAnswer, difficulty;
+        private SimpleStringProperty prompt, answer1, answer2, answer3, correctAnswer, difficulty, media;
 
         public String getPrompt() { return prompt.get(); }
         public String getAnswer1() { return answer1.get(); }
@@ -94,6 +94,8 @@ public class EditQuestionController implements Initializable {
         public String getAnswer3() { return answer3.get(); }
         public String getCorrectAnswer() { return correctAnswer.get(); }
         public String getDifficulty() { return difficulty.get(); }
+
+        public void setMedia(String file) { this.media = new SimpleStringProperty(file); }
 
         Question(String prompt, String answer1, String answer2, String answer3,
                  String correctAnswer, String difficulty) {
@@ -104,6 +106,17 @@ public class EditQuestionController implements Initializable {
             this.answer3 = new SimpleStringProperty(answer3);
             this.correctAnswer = new SimpleStringProperty(correctAnswer);
             this.difficulty = new SimpleStringProperty(difficulty);
+        }
+        Question(String prompt, String answer1, String answer2, String answer3,
+                 String correctAnswer, String difficulty, String file) {
+
+            this.prompt = new SimpleStringProperty(prompt);
+            this.answer1 = new SimpleStringProperty(answer1);
+            this.answer2 = new SimpleStringProperty(answer2);
+            this.answer3 = new SimpleStringProperty(answer3);
+            this.correctAnswer = new SimpleStringProperty(correctAnswer);
+            this.difficulty = new SimpleStringProperty(difficulty);
+            this.media = new SimpleStringProperty(file);
         }
     }
 
@@ -361,6 +374,13 @@ public class EditQuestionController implements Initializable {
         }
         Question newQuestion = new Question(questionText, wrong1Text, wrong2Text, wrong3Text, correctText, difficulty);
         String newNewQuestionString = questionText + "," + wrong1Text + "," + wrong2Text + "," + wrong3Text + "," + correctText + "," + difficulty;
+        if (filePath == null) {
+            boolean nothing = true;
+        }
+        else {
+            newNewQuestionString += "," + ("./images/"+filePath.getName());
+            newQuestion.setMedia("./images/"+filePath.getName());
+        }
         // replace question/answers in datalist with updated version
         dataList.set(questionRow, newQuestion);
 
@@ -372,20 +392,32 @@ public class EditQuestionController implements Initializable {
             reader = new BufferedReader(new FileReader(original));
 
             String oldContent = "";
+            String oldQuestionString = origQuestion + "," + origAnswer1 + "," + origAnswer2 + "," + origAnswer3 + "," + origCorrect + "," + origDifficulty;
 
             String line = reader.readLine();
             while (line != null)
             {
-                oldContent = oldContent + line +System.lineSeparator();
+                if (line.contains(oldQuestionString))
+                {
+                    oldContent = oldContent + newNewQuestionString + System.lineSeparator();
+                }
+                else
+                {
+                    oldContent = oldContent + line +System.lineSeparator();
+                }
                 line = reader.readLine();
             }
-            String oldQuestionString = origQuestion + "," + origAnswer1 + "," + origAnswer2 + "," + origAnswer3 + "," + origCorrect + "," + origDifficulty;
-            String newContent = oldContent.replaceAll(oldQuestionString,newNewQuestionString);
-            reader.close();
+            if (filePath != null)
+            {
+                //find out if image is already there
+            }
+            //String oldQuestionString = origQuestion + "," + origAnswer1 + "," + origAnswer2 + "," + origAnswer3 + "," + origCorrect + "," + origDifficulty;
+            //String newContent = oldContent.replaceAll(oldQuestionString,newNewQuestionString);
 
             writer = new BufferedWriter(new FileWriter(original));
-            writer.write(newContent);
-
+            //writer.write(newContent);
+            writer.write(oldContent);
+            reader.close();
             writer.close();
 
         } catch (Exception e) {}
@@ -444,7 +476,7 @@ public class EditQuestionController implements Initializable {
                 newQuestionString.append(i);
                 newQuestionString.append(",");
             }
-            newQuestionString.append("/images/"+filePath.getName());
+            newQuestionString.append("./images/"+filePath.getName());
 
         }
         return newQuestionString.toString();
@@ -467,7 +499,7 @@ public class EditQuestionController implements Initializable {
         filePath = fileChooser.showOpenDialog(stage);
 
         try {
-            File path = new File("src/main/resources/images/"+filePath.getName());
+            File path = new File("./images/"+filePath.getName());
             Files.copy(filePath.toPath(),path.toPath());
         }catch (Exception e){
             e.printStackTrace();

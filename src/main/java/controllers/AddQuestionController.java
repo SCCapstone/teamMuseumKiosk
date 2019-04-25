@@ -28,6 +28,7 @@ import java.net.URL;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -204,7 +205,7 @@ public class AddQuestionController implements Initializable {
                 csvString.append(i);
                 csvString.append(",");
             }
-            csvString.append("/images/"+filePath.getName());
+            csvString.append("./images/"+filePath.getName());
 
         }
 
@@ -229,8 +230,7 @@ public class AddQuestionController implements Initializable {
 
         try {
             //TODO put in the images folder
-            File path = new File("src/main/resources/images/"+filePath.getName());
-            //Path path = FileSystems.getDefault().getPath(question.getText()+".jpg");
+            File path = new File("./images/"+filePath.getName());
             Files.copy(filePath.toPath(),path.toPath());
         }catch (Exception e){
             e.printStackTrace();
