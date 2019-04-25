@@ -375,7 +375,7 @@ public class QuestionController implements Initializable, LoadScene {
     private void quizEnd(ActionEvent event) throws IOException {
         //go to end screen
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        loadEndScene(stage);
+        loadEndScene(stage, this.user);
     }
 
     private void showPopupWindow(Stage stage, String text) {

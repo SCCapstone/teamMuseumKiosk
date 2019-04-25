@@ -103,20 +103,7 @@ public class StartController extends Thread implements LoadScene, Initializable 
             return;
         }*/
         User newUser = new User(name.getText().toUpperCase().trim(), 0, email.getText().trim());
-
-        URL url = new URL(getClass().getResource("/design/question.fxml").toExternalForm());
-        FXMLLoader loader = new FXMLLoader(url);
-	    Parent root = loader.load();
-
-        QuestionController controller = loader.getController();
-	    controller.setUser(newUser);
-	    controller.setStage(this.stage);
-	    controller.setTimer();
-	    loader.setController(controller);
-
-        Scene scene = new Scene(root, 1440,900);
-	    this.stage.setScene(scene);
-	    this.stage.show();
+        loadQuestionScene(this.stage, newUser);
     }
 
     public void goToAdminPage(ActionEvent actionEvent) throws IOException {

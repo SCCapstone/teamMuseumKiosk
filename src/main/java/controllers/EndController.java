@@ -389,19 +389,7 @@ public class EndController implements Initializable, LoadScene {
         if (button.getText().equals("No"))
             loadStartScene(currentStage);
         else {
-            URL url = new URL(getClass().getResource("/design/question.fxml").toExternalForm());
-            FXMLLoader loader = new FXMLLoader(url);
-            Parent root = loader.load();
-
-            QuestionController controller = loader.getController();
-            controller.setUser(user);
-            controller.setStage(this.stage);
-            controller.setTimer();
-            loader.setController(controller);
-
-            Scene scene = new Scene(root, 1440,900);
-            this.stage.setScene(scene);
-            this.stage.show();
+            loadQuestionScene(currentStage, this.user);
         }
 
     }
