@@ -206,10 +206,6 @@ public class AddQuestionController implements Initializable {
                 csvString.append(",");
             }
             csvString.append("./images/"+filePath.getName());
-            //actually move file there now
-            //Path dest = Paths.get("./images/" + filePath.getName());
-            //Path src = Paths.get()
-            //Files.copy(src,dest);
 
         }
 
@@ -235,7 +231,6 @@ public class AddQuestionController implements Initializable {
         try {
             //TODO put in the images folder
             File path = new File("./images/"+filePath.getName());
-            //Path path = FileSystems.getDefault().getPath(question.getText()+".jpg");
             Files.copy(filePath.toPath(),path.toPath());
         }catch (Exception e){
             e.printStackTrace();
