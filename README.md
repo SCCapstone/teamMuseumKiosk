@@ -5,7 +5,7 @@ This project aims to create a trivia game used for the South Carolina State Muse
 # _For End Users_
 ## Tutorial Video
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=7NfmMtrOHU8
-" target="_blank"><img src="http://img.youtube.com/vi/7NfmMtrOHU8/0.jpg" 
+" target="_blank"><img src="http://img.youtube.com/vi/7NfmMtrOHU8/3.jpg" 
 alt="teamMuseumKiosk Tutorial Video" width="240" height="180" border="10" /></a>
 ## How to Use App
 * Our app has two main components: The trivia section, and the admin section.
