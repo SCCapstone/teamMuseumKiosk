@@ -10,11 +10,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import teamMuseumKiosk.LoadScene;
 
 import java.io.IOException;
 import java.net.URL;
 
-public class AdminLoginController {
+public class AdminLoginController implements LoadScene {
 
     @FXML
     private TextField username;
@@ -41,33 +42,12 @@ public class AdminLoginController {
         }
 
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        URL url = new URL(getClass().getResource("/design/adminUpdateScreen.fxml").toExternalForm());
-        FXMLLoader loader = new FXMLLoader(url);
-        Parent root = loader.load();
-
-        AdminUpdateController controller = loader.getController();
-        loader.setController(controller);
-
-        Scene scene = new Scene(root, 1440,900);
-        stage.setScene(scene);
-        stage.show();
+        loadAdminUpdateScene(stage);
     }
 
     public void goBack(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-
-        URL url = new URL(getClass().getResource("/design/startScreen.fxml").toExternalForm());
-
-        FXMLLoader loader = new FXMLLoader(url);
-        Parent root = loader.load();
-
-        StartController controller = loader.getController();
-        controller.setTimer(stage);
-        loader.setController(controller);
-
-        Scene scene = new Scene(root, 1440,900);
-        stage.setScene(scene);
-        stage.show();
+        loadStartScene(stage);
     }
 
 }

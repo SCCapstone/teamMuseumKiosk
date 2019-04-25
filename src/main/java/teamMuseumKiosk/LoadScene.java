@@ -1,6 +1,7 @@
 package teamMuseumKiosk;
 
-import controllers.PopupController;
+import controllers.AdminUpdateController;
+import controllers.EndController;
 import controllers.SplashController;
 import controllers.StartController;
 import javafx.animation.PauseTransition;
@@ -53,5 +54,31 @@ public interface LoadScene {
             }
         });
         delay.play();
+    }
+
+    default void loadEndScene(Stage stage)throws IOException {
+        URL url = new URL(getClass().getResource("/design/endScreen.fxml").toExternalForm());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+
+        EndController controller = loader.getController();
+        loader.setController(controller);
+
+        Scene scene = new Scene(root, 1440,900);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    default void loadAdminUpdateScene(Stage stage) throws IOException {
+        URL url = new URL(getClass().getResource("/design/adminUpdateScreen.fxml").toExternalForm());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+
+        AdminUpdateController controller = loader.getController();
+        loader.setController(controller);
+
+        Scene scene = new Scene(root, 1440,900);
+        stage.setScene(scene);
+        stage.show();
     }
 }

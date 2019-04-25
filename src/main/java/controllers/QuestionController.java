@@ -14,7 +14,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Modality;
@@ -376,7 +375,7 @@ public class QuestionController implements Initializable, LoadScene {
     private void quizEnd(ActionEvent event) throws IOException {
         //go to end screen
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        loadStartScene(stage);
+        loadEndScene(stage);
     }
 
     private void showPopupWindow(Stage stage, String text) {
