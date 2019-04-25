@@ -235,9 +235,18 @@ public class StartController extends Thread implements LoadScene, Initializable 
             } catch (InterruptedException e) {}
             //checking to see if there are any new keys pressed to add
             if (keyboard.getType() == true) {
+
                 temp = keyboard.getTyped();
+                System.out.println(keyboard.getNameArray().size());
+                System.out.println(textField.getId());
+                if(textField.getId() == "nameField" && keyboard.getNameArray().size() == 3 ){
+                    System.out.println("hello");
+                    keyboard.deleteLastNameArray(keyboard.getNameArray().size()-1);
+                    continue;
+                }
                 //checking to see if enter has been pressed
-                if(temp.contains("Enter")){
+                if(temp.toLowerCase().contains("enter")){
+
                     //this is magic. thread cant close the keyboard so the main process has to close it
                     Platform.runLater(this::closeKeyboard);
                     //setting the enter to nothing
@@ -255,16 +264,15 @@ public class StartController extends Thread implements LoadScene, Initializable 
                 } catch (InterruptedException e) {}
                 //lettersTyped = temp;
                 //adding to the text fieldddddddddddd
-                if(!keyboard.getNameArray().isEmpty()){
-                    textField.setText(String.join("",keyboard.getNameArray()));
-                }
+                if(!keyboard.getNameArray().isEmpty()) {
+                    textField.setText(String.join("", keyboard.getNameArray()));
 
+                    }
+                }
             }
         }
-
-
     }
 
 
-}
+
 

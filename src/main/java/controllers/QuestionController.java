@@ -53,7 +53,7 @@ public class QuestionController implements Initializable, LoadScene {
     @FXML
     private Button nextQuestion;
 
-    public QuestionController() {}
+    //public QuestionController() {}
 
     public void setUser(User user) {
         this.user = user;

@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class KeyboardController extends Thread {
     public boolean click, type, shift = false;
     private ArrayList<String> nameArray = new ArrayList<>();
     @FXML
-    private Button b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11;
+    private Button b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b48;
 
     public void start(){
         //starting the thread
@@ -33,6 +34,8 @@ public class KeyboardController extends Thread {
     public String getTyped(){type = false;return Typed;}
 
     public void setTyped(String a){Typed = a;}
+
+    public boolean getShift(){return shift;}
 
     public ArrayList<String> getNameArray(){return nameArray;}
 
@@ -120,18 +123,18 @@ public class KeyboardController extends Thread {
             if (this.getClick()){//if there has been a button clicked
                 //setting the letter to another vairiable
                 result = this.getLetter();
-                /*try {
-                    Thread.sleep(100);
-                }catch (InterruptedException e){
-                    System.out.println(e);}*/
-                if(result.contains("Enter")){//if enter is hit start controller takes care of that
-                    //stopThread();
+                if(!shift){result = result.toLowerCase();}
+                else {result = result.toUpperCase();}
+                if(result.toLowerCase().contains("enter")){//if enter is hit start controller takes care of that
+                    stopThread();
                     //result = "";
-                }else if(result.contains("Shift")){// shift is taken care of at the top
+                }else if(result.toLowerCase().contains("shift")){// shift is taken care of at the top
                     //set to empty string to take it out later
+                    //TODO change the color
                     result = "";
 
-                }else if(result.contains("Back")){//if back it removes the last string from the array
+
+                }else if(result.toLowerCase().contains("back")){//if back it removes the last string from the array
                     if(nameArray.size()>0) {
                         nameArray.remove(nameArray.size() - 1);
                     }
@@ -141,10 +144,11 @@ public class KeyboardController extends Thread {
                 }
 
                 //putting the final result in the array
-
                 if(result != ""){nameArray.add(result);}
                 //putting everything in the array list into a complete string
                 Typed = String.join("",nameArray);
+                if (!shift){Typed.toLowerCase();}
+                else if (shift){Typed.toUpperCase();}
                 //setting type to true so we know the program has more letters to display
                 type = true;
             }
