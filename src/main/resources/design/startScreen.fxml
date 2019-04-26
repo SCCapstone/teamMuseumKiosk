@@ -15,6 +15,7 @@
 <?import javafx.scene.text.Text?>
 
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
 <GridPane alignment="center" hgap="40" stylesheets="/design/startScreen.css" vgap="10.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StartController">
 
     <!--Title-->
@@ -55,27 +56,17 @@
     </TilePane>
 
 
-    <!--Play Button-->
-    <HBox alignment="TOP_CENTER" spacing="10" GridPane.rowIndex="4">
-        <Button fx:id="playButton" alignment="CENTER" onAction="#buttonClick" text="Play" />
-    </HBox>
-
-    <!--Legal message-->
-    <HBox alignment="TOP_CENTER" GridPane.rowIndex="5">
-        <Label text="By selecting 'Play' you are agreeing to receive newsletters from the State Museum." />
-    </HBox>
-
-    <!--Missing info text-->
-    <HBox alignment="CENTER" GridPane.rowIndex="6">
-        <Text id="missingInfoText" fx:id="missingInfoText" fill="#c31111" strokeType="OUTSIDE" strokeWidth="0.0" />
-    </HBox>
-
-    <!--Advertisement-->
-    <ImageView fx:id="imageView" fitHeight="106.0" fitWidth="1440.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7" />
-
-    <!--High Scores
-    <VBox alignment="CENTER_RIGHT" prefHeight="10.0" prefWidth="1000.0" maxWidth="1400" GridPane.rowIndex="4">
-        <VBox alignment="CENTER" maxWidth="300">
+    <!--Play Button (and high scores)-->
+    <HBox alignment="CENTER" spacing="250" GridPane.rowIndex="4">
+        <VBox alignment="CENTER_RIGHT" minWidth="300" maxWidth="300">
+            <Label fx:id="offset" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="1440.0" textAlignment="CENTER">
+                <font>
+                    <Font name="Geneva" size="36.0" />
+                </font>
+            </Label>
+        </VBox>
+        <Button fx:id="playButton" alignment="CENTER" onAction="#buttonClick" text="Play"/>
+        <VBox alignment="CENTER_RIGHT" minWidth="300" maxWidth="300">
             <Label fx:id="highscoreText" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="1440.0" textAlignment="CENTER">
                 <font>
                     <Font name="Geneva" size="36.0" />
@@ -132,7 +123,20 @@
                 </font>
             </Label>
         </VBox>
-    </VBox>-->
+    </HBox>
+
+    <!--Legal message-->
+    <HBox alignment="TOP_CENTER" GridPane.rowIndex="5">
+        <Label text="By selecting 'Play' you are agreeing to receive newsletters from the State Museum." />
+    </HBox>
+
+    <!--Missing info text-->
+    <HBox alignment="CENTER" GridPane.rowIndex="6">
+        <Text id="missingInfoText" fx:id="missingInfoText" fill="#c31111" strokeType="OUTSIDE" strokeWidth="0.0" />
+    </HBox>
+
+    <!--Advertisement-->
+    <ImageView fx:id="imageView" fitHeight="106.0" fitWidth="1440.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7" />
 
     <!--Admin Button-->
     <HBox alignment="BOTTOM_RIGHT" GridPane.rowIndex="8">
