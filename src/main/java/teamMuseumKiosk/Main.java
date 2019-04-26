@@ -17,22 +17,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        //This creates a directory on the C drive where resources can go
-        //this might break mac's
-
-        /*File tempFile = new File("C://MuseumTriviaGame/");
-        boolean exists = tempFile.exists();
-        if (!exists)
-        {
-            File dir = new File("C://MuseumTriviaGame/");
-            dir.mkdir();
-            File img = new File("C://MuseumTriviaGame/Images/");
-            img.mkdir();
-            File ads = new File("C://MuseumTriviaGame/Images/Advertisements/");
-            ads.mkdir();
-            File vid = new File("C://MuseumTriviaGame/Videos/");
-            vid.mkdir();
-        }*/
+        //This creates the directories where resources can go
+        File img = new File("./images/");
+        img.mkdir();
+        File ads = new File("./Advertisements/");
+        ads.mkdir();
+        File vid = new File("./video/");
+        vid.mkdir();
 
         URL url = new URL(getClass().getResource("/design/splashScreen.fxml").toExternalForm());
         FXMLLoader loader = new FXMLLoader(url);
