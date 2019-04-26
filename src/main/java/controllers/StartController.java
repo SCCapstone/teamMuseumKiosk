@@ -64,7 +64,7 @@ public class StartController extends Thread implements LoadScene, Initializable 
     String settings = "settings.txt";
     private int i;
     @FXML
-    Label highscoreText, high1, high2, high3, high4, high5, high6, high7, high8, high9, high10;
+    Label highscoreText, high1, high2, high3, high4, high5, high6, high7, high8, high9, high10,offset;
 
     public void setTimer(Stage stage){
         this.stage = stage;
@@ -153,8 +153,8 @@ public class StartController extends Thread implements LoadScene, Initializable 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //set high scores
-        /*highscoreText.setText("High Scores:");
-
+        highscoreText.setText("High Scores:");
+        offset.setText("");
         List<String> settingsList = null;
         try {
             settingsList = Files.lines(Paths.get(settings)).collect(Collectors.toList());
@@ -457,7 +457,7 @@ public class StartController extends Thread implements LoadScene, Initializable 
                     timer.start();
                 }
             }
-        }*/
+        }
 
         // Make name input be uppercase
         this.name.setTextFormatter(new TextFormatter<>((change) -> {
