@@ -57,7 +57,7 @@
 
 
     <!--Play Button (and high scores)-->
-    <HBox alignment="CENTER" spacing="250" GridPane.rowIndex="4">
+    <HBox alignment="CENTER" spacing="150" GridPane.rowIndex="4">
         <VBox alignment="CENTER_RIGHT" minWidth="300" maxWidth="300">
             <Label fx:id="offset" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="1440.0" textAlignment="CENTER">
                 <font>
@@ -135,11 +135,8 @@
         <Text id="missingInfoText" fx:id="missingInfoText" fill="#c31111" strokeType="OUTSIDE" strokeWidth="0.0" />
     </HBox>
 
-    <!--Advertisement-->
-    <ImageView fx:id="imageView" fitHeight="106.0" fitWidth="1440.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7" />
-
     <!--Admin Button-->
-    <HBox alignment="BOTTOM_RIGHT" GridPane.rowIndex="8">
+    <HBox alignment="BOTTOM_RIGHT" GridPane.rowIndex="7">
         <ToggleButton fx:id="adminButton" alignment="BOTTOM_RIGHT" contentDisplay="CENTER" onAction="#goToAdminPage" />
       <GridPane.margin>
          <Insets bottom="20.0" right="20.0" />
