@@ -20,6 +20,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import teamMuseumKiosk.LoadScene;
 import teamMuseumKiosk.Question;
+import teamMuseumKiosk.ResetAdminSettings;
 import teamMuseumKiosk.User;
 import javafx.scene.media.AudioClip;
 
@@ -31,7 +32,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class QuestionController implements Initializable, LoadScene {
+public class QuestionController implements Initializable, LoadScene, ResetAdminSettings {
     public User user;
     private Stage stage;
     private ArrayList<Question> questions;
@@ -73,14 +74,35 @@ public class QuestionController implements Initializable, LoadScene {
             //Checks for max strikes and questions
             List<String> settingsList = Files.lines(Paths.get("settings.txt")).collect(Collectors.toList());
             for(String line: settingsList){
-                if(line.equals("strikeNum: 2"))
-                    maxStrikes = 2;
-                else if(line.equals("strikeNum: 3"))
-                    maxStrikes = 3;
+
+                if (line.contains("strikeNum")) {
+                    String[] strikes = line.split(" ");
+                    // check if settings.txt is incomplete
+                    if (strikes.length <= 1) {
+                        System.out.println("HIIIIIII");
+                        ifSettingsFileIsEmpty("strikeNum");
+                        // setting strikeNum as default 3
+                        maxStrikes = 3;
+                    }
+                    else if(line.equals("strikeNum: 2"))
+                        maxStrikes = 2;
+                    else if(line.equals("strikeNum: 3"))
+                        maxStrikes = 3;
+                }
                 else if(line.contains("maxQuestions"))
                 {
                     String[] words = line.split(" ");
-                    maxQuestions = Integer.parseInt(words[1]);
+
+                    // check if settings.txt is incomplete
+                    if (words.length <= 1) {
+                        // missing number of max questions
+                        ifSettingsFileIsEmpty("maxQuestions");
+                        // setting maxQuestions as default 10
+                        maxQuestions = 10;
+                    }
+                    else {
+                        maxQuestions = Integer.parseInt(words[1]);
+                    }
                 }
             }
 
