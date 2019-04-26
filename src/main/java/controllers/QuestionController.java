@@ -165,6 +165,7 @@ public class QuestionController implements Initializable, LoadScene {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
         if(text.equals("Quit")) {
+            user.setScore(scoreValue);
             quizEnd(event);
         }
         //if text of button matches correct answer of question, increases user's score and displays check mark
