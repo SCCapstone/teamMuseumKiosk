@@ -153,6 +153,8 @@ public class StartController extends Thread implements LoadScene, Initializable 
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if (newValue == null)
                     return;
+                if (!newValue.matches("\\sa-zA-Z*"))
+                    name.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
                 if (newValue.length() > 3) {
                     name.setText(newValue.substring(0, 3));
                 }
