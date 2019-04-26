@@ -90,7 +90,7 @@ public class AdminUpdateController extends AdminController {
             try {
                 //image = select.toURI().toURL();
                 //System.out.println(image.toString());
-                File path = new File("src/main/resources/images/Advertisements/"+select.getName());
+                File path = new File("./Advertisements/"+select.getName());
                 Files.copy(select.toPath(),path.toPath());
             } catch (MalformedURLException e) {
             }
