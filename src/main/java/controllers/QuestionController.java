@@ -77,7 +77,6 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
                     String[] strikes = line.split(" ");
                     // check if settings.txt is incomplete
                     if (strikes.length <= 1) {
-                        System.out.println("HIIIIIII");
                         ifSettingsFileIsEmpty("strikeNum");
                         // setting strikeNum as default 3
                         maxStrikes = 3;

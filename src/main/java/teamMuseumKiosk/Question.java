@@ -82,6 +82,7 @@ public class Question {
         {
             this.prompt = splitFormatter(prompt);
         }
+        this.prompt = prompt;
     }
 
     public String getCorrect() {
