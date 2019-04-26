@@ -1,3 +1,5 @@
 strikeNum: 3
 maxQuestions: 10
 highScores: rotate
+username: museumAdmin
+password: museumKiosk19
