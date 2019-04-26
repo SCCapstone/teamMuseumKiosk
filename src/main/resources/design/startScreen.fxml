@@ -73,7 +73,7 @@
     <!--Advertisement-->
     <ImageView fx:id="imageView" fitHeight="106.0" fitWidth="1440.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7" />
 
-    <!--High Scores-->
+    <!--High Scores
     <VBox alignment="CENTER_RIGHT" prefHeight="10.0" prefWidth="1000.0" maxWidth="1400" GridPane.rowIndex="4">
         <VBox alignment="CENTER" maxWidth="300">
             <Label fx:id="highscoreText" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="1440.0" textAlignment="CENTER">
@@ -132,7 +132,7 @@
                 </font>
             </Label>
         </VBox>
-    </VBox>
+    </VBox>-->
 
     <!--Admin Button-->
     <HBox alignment="BOTTOM_RIGHT" GridPane.rowIndex="8">

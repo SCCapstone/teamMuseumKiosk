@@ -153,7 +153,7 @@ public class StartController extends Thread implements LoadScene, Initializable 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //set high scores
-        highscoreText.setText("High Scores:");
+        /*highscoreText.setText("High Scores:");
 
         List<String> settingsList = null;
         try {
@@ -457,7 +457,7 @@ public class StartController extends Thread implements LoadScene, Initializable 
                     timer.start();
                 }
             }
-        }
+        }*/
 
         // Make name input be uppercase
         this.name.setTextFormatter(new TextFormatter<>((change) -> {
