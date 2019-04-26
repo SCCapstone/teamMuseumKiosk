@@ -14,6 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.layout.VBox?>
 <GridPane alignment="center" hgap="40" stylesheets="/design/startScreen.css" vgap="10.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StartController">
 
     <!--Title-->
@@ -71,6 +72,67 @@
 
     <!--Advertisement-->
     <ImageView fx:id="imageView" fitHeight="106.0" fitWidth="1440.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7" />
+
+    <!--High Scores-->
+    <VBox alignment="CENTER_RIGHT" prefHeight="10.0" prefWidth="1000.0" maxWidth="1400" GridPane.rowIndex="4">
+        <VBox alignment="CENTER" maxWidth="300">
+            <Label fx:id="highscoreText" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="1440.0" textAlignment="CENTER">
+                <font>
+                    <Font name="Geneva" size="36.0" />
+                </font>
+            </Label>
+            <Label fx:id="high1" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
+                <font>
+                    <Font name="Geneva" size="10.0" />
+                </font>
+            </Label>
+            <Label fx:id="high2" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
+                <font>
+                    <Font name="Geneva" size="10.0" />
+                </font>
+            </Label>
+            <Label fx:id="high3" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
+                <font>
+                    <Font name="Geneva" size="10.0" />
+                </font>
+            </Label>
+            <Label fx:id="high4" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
+                <font>
+                    <Font name="Geneva" size="10.0" />
+                </font>
+            </Label>
+            <Label fx:id="high5" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
+                <font>
+                    <Font name="Geneva" size="10.0" />
+                </font>
+            </Label>
+            <Label fx:id="high6" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
+                <font>
+                    <Font name="Geneva" size="10.0" />
+                </font>
+            </Label>
+            <Label fx:id="high7" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
+                <font>
+                    <Font name="Geneva" size="10.0" />
+                </font>
+            </Label>
+            <Label fx:id="high8" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
+                <font>
+                    <Font name="Geneva" size="10.0" />
+                </font>
+            </Label>
+            <Label fx:id="high9" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
+                <font>
+                    <Font name="Geneva" size="10.0" />
+                </font>
+            </Label>
+            <Label fx:id="high10" alignment="CENTER" contentDisplay="CENTER" prefHeight="10.0" prefWidth="1440.0" textAlignment="CENTER">
+                <font>
+                    <Font name="Geneva" size="10.0" />
+                </font>
+            </Label>
+        </VBox>
+    </VBox>
 
     <!--Admin Button-->
     <HBox alignment="BOTTOM_RIGHT" GridPane.rowIndex="8">
