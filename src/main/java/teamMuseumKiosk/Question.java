@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -33,7 +34,11 @@ public class Question {
         setCorrect(temp);
         setDifficulty(Integer.parseInt(difficulty));
         if(file.contains("mp4") || file.contains("wav")) {
-            //setVideo(file);
+            try {
+                setVideo(file);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
         }
         else {
             try {
@@ -57,9 +62,13 @@ public class Question {
 
     public Media getVideo() {return video;}
 
-    public void setVideo(String file) {
-        String url = getClass().getResource(file).toExternalForm();
-        video = new Media(url);
+    public void setVideo(String vid) throws MalformedURLException {
+        File file = new File(vid);
+        if (file.isFile())
+        {
+            Media temp = new Media(file.toURI().toURL().toString());
+            video = temp;
+        }
     }
 
     public  int getDifficulty() {return Difficulty;}
