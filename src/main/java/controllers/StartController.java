@@ -42,10 +42,6 @@ public class StartController extends Thread implements LoadScene, Initializable 
     @FXML
     private Text missingInfoText;
 
-    @FXML
-    private ImageView imageView;
-
-    private URL image = null;
     private Stage stage;
     private Thread t;
     //private String lettersTyped;
@@ -54,10 +50,10 @@ public class StartController extends Thread implements LoadScene, Initializable 
     private KeyboardController keyboard;
     private String temp;
     private final Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-    public void setTimer(Stage stage){
-        this.stage = stage;
+    public void setStage(Stage stage) { this.stage = stage; }
+    public void setTimer(){
         //Automatically goes back to splash screen after 2 minutes
-        timerToSplashScene(stage,2);
+        //timerToSplashScene(stage,2);
     }
 
     public void buttonClick(ActionEvent actionEvent) throws IOException {
@@ -80,7 +76,6 @@ public class StartController extends Thread implements LoadScene, Initializable 
 	            return;
 	    }
 
-        //TODO: verify email is in an appropriate format. May use regex for this.
         String userEmail = email.getText().toLowerCase();
 
         Pattern emailRegex = Pattern.compile("^[a-zA-Z0-9_+&*-]+(?:\\."+
@@ -93,15 +88,6 @@ public class StartController extends Thread implements LoadScene, Initializable 
             return;
         }
 
-        /*if(!(userEmail.contains("@") && (userEmail.contains(".com")
-                || userEmail.contains(".net") || userEmail.contains(".org")
-                || userEmail.contains(".edu") || userEmail.contains(".co.uk")
-                || userEmail.contains(".de") || userEmail.contains(".cn")
-                || userEmail.contains(".kr") || userEmail.contains(".jp")
-                || userEmail.contains(".mx") || userEmail.contains(".ru")))) {
-            missingInfoText.setText("Please enter a valid email address");
-            return;
-        }*/
         User newUser = new User(name.getText().toUpperCase().trim(), 0, email.getText().trim());
         loadQuestionScene(this.stage, newUser);
     }

@@ -19,6 +19,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import teamMuseumKiosk.LoadScene;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -37,7 +38,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Jacob Cox on 12/7/2018.
  */
-public class AddQuestionController implements Initializable {
+public class AddQuestionController implements Initializable, LoadScene {
 
     @FXML
     private TextArea question, wrong1, wrong2, wrong3, correct;
@@ -276,33 +277,6 @@ public class AddQuestionController implements Initializable {
         question.getScene().getWindow().hide();
     }
 
-    private void showPopupWindow(Stage stage, String text) {
-        try {
-            URL url = new URL(getClass().getResource("/design/popup.fxml").toExternalForm());
-            FXMLLoader loader = new FXMLLoader(url);
-            Parent root = loader.load();
-
-            // initializing the controller
-            PopupController popupController = loader.getController();
-            loader.setController(popupController);
-
-            Scene scene = new Scene(root, 300, 250);
-            Stage popupStage = new Stage();
-
-            // Giving the popup controller access to the popup stage (to allow the controller to close the stage)
-            popupController.setStage(popupStage);
-            //Set text to correct
-            popupController.setText(text);
-
-            if(stage!=null) {
-                popupStage.initOwner(stage);
-            }
-            popupStage.initModality(Modality.WINDOW_MODAL);
-            popupStage.setScene(scene);
-            popupStage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    private void showPopupWindow(Stage stage, String text) throws IOException { loadPopupScene(stage, text); }
 }
 

@@ -10,8 +10,6 @@ import javafx.stage.Stage;
 import teamMuseumKiosk.LoadScene;
 import javafx.scene.image.Image ;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;

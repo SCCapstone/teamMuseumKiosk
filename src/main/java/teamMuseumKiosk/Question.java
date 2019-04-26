@@ -71,17 +71,8 @@ public class Question {
     public void setPrompt(String prompt) {
         if (prompt.contains("`"))
         {
-            String temp = prompt;
-            List<String> data = Arrays.asList(temp.split("`"));
-            String formatted = null;
-            for (String x : data)
-            {
-                formatted = formatted + x + ",";
-            }
-            formatted = formatted.substring(4,formatted.length() - 1);
-            prompt = formatted;
+            this.prompt = splitFormatter(prompt);
         }
-        this.prompt = prompt;
     }
 
     public String getCorrect() {
@@ -91,15 +82,7 @@ public class Question {
     public void setCorrect(String correct) {
         if (correct.contains("`"))
         {
-            String temp = correct;
-            List<String> data = Arrays.asList(temp.split("`"));
-            String formatted = null;
-            for (String x : data)
-            {
-                formatted = formatted + x + ",";
-            }
-            formatted = formatted.substring(4,formatted.length() - 1);
-            correct = formatted;
+            this.correct = splitFormatter(correct);
         }
         this.correct = correct;
     }
@@ -114,19 +97,23 @@ public class Question {
         {
             if (ans.contains("`"))
             {
-                String temp = ans;
-                List<String> data = Arrays.asList(temp.split("`"));
-                String formatted = null;
-                for (String x : data)
-                {
-                    formatted = formatted + x + ",";
-                }
-                formatted = formatted.substring(4,formatted.length() - 1);
-                ans = formatted;
+                ans = splitFormatter(ans);
             }
             formattedAnswers.add(ans);
         }
         this.questionAnswers = formattedAnswers;
+    }
+
+    private String splitFormatter(String ans){
+        String temp = ans;
+        List<String> data = Arrays.asList(temp.split("`"));
+        String formatted = null;
+        for (String x : data)
+        {
+            formatted = formatted + x + ",";
+        }
+        formatted = formatted.substring(4,formatted.length() - 1);
+        return formatted;
     }
 }
 

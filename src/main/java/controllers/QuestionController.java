@@ -3,20 +3,17 @@ package controllers;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import teamMuseumKiosk.LoadScene;
 import teamMuseumKiosk.Question;
@@ -37,13 +34,13 @@ public class QuestionController implements Initializable, LoadScene {
     private ArrayList<Question> questions;
     private Question currentQuestion;
     private boolean correct = false;
-    private int scoreValue, num, questionNumber, strikesNum, maxStrikes,maxQuestions;
+    private int scoreValue, num, questionNumber, strikesNum, maxStrikes, maxQuestions;
     @FXML
-    private Label prompt, score, questionNum, strikes;
+    private Label prompt, score, questionNum;
     @FXML
     private Button button1, button2, button3, button4;
     @FXML
-    private ImageView img;
+    private ImageView img, strike1, strike2, strike3;
     @FXML
     private GridPane quizButtons;
     @FXML
@@ -52,7 +49,7 @@ public class QuestionController implements Initializable, LoadScene {
     @FXML
     private Button nextQuestion;
 
-    //public QuestionController() {}
+    private static String strikeImg= "/images/strike.png";
 
     public void setUser(User user) {
         this.user = user;
@@ -69,7 +66,8 @@ public class QuestionController implements Initializable, LoadScene {
             this.strikesNum = 0;
             this.scoreValue = 0;
             this.questionNumber = 1;
-
+            this.mediaView.setManaged(false);
+            this.img.setManaged((false));
             //Checks for max strikes and questions
             List<String> settingsList = Files.lines(Paths.get("settings.txt")).collect(Collectors.toList());
             for(String line: settingsList){
@@ -120,9 +118,9 @@ public class QuestionController implements Initializable, LoadScene {
 
     public void displayQuestion(Question question) {
         if (questions != null) {
-            //TODO remove this println
-            System.out.println(currentQuestion.getDifficulty());
             prompt.setText(question.getPrompt());
+            prompt.setWrapText(true);
+            prompt.setTextAlignment(TextAlignment.JUSTIFY);;
         }
     }
 
@@ -147,7 +145,9 @@ public class QuestionController implements Initializable, LoadScene {
 
     public void setButtons(Question question, Button button1, Button button2, Button button3, Button button4) {
         ArrayList<Button> buttons = new ArrayList<>(Arrays.asList(button1, button2, button3, button4));
-        Collections.shuffle(question.getQuestionAnswers()); //scramble up that order
+        //scrambles order
+        Collections.shuffle(question.getQuestionAnswers());
+        //sets text of each button
         for(Button b : buttons) {
             b.setText(question.getQuestionAnswers().get(buttons.indexOf(b)));
         }
@@ -161,7 +161,7 @@ public class QuestionController implements Initializable, LoadScene {
         //get text of button
         Button button = (Button) event.getSource();
         String text = button.getText();
-
+        //get stage
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
         if(text.equals("Quit")) {
@@ -178,27 +178,23 @@ public class QuestionController implements Initializable, LoadScene {
             quizButtons.getRowConstraints().get(0).setPrefHeight(255);
             img.setManaged(true);
             img.setVisible(true);
-            //showPopupWindow(stage, "Correct!");
 
             scoreValue++;
             score.setText("Score: " + scoreValue);
 
-        } else { //if not correct answer, does not increase score, displays red X
-            //alert user that they got it wrong
+        } else {
+            //if not correct answer, does not increase score, displays red X
             //TODO: make correct button font color green, and currently selected button as red
-           // showPopupWindow(stage, "Incorrect!");
             img.setImage(new Image("/images/Red_X.png"));
             quizButtons.getRowConstraints().get(0).setPrefHeight(255);
             img.setManaged(true);
             img.setVisible(true);
 
+            //add strike
             strikesNum++;
-            if (strikesNum == 1) {
-                strikes.setText("Strikes: X");
-            }
-            else if (strikesNum == 2) {
-                strikes.setText("Strikes: XX");
-            }
+            addStrike();
+
+            //sets overall score
             score.setText("Score: " + scoreValue);
 
         }
@@ -224,8 +220,17 @@ public class QuestionController implements Initializable, LoadScene {
         });
     }
 
-    public void goToNextQuestion(ActionEvent event) throws IOException {
-        newQuestion(event);
+    private void addStrike() {
+        if (strikesNum == 1) {
+            strike1.setImage(new Image(strikeImg));
+            strike1.isVisible();
+        } else if(strikesNum == 2) {
+            strike2.setImage(new Image((strikeImg)));
+            strike2.isVisible();
+        } else {
+            strike3.setImage(new Image(strikeImg));
+            strike3.isVisible();
+        }
     }
 
     private ArrayList<Question> loadData(String fileName) throws IOException{
@@ -258,7 +263,7 @@ public class QuestionController implements Initializable, LoadScene {
 
         return questions;
     }
-    //TODO
+
     private Question retrieveNextQuestion() {
         //sets the question based on the difficulty
         //grabs random question of the difficulty selected
@@ -378,34 +383,5 @@ public class QuestionController implements Initializable, LoadScene {
         loadEndScene(stage, this.user);
     }
 
-    private void showPopupWindow(Stage stage, String text) {
-        try {
-            URL url = new URL(getClass().getResource("/design/popup.fxml").toExternalForm());
-            FXMLLoader loader = new FXMLLoader(url);
-            Parent root = loader.load();
-
-            // initializing the controller
-            PopupController popupController = loader.getController();
-            loader.setController(popupController);
-
-            Scene scene = new Scene(root, 200, 250);
-            Stage popupStage = new Stage();
-
-            // Giving the popup controller access to the popup stage (to allow the controller to close the stage)
-            popupController.setStage(popupStage);
-            //Set text to say correct or incorrect
-            popupController.setText(text);
-
-            if(stage!=null) {
-                popupStage.initOwner(stage);
-            }
-            popupStage.initModality(Modality.WINDOW_MODAL);
-            popupStage.setScene(scene);
-            popupStage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
+    private void showPopupWindow(Stage stage, String text) throws IOException { loadPopupScene(stage, text); }
 }

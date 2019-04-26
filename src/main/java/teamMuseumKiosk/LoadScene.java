@@ -5,6 +5,7 @@ import javafx.animation.PauseTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -19,7 +20,7 @@ public interface LoadScene {
         Parent root = loader.load();
 
         StartController controller = loader.getController();
-        controller.setTimer(stage);
+        controller.setStage(stage);
         loader.setController(controller);
 
         Scene scene = new Scene(root, 1440,900);
@@ -62,7 +63,7 @@ public interface LoadScene {
         controller.setUser(user);
         controller.setText();
         controller.setStage(stage);
-        controller.setTimer();
+        //controller.setTimer();
         loader.setController(controller);
 
         Scene scene = new Scene(root, 1440,900);
@@ -91,11 +92,35 @@ public interface LoadScene {
         QuestionController controller = loader.getController();
         controller.setUser(user);
         controller.setStage(stage);
-        controller.setTimer();
+        //controller.setTimer();
         loader.setController(controller);
 
         Scene scene = new Scene(root, 1440,900);
         stage.setScene(scene);
         stage.show();
+    }
+
+    default void loadPopupScene(Stage stage, String text) throws IOException {
+        URL url = new URL(getClass().getResource("/design/popup.fxml").toExternalForm());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+
+        // initializing the controller
+        PopupController popupController = loader.getController();
+        loader.setController(popupController);
+        Scene scene = new Scene(root, 200, 250);
+        Stage popupStage = new Stage();
+
+        // Giving the popup controller access to the popup stage (to allow the controller to close the stage)
+        popupController.setStage(popupStage);
+        //Set text to say correct or incorrect
+        popupController.setText(text);
+
+        if(stage!=null) {
+            popupStage.initOwner(stage);
+        }
+        popupStage.initModality(Modality.WINDOW_MODAL);
+        popupStage.setScene(scene);
+        popupStage.showAndWait();
     }
 }
