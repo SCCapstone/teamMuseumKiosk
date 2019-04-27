@@ -37,18 +37,18 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
     private boolean correct = false;
     private int scoreValue, num, questionNumber, strikesNum, maxStrikes, maxQuestions;
     @FXML
-    private Label prompt, score, questionNum;
+    private Label prompt, score, questionNum, nextQuestion;
     @FXML
     private Button button1, button2, button3, button4;
     @FXML
-    private ImageView img, strike1, strike2, strike3;
+    private ImageView img, marker, strike1, strike2, strike3;
+    @FXML
+    private Button quit;
     @FXML
     private GridPane quizButtons;
     @FXML
     private MediaView mediaView;
 
-    @FXML
-    private Button nextQuestion;
 
     private static String strikeImg= "/images/strike.png";
 
@@ -124,7 +124,9 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
             button4.setDisable(false);
 
             // set Next Question button to invisible
+            nextQuestion.setText("Click Anywhere to Continue");
             nextQuestion.setVisible(false);
+            marker.setVisible(false);
 
             setButtons(currentQuestion, button1, button2, button3, button4);
             questionNum.setText("Question " + (questionNumber++));
@@ -141,7 +143,7 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
         if (questions != null) {
             prompt.setText(question.getPrompt());
             prompt.setWrapText(true);
-            prompt.setTextAlignment(TextAlignment.JUSTIFY);;
+            prompt.setTextAlignment(TextAlignment.CENTER);
         }
     }
 
@@ -185,7 +187,7 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
         //get stage
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
-        if(text.equals("Quit")) {
+        if(button == quit) {
             user.setScore(scoreValue);
             quizEnd(event);
         }
@@ -193,13 +195,10 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
         else if (text.equals(currentQuestion.getCorrect())) {
             //alert user that they got it correct
             correct = true;
-            String url = getClass().getResource("/audio/ding.wav").toExternalForm();
-            AudioClip correctSound = new AudioClip(url);
+            AudioClip correctSound = new AudioClip(getClass().getResource("/audio/ding.wav").toExternalForm());
             correctSound.play();
-            img.setImage(new Image("/images/check.png"));
-            quizButtons.getRowConstraints().get(0).setPrefHeight(255);
-            img.setManaged(true);
-            img.setVisible(true);
+            marker.setVisible(true);
+            marker.setImage(new Image("/images/check.png"));
 
             scoreValue++;
             score.setText("Score: " + scoreValue);
@@ -207,10 +206,10 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
         } else {
             //if not correct answer, does not increase score, displays red X
             //TODO: make correct button font color green, and currently selected button as red
-            img.setImage(new Image("/images/Red_X.png"));
-            quizButtons.getRowConstraints().get(0).setPrefHeight(255);
-            img.setManaged(true);
-            img.setVisible(true);
+            marker.setVisible(true);
+            marker.setImage(new Image("/images/Red_X.png"));
+
+            nextQuestion.setText("The correct answer was '" + currentQuestion.getCorrect() + ".'\nClick Anywhere to Continue");
 
             //add strike
             strikesNum++;

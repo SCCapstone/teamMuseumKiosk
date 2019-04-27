@@ -8,128 +8,147 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" stylesheets="/design/question.css" vgap="10.0" GridPane.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.QuestionController">
-   <children>
-       <!--Prompt-->
-       <HBox alignment="CENTER" prefHeight="90.0" prefWidth="1440.0" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-           <Label fx:id="prompt" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER" wrapText="true">
-            <padding>
-               <Insets left="10.0" right="10.0" />
-            </padding></Label>
-       </HBox>
+<StackPane alignment="CENTER" stylesheets="/design/question.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.QuestionController">
+    <!--layer that displays check mark or x mark depending on if the user got the question right-->
+    <GridPane alignment="CENTER">
+        <ImageView fx:id="marker" disable="true" fitHeight="200.0" fitWidth="426.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
+      <columnConstraints>
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+      </rowConstraints>
+    </GridPane>
 
-       <!--Choice buttons settings-->
-       <GridPane fx:id="quizButtons" alignment="CENTER" minHeight="0.0" vgap="10" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-           <rowConstraints>
-                <RowConstraints minHeight="10.0" />
-                <RowConstraints minHeight="10.0" />
-                <RowConstraints minHeight="10.0" />
-                <RowConstraints minHeight="10.0" />
-                <RowConstraints minHeight="10.0" />
-                <RowConstraints minHeight="10.0" />
-           </rowConstraints>
-           <children>
-               <!--image-->
-               <ImageView fx:id="img" fitHeight="200.0" fitWidth="426.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
-               <!--video-->
-               <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="426.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="0">
-               </MediaView>
-               <!--Choice buttons-->
-               <Button fx:id="button1" alignment="CENTER" onAction="#buttonClick" prefWidth="600.0" textAlignment="CENTER" wrapText="true" GridPane.hgrow="NEVER" GridPane.rowIndex="1">
-                  <font>
-                      <Font size="16.0" />
-                  </font>
-               </Button>
-               <Button fx:id="button2" alignment="CENTER" onAction="#buttonClick" prefWidth="600.0" textAlignment="CENTER" wrapText="true" GridPane.hgrow="NEVER" GridPane.rowIndex="2">
-                  <font>
-                      <Font size="16.0" />
-                  </font>
-               </Button>
-               <Button fx:id="button3" alignment="CENTER" onAction="#buttonClick" prefWidth="600.0" textAlignment="CENTER" wrapText="true" GridPane.hgrow="NEVER" GridPane.rowIndex="3">
-                  <font>
-                      <Font size="16.0" />
-                  </font>
-               </Button>
-               <Button fx:id="button4" alignment="CENTER" onAction="#buttonClick" prefWidth="600.0" textAlignment="CENTER" wrapText="true" GridPane.hgrow="NEVER" GridPane.rowIndex="4">
-                  <font>
-                      <Font size="16.0" />
-                  </font>
-               </Button>
-               <!--Click to continue button-->
-              <Button fx:id="nextQuestion" alignment="CENTER" prefWidth="400.0" text="Click Anywhere To Continue" textAlignment="CENTER" visible="false" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="5">
-                  <font>
-                      <Font size="8.0" />
-                  </font>
-              </Button>
-           </children>
+    <!--quiz layer-->
+    <GridPane>
+        <children>
+            <!--Prompt-->
+            <HBox alignment="CENTER" prefHeight="90.0" prefWidth="1440.0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                <Label fx:id="prompt" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER" wrapText="true">
+                    <padding>
+                        <Insets left="10.0" right="10.0" />
+                    </padding></Label>
+            </HBox>
+
+            <!--Choice buttons settings-->
+            <GridPane fx:id="quizButtons" alignment="CENTER" minHeight="0.0" vgap="10" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" />
+                    <RowConstraints minHeight="10.0" />
+                    <RowConstraints minHeight="10.0" />
+                    <RowConstraints minHeight="10.0" />
+                    <RowConstraints minHeight="10.0" />
+                    <RowConstraints minHeight="10.0" />
+                </rowConstraints>
+                <children>
+                    <!--image-->
+                    <ImageView fx:id="img" fitHeight="200.0" fitWidth="426.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
+                    <!--video-->
+                    <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="426.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="0">
+                    </MediaView>
+                    <!--Choice buttons-->
+                    <Button fx:id="button1" alignment="CENTER" contentDisplay="CENTER" onAction="#buttonClick" prefWidth="600.0" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1">
+                        <font>
+                            <Font size="16.0" />
+                        </font>
+                    </Button>
+                    <Button fx:id="button2" alignment="CENTER" onAction="#buttonClick" prefWidth="600.0" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2">
+                        <font>
+                            <Font size="16.0" />
+                        </font>
+                    </Button>
+                    <Button fx:id="button3" alignment="CENTER" onAction="#buttonClick" prefWidth="600.0" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="3">
+                        <font>
+                            <Font size="16.0" />
+                        </font>
+                    </Button>
+                    <Button fx:id="button4" alignment="CENTER" onAction="#buttonClick" prefWidth="600.0" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="4">
+                        <font>
+                            <Font size="16.0" />
+                        </font>
+                    </Button>
+                    <!--Click to continue button-->
+                    <Label fx:id="nextQuestion" alignment="CENTER" contentDisplay="CENTER" prefWidth="1400.0" text="Click Anywhere To Continue" textAlignment="CENTER" visible="false" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                        <font>
+                            <Font size="8.0" />
+                        </font>
+                    </Label>
+                </children>
+                <columnConstraints>
+                    <ColumnConstraints />
+                </columnConstraints>
+            <GridPane.margin>
+               <Insets />
+            </GridPane.margin>
+            </GridPane>
+
+            <!--strikes-->
+            <GridPane fx:id="strikeMenu" alignment="BOTTOM_CENTER" hgap="10.0" layoutY="1440.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                <rowConstraints>
+                    <RowConstraints maxHeight="100" minHeight="100.0" prefHeight="100.0" />
+                </rowConstraints>
+                <ImageView fx:id="strike1" fitHeight="100.0" fitWidth="100.0" GridPane.columnIndex="0" GridPane.halignment="CENTER">
+                </ImageView>
+                <ImageView fx:id="strike2" fitHeight="100.0" fitWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                </ImageView>
+                <ImageView fx:id="strike3" fitHeight="100.0" fitWidth="100.0" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                </ImageView>
+                <columnConstraints>
+                    <ColumnConstraints />
+                    <ColumnConstraints />
+                    <ColumnConstraints />
+                </columnConstraints>
+                <padding>
+                    <Insets bottom="10.0" top="10.0" />
+                </padding>
+            </GridPane>
+
+            <!--bottom menu-->
+            <GridPane fx:id="bottomMenu" alignment="BOTTOM_CENTER" layoutY="1440.0" prefWidth="1440.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="30.0" prefHeight="30.0" />
+                </rowConstraints>
+                <children>
+                    <Label fx:id="questionNum" alignment="CENTER" text="Question 1" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="0" GridPane.halignment="CENTER">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="score" alignment="CENTER" text="Score: 0" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                        <GridPane.margin>
+                            <Insets />
+                        </GridPane.margin>
+                    </Label>
+                    <Button fx:id="quit" alignment="CENTER" mnemonicParsing="false" onAction="#buttonClick" prefHeight="27.0" prefWidth="80.0" text="Quit" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                    </Button>
+                </children>
+                <GridPane.margin>
+                    <Insets bottom="10.0" />
+                </GridPane.margin>
+            </GridPane>
+        </children>
         <columnConstraints>
-           <ColumnConstraints />
+            <ColumnConstraints />
         </columnConstraints>
-       </GridPane>
+        <rowConstraints>
+            <RowConstraints maxHeight="200" minHeight="90.0" prefHeight="90" />
+            <RowConstraints maxHeight="500.0" minHeight="400.0" prefHeight="430.0" />
+            <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" />
+            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30" />
+        </rowConstraints>
+    </GridPane>
 
-       <!--strikes-->
-       <GridPane fx:id="strikeMenu" alignment="BOTTOM_CENTER" hgap="10.0" layoutY="1440.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-            <rowConstraints>
-                <RowConstraints maxHeight="100" minHeight="100.0" prefHeight="100.0" />
-            </rowConstraints>
-           <ImageView fx:id="strike1" fitHeight="100.0" fitWidth="100.0" GridPane.columnIndex="0" GridPane.halignment="CENTER">
-           </ImageView>
-           <ImageView fx:id="strike2" fitHeight="100.0" fitWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-           </ImageView>
-           <ImageView fx:id="strike3" fitHeight="100.0" fitWidth="100.0" GridPane.columnIndex="2" GridPane.halignment="CENTER">
-           </ImageView>
-         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-         </columnConstraints>
-         <padding>
-            <Insets bottom="10.0" top="10.0" />
-         </padding>
-       </GridPane>
-
-       <!--bottom menu-->
-       <GridPane fx:id="bottomMenu" alignment="BOTTOM_CENTER" layoutY="1440.0" prefWidth="1440.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
-           <columnConstraints>
-               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-           </columnConstraints>
-           <rowConstraints>
-               <RowConstraints minHeight="30.0" prefHeight="30.0" />
-           </rowConstraints>
-           <children>
-               <Label fx:id="questionNum" alignment="CENTER" text="Question 1" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="0" GridPane.halignment="CENTER">
-                   <font>
-                       <Font size="14.0" />
-                   </font>
-               </Label>
-               <Label fx:id="score" alignment="CENTER" text="Score: 0" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                   <font>
-                       <Font size="14.0" />
-                   </font>
-                   <GridPane.margin>
-                       <Insets />
-                   </GridPane.margin>
-               </Label>
-               <Button fx:id="quit" alignment="CENTER" mnemonicParsing="false" onAction="#buttonClick" prefHeight="27.0" prefWidth="80.0" text="Quit" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER">
-               </Button>
-           </children>
-         <GridPane.margin>
-            <Insets bottom="10.0" />
-         </GridPane.margin>
-       </GridPane>
-   </children>
-<columnConstraints>
-  <ColumnConstraints />
-</columnConstraints>
-<rowConstraints>
-    <RowConstraints maxHeight="200" minHeight="90.0" prefHeight="90" />
-    <RowConstraints maxHeight="500.0" minHeight="400.0" prefHeight="430.0" />
-    <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" />
-    <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30"/>
-</rowConstraints>
-</GridPane>
+</StackPane>
