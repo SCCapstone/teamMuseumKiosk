@@ -56,7 +56,6 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
         this.user = user;
     }
     public void setStage(Stage stage) {this.stage = stage; }
-    public void setTimer() { timerToSplashScene(this.stage,6);}
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

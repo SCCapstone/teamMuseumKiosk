@@ -28,8 +28,8 @@ public interface LoadScene {
         stage.show();
     }
 
-    default void loadSplashScene(Stage stage, String fxmlURL) throws IOException {
-        URL url = new URL(getClass().getResource(fxmlURL).toExternalForm());
+    default void loadSplashScene(Stage stage) throws IOException {
+        URL url = new URL(getClass().getResource("/design/splashScreen.fxml").toExternalForm());
         FXMLLoader loader = new FXMLLoader(url);
         Parent root = loader.load();
 
@@ -46,7 +46,7 @@ public interface LoadScene {
         PauseTransition delay = new PauseTransition(Duration.minutes(minutes));
         delay.setOnFinished( event -> {
             try {
-                loadSplashScene(stage,"/design/splashScreen.fxml");
+                loadSplashScene(stage);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -63,7 +63,6 @@ public interface LoadScene {
         controller.setUser(user);
         controller.setText();
         controller.setStage(stage);
-        //controller.setTimer();
         loader.setController(controller);
 
         Scene scene = new Scene(root, 1440,900);
@@ -92,7 +91,6 @@ public interface LoadScene {
         QuestionController controller = loader.getController();
         controller.setUser(user);
         controller.setStage(stage);
-        //controller.setTimer();
         loader.setController(controller);
 
         Scene scene = new Scene(root, 1440,900);

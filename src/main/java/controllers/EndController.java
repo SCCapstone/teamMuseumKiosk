@@ -3,10 +3,7 @@ package controllers;
 import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -42,7 +39,6 @@ public class EndController implements Initializable, LoadScene {
         this.user = user;
     }
     public void setStage(Stage stage) { this.stage = stage; }
-    public void setTimer() { timerToSplashScene(this.stage,2);}
 
     public void setText() {
         try {
@@ -71,138 +67,19 @@ public class EndController implements Initializable, LoadScene {
                     {
                         highscoreText.setText("Today's High Scores:");
                         ArrayList<String> scores = highscore.getHighScores().get(0);
-                        if (scores.size() >= 1)
-                        {
-                            high1.setText(scores.get(0));
-                            if (scores.size() >= 2)
-                            {
-                                high2.setText(scores.get(1));
-                                if (scores.size() >= 3)
-                                {
-                                    high3.setText(scores.get(2));
-                                    if (scores.size() >= 4)
-                                    {
-                                        high4.setText(scores.get(3));
-                                        if (scores.size() >= 5)
-                                        {
-                                            high5.setText(scores.get(4));
-                                            if (scores.size() >= 6)
-                                            {
-                                                high6.setText(scores.get(5));
-                                                if (scores.size() >= 7)
-                                                {
-                                                    high7.setText(scores.get(6));
-                                                    if (scores.size() >= 8)
-                                                    {
-                                                        high8.setText(scores.get(7));
-                                                        if (scores.size() >= 9)
-                                                        {
-                                                            high9.setText(scores.get(8));
-                                                            if (scores.size() >= 10)
-                                                            {
-                                                                high10.setText(scores.get(9));
-
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        setHighScores(scores);
                     }
                     else if (highscoreTime.equals("weekly"))
                     {
                         highscoreText.setText("This Week's High Scores:");
                         ArrayList<String> scores = highscore.getHighScores().get(1);
-                        if (scores.size() >= 1)
-                        {
-                            high1.setText(scores.get(0));
-                            if (scores.size() >= 2)
-                            {
-                                high2.setText(scores.get(1));
-                                if (scores.size() >= 3)
-                                {
-                                    high3.setText(scores.get(2));
-                                    if (scores.size() >= 4)
-                                    {
-                                        high4.setText(scores.get(3));
-                                        if (scores.size() >= 5)
-                                        {
-                                            high5.setText(scores.get(4));
-                                            if (scores.size() >= 6)
-                                            {
-                                                high6.setText(scores.get(5));
-                                                if (scores.size() >= 7)
-                                                {
-                                                    high7.setText(scores.get(6));
-                                                    if (scores.size() >= 8)
-                                                    {
-                                                        high8.setText(scores.get(7));
-                                                        if (scores.size() >= 9)
-                                                        {
-                                                            high9.setText(scores.get(8));
-                                                            if (scores.size() >= 10)
-                                                            {
-                                                                high10.setText(scores.get(9));
-
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        setHighScores(scores);
                     }
                     else if (highscoreTime.equals("monthly"))
                     {
                         highscoreText.setText("This Month's High Scores:");
                         ArrayList<String> scores = highscore.getHighScores().get(2);
-                        if (scores.size() >= 1)
-                        {
-                            high1.setText(scores.get(0));
-                            if (scores.size() >= 2)
-                            {
-                                high2.setText(scores.get(1));
-                                if (scores.size() >= 3)
-                                {
-                                    high3.setText(scores.get(2));
-                                    if (scores.size() >= 4)
-                                    {
-                                        high4.setText(scores.get(3));
-                                        if (scores.size() >= 5)
-                                        {
-                                            high5.setText(scores.get(4));
-                                            if (scores.size() >= 6)
-                                            {
-                                                high6.setText(scores.get(5));
-                                                if (scores.size() >= 7)
-                                                {
-                                                    high7.setText(scores.get(6));
-                                                    if (scores.size() >= 8)
-                                                    {
-                                                        high8.setText(scores.get(7));
-                                                        if (scores.size() >= 9)
-                                                        {
-                                                            high9.setText(scores.get(8));
-                                                            if (scores.size() >= 10)
-                                                            {
-                                                                high10.setText(scores.get(9));
-
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                        setHighScores(scores);
                         }
                     }
                     else //rotate
@@ -216,146 +93,25 @@ public class EndController implements Initializable, LoadScene {
                                 {
                                     highscoreText.setText("This Month's High Scores:");
                                     ArrayList<String> scores = highscore.getHighScores().get(2);
-                                    if (scores.size() >= 1)
-                                    {
-                                        high1.setText(scores.get(0));
-                                        if (scores.size() >= 2)
-                                        {
-                                            high2.setText(scores.get(1));
-                                            if (scores.size() >= 3)
-                                            {
-                                                high3.setText(scores.get(2));
-                                                if (scores.size() >= 4)
-                                                {
-                                                    high4.setText(scores.get(3));
-                                                    if (scores.size() >= 5)
-                                                    {
-                                                        high5.setText(scores.get(4));
-                                                        if (scores.size() >= 6)
-                                                        {
-                                                            high6.setText(scores.get(5));
-                                                            if (scores.size() >= 7)
-                                                            {
-                                                                high7.setText(scores.get(6));
-                                                                if (scores.size() >= 8)
-                                                                {
-                                                                    high8.setText(scores.get(7));
-                                                                    if (scores.size() >= 9)
-                                                                    {
-                                                                        high9.setText(scores.get(8));
-                                                                        if (scores.size() >= 10)
-                                                                        {
-                                                                            high10.setText(scores.get(9));
-
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
+                                    setHighScores(scores);
                                 }
                                 else if (i%1500 > 500 && i%1500 < 1000)
                                 {
                                     highscoreText.setText("This Week's High Scores:");
                                     ArrayList<String> scores = highscore.getHighScores().get(1);
-                                    if (scores.size() >= 1)
-                                    {
-                                        high1.setText(scores.get(0));
-                                        if (scores.size() >= 2)
-                                        {
-                                            high2.setText(scores.get(1));
-                                            if (scores.size() >= 3)
-                                            {
-                                                high3.setText(scores.get(2));
-                                                if (scores.size() >= 4)
-                                                {
-                                                    high4.setText(scores.get(3));
-                                                    if (scores.size() >= 5)
-                                                    {
-                                                        high5.setText(scores.get(4));
-                                                        if (scores.size() >= 6)
-                                                        {
-                                                            high6.setText(scores.get(5));
-                                                            if (scores.size() >= 7)
-                                                            {
-                                                                high7.setText(scores.get(6));
-                                                                if (scores.size() >= 8)
-                                                                {
-                                                                    high8.setText(scores.get(7));
-                                                                    if (scores.size() >= 9)
-                                                                    {
-                                                                        high9.setText(scores.get(8));
-                                                                        if (scores.size() >= 10)
-                                                                        {
-                                                                            high10.setText(scores.get(9));
-
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
+                                    setHighScores(scores);
                                 }
                                 else if (i%1500 > 1000 && i%1500 < 1499)
                                 {
                                     highscoreText.setText("Today's High Scores:");
                                     ArrayList<String> scores = highscore.getHighScores().get(0);
-                                    if (scores.size() >= 1)
-                                    {
-                                        high1.setText(scores.get(0));
-                                        if (scores.size() >= 2)
-                                        {
-                                            high2.setText(scores.get(1));
-                                            if (scores.size() >= 3)
-                                            {
-                                                high3.setText(scores.get(2));
-                                                if (scores.size() >= 4)
-                                                {
-                                                    high4.setText(scores.get(3));
-                                                    if (scores.size() >= 5)
-                                                    {
-                                                        high5.setText(scores.get(4));
-                                                        if (scores.size() >= 6)
-                                                        {
-                                                            high6.setText(scores.get(5));
-                                                            if (scores.size() >= 7)
-                                                            {
-                                                                high7.setText(scores.get(6));
-                                                                if (scores.size() >= 8)
-                                                                {
-                                                                    high8.setText(scores.get(7));
-                                                                    if (scores.size() >= 9)
-                                                                    {
-                                                                        high9.setText(scores.get(8));
-                                                                        if (scores.size() >= 10)
-                                                                        {
-                                                                            high10.setText(scores.get(9));
-
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
+                                    setHighScores(scores);
                                 }
                                 i++;
                             }
                         };
                         timer.start();
                     }
-                }
             }
 
 
@@ -376,6 +132,50 @@ public class EndController implements Initializable, LoadScene {
             if (writer != null) try {
                 writer.close();
             } catch (IOException e) {
+            }
+        }
+    }
+
+    private void setHighScores(ArrayList<String> scores) {
+        if (scores.size() >= 1)
+        {
+            high1.setText(scores.get(0));
+            if (scores.size() >= 2)
+            {
+                high2.setText(scores.get(1));
+                if (scores.size() >= 3)
+                {
+                    high3.setText(scores.get(2));
+                    if (scores.size() >= 4)
+                    {
+                        high4.setText(scores.get(3));
+                        if (scores.size() >= 5)
+                        {
+                            high5.setText(scores.get(4));
+                            if (scores.size() >= 6)
+                            {
+                                high6.setText(scores.get(5));
+                                if (scores.size() >= 7)
+                                {
+                                    high7.setText(scores.get(6));
+                                    if (scores.size() >= 8)
+                                    {
+                                        high8.setText(scores.get(7));
+                                        if (scores.size() >= 9)
+                                        {
+                                            high9.setText(scores.get(8));
+                                            if (scores.size() >= 10)
+                                            {
+                                                high10.setText(scores.get(9));
+
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
