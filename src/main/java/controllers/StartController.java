@@ -18,18 +18,17 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.media.MediaView;
 import javafx.scene.text.Text;
 import javafx.geometry.Rectangle2D;
-import javafx.stage.Modality;
+import javafx.stage.*;
 import javafx.stage.Popup;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import teamMuseumKiosk.HighScore;
 import teamMuseumKiosk.LoadScene;
 import teamMuseumKiosk.User;
-import javafx.stage.Screen;
+
 import javax.swing.*;
 import java.io.*;
 
@@ -233,20 +232,21 @@ public class StartController extends Thread implements LoadScene, Initializable 
 
             keyboard = loader.getController();
             loader.setController(keyboard);
-            Scene scene = new Scene(root,600,400);
+            Scene scene = new Scene(root,1130,353);
+
+
             keyboard.setStage(keyboardStage);
 
             if(stage!=null)keyboardStage.initOwner(stage);
 
             keyboardStage.initModality(Modality.NONE);
+            //keyboardStage.initStyle(StageStyle.UNDECORATED);
+            keyboardStage.setTitle("Keyboard");
             keyboardStage.setResizable(false);
             keyboardStage.setScene(scene);
             //fulsize screen for every screen
-            keyboardStage.setX(((primaryScreenBounds.getWidth()-primaryScreenBounds.getMaxX())/2));
-            keyboardStage.setY((primaryScreenBounds.getHeight()-primaryScreenBounds.getMaxY())/2);
-
-            /*keyboardStage.setX((primaryScreenBounds.getWidth()-primaryScreenBounds.getMaxX())/2);
-            keyboardStage.setY((primaryScreenBounds.getHeight()-primaryScreenBounds.getMaxY())/2);*/
+            keyboardStage.setX(primaryScreenBounds.getWidth()-primaryScreenBounds.getMaxX()/1.30);
+            keyboardStage.setY(primaryScreenBounds.getHeight()-primaryScreenBounds.getMaxY()/2.5);
         }catch (IOException e){}
         this.name.setOnMouseClicked(event -> nameClick());
         this.email.setOnMouseClicked(event -> emailClick());
@@ -335,8 +335,6 @@ public class StartController extends Thread implements LoadScene, Initializable 
             if (keyboard.getType() == true) {
 
                 temp = keyboard.getTyped();
-                System.out.println(keyboard.getNameArray().size());
-                System.out.println(textField.getId());
                 if(textField.getId() == "nameField" && keyboard.getNameArray().size() == 3 ){
                     System.out.println("hello");
                     keyboard.deleteLastNameArray(keyboard.getNameArray().size()-1);

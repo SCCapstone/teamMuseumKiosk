@@ -1,0 +1,30 @@
+.root {
+    -fx-padding: 100;
+    -fx-background-color: #a6a6a6;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+.label {
+    -fx-font-family: "Helvetica Neue";
+    -fx-font-size: 18;
+    -fx-text-fill: #fcfcfc;
+}
+
+.button {
+    -fx-background-color: #003365;
+    -fx-text-fill: #fcfcfc;
+}
+.button:hover {
+    -fx-background-color: #fcfcfc;
+    -fx-text-fill: #003365;
+}
+.button:pressed {
+    -fx-background-color: #002d5a;
+}
+
+#title {
+    -fx-text-alignment: center;
+    -fx-font-size: 68;
+}

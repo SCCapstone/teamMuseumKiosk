@@ -81,7 +81,9 @@ public class SplashController extends Thread implements LoadScene, Initializable
         Thread thread = Thread.currentThread();
         //does the slideshow until clicked
         while (t == thread){
-            image.setImage(ads.get(i));
+            if(!ads.isEmpty()) {
+                image.setImage(ads.get(i));
+            }
             //image.setManaged(true);
             //image.setVisible(true);
             try {
