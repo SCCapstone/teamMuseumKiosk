@@ -75,8 +75,6 @@ public class AdminUpdateController extends AdminController {
     }
 
     /**
-     * TODO: implement functionality
-     *
      * @param actionEvent
      * @throws IOException
      */
@@ -101,14 +99,24 @@ public class AdminUpdateController extends AdminController {
         imageView.getScene().getWindow().hide();
     }
 
-    /**
-     * TODO: implement functionality
-     *
+    /***
      * @param actionEvent
      * @throws IOException
      */
-    public void selectAdvertisements(ActionEvent actionEvent) throws IOException {
+    public void deleteAdvertisements(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setOpacity(1);
+        URL url = new URL(getClass().getResource("/design/deleteAdvertisementsScreen.fxml").toExternalForm());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+
+        DeleteAdvertisementsController controller = loader.getController();
+        loader.setController(controller);
+
+        Scene scene = new Scene(root, 600,600);
+        stage.setScene(scene);
+        stage.show();
 
     }
-
 }
