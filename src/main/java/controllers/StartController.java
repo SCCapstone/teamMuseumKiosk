@@ -50,17 +50,12 @@ public class StartController extends Thread implements LoadScene, Initializable 
 
     private Stage stage;
     private Thread t;
-    //private String lettersTyped;
     private TextField textField;
     private Stage keyboardStage = new Stage();
     private KeyboardController keyboard;
     private String temp;
     private final Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
     public void setStage(Stage stage) { this.stage = stage; }
-    public void setTimer(){
-        //Automatically goes back to splash screen after 2 minutes
-        //timerToSplashScene(stage,2);
-    }
     String settings = "settings.txt";
     private int i;
     @FXML

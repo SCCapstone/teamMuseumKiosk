@@ -2,6 +2,8 @@ package teamMuseumKiosk;
 
 import controllers.*;
 import javafx.animation.PauseTransition;
+import javafx.application.Platform;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -41,19 +43,21 @@ public interface LoadScene {
         stage.show();
     }
 
-    default void timerToSplashScene(Stage stage, int minutes) {
-        //Automatically goes back to splash screen after 2 minutes
-        PauseTransition delay = new PauseTransition(Duration.minutes(minutes));
-        delay.setOnFinished( event -> {
-            try {
-                loadSplashScene(stage);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        delay.play();
-    }
 
+    default void loadQuestionScene(Stage stage, User user) throws IOException {
+        URL url = new URL(getClass().getResource("/design/question.fxml").toExternalForm());
+        FXMLLoader loader = new FXMLLoader(url);
+        Parent root = loader.load();
+
+        QuestionController controller = loader.getController();
+        controller.setUser(user);
+        controller.setStage(stage);
+        loader.setController(controller);
+
+        Scene scene = new Scene(root, 1440,900);
+        stage.setScene(scene);
+        stage.show();
+    }
     default void loadEndScene(Stage stage, User user)throws IOException {
         URL url = new URL(getClass().getResource("/design/endScreen.fxml").toExternalForm());
         FXMLLoader loader = new FXMLLoader(url);
@@ -83,20 +87,6 @@ public interface LoadScene {
         stage.show();
     }
 
-    default void loadQuestionScene(Stage stage, User user) throws IOException {
-        URL url = new URL(getClass().getResource("/design/question.fxml").toExternalForm());
-        FXMLLoader loader = new FXMLLoader(url);
-        Parent root = loader.load();
-
-        QuestionController controller = loader.getController();
-        controller.setUser(user);
-        controller.setStage(stage);
-        loader.setController(controller);
-
-        Scene scene = new Scene(root, 1440,900);
-        stage.setScene(scene);
-        stage.show();
-    }
 
     default void loadPopupScene(Stage stage, String text) throws IOException {
         URL url = new URL(getClass().getResource("/design/popup.fxml").toExternalForm());
@@ -120,5 +110,24 @@ public interface LoadScene {
         popupStage.initModality(Modality.WINDOW_MODAL);
         popupStage.setScene(scene);
         popupStage.showAndWait();
+    }
+
+    default void timerToSplashScene(Stage stage, int minutes) {
+        //Automatically goes back to splash screen after 5 minutes
+        PauseTransition delay = new PauseTransition(Duration.minutes(minutes));
+        //if the scene is interacted with, will reset the timer
+        stage.addEventHandler(Event.ANY, e -> {
+            delay.playFromStart();
+        });
+        delay.setOnFinished( event ->
+                Platform.runLater(
+                    () -> {
+                        try {
+                            loadSplashScene(stage);
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                ));
     }
 }

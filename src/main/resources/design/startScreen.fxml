@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -15,7 +14,6 @@
 <?import javafx.scene.text.Text?>
 
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.Region?>
 <GridPane alignment="center" hgap="40" stylesheets="/design/startScreen.css" vgap="10.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StartController">
 
     <!--Title-->

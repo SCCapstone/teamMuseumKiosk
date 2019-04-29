@@ -1,16 +1,12 @@
 package teamMuseumKiosk;
 
-import controllers.SplashController;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.*;
-import java.net.URL;
 
-public class Main extends Application {
+public class Main extends Application implements LoadScene{
     public static void main(String[] args) {
         launch(args);
     }
@@ -25,17 +21,10 @@ public class Main extends Application {
         File vid = new File("./video/");
         vid.mkdir();
 
-        URL url = new URL(getClass().getResource("/design/splashScreen.fxml").toExternalForm());
-        FXMLLoader loader = new FXMLLoader(url);
-        Parent root = loader.load();
-
-        SplashController controller = new SplashController();
-        loader.setController(controller);
-
-        Scene scene = new Scene(root,1440,900);
-        primaryStage.setTitle("South Carolina State Museum");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        //creates idle timer
+        timerToSplashScene(primaryStage, 5);
+        //loads splash scene
+        loadSplashScene(primaryStage);
     }
 
 
