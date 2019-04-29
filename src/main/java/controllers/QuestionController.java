@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class QuestionController implements Initializable, LoadScene, ResetAdminSettings {
-    public User user;
+    private User user;
     private Stage stage;
     private ArrayList<Question> questions;
     private Question currentQuestion;
@@ -48,7 +48,6 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
     private GridPane quizButtons;
     @FXML
     private MediaView mediaView;
-
 
     private static String strikeImg= "/images/strike.png";
 
@@ -68,49 +67,55 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
             this.questionNumber = 1;
             this.mediaView.setManaged(false);
             this.img.setManaged((false));
+
             //Checks for max strikes and questions
-            List<String> settingsList = Files.lines(Paths.get("settings.txt")).collect(Collectors.toList());
-            for(String line: settingsList){
-
-                if (line.contains("strikeNum")) {
-                    String[] strikes = line.split(" ");
-                    // check if settings.txt is incomplete
-                    if (strikes.length <= 1) {
-                        ifSettingsFileIsEmpty("strikeNum");
-                        // setting strikeNum as default 3
-                        maxStrikes = 3;
-                    }
-                    else if(line.equals("strikeNum: 2"))
-                        maxStrikes = 2;
-                    else if(line.equals("strikeNum: 3"))
-                        maxStrikes = 3;
-                }
-                else if(line.contains("maxQuestions"))
-                {
-                    String[] words = line.split(" ");
-
-                    // check if settings.txt is incomplete
-                    if (words.length <= 1) {
-                        // missing number of max questions
-                        ifSettingsFileIsEmpty("maxQuestions");
-                        // setting maxQuestions as default 10
-                        maxQuestions = 10;
-                    }
-                    else {
-                        maxQuestions = Integer.parseInt(words[1]);
-                    }
-                }
-            }
+            checkSettingsFile();
 
             //Loads first question
-            newQuestion(null);
+            newQuestion();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void newQuestion(ActionEvent event) throws IOException {
+    private void checkSettingsFile() throws IOException {
+        //Checks for max strikes and questions
+        List<String> settingsList = Files.lines(Paths.get("settings.txt")).collect(Collectors.toList());
+        for(String line: settingsList){
+
+            if (line.contains("strikeNum")) {
+                String[] strikes = line.split(" ");
+                // check if settings.txt is incomplete
+                if (strikes.length <= 1) {
+                    ifSettingsFileIsEmpty("strikeNum");
+                    // setting strikeNum as default 3
+                    maxStrikes = 3;
+                }
+                else if(line.equals("strikeNum: 2"))
+                    maxStrikes = 2;
+                else if(line.equals("strikeNum: 3"))
+                    maxStrikes = 3;
+            }
+            else if(line.contains("maxQuestions"))
+            {
+                String[] words = line.split(" ");
+
+                // check if settings.txt is incomplete
+                if (words.length <= 1) {
+                    // missing number of max questions
+                    ifSettingsFileIsEmpty("maxQuestions");
+                    // setting maxQuestions as default 10
+                    maxQuestions = 10;
+                }
+                else {
+                    maxQuestions = Integer.parseInt(words[1]);
+                }
+            }
+        }
+    }
+
+    protected void newQuestion() throws IOException {
         if (num > 0 && strikesNum < maxStrikes && questionNumber <= maxQuestions) {
             currentQuestion = retrieveNextQuestion();
             displayQuestion(currentQuestion);
@@ -131,14 +136,14 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
             questionNum.setText("Question " + (questionNumber++));
         } else {
             user.setScore(scoreValue);
-            quizEnd(event);
+            quizEnd();
         }
 
         questions.remove(currentQuestion);
         num--;
     }
 
-    public void displayQuestion(Question question) {
+    private void displayQuestion(Question question) {
         if (questions != null) {
             prompt.setText(question.getPrompt());
             prompt.setWrapText(true);
@@ -160,6 +165,7 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
 
         if(currentQuestion.getVideo() != null) {
             MediaPlayer player = new MediaPlayer(currentQuestion.getVideo());
+            mediaView.setVisible(true);
             mediaView.setMediaPlayer(player);
             player.play();
         }
@@ -178,6 +184,7 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
     public void buttonClick(ActionEvent event) throws IOException {
         if(mediaView.getMediaPlayer() != null) {
             mediaView.getMediaPlayer().dispose();
+            mediaView.setVisible(false);
         }
 
         //get text of button
@@ -186,9 +193,10 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
         //get stage
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
+        //user quits game
         if(button == quit) {
             user.setScore(scoreValue);
-            quizEnd(event);
+            quizEnd();
         }
         //if text of button matches correct answer of question, increases user's score and displays check mark
         else if (text.equals(currentQuestion.getCorrect())) {
@@ -204,7 +212,6 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
 
         } else {
             //if not correct answer, does not increase score, displays red X
-            //TODO: make correct button font color green, and currently selected button as red
             marker.setVisible(true);
             marker.setImage(new Image("/images/Red_X.png"));
 
@@ -228,12 +235,14 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
         // display Next Question button
         nextQuestion.setVisible(true);
 
+        // pauses screen until pressed
         stage.getScene().addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
                 try {
                     stage.getScene().removeEventFilter(MouseEvent.MOUSE_PRESSED, this);
-                    newQuestion(event);
+                    //goes to next question
+                    newQuestion();
                 }
                 catch(IOException error) {}
             }
@@ -253,7 +262,7 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
         }
     }
 
-    private ArrayList<Question> loadData(String fileName) throws IOException{
+    protected ArrayList<Question> loadData(String fileName) throws IOException{
         ArrayList<Question> questions = new ArrayList<>();
 
         try {
@@ -397,10 +406,8 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
 
     }
 
-    private void quizEnd(ActionEvent event) throws IOException {
-        //go to end screen
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        loadEndScene(stage, this.user);
+    private void quizEnd() throws IOException {
+        loadEndScene(this.stage, this.user);
     }
 
     private void showPopupWindow(Stage stage, String text) throws IOException { loadPopupScene(stage, text); }

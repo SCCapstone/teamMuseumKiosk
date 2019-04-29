@@ -125,5 +125,11 @@ public class Question {
         formatted = formatted.substring(4,formatted.length() - 1);
         return formatted;
     }
+
+    @Override
+    public String toString() {
+        return this.getPrompt() + ", " + this.getCorrect() + ", " + this.getQuestionAnswers().toString() + ", " + this.getDifficulty();
+    }
+
 }
 

@@ -58,6 +58,7 @@ public interface LoadScene {
         stage.setScene(scene);
         stage.show();
     }
+
     default void loadEndScene(Stage stage, User user)throws IOException {
         URL url = new URL(getClass().getResource("/design/endScreen.fxml").toExternalForm());
         FXMLLoader loader = new FXMLLoader(url);
@@ -113,7 +114,7 @@ public interface LoadScene {
     }
 
     default void timerToSplashScene(Stage stage, int minutes) {
-        //Automatically goes back to splash screen after 5 minutes
+        //Automatically goes back to splash screen after n minutes
         PauseTransition delay = new PauseTransition(Duration.minutes(minutes));
         //if the scene is interacted with, will reset the timer
         stage.addEventHandler(Event.ANY, e -> {

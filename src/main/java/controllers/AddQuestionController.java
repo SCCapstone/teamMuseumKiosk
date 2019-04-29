@@ -79,6 +79,7 @@ public class AddQuestionController implements Initializable, LoadScene {
         BufferedWriter writer = null;
 
         if (question.getText().equals("")
+                ||question.getText().length() > 250
                 || wrong1.getText().equals("")
                 || wrong2.getText().equals("")
                 || wrong3.getText().equals("")
@@ -92,7 +93,10 @@ public class AddQuestionController implements Initializable, LoadScene {
 
             PopupController controller = loader.getController();
             loader.setController(controller);
-            controller.setText("You must fill out form to add a question.");
+            if(question.getText().equals(""))
+                controller.setText("You must fill out form to add a question.");
+            else
+                controller.setText("The max length of a question is 250 characters");
             controller.setButtonText("OK");
             controller.setStage(stage);
 
@@ -206,7 +210,12 @@ public class AddQuestionController implements Initializable, LoadScene {
                 csvString.append(i);
                 csvString.append(",");
             }
-            csvString.append("./images/"+filePath.getName());
+            if(filePath.getName().contains("mp4") || filePath.getName().contains("wav")){
+                csvString.append("./Videos/"+filePath.getName());
+            }
+            else {
+                csvString.append("./Images/" + filePath.getName());
+            }
 
         }
 
@@ -231,8 +240,14 @@ public class AddQuestionController implements Initializable, LoadScene {
 
         try {
             //TODO put in the images folder
-            File path = new File("./images/"+filePath.getName());
-            Files.copy(filePath.toPath(),path.toPath());
+            if(filePath.getName().contains("mp4") || filePath.getName().contains("wav")){
+                File path = new File("./Videos/" + filePath.getName());
+                Files.copy(filePath.toPath(), path.toPath());
+            }
+            else {
+                File path = new File("./Images/" + filePath.getName());
+                Files.copy(filePath.toPath(), path.toPath());
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
