@@ -79,6 +79,7 @@ public class AddQuestionController implements Initializable, LoadScene {
         BufferedWriter writer = null;
 
         if (question.getText().equals("")
+                ||question.getText().length() > 250
                 || wrong1.getText().equals("")
                 || wrong2.getText().equals("")
                 || wrong3.getText().equals("")
@@ -92,7 +93,10 @@ public class AddQuestionController implements Initializable, LoadScene {
 
             PopupController controller = loader.getController();
             loader.setController(controller);
-            controller.setText("You must fill out form to add a question.");
+            if(question.getText().equals(""))
+                controller.setText("You must fill out form to add a question.");
+            else
+                controller.setText("The max length of a question is 250 characters");
             controller.setButtonText("OK");
             controller.setStage(stage);
 
