@@ -25,7 +25,7 @@
     -fx-text-fill: #fcfcfc;
 }
 
-#button {
+#button, #deleteAdButton {
     -fx-text-alignment: center;
     -fx-font-size: 40;
     -fx-background-color: #124e8a;

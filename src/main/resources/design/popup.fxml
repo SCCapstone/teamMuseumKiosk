@@ -23,6 +23,12 @@
                <Insets top="20.0" />
             </VBox.margin>
          </Button>
+           <Button fx:id="deleteAdButton" mnemonicParsing="false" onAction="#deleteAdvertisement" text="" visible="false">
+               <VBox.margin>
+                   <Insets top="20.0" />
+               </VBox.margin>
+           </Button>
+
          <BorderPane.margin>
             <Insets bottom="10.0" top="10.0" />
          </BorderPane.margin>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="40" vgap="40" stylesheets="/design/adminScreen.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DeleteAdvertisementsController">
+
+<VBox GridPane.rowIndex="0" alignment="CENTER_RIGHT">
+    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#closePage" prefHeight="29.0" prefWidth="274.0" text="Close" />
+
+</VBox>
+
+<VBox GridPane.rowIndex="1">
+
+    <!-- Question and Answer list populated by controller. -->
+    <Group fx:id="advertisementGroup">
+    </Group>
+
+    <Label id="deleteAdvertisementsLabel" text="Select the advertisement you'd like to delete." textAlignment="CENTER" wrapText="true" />
+
+</VBox>
+
+</GridPane>

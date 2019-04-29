@@ -20,6 +20,12 @@ public class PopupController implements Initializable {
     @FXML
     Button button;
 
+    // only for deleting advertisements pop up
+    @FXML
+    Button deleteAdButton;
+
+    boolean deleteAdvertisement = false;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Automatically closes the popup after 5 seconds
@@ -34,7 +40,14 @@ public class PopupController implements Initializable {
 
     public void setButtonText(String text) { button.setText(text); }
 
+    public void setDeleteAdButton(String text) {
+        deleteAdButton.setText(text);
+        deleteAdButton.setVisible(true);
+    }
+
     public Button getButton() { return this.button; }
+
+    public Button getDeleteAdButton() { return this.deleteAdButton; }
 
     public void setText(String text) {
         result.setText(text);
@@ -46,6 +59,20 @@ public class PopupController implements Initializable {
      */
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    /**
+     * for deleting advertisements only
+     * if user selects 'yes' - delete file
+     * else, just close window
+     */
+    public void deleteAdvertisement(ActionEvent actionevent) {
+        deleteAdvertisement = true;
+        closeStage();
+    }
+
+    public boolean isDeleteAdFile() {
+        return deleteAdvertisement;
     }
 
     /**

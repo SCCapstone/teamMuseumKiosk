@@ -79,6 +79,15 @@
                 </graphic>
 
             </Button>
+
+        <Label id="deleteAdvertisementsLabel" text="Delete Advertisements" textAlignment="CENTER" wrapText="true" />
+            <Button contentDisplay="RIGHT" minHeight="64.0" minWidth="294.0" onAction="#deleteAdvertisements" text="Delete" textAlignment="CENTER">
+                <graphic>
+                    <ImageView fitHeight="30.0" preserveRatio="true">
+                        <Image url="/images/white_delete.png" />
+                    </ImageView>
+                </graphic>
+            </Button>
         </HBox>
         <HBox alignment="CENTER">
             <!--Since emails are stored in a file, adding instructions to export instead of a button-->
