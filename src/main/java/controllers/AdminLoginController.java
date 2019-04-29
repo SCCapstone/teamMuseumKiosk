@@ -55,7 +55,6 @@ public class AdminLoginController extends AdminController implements LoadScene, 
                 }
                 else {
                     usernameKey = usernameLine[1];
-                    System.out.println("USERNAMEKEY: " + usernameKey);
                 }
 
             }
@@ -70,7 +69,6 @@ public class AdminLoginController extends AdminController implements LoadScene, 
                 }
                 else {
                     passwordKey = passwordLine[1];
-                    System.out.println("PASSWORDKEY: " + passwordKey);
                 }
 
             }

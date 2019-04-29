@@ -273,7 +273,7 @@ public class AdminEditController extends AdminController implements ResetAdminSe
                 if (line.contains("username")) {
                     String[] usernameLine = line.split(" ");
 
-                    if (usernameLine[1].equals("") || usernameLine[1].equals(" ")) {
+                    if (usernameLine.length == 1 || usernameLine[1].equals("") || usernameLine[1].equals(" ")) {
                         // settings.txt is incomplete
                         ifSettingsFileIsEmpty("username");
                         return;
@@ -286,7 +286,7 @@ public class AdminEditController extends AdminController implements ResetAdminSe
                 if (line.contains("password")) {
                     String [] passwordLine = line.split(" ");
 
-                    if (passwordLine[1].equals("") || passwordLine[1].equals(" ")) {
+                    if (passwordLine.length == 1 || passwordLine[1].equals("") || passwordLine[1].equals(" ")) {
                         // settings.txt is incomplete
                         ifSettingsFileIsEmpty("password");
                         return;
@@ -302,8 +302,8 @@ public class AdminEditController extends AdminController implements ResetAdminSe
             System.out.println("Cannot find settings file");
         }
 
-        // check if username changed
-        if (!usernameField.getText().trim().equals(usernameKey)) {
+        // check if username changed & if field isn't empty
+        if (!usernameField.getText().trim().equals(usernameKey) && !usernameField.getText().isEmpty()) {
             // update username saved in file
             usernameKey = usernameField.getText().trim();
             newUsernameString = "username: " + usernameKey;
@@ -338,8 +338,8 @@ public class AdminEditController extends AdminController implements ResetAdminSe
             return;
         }
         else {
-            // check if password changed
-            if (!passwordField.getText().trim().equals(passwordKey)) {
+            // check if password changed & if fields aren't empty
+            if (!passwordField.getText().trim().equals(passwordKey) && !passwordField.getText().isEmpty()) {
                 // update password saved in file
                 passwordKey = passwordField.getText().trim();
                 newPasswordString = "password: " + passwordKey;
@@ -365,8 +365,6 @@ public class AdminEditController extends AdminController implements ResetAdminSe
                 BufferedWriter writer = new BufferedWriter(new FileWriter(settings, false));
                 writer.write(newSettings);
                 writer.close();
-
-
             }
         }
 

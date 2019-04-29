@@ -126,7 +126,7 @@
                             </padding></Label>
                         <TextField id="usernameField" fx:id="usernameField" alignment="CENTER" onAction="#changeUsernamePassword" TilePane.alignment="CENTER_RIGHT">
                             <font>
-                                <Font size="23.0" />
+                                <Font size="13.0" />
                             </font>
                         </TextField>
                     </TilePane>
@@ -139,7 +139,7 @@
                             </padding></Label>
                         <PasswordField id="passwordField" fx:id="passwordField" alignment="CENTER" onAction="#changeUsernamePassword" TilePane.alignment="CENTER_RIGHT">
                             <font>
-                                <Font size="23.0" />
+                                <Font size="13.0" />
                             </font>
                         </PasswordField>
                     </TilePane>
@@ -150,9 +150,9 @@
                             <padding>
                                 <Insets right="10.0" />
                             </padding></Label>
-                        <PasswordField id="repeatPasswordField" fx:id="repeatPasswordField" alignment="CENTER" onAction="#changeUsernamePassword" TilePane.alignment="CENTER_RIGHT">
+                        <PasswordField id="passwordField" fx:id="repeatPasswordField" alignment="CENTER" onAction="#changeUsernamePassword" TilePane.alignment="CENTER_RIGHT">
                             <font>
-                                <Font size="23.0" />
+                                <Font size="13.0" />
                             </font>
                         </PasswordField>
                     </TilePane>
