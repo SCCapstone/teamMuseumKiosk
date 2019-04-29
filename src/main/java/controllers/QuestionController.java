@@ -160,6 +160,7 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
 
         if(currentQuestion.getVideo() != null) {
             MediaPlayer player = new MediaPlayer(currentQuestion.getVideo());
+            mediaView.setVisible(true);
             mediaView.setMediaPlayer(player);
             player.play();
         }
@@ -178,6 +179,7 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
     public void buttonClick(ActionEvent event) throws IOException {
         if(mediaView.getMediaPlayer() != null) {
             mediaView.getMediaPlayer().dispose();
+            mediaView.setVisible(false);
         }
 
         //get text of button
