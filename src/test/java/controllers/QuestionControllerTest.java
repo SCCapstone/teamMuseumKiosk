@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 public class QuestionControllerTest {

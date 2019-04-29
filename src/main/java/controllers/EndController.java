@@ -55,69 +55,48 @@ public class EndController implements Initializable, LoadScene {
             //set high scores
             highscoreText.setText("High Scores:");
 
-            List<String> settingsList = Files.lines(Paths.get(settings)).collect(Collectors.toList());
-            for (String line : settingsList)
-            {
-                if (line.contains("highScores"))
-                {
-                    String[] asdf = line.split(" ");
-                    String highscoreTime = asdf[1];
-                    HighScore highscore = new HighScore();
-                    if (highscoreTime.equals("daily"))
-                    {
-                        highscoreText.setText("Today's High Scores:");
-                        ArrayList<String> scores = highscore.getHighScores().get(0);
-                        setHighScores(scores);
-                    }
-                    else if (highscoreTime.equals("weekly"))
-                    {
-                        highscoreText.setText("This Week's High Scores:");
-                        ArrayList<String> scores = highscore.getHighScores().get(1);
-                        setHighScores(scores);
-                    }
-                    else if (highscoreTime.equals("monthly"))
-                    {
-                        highscoreText.setText("This Month's High Scores:");
-                        ArrayList<String> scores = highscore.getHighScores().get(2);
-                        setHighScores(scores);
-                        }
-                    }
-                    else //rotate
-                    {
-                        //display on rotation
-                        AnimationTimer timer = new AnimationTimer() {
-                            @Override
-                            public void handle(long now) {
-                                HighScore highscore = new HighScore();
-                                if (i%1500 > 0 && i%1500 < 500)
-                                {
-                                    highscoreText.setText("This Month's High Scores:");
-                                    ArrayList<String> scores = highscore.getHighScores().get(2);
-                                    setHighScores(scores);
-                                }
-                                else if (i%1500 > 500 && i%1500 < 1000)
-                                {
-                                    highscoreText.setText("This Week's High Scores:");
-                                    ArrayList<String> scores = highscore.getHighScores().get(1);
-                                    setHighScores(scores);
-                                }
-                                else if (i%1500 > 1000 && i%1500 < 1499)
-                                {
-                                    highscoreText.setText("Today's High Scores:");
-                                    ArrayList<String> scores = highscore.getHighScores().get(0);
-                                    setHighScores(scores);
-                                }
-                                i++;
-                            }
-                        };
-                        timer.start();
-                    }
-            }
-
+            //decipher settings.txt for high scores
+            writeHighScores();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void writeHighScores() throws IOException {
+        List<String> settingsList = Files.lines(Paths.get(settings)).collect(Collectors.toList());
+        for (String line : settingsList)
+        {
+            if (line.contains("highScores"))
+            {
+                String[] asdf = line.split(" ");
+                String highscoreTime = asdf[1];
+                HighScore highscore = new HighScore();
+                if (highscoreTime.equals("daily"))
+                {
+                    highscoreText.setText("Today's High Scores:");
+                    ArrayList<String> scores = highscore.getHighScores().get(0);
+                    setHighScores(scores);
+                }
+                else if (highscoreTime.equals("weekly"))
+                {
+                    highscoreText.setText("This Week's High Scores:");
+                    ArrayList<String> scores = highscore.getHighScores().get(1);
+                    setHighScores(scores);
+                }
+                else if (highscoreTime.equals("monthly"))
+                {
+                    highscoreText.setText("This Month's High Scores:");
+                    ArrayList<String> scores = highscore.getHighScores().get(2);
+                    setHighScores(scores);
+                }
+            }
+            else //rotate
+            {
+                rotateHighScores();
+            }
+        }
+
     }
 
     private void writeScore() {
@@ -180,16 +159,45 @@ public class EndController implements Initializable, LoadScene {
         }
     }
 
+    private void rotateHighScores() {
+        //display on rotation
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                HighScore highscore = new HighScore();
+                if (i%1500 > 0 && i%1500 < 500)
+                {
+                    highscoreText.setText("This Month's High Scores:");
+                    ArrayList<String> scores = highscore.getHighScores().get(2);
+                    setHighScores(scores);
+                }
+                else if (i%1500 > 500 && i%1500 < 1000)
+                {
+                    highscoreText.setText("This Week's High Scores:");
+                    ArrayList<String> scores = highscore.getHighScores().get(1);
+                    setHighScores(scores);
+                }
+                else if (i%1500 > 1000 && i%1500 < 1499)
+                {
+                    highscoreText.setText("Today's High Scores:");
+                    ArrayList<String> scores = highscore.getHighScores().get(0);
+                    setHighScores(scores);
+                }
+                i++;
+            }
+        };
+        timer.start();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {}
 
     public void buttonClick(ActionEvent actionEvent) throws IOException {
         Button button = (Button) actionEvent.getSource();
-        Stage currentStage = (Stage) button.getScene().getWindow();
         if (button.getText().equals("No"))
-            loadStartScene(currentStage);
+            loadStartScene(this.stage);
         else {
-            loadQuestionScene(currentStage, this.user);
+            loadQuestionScene(this.stage, this.user);
         }
 
     }
