@@ -68,3 +68,8 @@
 #missingInfoText {
     -fx-font-size: 25.0;
 }
+
+/* For adminUpdateLoginScreen */
+#updateLoginMissingText {
+    -fx-font-size: 20.0;
+}

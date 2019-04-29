@@ -115,51 +115,12 @@
          
                      </HBox>
 
-                <VBox alignment="CENTER" spacing="50">
+                <HBox alignment="CENTER" spacing="50">
                     <Label text="Update Admin Username and Password:" textAlignment="CENTER" wrapText="true" />
-
-                    <!-- Update Username -->
-                    <TilePane alignment="CENTER" prefColumns="1" prefRows="1">
-                        <Label id="usernameLabel" text="New Username:" textAlignment="CENTER" TilePane.alignment="CENTER_RIGHT">
-                            <padding>
-                                <Insets right="10.0" />
-                            </padding></Label>
-                        <TextField id="usernameField" fx:id="usernameField" alignment="CENTER" onAction="#changeUsernamePassword" TilePane.alignment="CENTER_RIGHT">
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                        </TextField>
-                    </TilePane>
-
-                    <!-- Update Password -->
-                    <TilePane alignment="CENTER" prefColumns="1" prefRows="1">
-                        <Label id="passwordLabel" text="New Password:" textAlignment="CENTER" TilePane.alignment="CENTER_RIGHT">
-                            <padding>
-                                <Insets right="10.0" />
-                            </padding></Label>
-                        <PasswordField id="passwordField" fx:id="passwordField" alignment="CENTER" onAction="#changeUsernamePassword" TilePane.alignment="CENTER_RIGHT">
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                        </PasswordField>
-                    </TilePane>
-
-                    <!-- Repeat Password -->
-                    <TilePane alignment="CENTER" prefColumns="1" prefRows="1">
-                        <Label id="repeatPasswordLabel" text="Enter Password Again:" textAlignment="CENTER" TilePane.alignment="CENTER_RIGHT">
-                            <padding>
-                                <Insets right="10.0" />
-                            </padding></Label>
-                        <PasswordField id="passwordField" fx:id="repeatPasswordField" alignment="CENTER" onAction="#changeUsernamePassword" TilePane.alignment="CENTER_RIGHT">
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                        </PasswordField>
-                    </TilePane>
 
                     <!--Enter Button-->
                     <HBox alignment="TOP_CENTER" spacing="10">
-                        <Button fx:id="submitButton" alignment="CENTER" onAction="#changeUsernamePassword" text="Login" />
+                        <Button fx:id="submitButton" alignment="CENTER" onAction="#changeUsernamePassword" text="Update" />
                     </HBox>
 
                     <!--Missing info text-->
@@ -168,13 +129,7 @@
                     </HBox>
 
 
-                </VBox>
-
-
-
-
-
-
+                </HBox>
          </children>
       
               </VBox>
