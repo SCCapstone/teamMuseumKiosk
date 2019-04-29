@@ -35,7 +35,7 @@ public class EditQuestionController implements Initializable {
     @FXML
     private TextArea question, wrong1, wrong2, wrong3, correct;
 
-    private String difficulty;
+    private String difficulty,oldMedia;
 
     @FXML
     private ComboBox difficultyChoices;
@@ -94,6 +94,16 @@ public class EditQuestionController implements Initializable {
         public String getAnswer3() { return answer3.get(); }
         public String getCorrectAnswer() { return correctAnswer.get(); }
         public String getDifficulty() { return difficulty.get(); }
+        public String getMedia() {
+            if (media != null)
+            {
+                return media.get();
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         public void setMedia(String file) { this.media = new SimpleStringProperty(file); }
 
@@ -173,7 +183,8 @@ public class EditQuestionController implements Initializable {
                 && wrong3.getText().equals(origAnswer3)
                 && correct.getText().equals(origCorrect)
                 && difficulty.equals(origDifficulty)
-                && (!newQuestionString.contains("/images/"))) {
+                && ((!newQuestionString.contains("/Images/"))) || (!newQuestionString.contains("/Videos/"))
+                && filePath.getName().equals(oldMedia)) {
 
             System.out.println("nothing changed.");
 
@@ -378,8 +389,16 @@ public class EditQuestionController implements Initializable {
             boolean nothing = true;
         }
         else {
-            newNewQuestionString += "," + ("./images/"+filePath.getName());
-            newQuestion.setMedia("./images/"+filePath.getName());
+            //newNewQuestionString += "," + ("./images/"+filePath.getName());
+            //newQuestion.setMedia("./images/"+filePath.getName());
+            if(filePath.getName().contains("mp4") || filePath.getName().contains("wav")){
+                newNewQuestionString += ",./Videos/"+filePath.getName();
+                newQuestion.setMedia("./Videos/"+filePath.getName());
+            }
+            else {
+                newNewQuestionString += ",./Images/" + filePath.getName();
+                newQuestion.setMedia("./Images/" + filePath.getName());
+            }
         }
         // replace question/answers in datalist with updated version
         dataList.set(questionRow, newQuestion);
@@ -439,6 +458,10 @@ public class EditQuestionController implements Initializable {
                 // original question before edit/delete
                 Question origQuestion = new Question(fields[0], fields[1], fields[2], fields[3], fields[4], fields[5]);
                 dataList.add(origQuestion);
+                if (fields.length == 7)
+                {
+                    oldMedia = fields[6];
+                }
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(AdminUpdateController.class.getName())
@@ -476,8 +499,13 @@ public class EditQuestionController implements Initializable {
                 newQuestionString.append(i);
                 newQuestionString.append(",");
             }
-            newQuestionString.append("./images/"+filePath.getName());
-
+            //newQuestionString.append("./images/"+filePath.getName());
+            if(filePath.getName().contains("mp4") || filePath.getName().contains("wav")){
+                newQuestionString.append("./Videos/"+filePath.getName());
+            }
+            else {
+                newQuestionString.append("./Images/" + filePath.getName());
+            }
         }
         return newQuestionString.toString();
 
@@ -499,8 +527,16 @@ public class EditQuestionController implements Initializable {
         filePath = fileChooser.showOpenDialog(stage);
 
         try {
-            File path = new File("./images/"+filePath.getName());
-            Files.copy(filePath.toPath(),path.toPath());
+            //File path = new File("./images/"+filePath.getName());
+            //Files.copy(filePath.toPath(),path.toPath());
+            if(filePath.getName().contains("mp4") || filePath.getName().contains("wav")){
+                File path = new File("./Videos/" + filePath.getName());
+                Files.copy(filePath.toPath(), path.toPath());
+            }
+            else {
+                File path = new File("./Images/" + filePath.getName());
+                Files.copy(filePath.toPath(), path.toPath());
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
