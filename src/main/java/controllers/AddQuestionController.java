@@ -236,8 +236,14 @@ public class AddQuestionController implements Initializable, LoadScene {
 
         try {
             //TODO put in the images folder
-            File path = new File("./images/"+filePath.getName());
-            Files.copy(filePath.toPath(),path.toPath());
+            if(filePath.getName().contains("mp4") || filePath.getName().contains("wav")){
+                File path = new File("./Videos/" + filePath.getName());
+                Files.copy(filePath.toPath(), path.toPath());
+            }
+            else {
+                File path = new File("./Images/" + filePath.getName());
+                Files.copy(filePath.toPath(), path.toPath());
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
