@@ -1,20 +1,17 @@
-package teamMuseumKiosk;
+package controllers;
 
-import controllers.StartController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.junit.Before;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
-import org.testfx.api.FxToolkit;
-
 
 import java.net.URL;
 
-public class StartScreenTest extends ApplicationTest {
+import static org.junit.Assert.*;
+
+public class StartControllerTest extends ApplicationTest {
 
     @Override
     public void start (Stage primaryStage) throws Exception {
