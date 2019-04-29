@@ -27,6 +27,6 @@
 /* Question Screen CSS */
 #prompt {
     -fx-text-alignment: center;
-    -fx-font-size: 40;
+    -fx-font-size: 38;
     -fx-text-fill: #fcfcfc;
 }
