@@ -206,7 +206,12 @@ public class AddQuestionController implements Initializable, LoadScene {
                 csvString.append(i);
                 csvString.append(",");
             }
-            csvString.append("./images/"+filePath.getName());
+            if(filePath.getName().contains("mp4") || filePath.getName().contains("wav")){
+                csvString.append("./Videos/"+filePath.getName());
+            }
+            else {
+                csvString.append("./Images/" + filePath.getName());
+            }
 
         }
 
