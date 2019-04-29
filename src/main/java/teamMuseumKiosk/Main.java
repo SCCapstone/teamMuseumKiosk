@@ -13,11 +13,11 @@ public class Main extends Application implements LoadScene{
     @Override
     public void start(Stage primaryStage) throws Exception{
         //This creates the directories where resources can go
-        File img = new File("./images/");
+        File img = new File("./Images/");
         img.mkdir();
         File ads = new File("./Advertisements/");
         ads.mkdir();
-        File vid = new File("./video/");
+        File vid = new File("./Videos/");
         vid.mkdir();
 
         //creates idle timer
