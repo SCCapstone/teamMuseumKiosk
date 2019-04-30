@@ -152,6 +152,11 @@ public class EditQuestionController implements Initializable {
     public void editQuestion(ActionEvent actionEvent) throws IOException {
         String newQuestionString = buildCSVString();
 
+        String fileName = "";
+        if (filePath != null)
+        {
+            fileName = filePath.getName();
+        }
         if (question.getText().equals("")
                 || wrong1.getText().equals("")
                 || wrong2.getText().equals("")
@@ -184,7 +189,7 @@ public class EditQuestionController implements Initializable {
                 && correct.getText().equals(origCorrect)
                 && difficulty.equals(origDifficulty)
                 && ((!newQuestionString.contains("/Images/"))) || (!newQuestionString.contains("/Videos/"))
-                && filePath.getName().equals(oldMedia)) {
+                && fileName.equals(oldMedia)) {
 
             System.out.println("nothing changed.");
 

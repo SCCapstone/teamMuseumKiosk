@@ -24,6 +24,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayList;
 
 public class DeleteAdvertisementsController extends AdminController{
@@ -161,7 +162,8 @@ public class DeleteAdvertisementsController extends AdminController{
             String fileName = dataList.get(advertisementRow).adName.getValue();
 
             File path = new File(fileName);
-            path.delete();
+            //path.delete();
+            Files.delete(path.toPath());
         }
     }
 
