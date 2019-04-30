@@ -145,7 +145,9 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
 
     private void displayQuestion(Question question) {
         if (questions != null) {
-            prompt.setText(question.getPrompt());
+            String questionText = question.getPrompt();
+            questionText = questionText.replaceAll("`",",");
+            prompt.setText(questionText);
             prompt.setWrapText(true);
             prompt.setTextAlignment(TextAlignment.CENTER);
         }
@@ -193,13 +195,15 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
         //get stage
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
+        String correctAns = currentQuestion.getCorrect();
+        correctAns = correctAns.replaceAll("`",",");
         //user quits game
         if(button == quit) {
             user.setScore(scoreValue);
             quizEnd();
         }
         //if text of button matches correct answer of question, increases user's score and displays check mark
-        else if (text.equals(currentQuestion.getCorrect())) {
+        else if (text.equals(correctAns)) {
             //alert user that they got it correct
             correct = true;
             AudioClip correctSound = new AudioClip(getClass().getResource("/audio/ding.wav").toExternalForm());
@@ -215,7 +219,8 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
             marker.setVisible(true);
             marker.setImage(new Image("/images/Red_X.png"));
 
-            nextQuestion.setText("The correct answer was '" + currentQuestion.getCorrect() + ".'\nClick Anywhere to Continue");
+
+            nextQuestion.setText("The correct answer was '" + correctAns + ".'\nClick Anywhere to Continue");
 
             //add strike
             strikesNum++;
