@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -48,6 +49,8 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
     private GridPane quizButtons;
     @FXML
     private MediaView mediaView;
+    @FXML
+    private HBox mediaHolder;
 
     private static String strikeImg= "/images/strike.png";
 
@@ -66,6 +69,7 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
             this.scoreValue = 0;
             this.questionNumber = 1;
             this.mediaView.setManaged(false);
+            this.mediaHolder.setManaged(false);
             this.img.setManaged((false));
 
             //Checks for max strikes and questions
@@ -167,9 +171,18 @@ public class QuestionController implements Initializable, LoadScene, ResetAdminS
 
         if(currentQuestion.getVideo() != null) {
             MediaPlayer player = new MediaPlayer(currentQuestion.getVideo());
+            mediaHolder.setManaged(true);
+            mediaHolder.setVisible(true);
+            mediaView.setManaged(true);
             mediaView.setVisible(true);
             mediaView.setMediaPlayer(player);
             player.play();
+        } else {
+            quizButtons.getRowConstraints().get(0).setPrefHeight(0);
+            mediaHolder.setVisible(false);
+            mediaHolder.setManaged(false);
+            mediaView.setVisible(false);
+            mediaView.setManaged(false);
         }
     }
 

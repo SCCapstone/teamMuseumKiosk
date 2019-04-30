@@ -47,10 +47,11 @@
                 </rowConstraints>
                 <children>
                     <!--image-->
-                    <ImageView fx:id="img" fitHeight="200.0" fitWidth="426.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
+                    <ImageView fx:id="img" fitHeight="200.0" fitWidth="426.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS" />
                     <!--video-->
-                    <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="426.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="0">
-                    </MediaView>
+                    <HBox fx:id="mediaHolder" alignment="CENTER" maxHeight="200" maxWidth="426.0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.vgrow="ALWAYS">
+                        <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="426.0" preserveRatio="true" GridPane.halignment="CENTER" />
+                    </HBox>
                     <!--Choice buttons-->
                     <Button fx:id="button1" alignment="CENTER" contentDisplay="CENTER" onAction="#buttonClick" prefWidth="600.0" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1">
                         <font>
